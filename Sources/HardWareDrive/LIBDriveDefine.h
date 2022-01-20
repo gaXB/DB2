@@ -40,6 +40,10 @@
 #include "Deal_DTC.h"
 #include "OutANDDisplay.h"
 #include "Signal_Refresh.h"
+#include "LINEXV.h"
+#include "WaterPump.h"
+#include "ReadTouchID.h"
+
 
 #if  _PROJECT_CAN_
 #include "ApplayLay.h"
@@ -53,27 +57,30 @@
  *TODO: AD 号定义
  *
 ********************************************************************************/
-#define ADID_VOLT       0
-#define ADID_BATT       1     //和采集点火
-#define ADID_FAN        2     //鼓风机
-#define ADID_TIN        3      //车内
-#define ADID_TAMB       4     //车外
-#define ADID_TEVP       5     //蒸发
-#define ADID_FVENT      6
-#define ADID_DVENT      7
-#define ADID_SUN        8     //阳光
-#define ADID_PRESS      9    //压力传感器
-#define ADID_MOTORMIX    10
-#define ADID_MOTORMODE   11
-#define ADID_MOTORNCF    12
+#define ADID_VOLT       0     // 01
+#define ADID_BATT       1     //和采集点火  1c
+#define ADID_FAN        2     //鼓风机        00
+#define ADID_TIN        3      //车内         00
+#define ADID_TAMB       4     //车外           18
+#define ADID_TEVP       5     //蒸发           1b
+#define ADID_TPTL1      6     //          10
+#define ADID_TPTL2      7      //         13
+#define ADID_TPTH       8      //         16
+#define ADID_SUN        9     //阳光           1a
+#define ADID_PPTL1      10    //压力传感器   11
+#define ADID_PPTL2     11    //           17
+#define ADID_PPTH       12    //          12
+#define ADID_MOTORMODE   13  //          1F
+#define ADID_MOTORNCF    14   //          1E
+#define ADID_MOTORMIX    15  //           19
 //初始化配置字
-#define ADID_MAXNUM      13
+#define ADID_MAXNUM      16
 #define ADID_VNUM        3
-#define ADID_TNUM        5
+#define ADID_TNUM        6
 #define ADID_SYSIGN      ADVOLT_MODE_12V
 
-
-
+#define ADID_FVENT      255
+#define ADID_DVENT      255
 /*******************************************************************************
  * TODO: 电机模块电机号分配
  *
@@ -121,34 +128,37 @@
 #define  KEY_DIAG       0x1800u
 #define  KEY_AUTO       0x1000u    
 #define  KEY_ONOFF      0x0800u
-#define  KEY_CIRF       KEY_VER_H   //高位，固定键值为0x0002u，不可更改，其他键值定义需避开
-#define  KEY_AC      	KEY_VER_L   //低位，固定键值为0x0001u，不可更改，其他键值定义需避开
-#define  KEY_FANUP    	0x0004u
-#define  KEY_FANDOWN    0x0020u
-#define  KEY_FRE        0x2000u    //外循环
-#define  KEY_MODE     	0x0008u
-#define  KEY_FAN        0x8000u
-#define  KEY_DEF       	0x0010u
+#define  KEY_NCF       KEY_VER_H   //高位，固定键值为0x0002u，不可更改，其他键值定义需避开  改成on
+#define  KEY_AC      	KEY_VER_L   //低位，固定键值为0x0001u，不可更改，其他键值定义需避开  改成内循环
+#define  KEY_OSF    	0x0004u       //改成AC
+#define  KEY_OSFD    0x0020u        //改成前除霜
+#define  KEY_PTC        0x2000u    //改成ptc
+#define  KEY_OSDT     	0x0008u      //改成OFF
+#define  KEY_OST        0x8000u     //改成模式
+#define  KEY_MODE       	0x0010u
 #define  KEY_TEMP       0x6000u
 #define  KEY_AIRCLEAN   0x0040u
 #define  KEY_AIRCLEAN_LEVE 0x0060u
 #define  KEY_AIRCLEAN_AUTO_ON 0x0400u
 #define  KEY_AIRCLEAN_AUTO    0x0600u
-#define  KEY_RHEAT    	0x0100u
+#define  KEY_RHEAT    	0x0100u    //改成后
 #define  KEY_CHEAT_R    0x0200u
 #define  KEY_CHEAT_L    0x0080u
+#define  KEY_OFF        0x0080u
+#define  KEY_ON         KEY_ONOFF
+#define  KEY_DEF        KEY_OST
 
 #define  KEY_VER_SLEF_LCD  		KEY_CODE_COMBFOUR_VERH      //按住低位 4击高位 作为辅助LCD显示低位值
 #define  KEY_VER_SLEF           	KEY_CODE_COMBFOUR_VERL      //按住高位 4击低位 显示内部版本号，
 #define  KEY_CLIENT_VER        	KEY_VERH_LONG            //内循环长按5s
 
-#define  KEY_OFF        KEY_ONOFF
+
 #define  COMD_FAN_ADD           2
 #define  COMD_FAN_DEC           1 
 #define  COMD_TSET_ADD         16
 #define  COMD_TSET_DEC         15
 
-
+#define   KEY_DEBUG      (KEY_PTC+KEY_NCF+0x8000)
 /*******************************************************************************
  * 标定参数个数定义
 ********************************************************************************/

@@ -652,3 +652,8 @@ void FanVolt_Control(void)
 		//10msÎ´µ½
 	}
 }
+
+int16 FanFBVoltGet(void)
+{
+	return sFanData.avLastVolt;
+}

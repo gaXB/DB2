@@ -20,9 +20,9 @@
 #define LCD_DISPLAY_H_
 
 //液晶屏选择
-#define   _HT_16K23_
+//#define   _HT_16K23_
 //#define   _HT_1621_
-
+#define     _BU_9796_
 //LCD 显示模式
  typedef enum  {									
    LCD_MODE_NORMAL=0,      //正常

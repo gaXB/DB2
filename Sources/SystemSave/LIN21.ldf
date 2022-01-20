@@ -6,30 +6,91 @@ LIN_speed                        = 19.2 kbps;
 /* ----------NODE DEFINITIONS---------- */
 Nodes {
    Master:
-      SeatECU,                                               /* Master node name */
+      LDFMasterNode,                                         /* Master node name */
       5 ms,                                                  /* Time base */
-      0.1 ms;                                                /* Jitter */
+      1 ms;                                                  /* Jitter */
    Slaves:
-      Motor1,
-      Motor2;
+      BDC_1,
+      BDC_2,
+      EXV_2,
+      EXV_VCU,
+      AGM_A,
+      AGM_B,
+      CCV4;
 }
 /* ----------SIGNAL DEFINITIONS---------- */
 Signals {
    /* Signal_name                : Size,                              Init,            Publisher, Subscriber(s) */
-   Motor1ErrorCode               :  8,                                0x05,               Motor1, SeatECU;
-   Motor1ErrorValue              :  8,                                0x01,               Motor1, SeatECU;
-   Motor1LinError                :  1,                                0x00,               Motor1, SeatECU;
-   Motor1Selection               :  2,                                0x00,              SeatECU, Motor1;
-   Motor1Temp                    :  8,                                0x05,               Motor1, SeatECU;
-   Motor2ErrorCode               :  8,                                0x02,               Motor2, SeatECU;
-   Motor2ErrorValue              :  8,                                0x04,               Motor2, SeatECU;
-   Motor2LinError                :  1,                                0x00,               Motor2, SeatECU;
-   Motor2Selection               :  2,                                0x00,              SeatECU, Motor2;
-   Motor2Temp                    :  8,                                0x00,               Motor2, SeatECU;
-   MotorDirection                :  2,                                0x00,              SeatECU, Motor1,Motor2;
-   MotorSpeed                    : 10,                                0x00,              SeatECU, Motor1,Motor2;
-   Motor1Position                : 32,               {0x00,0x00,0x00,0x00},               Motor1, SeatECU;
-   Motor2Position                : 32,               {0x00,0x00,0x00,0x00},               Motor2, SeatECU;
+   BDC_1_ReqMovePos              :  8,                                0x08,        LDFMasterNode, BDC_1;
+   BDC_1_RespPos                 :  8,                                0x00,                BDC_1, LDFMasterNode;
+   BDC_1_MotorStatus             :  1,                                0x00,                BDC_1, LDFMasterNode;
+   BDC_1_TempWarn                :  1,                                0x00,                BDC_1, LDFMasterNode;
+   BDC_1_MoveEnable              :  1,                                0x00,        LDFMasterNode, BDC_1;
+   BDC_1_voltageErr              :  2,                                0x00,                BDC_1, LDFMasterNode;
+   BDC_1_Fault_Signal            :  4,                                0x00,                BDC_1, LDFMasterNode;
+   BDC_1_Rsp_Comm_Err            :  1,                                0x00,                BDC_1, LDFMasterNode;
+   BDC_2_ReqMovePos              :  8,                                0x08,        LDFMasterNode, BDC_2;
+   BDC_2_RespPos                 :  8,                                0x00,                BDC_2, LDFMasterNode;
+   BDC_2_MotorStatus             :  1,                                0x00,                BDC_2, LDFMasterNode;
+   BDC_2_TempWarn                :  1,                                0x00,                BDC_2, LDFMasterNode;
+   BDC_2_MoveEnable              :  1,                                0x00,        LDFMasterNode, BDC_2;
+   BDC_2_voltageErr              :  2,                                0x00,                BDC_2, LDFMasterNode;
+   BDC_2_Fault_Signal            :  4,                                0x00,                BDC_2, LDFMasterNode;
+   BDC_2_Rsp_Comm_Err            :  1,                                0x00,                BDC_2, LDFMasterNode;
+   CCV4_ReqMovePos               :  1,                                0x00,        LDFMasterNode, CCV4;
+   CCV4_RespPos                  :  2,                                0x00,                 CCV4, LDFMasterNode;
+   CCV4_MotorStatus              :  1,                                0x00,                 CCV4, LDFMasterNode;
+   CCV4_TempWarn                 :  1,                                0x00,                 CCV4, LDFMasterNode;
+   CCV4_MoveEnable               :  1,                                0x00,        LDFMasterNode, CCV4;
+   CCV4_voltageErr               :  2,                                0x00,                 CCV4, LDFMasterNode;
+   CCV4_Fault_Signal             :  4,                                0x00,                 CCV4, LDFMasterNode;
+   CCV4_Rsp_Comm_Err             :  1,                                0x00,                 CCV4, LDFMasterNode;
+   PositionRequest_EXV2          : 16,                                0x00,        LDFMasterNode, EXV_2;
+   EnableRequest_EXV2            :  1,                                0x00,        LDFMasterNode, EXV_2;
+   InitRequest_EXV2              :  3,                                0x00,        LDFMasterNode, EXV_2;
+   ResponseError_EXV2            :  1,                                0x00,                EXV_2, LDFMasterNode;
+   CurrentInitState_EXV2         :  2,                                0x00,                EXV_2, LDFMasterNode;
+   RunState_EXV2                 :  1,                                0x00,                EXV_2, LDFMasterNode;
+   FaultState_EXV2               :  4,                                0x00,                EXV_2, LDFMasterNode;
+   VoltageState_EXV2             :  2,                                0x00,                EXV_2, LDFMasterNode;
+   TemperatureWarn_EXV2          :  2,                                0x00,                EXV_2, LDFMasterNode;
+   CurrentPosition_EXV2          : 16,                                0x00,                EXV_2, LDFMasterNode;
+   TMM_EXV_PositionRequest       : 16,                                0x00,        LDFMasterNode, EXV_VCU;
+   TMM_EXV_EnableRequest         :  1,                                0x00,        LDFMasterNode, EXV_VCU;
+   TMM_EXV_initRequest           :  3,                                0x00,        LDFMasterNode, EXV_VCU;
+   EXV_ResponseError             :  1,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV_CurrentInitState          :  2,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV_RunState                  :  1,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV_FaultState                :  4,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV_VoltageState              :  2,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV_TemperatureWarn           :  2,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV_CurrentPosition           : 16,                                0x00,              EXV_VCU, LDFMasterNode;
+   ECM_TargetPosReqIgOn_A        :  8,                                0x00,        LDFMasterNode, AGM_A;
+   ECM_CalibReq_A                :  1,                                0x00,        LDFMasterNode, AGM_A;
+   ECM_IgStatusReq_A             :  1,                                0x00,        LDFMasterNode, AGM_A;
+   ECM_TargetPosReqIgOff_A       :  8,                                0x00,        LDFMasterNode, AGM_A;
+   AGM_A_ActualPosition          :  8,                                0x7F,                AGM_A, LDFMasterNode;
+   AGM_A_Err_MechBreak           :  1,                                0x00,                AGM_A, LDFMasterNode;
+   AGM_A_Err_MechBlock           :  1,                                0x00,                AGM_A, LDFMasterNode;
+   AGM_A_CalibActive             :  1,                                0x00,                AGM_A, LDFMasterNode;
+   AGM_A_CalibRequired           :  1,                                0x01,                AGM_A, LDFMasterNode;
+   AGM_A_Err_Electrical          :  1,                                0x00,                AGM_A, LDFMasterNode;
+   AGM_A_Err_OverTemp            :  1,                                0x00,                AGM_A, LDFMasterNode;
+   AGM_A_Err_Voltage             :  1,                                0x00,                AGM_A, LDFMasterNode;
+   AGM_A_Err_LINResp             :  1,                                0x00,                AGM_A, LDFMasterNode;
+   ECM_TargetPosReqIgOn_B        :  8,                                0x00,        LDFMasterNode, AGM_B;
+   ECM_CalibReq_B                :  1,                                0x00,        LDFMasterNode, AGM_B;
+   ECM_IgStatusReq_B             :  1,                                0x00,        LDFMasterNode, AGM_B;
+   ECM_TargetPosReqIgOff_B       :  8,                                0x00,        LDFMasterNode, AGM_B;
+   AGM_B_ActualPosition          :  8,                                0x7F,                AGM_B, LDFMasterNode;
+   AGM_B_Err_MechBreak           :  1,                                0x00,                AGM_B, LDFMasterNode;
+   AGM_B_Err_MechBlock           :  1,                                0x00,                AGM_B, LDFMasterNode;
+   AGM_B_CalibActive             :  1,                                0x00,                AGM_B, LDFMasterNode;
+   AGM_B_CalibRequired           :  1,                                0x01,                AGM_B, LDFMasterNode;
+   AGM_B_Err_Electrical          :  1,                                0x00,                AGM_B, LDFMasterNode;
+   AGM_B_Err_OverTemp            :  1,                                0x00,                AGM_B, LDFMasterNode;
+   AGM_B_Err_Voltage             :  1,                                0x00,                AGM_B, LDFMasterNode;
+   AGM_B_Err_LINResp             :  1,                                0x00,                AGM_B, LDFMasterNode;
 }
 /* ----------DIAGNOSTIC SIGNAL DEFINITIONS---------- */
 Diagnostic_signals {
@@ -54,38 +115,104 @@ Diagnostic_signals {
 }
 /* ----------UNCONDITIONAL FRAME DEFINITIONS---------- */
 Frames {
-   Motor1Control       : 0x30, SeatECU             ,    1 {
-      Motor1Selection     , 0;
+   BDC_1_Cmd           : 0x2A, LDFMasterNode       ,    8 {
+      BDC_1_MoveEnable    , 0;
+      BDC_1_ReqMovePos    , 8;
    }
-   Motor1State_Cycl    : 0x33, Motor1              ,    6 {
-      Motor1Temp          , 0;
-      Motor1Position      , 8;
-      Motor1LinError      , 40;
+   BDC_1_Rsp           : 0x2B, BDC_1               ,    8 {
+      BDC_1_Rsp_Comm_Err  , 0;
+      BDC_1_Fault_Signal  , 2;
+      BDC_1_voltageErr    , 12;
+      BDC_1_TempWarn      , 14;
+      BDC_1_MotorStatus   , 15;
+      BDC_1_RespPos       , 16;
    }
-   Motor1State_Event   : 0x36, Motor1              ,    3 {
-      Motor1ErrorCode     , 8;
-      Motor1ErrorValue    , 16;
+   BDC_2_Cmd           : 0x29, LDFMasterNode       ,    8 {
+      BDC_2_MoveEnable    , 0;
+      BDC_2_ReqMovePos    , 8;
    }
-   Motor2Control       : 0x31, SeatECU             ,    1 {
-      Motor2Selection     , 0;
+   BDC_2_Rsp           : 0x28, BDC_2               ,    8 {
+      BDC_2_Rsp_Comm_Err  , 0;
+      BDC_2_Fault_Signal  , 2;
+      BDC_2_voltageErr    , 12;
+      BDC_2_TempWarn      , 14;
+      BDC_2_MotorStatus   , 15;
+      BDC_2_RespPos       , 16;
    }
-   Motor2State_Cycl    : 0x34, Motor2              ,    6 {
-      Motor2Temp          , 0;
-      Motor2Position      , 8;
-      Motor2LinError      , 40;
+   CCV4_Cmd            : 0x19, LDFMasterNode       ,    8 {
+      CCV4_MoveEnable     , 0;
+      CCV4_ReqMovePos     , 1;
    }
-   Motor2State_Event   : 0x37, Motor2              ,    3 {
-      Motor2ErrorCode     , 8;
-      Motor2ErrorValue    , 16;
+   CCV4_Rsq            : 0x09, CCV4                ,    8 {
+      CCV4_Rsp_Comm_Err   , 0;
+      CCV4_Fault_Signal   , 2;
+      CCV4_RespPos        , 6;
+      CCV4_voltageErr     , 12;
+      CCV4_TempWarn       , 14;
+      CCV4_MotorStatus    , 15;
    }
-   MotorsControl       : 0x2D, SeatECU             ,    8 {
-      MotorDirection      , 0;
-      MotorSpeed          , 2;
+   ATC_4               : 0x12, LDFMasterNode       ,    8 {
+      PositionRequest_EXV2, 0;
+      EnableRequest_EXV2  , 16;
+      InitRequest_EXV2    , 24;
    }
-}
-/* ----------SPORADIC FRAME DEFINITIONS---------- */
-Sporadic_frames {
-   SporadicControlFrame: Motor1Control, Motor2Control;
+   EXV_2               : 0x22, EXV_2               ,    8 {
+      ResponseError_EXV2  , 0;
+      CurrentInitState_EXV2, 1;
+      RunState_EXV2       , 3;
+      FaultState_EXV2     , 4;
+      VoltageState_EXV2   , 8;
+      TemperatureWarn_EXV2, 10;
+      CurrentPosition_EXV2, 16;
+   }
+   VCU_EXV             : 0x11, LDFMasterNode       ,    8 {
+      TMM_EXV_PositionRequest, 0;
+      TMM_EXV_EnableRequest, 16;
+      TMM_EXV_initRequest , 24;
+   }
+   EXV_VCU             : 0x21, EXV_VCU             ,    8 {
+      EXV_ResponseError   , 0;
+      EXV_CurrentInitState, 1;
+      EXV_RunState        , 3;
+      EXV_FaultState      , 4;
+      EXV_VoltageState    , 8;
+      EXV_TemperatureWarn , 10;
+      EXV_CurrentPosition , 16;
+   }
+   ECM_AGM_A_DEMAND    : 0x1C, LDFMasterNode       ,    4 {
+      ECM_TargetPosReqIgOn_A, 0;
+      ECM_CalibReq_A      , 8;
+      ECM_IgStatusReq_A   , 10;
+      ECM_TargetPosReqIgOff_A, 16;
+   }
+   AGM_A_ECM_STATUS    : 0x1B, AGM_A               ,    4 {
+      AGM_A_ActualPosition, 0;
+      AGM_A_Err_MechBreak , 8;
+      AGM_A_CalibActive   , 10;
+      AGM_A_CalibRequired , 11;
+      AGM_A_Err_Voltage   , 12;
+      AGM_A_Err_MechBlock , 13;
+      AGM_A_Err_Electrical, 14;
+      AGM_A_Err_OverTemp  , 15;
+      AGM_A_Err_LINResp   , 16;
+   }
+   ECM_AGM_B_DEMAND    : 0x14, LDFMasterNode       ,    4 {
+      ECM_TargetPosReqIgOn_B, 0;
+      ECM_CalibReq_B      , 8;
+      ECM_IgStatusReq_B   , 10;
+      ECM_TargetPosReqIgOff_B, 16;
+   }
+   AGM_B_ECM_STATUS    : 0x13, AGM_B               ,    4 {
+      AGM_B_ActualPosition, 0;
+      AGM_B_Err_MechBreak , 8;
+      AGM_B_CalibActive   , 10;
+      AGM_B_CalibRequired , 11;
+      AGM_B_Err_Voltage   , 12;
+      AGM_B_Err_MechBlock , 13;
+      AGM_B_Err_Electrical, 14;
+      AGM_B_Err_OverTemp  , 15;
+      AGM_B_Err_LINResp   , 16;
+   }
 }
 /* ----------DIAGNOSTIC FRAME DEFINITIONS---------- */
 Diagnostic_frames {
@@ -112,48 +239,129 @@ Diagnostic_frames {
 }
 /* ----------NODE ATTRIBUTE DEFINITIONS---------- */
 Node_attributes {
-   Motor1 {
+   BDC_1 {
       LIN_protocol               = "2.1";                    /* Node protocol version */
-      configured_NAD             = 0x02;                     /* configured NAD of node */
-      initial_NAD                = 0x0A;                     /* initial NAD of node */
-      product_id                 = 0x1E, 0x01, 0x00;         /* Product id */
-      response_error             = Motor1LinError;           /* Response error signal */
-      P2_min                     = 100 ms;                   /* P2_min */
-      ST_min                     = 20 ms;                    /* ST_min */
-      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
-      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
-      configurable_frames {
-         Motor1Control;
-         Motor1State_Cycl;
-         Motor1State_Event;
-         MotorsControl;
-         SporadicControlFrame;
-      }
-   }
-   Motor2 {
-      LIN_protocol               = "2.1";                    /* Node protocol version */
-      configured_NAD             = 0x03;                     /* configured NAD of node */
-      initial_NAD                = 0x0C;                     /* initial NAD of node */
-      product_id                 = 0x2E, 0x0B, 0x01;         /* Product id */
-      response_error             = Motor2LinError;           /* Response error signal */
+      configured_NAD             = 0x05;                     /* configured NAD of node */
+      initial_NAD                = 0x05;                     /* initial NAD of node */
+      product_id                 = 0x0124, 0x091D, 0x00;     /* Product id */
+      response_error             = BDC_1_Rsp_Comm_Err;       /* Response error signal */
       P2_min                     = 50 ms;                    /* P2_min */
       ST_min                     = 0 ms;                     /* ST_min */
       N_As_timeout               = 1000 ms;                  /* N_As_timeout */
       N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
       configurable_frames {
-         Motor2Control;
-         Motor2State_Cycl;
-         Motor2State_Event;
-         MotorsControl;
-         SporadicControlFrame;
+         BDC_1_Cmd;
+         BDC_1_Rsp;
+      }
+   }
+   BDC_2 {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x06;                     /* configured NAD of node */
+      initial_NAD                = 0x06;                     /* initial NAD of node */
+      product_id                 = 0x0124, 0x091D, 0x00;     /* Product id */
+      response_error             = BDC_2_Rsp_Comm_Err;       /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         BDC_2_Cmd;
+         BDC_2_Rsp;
+      }
+   }
+   EXV_2 {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x07;                     /* configured NAD of node */
+      initial_NAD                = 0x07;                     /* initial NAD of node */
+      product_id                 = 0x0124, 0x091D, 0x00;     /* Product id */
+      response_error             = ResponseError_EXV2;       /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         ATC_4;
+         EXV_2;
+      }
+   }
+   EXV_VCU {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x08;                     /* configured NAD of node */
+      initial_NAD                = 0x08;                     /* initial NAD of node */
+      product_id                 = 0x0124, 0x091D, 0x00;     /* Product id */
+      response_error             = EXV_ResponseError;        /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         VCU_EXV;
+         EXV_VCU;
+      }
+   }
+   CCV4 {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x04;                     /* configured NAD of node */
+      initial_NAD                = 0x04;                     /* initial NAD of node */
+      product_id                 = 0x0124, 0x091A, 0x00;     /* Product id */
+      response_error             = CCV4_Rsp_Comm_Err;        /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         CCV4_Cmd;
+         CCV4_Rsq;
+      }
+   }
+   AGM_A {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x09;                     /* configured NAD of node */
+      initial_NAD                = 0x09;                     /* initial NAD of node */
+      product_id                 = 0x0102, 0x8201, 0x41;     /* Product id */
+      response_error             = AGM_A_Err_LINResp;        /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 50 ms;                    /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         ECM_AGM_A_DEMAND;
+         AGM_A_ECM_STATUS;
+      }
+   }
+   AGM_B {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x0A;                     /* configured NAD of node */
+      initial_NAD                = 0x0A;                     /* initial NAD of node */
+      product_id                 = 0x0102, 0x8201, 0x41;     /* Product id */
+      response_error             = AGM_B_Err_LINResp;        /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 50 ms;                    /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         ECM_AGM_B_DEMAND;
+         AGM_B_ECM_STATUS;
       }
    }
 }
 /* ----------SCHEDULE TABLE DEFINITIONS---------- */
 Schedule_tables {
    NormalTable {
-      Motor1Control                                      delay 50 ms;
-      Motor1State_Cycl                                   delay 50 ms;
+      BDC_1_Cmd                                          delay 20 ms;
+      BDC_1_Rsp                                          delay 20 ms;
+      BDC_2_Cmd                                          delay 20 ms;
+      BDC_2_Rsp                                          delay 20 ms;
+      CCV4_Cmd                                           delay 20 ms;
+      CCV4_Rsq                                           delay 20 ms;
+      ATC_4                                              delay 20 ms;
+      EXV_2                                              delay 20 ms;
+      VCU_EXV                                            delay 20 ms;
+      EXV_VCU                                            delay 20 ms;
+      ECM_AGM_A_DEMAND                                   delay 20 ms;
+      AGM_A_ECM_STATUS                                   delay 20 ms;
+      ECM_AGM_B_DEMAND                                   delay 20 ms;
+      AGM_B_ECM_STATUS                                   delay 20 ms;
    }
 }
 

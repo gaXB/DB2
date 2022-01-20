@@ -7,7 +7,7 @@
 **     Version     : Component 1.2.0, Driver 1.4, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-11-21, 21:09, # CodeGen: 1
+**     Date/Time   : 2022-01-13, 14:18, # CodeGen: 62
 **     Abstract    :
 **
 **     Settings    :
@@ -51,23 +51,23 @@
 **                  Channel 11                             : <Automatic>
 **                  Channel 12                             : <Automatic>
 **                  Channel 13                             : <Automatic>
-**                  Channel 14                             : <Automatic>
-**                  Channel 15                             : <Automatic>
+**                  Channel 14                             : PTB15
+**                  Channel 15                             : PTB16
 **              Peripheral Type AIPS                       : 
 **                Custom name                              : AIPS
 **              Peripheral Type CAN                        : 
 **                Custom name                              : CAN0
 **                CAN0                                     : 
-**                  Receiver Input                         : PTE4
-**                  Transmitter Output                     : PTE5
+**                  Receiver Input                         : PTC2
+**                  Transmitter Output                     : PTC3
 **                Custom name                              : CAN1
 **                CAN1                                     : 
-**                  Receiver Input                         : <Automatic>
-**                  Transmitter Output                     : <Automatic>
+**                  Receiver Input                         : PTC6
+**                  Transmitter Output                     : PTC7
 **                Custom name                              : CAN2
 **                CAN2                                     : 
-**                  Receiver Input                         : <Automatic>
-**                  Transmitter Output                     : <Automatic>
+**                  Receiver Input                         : PTC16
+**                  Transmitter Output                     : PTC17
 **              Peripheral Type CMP                        : 
 **                Custom name                              : CMP0
 **                CMP0                                     : 
@@ -125,10 +125,10 @@
 **                  Direction                              : <Automatic>
 **                  Channel 4                              : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Channel 5                              : PTB17
-**                  Direction                              : Output
-**                  Channel 6                              : <Automatic>
+**                  Channel 5                              : <Automatic>
 **                  Direction                              : <Automatic>
+**                  Channel 6                              : PTA17
+**                  Direction                              : Output
 **                  Channel 7                              : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Fault Input 0                          : <Automatic>
@@ -150,10 +150,10 @@
 **                  Direction                              : <Automatic>
 **                  Channel 4                              : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Channel 5                              : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Channel 6                              : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Channel 5                              : PTA11
+**                  Direction                              : Output
+**                  Channel 6                              : PTA12
+**                  Direction                              : Output
 **                  Channel 7                              : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Fault Input 0                          : <Automatic>
@@ -169,8 +169,8 @@
 **                  Direction                              : <Automatic>
 **                  Channel 1                              : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Channel 2                              : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Channel 2                              : PTE4
+**                  Direction                              : Output
 **                  Channel 3                              : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Channel 4                              : <Automatic>
@@ -224,22 +224,22 @@
 **                  Direction                              : <Automatic>
 **                  Pin 6                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 7                                  : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 8                                  : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 9                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 7                                  : PTA7
+**                  Direction                              : Output
+**                  Pin 8                                  : PTA8
+**                  Direction                              : Input
+**                  Pin 9                                  : PTA9
+**                  Direction                              : Input
 **                  Pin 10(JTAG)                           : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 11                                 : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 12                                 : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 13                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 14                                 : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 13                                 : PTA13
+**                  Direction                              : Output
+**                  Pin 14                                 : PTA14
+**                  Direction                              : Output
 **                  Pin 15                                 : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 16                                 : <Automatic>
@@ -249,15 +249,15 @@
 **                Custom name                              : PTB
 **                PTB                                      : 
 **                  Pin 0                                  : PTB0
-**                  Direction                              : Output
+**                  Direction                              : Input
 **                  Pin 1                                  : PTB1
 **                  Direction                              : Output
 **                  Pin 2                                  : PTB2
 **                  Direction                              : Output
 **                  Pin 3                                  : PTB3
-**                  Direction                              : Input
-**                  Pin 4                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Direction                              : Output
+**                  Pin 4                                  : PTB4
+**                  Direction                              : Output
 **                  Pin 5                                  : PTB5
 **                  Direction                              : Output
 **                  Pin 6                                  : <Automatic>
@@ -265,13 +265,13 @@
 **                  Pin 7                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 8                                  : PTB8
-**                  Direction                              : Input
+**                  Direction                              : Output
 **                  Pin 9                                  : PTB9
 **                  Direction                              : Input
-**                  Pin 10                                 : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 10                                 : PTB10
+**                  Direction                              : Input
 **                  Pin 11                                 : PTB11
-**                  Direction                              : Output
+**                  Direction                              : Input
 **                  Pin 12                                 : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 13                                 : <Automatic>
@@ -282,8 +282,8 @@
 **                  Direction                              : <Automatic>
 **                  Pin 16                                 : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 17                                 : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 17                                 : PTB17
+**                  Direction                              : Input
 **                Custom name                              : PTC
 **                PTC                                      : 
 **                  Pin 0                                  : PTC0
@@ -302,32 +302,32 @@
 **                  Direction                              : <Automatic>
 **                  Pin 7                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 8                                  : PTC8
-**                  Direction                              : Input
-**                  Pin 9                                  : PTC9
-**                  Direction                              : Output
+**                  Pin 8                                  : <Automatic>
+**                  Direction                              : <Automatic>
+**                  Pin 9                                  : <Automatic>
+**                  Direction                              : <Automatic>
 **                  Pin 10                                 : PTC10
 **                  Direction                              : Output
 **                  Pin 11                                 : PTC11
 **                  Direction                              : Output
 **                  Pin 12                                 : PTC12
-**                  Direction                              : Output
+**                  Direction                              : Input
 **                  Pin 13                                 : PTC13
 **                  Direction                              : Output
 **                  Pin 14                                 : PTC14
-**                  Direction                              : Output
+**                  Direction                              : Input
 **                  Pin 15                                 : PTC15
 **                  Direction                              : Input
 **                  Pin 16                                 : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 17                                 : PTC17
-**                  Direction                              : Output
+**                  Pin 17                                 : <Automatic>
+**                  Direction                              : <Automatic>
 **                Custom name                              : PTD
 **                PTD                                      : 
 **                  Pin 0                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 1                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 1                                  : PTD1
+**                  Direction                              : Input
 **                  Pin 2                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 3                                  : <Automatic>
@@ -335,67 +335,67 @@
 **                  Pin 4                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 5                                  : PTD5
-**                  Direction                              : Input
-**                  Pin 6                                  : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 7                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Direction                              : Output
+**                  Pin 6                                  : PTD6
+**                  Direction                              : Output
+**                  Pin 7                                  : PTD7
+**                  Direction                              : Output
 **                  Pin 8                                  : PTD8
-**                  Direction                              : Input
-**                  Pin 9                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Direction                              : Output
+**                  Pin 9                                  : PTD9
+**                  Direction                              : Output
 **                  Pin 10                                 : PTD10
 **                  Direction                              : Output
 **                  Pin 11                                 : PTD11
-**                  Direction                              : Input
+**                  Direction                              : Output
 **                  Pin 12                                 : PTD12
 **                  Direction                              : Output
-**                  Pin 13                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 14                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 15                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 16                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 17                                 : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 13                                 : PTD13
+**                  Direction                              : Output
+**                  Pin 14                                 : PTD14
+**                  Direction                              : Output
+**                  Pin 15                                 : PTD15
+**                  Direction                              : Output
+**                  Pin 16                                 : PTD16
+**                  Direction                              : Output
+**                  Pin 17                                 : PTD17
+**                  Direction                              : Output
 **                Custom name                              : PTE
 **                PTE                                      : 
-**                  Pin 0                                  : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 1                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 0                                  : PTE0
+**                  Direction                              : Output
+**                  Pin 1                                  : PTE1
+**                  Direction                              : Input
 **                  Pin 2                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 3                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 4                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 5                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 5                                  : PTE5
+**                  Direction                              : Output
 **                  Pin 6                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 7                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 7                                  : PTE7
+**                  Direction                              : Output
 **                  Pin 8                                  : PTE8
+**                  Direction                              : Output
+**                  Pin 9                                  : PTE9
+**                  Direction                              : Output
+**                  Pin 10                                 : PTE10
 **                  Direction                              : Input
-**                  Pin 9                                  : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 10                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 11                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 12                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 13                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 14                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 15                                 : <Automatic>
-**                  Direction                              : <Automatic>
-**                  Pin 16                                 : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 11                                 : PTE11
+**                  Direction                              : Input
+**                  Pin 12                                 : PTE12
+**                  Direction                              : Output
+**                  Pin 13                                 : PTE13
+**                  Direction                              : Input
+**                  Pin 14                                 : PTE14
+**                  Direction                              : Output
+**                  Pin 15                                 : PTE15
+**                  Direction                              : Input
+**                  Pin 16                                 : PTE16
+**                  Direction                              : Input
 **              Peripheral Type JTAG                       : 
 **                JTAG                                     : 
 **                  Test Clock                             : <Automatic>
@@ -481,16 +481,16 @@
 **                LPUART1                                  : 
 **                  Clear to Send                          : <Automatic>
 **                  Request to Send                        : <Automatic>
-**                  Receive Data                           : <Automatic>
-**                  Transmit Data                          : <Automatic>
+**                  Receive Data                           : PTC8
+**                  Transmit Data                          : PTC9
 **                  Direction                              : <Automatic>
 **                Custom name                              : LPUART2
 **                LPUART2                                  : 
 **                  Clear to Send                          : <Automatic>
 **                  Request to Send                        : <Automatic>
-**                  Receive Data                           : PTD6
-**                  Transmit Data                          : PTD7
-**                  Direction                              : Output
+**                  Receive Data                           : <Automatic>
+**                  Transmit Data                          : <Automatic>
+**                  Direction                              : <Automatic>
 **              Peripheral Type MCM                        : 
 **                Custom name                              : MCM
 **              Peripheral Type MPU                        : 
@@ -1583,7 +1583,7 @@
 
 
 /*! @brief User number of configured pins */
-#define NUM_OF_CONFIGURED_PINS 33
+#define NUM_OF_CONFIGURED_PINS 66
 
 /*! @brief User configuration structure */
 extern pin_settings_config_t g_pin_mux_InitConfigArr[NUM_OF_CONFIGURED_PINS];

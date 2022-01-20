@@ -33,6 +33,7 @@
 
 
 #include "CanDrive.h"
+#include "Can2Drive.h"
 #include "ComStack_Types.h"
 
 #define  CANIF_LEAVE_CRITICAL_SECTION()   EnableCanErrTxInterrupt() 
@@ -79,6 +80,7 @@ void CanIf_RxIndication(uint32 id, uint8* buff);
 void CanIf_TXConfirmation(void);
 //上层应用可调用的函数
 Std_ReturnType CanIf_Transmit(PduIdType CanTxPduId, PduInfoType const * PduInfoPtr);
+Std_ReturnType Can2If_Transmit(PduIdType CanTxPduId, PduInfoType const * PduInfoPtr);
 
 void Can_InitController
 (

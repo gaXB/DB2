@@ -58,9 +58,10 @@ flexcan_msgbuff_t CAN_RxFIFO_RX_Message_Buffer[CAN_RxFIFO_RX_Buffer_MAX];/*circl
 
 bool BusOff_Flag = false; /* the bus off flag */
 
+#define   CAN_STAND_MODE     FLEXCAN_MSG_ID_EXT
 /* CAN hardware MB(Message Buffer) configuration */
 flexcan_data_info_t CAN_TX_MB_Config = {
-	.msg_id_type = FLEXCAN_MSG_ID_STD,
+	.msg_id_type = CAN_STAND_MODE,
 	.data_length = 8,
 	.fd_enable = false,
 	.fd_padding = 0xCC,
@@ -69,7 +70,7 @@ flexcan_data_info_t CAN_TX_MB_Config = {
 };
 
 flexcan_data_info_t CAN_RX_MB_Config = {
-	.msg_id_type = FLEXCAN_MSG_ID_STD,
+	.msg_id_type = CAN_STAND_MODE,
 	.data_length = 8,
 	.fd_enable = false,
 	.fd_padding = 0xCC,
@@ -78,7 +79,7 @@ flexcan_data_info_t CAN_RX_MB_Config = {
 };
 
 flexcan_data_info_t CAN_RX1_MB_Config = {
-	.msg_id_type = FLEXCAN_MSG_ID_STD,
+	.msg_id_type = CAN_STAND_MODE,
 	.data_length = 8,
 	.fd_enable = false,
 	.fd_padding = 0xCC,
@@ -87,7 +88,7 @@ flexcan_data_info_t CAN_RX1_MB_Config = {
 };
 
 flexcan_data_info_t CAN_RX_MB_Config1 = {
-	.msg_id_type = FLEXCAN_MSG_ID_STD,
+	.msg_id_type = CAN_STAND_MODE,
 	.data_length = 8,
 	.fd_enable = false,
 	.fd_padding = 0xCC,
@@ -126,82 +127,82 @@ uint8_t can_msg_data[8] = {0};
   {
   		{    /*RxFIFO ID table element 0*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID1_1
   		},
   		{	 /*RxFIFO ID table element 1*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID1_2
   		},
   		{    /*RxFIFO ID table element 2*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID2_1
   		},
   		{	 /*RxFIFO ID table element 3*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID2_2
   		},
   		{	 /*RxFIFO ID table element 4*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID3_1
   		},
   		{	 /*RxFIFO ID table element 5*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID3_2
   		},
   		{	 /*RxFIFO ID table element 6*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID4_1
   		},
   		{	 /*RxFIFO ID table element 7*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = RECEIVE_ID4_2
   		},
   		{    /*RxFIFO ID table element 8*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x111
   		},
   		{	 /*RxFIFO ID table element 9*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x222
   		},
   		{    /*RxFIFO ID table element 10*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x333
   		},
   		{	 /*RxFIFO ID table element 11*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x444
   		},
   		{	 /*RxFIFO ID table element 12*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x555
   		},
   		{	 /*RxFIFO ID table element 13*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x666
   		},
   		{	 /*RxFIFO ID table element 14*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x777
   		},
   		{	 /*RxFIFO ID table element 15*/
   			.isRemoteFrame = false,
-  			.isExtendedFrame = false,
+  			.isExtendedFrame = true,
   			.id = 0x788
   		}
   };
@@ -407,7 +408,7 @@ void CAN_MB_Config_Update(flexcan_data_info_t *config, uint32_t cs)
 
 	/* get the ID type configuration */
 	config->msg_id_type = (cs & CAN_CS_IDE_MASK)? FLEXCAN_MSG_ID_EXT: FLEXCAN_MSG_ID_STD;
-
+	config->msg_id_type = FLEXCAN_MSG_ID_EXT;
 	/* get the remote/data frame configuration */
 	config->is_remote = (cs & CAN_CS_RTR_MASK)?true: false;
 }
@@ -471,6 +472,8 @@ BOOL CANDrive_SendFram(uint32 id, uint8* u8SendData)
 			u8SendData, \
 			2);
 
+	//extern BOOL CAN2Drive_SendFram(uint32 id, uint8* u8SendData);
+	//CAN2Drive_SendFram(id, u8SendData);
 	return TRUE;
 }
 
@@ -589,7 +592,7 @@ void CAN_User_Init(void)
     /*configure the FlexCAN RxFIFO filter table ID mask */
     for(i=0; i<RxFIFO_USED_MB; i++)
     {
-    	FLEXCAN_DRV_SetRxIndividualMask(INST_CANCOM1,FLEXCAN_MSG_ID_STD,i,0x7FC);//RxFIFO_ACK_ID_MASK
+    	FLEXCAN_DRV_SetRxIndividualMask(INST_CANCOM1,CAN_STAND_MODE,i,0x7FC);//RxFIFO_ACK_ID_MASK
     }
 
     /* configure the RX MB with receive acceptance ID */
@@ -599,10 +602,11 @@ void CAN_User_Init(void)
     FLEXCAN_DRV_SetRxMaskType(INST_CANCOM1,FLEXCAN_RX_MASK_INDIVIDUAL);
 
     /* configure the RX MB individual ID filter mask */
-    FLEXCAN_DRV_SetRxIndividualMask(INST_CANCOM1,FLEXCAN_MSG_ID_STD,RX_MB,RX_ACK_ID_MASK);
+    FLEXCAN_DRV_SetRxIndividualMask(INST_CANCOM1,CAN_STAND_MODE,RX_MB,RX_ACK_ID_MASK);
 }
 void Init_Mscan(void)
 {
+	extern void Init_Mscan2(void);
     /* Initialize pins */
     CAN_User_Init();/* initialize the CAN module as needed */
 
@@ -611,7 +615,7 @@ void Init_Mscan(void)
 
    /* start the individual MB CAN message receive */
     FLEXCAN_DRV_Receive(INST_CANCOM1, RX_MB, &CAN_RX_Message_Buffer[CAN_RX_BufferIndex]);
-
+    Init_Mscan2();
 }
 
 

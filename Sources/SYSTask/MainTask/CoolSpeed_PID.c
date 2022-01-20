@@ -24,9 +24,10 @@
 
 void CoolSpeedPID_GetState(void);
 PIDDATA   sCoolSpeedPidData;
-PIDPARAMETER  sCoolSpeedPar = {50, 50, 50, 0, 500, 10000, 0,10, 50, 800, 10000, CoolSpeedPID_GetState};
+PIDPARAMETER  sCoolSpeedPar = {50, -50, -50, 0, 500, 10000, 0,5, 300, 800, 10000, CoolSpeedPID_GetState};
+PIDPARAMETER  sBatCoolSpeedPar = {50, -50, -50, 0, 500, 10000, 0,5, 300, 800, 10000, CoolSpeedPID_GetState};
 
-
+static BOOL bBathParameter;
 
 /*******************************************************************************
  * Function:      int16 Deal_CoolSpeedPID(void)
@@ -40,12 +41,20 @@ PIDPARAMETER  sCoolSpeedPar = {50, 50, 50, 0, 500, 10000, 0,10, 50, 800, 10000, 
 ********************************************************************************/
 int16 Deal_CoolSpeedPID(void)
 {
+	sCoolSpeedPidData.i16OutInitValue = 3;
 	if (sCoolSpeedPidData.u8RunState == PIDRUN_STATE_INIT && sCoolSpeedPidData.i16Get < sCoolSpeedPidData.i16Set)
 	{//运行时 温度已经到达目标值可直接进入运行
 		sCoolSpeedPidData.u8RunState = PIDRUN_STATE_RUN;
 	}
 	else{}
-	return Deal_PIDFun(&sCoolSpeedPidData, &sCoolSpeedPar);
+	if (bBathParameter)
+	{
+		return Deal_PIDFun(&sCoolSpeedPidData, &sBatCoolSpeedPar);
+	}
+	else
+	{
+		return Deal_PIDFun(&sCoolSpeedPidData, &sCoolSpeedPar);
+	}
 }
 
 void CoolSpeedPID_GetState(void)
@@ -69,4 +78,14 @@ int16 CoolSpeedPID_Init(void)
 	//混合控制 初始化
 	(void)TimeOutChkTenthSLong(&sCoolSpeedPidData.Timer01, 0);
 	return 1;//GAMath_LineFuni16(TSET_LO, TSET_HI, 0, 1000, SystemControl.tset);
+}
+
+//int16 PIDCool_Revis(int16 CurrentData)
+//{
+//	return PID_Resvis(&sCoolSpeedPidData, CurrentData);
+//}
+
+void CoolSpeedPIDMode(uint8 bBathMode)
+{
+	bBathParameter = bBathMode;
 }

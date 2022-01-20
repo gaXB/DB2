@@ -21,16 +21,84 @@
 
 
 //发送数据变量声明
-volatile CANMsg0C9Union sCANMsg0C9;
-volatile uint8 CANMsg0C9Status;
+volatile CANMsg12F85351Union sCANMsg12F85351;
+volatile uint8 CANMsg12F85351Status;
 
-volatile CANMsg1F1Union sCANMsg1F1;
-volatile uint8 CANMsg1F1Status;
+volatile CANMsg12F98851Union sCANMsg12F98851;
+volatile uint8 CANMsg12F98851Status;
 
 //接收数据变量声明
-volatile CANMsg1F2Union sCANMsg1F2;
-volatile uint8 CANMsg1F2Status;
+volatile CANMsg0EF87372Union sCANMsg0EF87372;
+volatile uint8 CANMsg0EF87372Status;
 
-volatile CANMsg1F5Union sCANMsg1F5;
-volatile uint8 CANMsg1F5Status;
+volatile CANMsg12F81018Union sCANMsg12F81018;
+volatile uint8 CANMsg12F81018Status;
 
+volatile CANMsg12F85050Union sCANMsg12F85050;
+volatile uint8 CANMsg12F85050Status;
+
+
+
+//CAN2 的数据
+
+//发送数据变量声明
+volatile CANMsg410Union sCANMsg410;
+volatile uint8 CANMsg410Status;
+
+volatile CANMsg44EUnion sCANMsg44E;
+volatile uint8 CANMsg44EStatus;
+
+volatile CANMsg453Union sCANMsg453;
+volatile uint8 CANMsg453Status;
+
+volatile CANMsg454Union sCANMsg454;
+volatile uint8 CANMsg454Status;
+
+volatile CANMsg455Union sCANMsg455;
+volatile uint8 CANMsg455Status;
+
+volatile CANMsg456Union sCANMsg456;
+volatile uint8 CANMsg456Status;
+
+volatile CANMsg457Union sCANMsg457;
+volatile uint8 CANMsg457Status;
+
+volatile CANMsg551Union sCANMsg551;
+volatile uint8 CANMsg551Status;
+
+//接收数据变量声明
+volatile CANMsg115Union sCANMsg115;
+volatile uint8 CANMsg115Status;
+
+volatile CANMsg131Union sCANMsg131;
+volatile uint8 CANMsg131Status;
+
+volatile CANMsg22FUnion sCANMsg22F;
+volatile uint8 CANMsg22FStatus;
+
+volatile CANMsg424Union sCANMsg424;
+volatile uint8 CANMsg424Status;
+
+volatile CANMsg432Union sCANMsg432;
+volatile uint8 CANMsg432Status;
+
+volatile CANMsg451Union sCANMsg451;
+volatile uint8 CANMsg451Status;
+
+volatile CANMsg452Union sCANMsg452;
+volatile uint8 CANMsg452Status;
+
+volatile CANMsg460Union sCANMsg460;
+volatile uint8 CANMsg460Status;
+
+volatile CANMsg470Union sCANMsg470;
+volatile uint8 CANMsg470Status;
+
+volatile CANMsg472Union sCANMsg472;
+volatile uint8 CANMsg472Status;
+
+volatile CANMsg490Union sCANMsg490;
+volatile uint8 CANMsg490Status;
+
+volatile CANMsg26DUnion sCANMsg26D;
+volatile uint8 CANMsg26DStatus;

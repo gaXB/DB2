@@ -98,7 +98,7 @@ const ADTGETTYPE ADT_PressTemp =
 uint16 Signal_GetAd_Press(uint8 hrol,uint16 adcal)
 {
 	uint16 tbackPress;
-	if(hrol)
+	if(hrol == 0)
 	{
 		if(adcal < 71)
 		{

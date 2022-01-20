@@ -62,10 +62,11 @@ typedef struct
 }PIDDATA;
 
 
-#define    PIDRUN_STATE_CLOSE       3
-#define    PIDRUN_STATE_INIT         1
+#define    PIDRUN_STATE_CLOSE       0
+#define    PIDRUN_STATE_INIT        1
 #define    PIDRUN_STATE_RUN         2
-#define    PIDRUN_STATE_STOP        0
+#define    PIDRUN_STATE_STOP        3
 
+int16 PID_Revis(PIDDATA *pPData, int16 CValue);
 BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter);
 #endif /* RUN_PID_EAC_H_*/

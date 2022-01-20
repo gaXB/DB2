@@ -81,7 +81,7 @@
 /* enable this macro define to disable bus off automatically recovery feature, and user should add bus-off recovery process codes
  * comment this macro will use FlexCAN default configuration of bus off automatic recovery.
  */
-#define CAN_BUSOFF_RECOVERY_MANUAL  1
+//#define CAN_BUSOFF_RECOVERY_MANUAL  0
 
 extern uint32_t CAN_RX_BufferIndex ;    /*buffer index for CAN RX*/
 extern uint32_t CAN_RxDataBufferIndex; /*the latest CAN message data buffer index */

@@ -42,10 +42,15 @@ void TrOut_5VEN(uint8 en)
 	if (en)
 	{
 		O_5VEN = GPIO_SET;
+		O_12V_EN = 1;
+		O_TMU = 1;
+
 	}
 	else
 	{
 		O_5VEN = GPIO_CLEAR;
+		O_12V_EN =0;
+		O_TMU = 0;
 	}
 }
 
@@ -99,7 +104,25 @@ void OutTask(void)
 {
 	//TODO: icd 输出在此实现,风量和电机控制保留，其他可见模板
 	(void)Motor_SetPosition(MOTOR_ID_MODE, sOutData.MODEAD);//可直接设置，挡位0xff时为停止，注意电机模块为1.1以上
-  
+	(void)Motor_SetPosition(MOTOR_ID_MIX, sOutData.MIXAD);
+	(void)Motor_SetPosition(MOTOR_ID_NCF, sOutData.NCFAD);
 	(void)FanControl_SetVolt(sOutData.FANVolt); 
+	O_INCARFAN_2 = sEVOutData.IncarFAN_H;
+	O_INCARFAN_1 = sEVOutData.IncarFAN_L;
+	O_SOV1 = sEVOutData.SOV1;
+	O_SOV2 = sEVOutData.SOV2;
+	O_RHEAT = sOutData.RHeatOut;
+
+	EXVSetPostion(EXV_NUM_EXV  ,sEVOutData.EXV_Postion);
+	EXVSetPostion(EXV_NUM_BEXV  ,sEVOutData.BEXV_Postion);
+	EXVSetPostion(EXV_NUM_THREEWAY1  ,sEVOutData.ThreeWay1_Postion);
+	EXVSetPostion(EXV_NUM_THREEWAY2  ,sEVOutData.ThreeWay2_Postion);
+	EXVSetPostion(EXV_NUM_FOURWAY  ,sEVOutData.FourWay_Postion);
+	EXVSetPostion(EXV_NUM_AGS_A  ,sEVOutData.AGS_Postion);
+	EXVSetPostion(EXV_NUM_AGS_B  ,sEVOutData.AGS_Postion);
+
+	WPumpSetDuty(0, sEVOutData.EWPT1);
+	WPumpSetDuty(1, sEVOutData.EWPT2);
+	WPumpSetDuty(2, sEVOutData.EWPT3);
 }
 

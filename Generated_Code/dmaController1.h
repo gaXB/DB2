@@ -7,7 +7,7 @@
 **     Version     : Component SDK_S32K1xx_15, Driver 01.00, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-11-21, 21:09, # CodeGen: 1
+**     Date/Time   : 2022-01-03, 11:53, # CodeGen: 49
 **     Contents    :
 **         EDMA_DRV_Init                              - status_t EDMA_DRV_Init(edma_state_t *edmaState, const edma_user_config_t...
 **         EDMA_DRV_Deinit                            - status_t EDMA_DRV_Deinit(void);
@@ -86,8 +86,11 @@
 /*! @brief Physical channel number for channel configuration #0 */
 #define EDMA_CHN0_NUMBER   0U
 
+/*! @brief Physical channel number for channel configuration #1 */
+#define EDMA_CHN1_NUMBER   10U
+
 /*! @brief The total number of configured channels */
-#define EDMA_CONFIGURED_CHANNELS_COUNT   1U
+#define EDMA_CONFIGURED_CHANNELS_COUNT   2U
 
 /*! @brief Driver state structure which holds driver runtime data */
 extern edma_state_t dmaController1_State;
@@ -95,11 +98,17 @@ extern edma_state_t dmaController1_State;
 /*! @brief eDma channel state structure 0. Holds channel runtime data */
 extern edma_chn_state_t dmaController1Chn0_State;
 
+/*! @brief eDma channel state structure 1. Holds channel runtime data */
+extern edma_chn_state_t dmaController1Chn1_State;
+
 /*! @brief Array of channel state structures */
 extern edma_chn_state_t * const edmaChnStateArray[EDMA_CONFIGURED_CHANNELS_COUNT];
 
 /*! @brief eDma channel configuration 0 */
 extern edma_channel_config_t dmaController1Chn0_Config;
+    
+/*! @brief eDma channel configuration 1 */
+extern edma_channel_config_t dmaController1Chn1_Config;
     
 /*! @brief Array of channel configuration structures */
 extern const edma_channel_config_t * const edmaChnConfigArray[EDMA_CONFIGURED_CHANNELS_COUNT];

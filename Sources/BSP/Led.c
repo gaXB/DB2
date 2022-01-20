@@ -62,17 +62,20 @@ static uint8   DisVerState;  //状态
 static void LEDControl(void)
 {
 	//TODO: 根据sDisplayData的值编写LED 的输出
+	OL_LCD = 1;
 	if (sDisplayData.LEDMode > 0)
 	{//按不同模式设置
-		//GPIO_BIT_EQUAL(OL_AC, sDisplayData.AC);
-		//GPIO_BIT_EQUAL(OL_CIRF, sDisplayData.CIRF);
-		//GPIO_BIT_EQUAL(OL_NEW, sDisplayData.NEW);
+		GPIO_BIT_EQUAL(OL_AC, sDisplayData.AC);
+		GPIO_BIT_EQUAL(OL_CIRF, sDisplayData.CIRF);
+		GPIO_BIT_EQUAL(OL_PTC, sDisplayData.ptc);
+		GPIO_BIT_EQUAL(OL_RHEAT, sDisplayData.RHEAT);
 	}
 	else
 	{//全部熄灭
-		//GPIO_BIT_EQUAL(OL_AC, 0);
-		//GPIO_BIT_EQUAL(OL_CIRF, 0);
-		//GPIO_BIT_EQUAL(OL_NEW, 0);
+		GPIO_BIT_EQUAL(OL_AC, 0);
+		GPIO_BIT_EQUAL(OL_CIRF, 0);
+		GPIO_BIT_EQUAL(OL_PTC, 0);
+		GPIO_BIT_EQUAL(OL_RHEAT, 0);
 	}
 }
 /*******************************************************************************

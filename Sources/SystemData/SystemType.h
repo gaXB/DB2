@@ -216,6 +216,20 @@ typedef enum
 	THEMAL_MODE_BOTH = 3,
 }ThemalModeType;
 
+typedef struct
+{
+	int16 i16Temp;          //温度区显示，-400 ~800 为直接显示， 10000 ：HI
+	uint8 LCDONOFF;          //lcd 0: OFF    1: 显示     2： 变暗模式
+	uint8 AC;
+	MDModeType VentMode;         //吹风模式,同systemcontrol.mdMdoe
+	uint8 CIRF;
+	uint8 FANLevel;
+	uint8 PTCn;
+	uint8 RHEAT;
+	uint8 VerSelf;
+	uint8 VerClient;
+}PANLEDATA;
+
  //系统主要控制类型结构体定义
 typedef struct
 {
@@ -230,7 +244,7 @@ typedef struct
    uint8         MaxACMode;           // MAXac状态          :1：MAX；       0：非MAX；
    uint8         MaxDefMode;          // MAX前除霜状态    :1：MAX；       0：非MAX；
    uint8         ParkAC;              // 驻车指示灯
-   uint8         u8TestLevel;
+   uint8         u8TestLevel;         //显示数值
    uint8         ptcMode;
    uint8         WaterWay1;          //1-2 2-3 是50%    1-2 是 0%  1-3 是100%
    uint8         WaterWay2;
@@ -243,6 +257,9 @@ typedef struct
    ThemalModeType    thCarMode;
 }SYSTEMCONTROL ;
 
+#define  SYSTEM_CODE_NULL    0
+#define  SYSTEM_CODE_TAMB    1
+#define  SYSTEM_CODE_PRESS   2
 typedef struct
 {
 	BOOL bBattCoolReq;
@@ -253,13 +270,34 @@ typedef struct
 	int16 i16PTCPowerLimte;
 	int16 i16PTCPower;
 	int16 i16COMPPower;
+	BOOL bPump;   //BMS 424 发出
+	int16 i16PTCUsePower;
+	int16 i16EACUsePower;
+	uint16 u16SystemErrCode;
 }VEHICLECONTROL;
 
 //actor struct
 typedef struct
 {
-	uint8 EWP2Error;
 	uint8 EXVError;
+	uint8 FourWayErr; //0 正常， 1 故障
+	uint8 ThreeWay1Err; //0 正常， 1 故障
+	uint8 ThreeWay2Err;  //0：正常  1：LIN通信错误 2: 过压 3：欠压 4： 线圈开路， 5： 堵转
+	uint8 AGS_AError;  //0 no
+	uint8 AGS_BError;  //0 no
+	uint8 SOV2Error;   //0 正常， 1 短路 2断路
+	uint8 SOV1Error;
+	uint8 EWP1Error;   // 电机回路用
+	uint8 EWP2Error;  //电池包水路用
+	uint8 EWP3Error;    /*W-COND&WPTC 水路用 0-正常运行
+	1-空转故障
+	2-过流/堵转故障
+	3-过温故障
+	4-其他故障
+	（低速，短路，负载线圈开路，温度
+	传感器开路）
+	电子水泵通过不同的低电平持续时间来标识不同的诊断信号*/
+
 }ACTORDATA;
 //sensor struct
 typedef struct
@@ -268,8 +306,8 @@ typedef struct
 	TempType TinCal;
 	TempType TevpCal;
 	TempType TwaterCal;    //水温应采用两个字节	
-	uint8 u8ADSunR;
 	uint8 u8VehicleSpeed;
+	uint8 u8ADSunR;
 	TempType TVentF;
 	TempType TVentD;
 	TempType Tadt;           //出风口温度参考值
@@ -281,21 +319,24 @@ typedef struct
 
 typedef struct
 {
-	TempType RHTemp;
-	int16 RHHumidity;
-	TempType TPH_Temp;
+	TempType TPH_Temp;    //高压测
 	int16 TPH_Press;
-	TempType TPL1_Temp;
+	TempType TPL1_Temp;   //压缩机排气测
 	int16 TPL1_Press;    //pa
-	TempType TPL2_Temp;
+	TempType TPL2_Temp;   //压缩机吸气测
 	int16 TPL2_Press;
 	TempType BattInWater;
 	TempType BattOutWater;
 	TempType BattTargetWater;
+	TempType BattTemp;
 	TempType DCDCbodyTemp;
 	TempType CurrentMotorTemp;
 	TempType CurrentIGBTemp;
 	TempType OBCtemp;
+	TempType TevpTarge;
+	TempType TwaterTarge;
+	TempType RHTemp;
+	int16 RHHumidity;
 }EVSENSORDATA;
 //输出数据类型
 typedef struct
@@ -313,25 +354,27 @@ typedef struct
 //输出数据类型
 typedef struct
 {
-	uint16  ThreeWay1_Postion;            //LIN
+	uint16  ThreeWay1_Postion;            //LIN  0-100   1~2 ：0%， 1-3：100%    1~2	1~3 50%
 	uint16  ThreeWay2_Postion;            //LIN
 	uint16   FourWay_Postion;             //LIN 1/0  0：1-2，3-4   1：1-4， 2-3
 	uint16  BEXV_Postion;
-	uint16  EXV_Postion;
-	uint16  AGS_Postion;
+	uint16  EXV_Postion;    // 0-500
+	uint16  AGS_Postion;   //0-100 , 100 的是15
 	uint8 SOV1;
 	uint8 SOV2;
-	uint8 EWPT1;
-	uint8 EWPT2;
-	uint8 EWPT3;
+	uint8 EWPT1;           //电机
+	uint8 EWPT2;           //电池
+	uint8 EWPT3;           //wptc
 	uint16 EACSpeed;
 	uint16 PTCPower;
-	uint8  IncarFAN;      //0 关， 1 低速， 2 高速
+	BOOL  IncarFAN_L;      //0 关， 1 ON
+	BOOL  IncarFAN_H;      //0 关， 1   ON
 	uint8  APTC;
 	//uint8  bACStart;
 	BOOL ThemalSysRequest;
 	BOOL  HeatConfirmation;
 	BOOL  CoolConfirmation;
+	BOOL  TMU_Realay;
 }EVOUTDATA;
 
 //显示数据类型
@@ -352,6 +395,7 @@ typedef struct
 	BOOL RHEAT;
 	uint8 RCheat;
 	uint8 LCheat;
+	BOOL ptc;
 }DISPLAYDATA; 
 
 #if _PROJECT_CAN_

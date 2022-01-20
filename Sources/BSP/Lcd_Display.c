@@ -55,7 +55,7 @@
 #ifdef _HT_16K23_	
 	#include "ht16k23_Drive.h"
 #endif
-
+#include"BU9796_Drive.h"
 
 // 本模块变量定义
 static const uint8 bcd[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x27,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71,0x00};
@@ -108,16 +108,9 @@ static void	SetLcd_Tset(int16 i16Temp)
 	LCD_2E = 0;
 	LCD_2F = 0;
 	LCD_2G = 0;
+
 	
-	LCD_3A = 0;
-	LCD_3B = 0;
-	LCD_3C = 0;
-	LCD_3D = 0;
-	LCD_3E = 0;
-	LCD_3F = 0;
-	LCD_3G = 0;
-	
-	LCD_DOIT = 0;
+	//LCD_DOIT = 0;
 	LCD_CEL = 0;
 	
 	if (i16Temp == TSET_LCD_OFF)   //off      
@@ -165,8 +158,12 @@ static void	SetLcd_Tset(int16 i16Temp)
 		if (i16Temp < 0)
 		{
 			//负号显示
+			LCD_NE = 1;
 			i16Temp = -i16Temp;
-		}else{}
+		}else
+		{
+			LCD_NE = 0;
+		}
 		ltdl = (unsigned char)(i16Temp / 100);
 		i16Temp = i16Temp % 100;
 		ltdm = (unsigned char)(i16Temp / 10);
@@ -180,7 +177,7 @@ static void	SetLcd_Tset(int16 i16Temp)
 		ltdm = bcd[ltdm];
 		ltdr = bcd[ltdr];
 		
-		LCD_DOIT = 1;
+	//	LCD_DOIT = 1;
 		LCD_CEL = 1;
 		
 
@@ -199,14 +196,6 @@ static void	SetLcd_Tset(int16 i16Temp)
 		if( ltdm & 0x10 )	LCD_2E = 1;
 		if( ltdm & 0x20 )	LCD_2F = 1;
 		if( ltdm & 0x40 )	LCD_2G = 1;
-		
-		if( ltdr & 0x01 )	LCD_3A = 1;
-		if( ltdr & 0x02 )	LCD_3B = 1;
-		if( ltdr & 0x04 )	LCD_3C = 1;
-		if( ltdr & 0x08 )	LCD_3D = 1;
-		if( ltdr & 0x10 )	LCD_3E = 1;
-		if( ltdr & 0x20 )	LCD_3F = 1;
-		if( ltdr & 0x40 )	LCD_3G = 1;
 	}
 }
 /*******************************************************************************
@@ -222,6 +211,82 @@ static void	SetLcd_Tset(int16 i16Temp)
 static void	SetLcd_OtherData(void)
 {
 	//TODO: 根据sLDisplayData 编写除Tset以外的字符
+   LCD_OSF =0;
+   LCD_OST =0;
+   LCD_OSD=0;
+   LCD_BODY=1;
+
+   switch(sDisplayData.VentMode)
+   {
+      default:
+      case  0:
+         LCD_OSF=1;
+         break;
+      case  1:
+         LCD_OSF=1;
+         LCD_OSD=1;
+         break;
+      case  2:
+         LCD_OSD=1;
+         break;
+      case  3:
+         LCD_OSD=1;
+         LCD_OST=1;
+         break;
+      case  4:
+         LCD_OST=1;
+         break;
+   }
+
+   LCD_FAN8 =0;
+	LCD_FAN7=0;
+	LCD_FAN6=0;
+	LCD_FAN5=0;
+	LCD_FAN4=0;
+	LCD_FAN3=0;
+	LCD_FAN2=0;
+	LCD_FAN1=0;
+
+	switch(sDisplayData.FANLevel)
+	{
+	  default:
+	  break;
+	  case  8:
+		  LCD_FAN8=1;
+	  case  7:
+		  LCD_FAN7=1;
+
+	  case  6:
+		  LCD_FAN6=1;
+
+	  case  5:
+		  LCD_FAN5=1;
+
+	  case  4:
+		  LCD_FAN4=1;
+
+	  case  3:
+		  LCD_FAN3=1;
+
+	  case  2:
+		  LCD_FAN2=1;
+
+	  case  1:
+		  LCD_FAN1=1;
+	  case  0:
+		  LCD_FANL=1;
+		  break;
+	}
+
+	//auto zifu
+
+	if(sDisplayData.AUTO)
+	{
+		LCD_AUTO =1;
+	}
+	else
+		LCD_AUTO =0;
+
 }
 /*******************************************************************************
  * Function:  void  SetLcd_Whole(uint8 lcds)
@@ -295,6 +360,7 @@ static   void LcdDisplayNormal(void)
 		}
 		SetLcd_OtherData();
 	}
+	//SetLcd_Whole(1);
 }
 
 /*************************************************************
@@ -315,6 +381,13 @@ void Ht1621APP_LCDSet(void)
 #endif
 #ifdef _HT_16K23_	
 void Ht16k23APP_LCDSet(void)
+{
+	LcdDisplayNormal();
+}
+#endif
+
+#ifdef _BU_9796_
+void BU9796APP_LCDSet(void)
 {
 	LcdDisplayNormal();
 }
@@ -380,6 +453,9 @@ void Clear_LCD(void)
 	#ifdef _HT_16K23_	
 		Ht16k23_Clear();
 	#endif
+#ifdef  _BU_9796_
+		BU9796_Clear();
+#endif
 #endif
 }
 /*************************************************************
@@ -400,6 +476,9 @@ void Updata_LCD(void)
 	#ifdef _HT_16K23_	
 		Ht16k23_Updata();
 	#endif	
+#ifdef  _BU_9796_
+		BU9796_Updata();
+#endif
 #endif
 
 }
@@ -422,7 +501,11 @@ void Init_LCD(void)
 	#endif
 	#ifdef  _HT_16K23_
 		Ht16k23_LCDDataSet((uint8*)htdata, HTDATA_FACTNUM);
-	#endif	
+	#endif
+	#ifdef  _BU_9796_
+		BU9796_LCDDataSet((uint8*)htdata, HTDATA_FACTNUM);
+   #endif
+
 #endif
 	Clear_LCD();	
 	sLContorl.LCDDisplayMode = LCD_MODE_CLEAR;

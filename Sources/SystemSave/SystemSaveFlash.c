@@ -67,13 +67,13 @@ extern BOOL  SetParameterData(uint8* rtx);
 **************************************************************/
 
 //2片存储方案编号定义
-#define   FLASH_ID_IGN           0       //点火存储
-#define   FLASH_ID_DTC           1       //其他,dTC, 
-#define   FLASH_ID_MCUDATA       2       //mcudata
+#define   FLASH_ID_IGN           3       //点火存储
+#define   FLASH_ID_DTC           4       //其他,dTC,
+#define   FLASH_ID_MCUDATA       5       //mcudata
 
-#define   FLASH_ID_PROGRAMDATA   3
-#define   FLASH_ID_F110          4
-#define   FLASH_ID_UDS           5
+#define   FLASH_ID_PROGRAMDATA   0
+#define   FLASH_ID_F110          1
+#define   FLASH_ID_UDS           2
 #define   FLASH_ID_PARAMETER     6
 #define   FLASH_ID_PARAMETER_SEC     7
 #define   FLASH_ID_MAXNUM        8

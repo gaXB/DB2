@@ -193,14 +193,14 @@ static void ACControl(void)
 static void NCFControl(void)
 {
 	//TODO:内外逻辑及输出实现
-	if(SystemControl.ncfMode == NCF_MODE_CIRF)	
-	{
-		sOutData.NCFAD = 1;
-	}
-	else
-	{	
-		sOutData.NCFAD = 0;
-	}
+//	if(SystemControl.ncfMode == NCF_MODE_CIRF)
+//	{
+//		sOutData.NCFAD = 1;
+//	}
+//	else
+//	{
+//		sOutData.NCFAD = 0;
+//	}
 }
 /*******************************************************************************
  * Function:   void  MixMotorControl(void)
@@ -276,6 +276,7 @@ static void MdMotorControl(void)
  *           3 本进程只需要设置电压和上升速度，最后电压稳定模块来实现功能
  *           
 *******************************************************************************/
+BOOL GetFanOffEn(void);
 static void FanControl(void)
 {
 	//TODO:风量逻辑及输出实现
@@ -283,7 +284,10 @@ static void FanControl(void)
 	{  //off 直接到0
 	  u8FanCurLevel = 0;
 	//  SystemControl.fanMode = FAN_MODE_OFF; 不屏蔽此句  saveoff， loadoff 将不能记忆
-	  sOutData.FANVolt = 0;
+	  if (GetFanOffEn() == 1)
+		  sOutData.FANVolt = 0;
+	  else
+	  {}
 	}
 	else
 	{
@@ -335,6 +339,8 @@ static void DisplayDataSet(void)
 {	
 	//TODO: 在此编写设置sDisplayData
 	sDisplayData.LEDMode = 1;   //关闭之后led 还是需要正常工作
+
+
 	if (SystemControl.OffState)
 	{//OFF STATE
 		sDisplayData.FANLevel = 0;
@@ -345,9 +351,14 @@ static void DisplayDataSet(void)
 		sDisplayData.MAXAC = 0;
 		sDisplayData.MODE_MAXDEF = 0;
 		sDisplayData.VentMode = MD_MODE_OSF;
+
+		sPanleData.LCDONOFF = 0;
+
 	}
 	else
 	{
+		sPanleData.LCDONOFF = 1;
+
 		sDisplayData.FANLevel = u8FanCurLevel;
       if (SystemControl.acMode == AC_MODE_ON || SystemControl.AutoBits.AC)
       {
@@ -400,7 +411,7 @@ static void DisplayDataSet(void)
 		sDisplayData.RHEAT = 0;
 	}
 	//sDisplayData.RHEAT = sSenSorData.RHeat_FB;
-	
+	sDisplayData.ptc = SystemControl.ptcMode;
 	if (SystemControl.ncfMode == NCF_MODE_CIRF)
 	{
 		sDisplayData.CIRF = 1;
@@ -411,6 +422,16 @@ static void DisplayDataSet(void)
 		sDisplayData.CIRF = 0;
 		sDisplayData.NEW = 1;
 	}
+
+	sPanleData.AC = sDisplayData.AC;
+	sPanleData.CIRF = sDisplayData.CIRF;
+	sPanleData.FANLevel = sDisplayData.FANLevel;
+	sPanleData.PTCn = sDisplayData.ptc;
+	sPanleData.RHEAT = sDisplayData.RHEAT;
+	sPanleData.VentMode = sDisplayData.VentMode;
+	sPanleData.VerClient = SwV_CLIENT *16 + SwsV_CLIENT;
+	sPanleData.VerSelf = SwV_ *16 + SwsV_;
+	sPanleData.i16Temp = SystemControl.u8TestLevel*10;
 }
 
 
@@ -464,6 +485,7 @@ static inline void LCDSetControl(void)
 		{
 			lLCDData.i16Temp = SystemControl.tset;
 		}
+		lLCDData.i16Temp = SystemControl.u8TestLevel*10;
 		SetLcdDisplayData(&lLCDData);
 	}
 #endif
@@ -549,11 +571,11 @@ void Run_Normal_Task(void)
 		
 		RdefControl();       		//后除霜控制相关逻辑及输出
 		
-		ACControl();        		//ac控制相关逻辑及输出
+	//	ACControl();        		//ac控制相关逻辑及输出
 		
 		NCFControl();       			//内外控制相关逻辑及输出
 		
-		MixMotorControl();  			//混合电机控制相关逻辑及输出。，此处为2个冷暖电机都放在此处
+	//	MixMotorControl();  			//混合电机控制相关逻辑及输出。，此处为2个冷暖电机都放在此处
 		
 		MdMotorControl();   			//模式电机控制相关逻辑及输出
 		
@@ -597,6 +619,9 @@ void HVACControl_Init(void)
 	PanleState_Logic();
 	nDelayDis = 0;
 	nDelayOut = 0;
+	SystemControl.LevelMode = LEVELMODE_DEFAULT;
+	SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+	SystemControl.TestMode = TSETTEM_MODE_DEFAULT;
 }
 
 

@@ -134,4 +134,5 @@ void FanVolt_Control(void);
 uint8 FanControl_GetCurrentLevel(void);
 ADVoltType FanControl_GetCurrentVolt(void);
 uint8 FanControl_ErrCodeGet(void);
+int16 FanFBVoltGet(void);
 #endif

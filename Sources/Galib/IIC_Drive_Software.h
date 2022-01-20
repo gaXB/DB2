@@ -26,7 +26,7 @@
 
 
 
-#define   IIC_DELAY  2  //单片机总线时钟大于8M时，需增大该数值
+#define   IIC_DELAY  10  //单片机总线时钟大于8M时，需增大该数值
 
 #define   ACK_YES  1  //发送响应信号
 #define   ACK_NO   0  //发送不响应信号
@@ -39,4 +39,5 @@ void IIC_Stop_Bit(void);
 void IIC_Send_Ack(uint8 data);
 uint8 IIC_Send_Byte(uint8 data);
 uint8 IIC_Receive_Byte(void);
+uint8 IIC_Receive2_Byte(uint8 bend);
 #endif

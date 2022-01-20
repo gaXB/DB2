@@ -62,15 +62,17 @@ static uint8 u8InitErrNum;
 
 volatile uint8 u8TestByte;
 extern VoltType  TBL_FANVOLT[MAX_FELVL+1];
+
+extern void InterLay2Init(void);
 /*************************************************************************************************
 温度阻值表
 ****************************************************************************************************/
 //TODO: 设置不同的温度阻值表，并说明上拉电阻
 static const uint16  TBL_TAMB_SAIC_51[] = //已更改
 {
-		993, 982, 968, 950, 929, 901, 868, 829, 785,
-		736, 682, 626, 569, 512, 456, 404, 355, 310,
-		270, 234, 203, 176, 152, 127, 100
+		998, 988, 974, 957, 934, 907, 873, 834, 788, 738,
+		684, 627, 569, 512, 456, 403, 354, 310, 270, 235,
+		204, 177, 153, 133, 115,
 };     
 
 static const uint16 TBL_TIN_SAIC_51[] =
@@ -82,16 +84,16 @@ static const uint16 TBL_TIN_SAIC_51[] =
 
 static const uint16  TBL_TEVP_SAIC_51[] =
 {
-	908, 894, 875, 851, 816, 763, 705, 643, 579,
-	513, 451, 391, 337, 288, 245, 208, 177, 149,
-	126, 107, 91, 77, 66, 55, 43
+	954,930,902,867,827,780,730,675,618,561,
+	504,450,398,351,308,269,235,204,178,155,
+	135,118,103,90,79
 };  
 
 static const  uint16  TBL_INTAKE_SAIC_51[] =
 {
-	991, 951, 910, 874, 830, 780, 723, 662, 598, 534, 472, 413,
-	358, 309 ,256, 226, 193, 165, 140, 120, 102, 88,
-	75, 61, 50,
+		954, 930, 902, 867, 827, 780, 730, 675, 618, 561,
+		504, 450, 398, 351, 308, 269, 235, 204, 178, 155,
+		135, 118, 103, 90, 79,
 };
 
 
@@ -99,6 +101,7 @@ static const  uint16  TBL_INTAKE_SAIC_51[] =
 #if _PROJECT_CAN_
 extern void PCSet_SenSorData(void);
 extern void PCSet_OutData(void);
+extern void InterLay2Task(void);
 #endif
 /*******************************************************************************
  * Function:   void Sys_Clk(void)
@@ -155,7 +158,7 @@ void Init_LowerDrive(void)
 	
 	
 	//motor
-	if (Motor_Init(100,1,2))
+	if (Motor_Init(100,1,3))
 	{
 		
 	}
@@ -176,7 +179,7 @@ void Init_LowerDrive(void)
 	}
 	
 	//7708 初始化
-	MCPComPinType TBL_Set7708[6] = {M7708_COMBINPIN2, M7708_COMBINPIN1, M7708_COMBINPIN4, M7708_COMBINPIN3, M7708_COMBINPIN5, M7708_COMBINPIN6};  //7708 电机配置
+	MCPComPinType TBL_Set7708[6] = {M7708_COMBINPIN2, M7708_COMBINPIN1, M7708_COMBINPIN4, M7708_COMBINPIN3, M7708_COMBINPIN6, M7708_COMBINPIN5};  //7708 电机配置
 	if (Mcp_MotorInit(3, TBL_Set7708))
 	{
 	}
@@ -227,6 +230,7 @@ void Init_LowerDrive(void)
 
 #if  _PROJECT_CAN_
    InterLayInit();
+   InterLay2Init();
 #endif
    
 /* uint8 TBL_DrivePriode[5] = {16, 16, 16, 12, 0xff};  //8,7,6,5,4 的驱动步数
@@ -276,6 +280,11 @@ void Init_LowerDrive(void)
 	}
 #endif
 	MCUPM_ReadEE();
+
+	uint8  codedata[2];
+	codedata[CODE_NUM_TSET] = COMD_TSET_ADD;
+	codedata[CODE_NUM_FAN] = COMD_FAN_ADD;
+	Init_Code35(CODE_NUM_MAX, codedata);
 }
 
 
@@ -299,7 +308,7 @@ void LowDrive_Loop(void)
 	
 	SigFControl();       //信号滤波模块
 	
-	Treat_Read_Keypad();
+//	Treat_Read_Keypad();
 	
 	u32TestLoopFreq = TimeOut_TestLoop();
 	u16TestLoopTime = TimeOut_GetMaxLoop();
@@ -307,6 +316,7 @@ void LowDrive_Loop(void)
 	//发送can，电源管理内部处理
 #if _PROJECT_CAN_	
 	InterLayTask();
+	InterLay2Task();
 	Deal_UDSNetLay();
 	AppLay_DiagControl();	
 	
@@ -321,17 +331,22 @@ void LowDrive_Loop(void)
 #endif
 	OutTask();
 	CommSetTask();
-	LEDSetTask();
+//	LEDSetTask();
 	Deal_Signal_Refresh();
 #if _PROJECT_CAN_
 	PCSet_SenSorData();
 #endif
 	Motor_Control();
-	NcfMotor_Control();
+//	NcfMotor_Control();
 	FanVolt_Control();
+	WPumpControl();
+	EXVControl();
 	//StepMotor_Control();
 	//ICDrvie_StepMotor();
 	//StepMotor_ICErrRead();
+//	Updata_LCD();
+	Treat_Read_Code35();
+	ReadTouch_MainControl();
 }
 
 /*******************************************************************************
@@ -347,7 +362,7 @@ void LowDrive_Loop(void)
 void LowDrive_PowerON(void)
 {
 #if _PROJECT_LCD_
-	Updata_LCD();
+//	Updata_LCD();
 #endif
 }
 

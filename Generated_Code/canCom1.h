@@ -7,7 +7,7 @@
 **     Version     : Component SDK_S32K1xx_15, Driver 01.00, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-11-21, 21:09, # CodeGen: 1
+**     Date/Time   : 2022-01-03, 11:53, # CodeGen: 49
 **     Contents    :
 **         FLEXCAN_DRV_SetBitrate             - void FLEXCAN_DRV_SetBitrate(uint8_t instance,const flexcan_time_segment_t *...
 **         FLEXCAN_DRV_GetBitrate             - void FLEXCAN_DRV_GetBitrate(uint8_t instance,flexcan_time_segment_t * bitrate);
@@ -86,7 +86,7 @@
  */
  
 /*! @brief Device instance number */
-#define INST_CANCOM1 (0U)
+#define INST_CANCOM1 (1U)
 /*! @brief Driver state structure which holds driver runtime data */
 extern flexcan_state_t canCom1_State; 
 extern const flexcan_user_config_t canCom1_InitConfig0;

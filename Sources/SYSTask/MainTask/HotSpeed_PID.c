@@ -24,9 +24,10 @@
 
 void HotSpeedPID_GetState(void);
 PIDDATA   sHotSpeedPidData;
-PIDPARAMETER  sHotSpeedPar = {50, 50, 50, 0, 500, 10000, 0,10, 50, 800, 10000, HotSpeedPID_GetState};
+PIDPARAMETER  sHotSpeedPar = {50, 50, 50, 0, 500, 10000, 0,5, 300, 800, 10000, HotSpeedPID_GetState};
+PIDPARAMETER  sBatHotSpeedPar = {50, 50, 50, 0, 500, 10000, 0,5, 300, 800, 10000, HotSpeedPID_GetState};
 
-
+static BOOL bBathEn;
 
 /*******************************************************************************
  * Function:      int16 Deal_HotSpeedPID(void)
@@ -40,12 +41,20 @@ PIDPARAMETER  sHotSpeedPar = {50, 50, 50, 0, 500, 10000, 0,10, 50, 800, 10000, H
 ********************************************************************************/
 int16 Deal_HotSpeedPID(void)
 {
-	if (sHotSpeedPidData.u8RunState == PIDRUN_STATE_INIT && sHotSpeedPidData.i16Get < sHotSpeedPidData.i16Set)
+	if (sHotSpeedPidData.u8RunState == PIDRUN_STATE_INIT && sHotSpeedPidData.i16Get > sHotSpeedPidData.i16Set)
 	{//运行时 温度已经到达目标值可直接进入运行
 		sHotSpeedPidData.u8RunState = PIDRUN_STATE_RUN;
 	}
 	else{}
-	return Deal_PIDFun(&sHotSpeedPidData, &sHotSpeedPar);
+
+	if (bBathEn)
+	{
+		return Deal_PIDFun(&sHotSpeedPidData, &sBatHotSpeedPar);
+	}
+	else
+	{
+		return Deal_PIDFun(&sHotSpeedPidData, &sHotSpeedPar);
+	}
 }
 
 void HotSpeedPID_GetState(void)
@@ -69,4 +78,10 @@ int16 HotSpeedPID_Init(void)
 	//混合控制 初始化
 	(void)TimeOutChkTenthSLong(&sHotSpeedPidData.Timer01, 0);
 	return 1;//GAMath_LineFuni16(TSET_LO, TSET_HI, 0, 1000, SystemControl.tset);
+}
+
+
+void HotSpeedPIDMode(uint8 bBathMode)
+{
+	bBathEn = bBathMode;
 }

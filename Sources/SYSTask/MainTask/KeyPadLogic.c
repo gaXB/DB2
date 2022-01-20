@@ -28,6 +28,59 @@
 
 //外部函数声明
 extern void System_GOTODiagTask(void);
+static uint8 bEnDebug;
+
+void  TestMode_restrict(void)
+{
+	LevelModeType u8LevelMode;
+	u8LevelMode = GetTSETLevelMode(SystemControl.u8TestLevel);
+
+	switch(u8LevelMode)
+	{
+		default:
+			break;
+		case LEVELMODE_COOL:
+			SystemControl.ptcMode = 0;
+			break;
+		case LEVELMODE_COOLDEF:
+			SystemControl.ptcMode = 0;
+			if (SystemControl.fanMode >= 4)
+			{
+				SystemControl.fanMode = 4;
+			}else{}
+			break;
+		case LEVELMODE_HOTDEF:
+			if (SystemControl.fanMode >= 4)
+			{
+				SystemControl.fanMode = 4;
+			}else{}
+			break;
+		case LEVELMODE_HPMODE:
+			SystemControl.ptcMode = 0;
+			break;
+		case LEVELMODE_WPTC:
+			SystemControl.acMode = 0;
+			break;
+
+	}
+}
+
+void DealTestSwitch(void)
+{
+	if (SystemControl.u8TestLevel == TSETTEM_MODE_HOTDEF_1)
+	{
+		SystemControl.mdMode = MD_MODE_OSF;
+	}
+	else 	if (SystemControl.u8TestLevel == TSETTEM_MODE_HOTDEF_2)
+	{
+		SystemControl.mdMode = MD_MODE_OSFD;
+	}
+	else 	if (SystemControl.u8TestLevel == TSETTEM_MODE_HOTDEF_3)
+	{
+		SystemControl.mdMode = MD_MODE_OSD;
+	}
+}
+
 /*******************************************************************************
  * Function:   void  Deal_Keypad_Code (void)
  *
@@ -39,6 +92,7 @@ extern void System_GOTODiagTask(void);
  *         根据按键及客户提供的逻辑功能, 改变系统主要控制变量 Systemcontrol
  *           
 *******************************************************************************/
+uint8 GetCurrentKey(void);
 void Deal_Keypad_Normal(void)
 {
 	uint16 keywd;
@@ -59,53 +113,68 @@ void Deal_Keypad_Normal(void)
 			{
 				u8LevelSet = SystemControl.u8TestLevel + 1;
 				u8LevelMode = GetTSETLevelMode(u8LevelSet);
+				u8LevelMode = GetTSETLevelMode(u8LevelSet);
 				if (u8LevelSet > TSETTEM_MODE_DEBUG)
 				{
-					SystemControl.u8TestLevel = TSETTEM_MODE_DEBUG;
-				}
-				else if (u8LevelMode == SystemControl.TestMode)
-				{//同一模式下切换可以切
-					SystemControl.u8TestLevel = u8LevelSet;
+					//SystemControl.u8TestLevel = TSETTEM_MODE_COOL_1;
 				}
 				else if (sVehicleControl.bBattCoolReq || sVehicleControl.bBattHotReq)
-				{//不能切换
-
+				{//电池有需求时
+				   if (u8LevelMode == SystemControl.LevelMode)
+					{//同一模式下切换可以切
+						SystemControl.u8TestLevel = u8LevelSet;
+					}else{}
+				}
+				else if (u8LevelMode == LEVELMODE_DEBUG)
+				{//进入调试模式
+					if (bEnDebug)
+					{
+						SystemControl.u8TestLevel = u8LevelSet;
+					}else{}
 				}
 				else
 				{
 					SystemControl.u8TestLevel = u8LevelSet;
 				}
+				DealTestSwitch();
 			}
 			break;
 		case COMD_TSET_DEC:
 			if(!SystemControl.OffState)
 			{
-				if (SystemControl.u8TestLevel > 0)
+				if (SystemControl.u8TestLevel > 1)
 				{
 					u8LevelSet = SystemControl.u8TestLevel - 1;
 				}
 				else
 				{
-					u8LevelSet = 0;
+					u8LevelSet = 1;
 				}
 
 				u8LevelMode = GetTSETLevelMode(u8LevelSet);
 				if (u8LevelSet < TSETEM_MODE_JIAZHU)
 				{
-					SystemControl.u8TestLevel = TSETTEM_MODE_DEBUG;
-				}
-				else if (u8LevelMode == SystemControl.TestMode)
-				{//同一模式下切换可以切
-					SystemControl.u8TestLevel = u8LevelSet;
+					SystemControl.u8TestLevel = TSETTEM_MODE_COOL_1;
 				}
 				else if (sVehicleControl.bBattCoolReq || sVehicleControl.bBattHotReq)
-				{//不能切换
-
+				{//电池有需求时
+				   if (u8LevelMode == SystemControl.LevelMode)
+					{//同一模式下切换可以切
+						SystemControl.u8TestLevel = u8LevelSet;
+					}else{}
+				}
+				else if (u8LevelMode == LEVELMODE_DEBUG)
+				{//进入调试模式
+					if (bEnDebug)
+					{
+						SystemControl.u8TestLevel = u8LevelSet;
+					}else{}
 				}
 				else
 				{
 					SystemControl.u8TestLevel = u8LevelSet;
 				}
+				DealTestSwitch();
 			}
 			break;
 		case COMD_FAN_ADD:
@@ -160,26 +229,248 @@ void Deal_Keypad_Normal(void)
 			  Def_Operat(DEF_OPTYPE_FAN);
 			  break;
 	}
-   
+	TestMode_restrict();
+	extern uint16 KeyPadHW_ReadSignal(void);
+
+	static uint16 TimerDebugKey;
+	//keywd = GetCurrentKey();
+#if 0//PCDEBUG_CONFIG > 1
+	bEnDebug = 1;
+#else
+	if (sSenSorData.u8VehicleSpeed >= 5)
+	{
+		if (bEnDebug == 1)
+		{
+			bEnDebug = 0;
+		}else{}
+
+		if  (SystemControl.u8TestLevel != 1 && SystemControl.u8TestLevel != 2 && SystemControl.u8TestLevel != 23)
+		{
+
+		}
+		else
+		{
+			SystemControl.u8TestLevel = TSETTEM_MODE_COOL_1;
+		}
+	}
+	else{}
+
+
+	if  (SystemControl.u8TestLevel != 1 && SystemControl.u8TestLevel != 2 && SystemControl.u8TestLevel != 23)
+	{
+		if (TimeOutChkTenthSLong(&TimerDebugKey, 20))
+		{
+			if (bEnDebug == 1)
+			{
+			//	SystemControl.u8TestLevel = TSETTEM_MODE_COOL_1;
+				bEnDebug = 0;
+			}else{}
+		}
+	}
+	else{}
+
+#endif
+
 	//TODO:读取按键,并按键值进行状态切换，请参考模板
 	keywd = Read_Keydate();
 	if(!keywd)
-	{ 
+	{
 		return;
 	}else{}
+
 	switch(keywd)
 	{
 		default:
 			break;
-		//*********************显示******************	     
-	#if  _PROJECT_LCD_
-		case  KEY_AC + 0xff:
-		  //显示 蒸发 时间
-			if(!SystemControl.OffState && SystemControl.tset == TSET_HI)
+			//电源按键
+		case KEY_OFF	:
+			if(!SystemControl.OffState)
+			{//进入off
+				Save_Off();
+				SystemControl.OffState = 1;
+			}
+		 break;
+		case KEY_ON	:
+			if(SystemControl.OffState == OFF_STATE_OFF)
+			{//进入off
+				Load_Off();
+				SystemControl.OffState = 0;
+			}
+		 break;
+		case 	KEY_DEBUG:
+			bEnDebug = 1;
+			(void)TimeOutChkTenthSLong(&TimerDebugKey, 0);
+			break;
+		case 	KEY_RHEAT:
+			if (SystemControl.RdefMode == 1)
 			{
-				DisTsetShakeSet(sSenSorData.TevpCal) ;	
+				SystemControl.RdefMode = 0;
+			}
+			else
+			{
+				SystemControl.RdefMode = 1;
 			}
 			break;
+		//****************************************
+		//rec/fre
+		case 	KEY_NCF:
+			if (SystemControl.ncfMode==NCF_MODE_NEW)
+			{
+				SystemControl.ncfMode = NCF_MODE_CIRF;
+			}
+			else
+			{
+				SystemControl.ncfMode = NCF_MODE_NEW;
+			}
+			SystemControl.AutoBits.NCF =0;
+			SystemControl.MaxACMode = AC_MAX_MODE_OFF ; //Acmax 关闭；
+			Def_Operat(DEF_OPTYPE_NCF);
+			break;
+		case KEY_PTC	:
+		  if(!SystemControl.OffState)
+		  {
+			  if(SystemControl.ptcMode == 1)
+			  {
+					SystemControl.ptcMode = 0;
+			  }
+			  else
+			  {
+					SystemControl.ptcMode = 1;
+			  }
+		  }
+		  else
+		  {
+			  //ac 按键不开机
+			  Load_Off();
+			  SystemControl.ptcMode = 1;
+			}
+			break;
+		case KEY_AC	:
+		  if(!SystemControl.OffState)
+		  {
+			  if(SystemControl.acMode == AC_MODE_ON)
+			  {
+					SystemControl.acMode = AC_MODE_OFF;
+			  }
+			  else
+			  {
+					SystemControl.acMode = AC_MODE_ON;
+			  }
+			  SystemControl.AutoBits.AC = 0;
+		  }
+		  else
+		  {
+			  //ac 按键不开机
+			  Load_Off();
+			  SystemControl.AutoBits.AC = 0;
+			  SystemControl.acMode = AC_MODE_ON;
+			}
+			Def_Operat(DEF_OPTYPE_AC);
+			//SystemControl.MaxACMode = AC_MAX_MODE_OFF ; //Acmax 关闭；
+			break;
+		case KEY_MODE:
+			if(SystemControl.OffState )
+			{
+				  //off时切换模式
+				  //off时除霜状态不记忆
+				Load_Off();
+				SystemControl.AutoBits.FAN =0;
+				SystemControl.fanMode = FAN_MODE_1L;
+
+				SystemControl.mdMode++;
+				if (SystemControl.mdMode >= MD_MODE_OST)
+				{
+					SystemControl.mdMode = MD_MODE_OSF;
+				}
+				else{}
+			}
+			else
+			{
+				if(SystemControl.mdMode == MD_MODE_OST)       //out ost
+				{
+					Load_Def();
+				}
+				else
+				{
+					SystemControl.mdMode++;
+					if (SystemControl.mdMode >= MD_MODE_OST)
+					{
+						SystemControl.mdMode = MD_MODE_OSF;
+					}
+					else{}
+				}
+			}
+			Def_Operat(DEF_OPTYPE_MODE);
+			SystemControl.AutoBits.MODE = 0;
+			break;
+
+		//****************************************
+		//def 除霜
+			 //****************************************
+		case KEY_OST :
+			if(SystemControl.OffState )
+			{
+				//关机的情况
+				Load_Off();
+				if(SystemControl.mdMode == MD_MODE_OST)
+				{
+					SystemControl.mdMode = MD_MODE_OSF;
+				}
+
+				Save_Def();
+
+				SystemControl.mdMode  = MD_MODE_OST;
+				SystemControl.ncfMode = NCF_MODE_NEW;
+				SystemControl.acMode  = AC_MODE_ON;
+				SystemControl.AutoBits.AC = 0;
+				//SystemControl.AutoBits.NCF = 0;
+				SystemControl.AutoBits.MODE = 0;
+				SystemControl.AutoBits.FAN = 0;
+
+				if (SystemControl.fanMode < FAN_MODE_5L)
+				{
+					SystemControl.fanMode = FAN_MODE_5L;
+					(void)FanControl_SetRate(FANVOLT_RATE_INIT);
+				}
+				else{}
+			}
+			else
+			{
+				//开机的情况
+				if(SystemControl.mdMode == MD_MODE_OST)
+				{
+					Load_Def();
+				}
+				else
+				{
+					Save_Def();
+					if (SystemControl.fanMode < FAN_MODE_5L)
+					{
+						SystemControl.fanMode = FAN_MODE_5L;
+						(void)FanControl_SetRate(FANVOLT_RATE_INIT);
+					}
+
+					SystemControl.mdMode = MD_MODE_OST;
+					SystemControl.ncfMode = NCF_MODE_NEW;
+					SystemControl.acMode = AC_MODE_ON;
+					SystemControl.AutoBits.AC = 0;
+					SystemControl.AutoBits.NCF = 0;
+					SystemControl.AutoBits.MODE = 0;
+					SystemControl.AutoBits.FAN = 0;
+				}
+			}
+			//sHPOutControl.Byte = 0;
+			SystemControl.MaxACMode = AC_MAX_MODE_OFF ; //Acmax 关闭；
+			break;
+		//*********************显示******************	     
+	#if  _PROJECT_LCD_
+//		case  KEY_AC + 0xff:
+//		  //显示 蒸发 时间
+//			if(!SystemControl.OffState && SystemControl.tset == TSET_HI)
+//			{
+//				DisTsetShakeSet(sSenSorData.TevpCal) ;
+//			}
+//			break;
 		case  KEY_DIAG:
 			if(!SystemControl.OffState && SystemControl.tset == TSET_HI)
 			{
@@ -222,6 +513,7 @@ void Deal_Keypad_Normal(void)
 			}
 			break;
 	}
+	TestMode_restrict();
 }
 
 /*******************************************************************************

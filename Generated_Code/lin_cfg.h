@@ -3,7 +3,7 @@
 **
 **     @file      lin_cfg.h
 **
-**     @date      9:53:12, 2021-12-17
+**     @date      14:19:28, 2022-1-13
 **
 **     @brief     Hardware configuration file
 **
@@ -100,8 +100,8 @@
 #define LIN_NUM_OF_MASTER_IFCS 1U
 
 /* frame buffer size */
-#define LIN_FRAME_BUF_SIZE          28U
-#define LIN_FLAG_BUF_SIZE           7U
+#define LIN_FRAME_BUF_SIZE          96U
+#define LIN_FLAG_BUF_SIZE           18U
 
 /**********************************************************************/
 /***************               Interfaces           *******************/
@@ -123,67 +123,191 @@ typedef enum {
 /***************               Signals              *******************/
 /**********************************************************************/
 /* Number of signals */
-#define LIN_NUM_OF_SIGS  14U
+#define LIN_NUM_OF_SIGS  70U
 /* List of signals */
 typedef enum {
 
    /* Interface_name = LI0 */
 
-   LI0_Motor1ErrorCode
+   LI0_BDC_1_ReqMovePos
 
-   , LI0_Motor1ErrorValue
+   , LI0_BDC_1_RespPos
   
-   , LI0_Motor1LinError
+   , LI0_BDC_1_MotorStatus
   
-   , LI0_Motor1Selection
+   , LI0_BDC_1_TempWarn
   
-   , LI0_Motor1Temp
+   , LI0_BDC_1_MoveEnable
   
-   , LI0_Motor2ErrorCode
+   , LI0_BDC_1_voltageErr
   
-   , LI0_Motor2ErrorValue
+   , LI0_BDC_1_Fault_Signal
   
-   , LI0_Motor2LinError
+   , LI0_BDC_1_Rsp_Comm_Err
   
-   , LI0_Motor2Selection
+   , LI0_BDC_2_ReqMovePos
   
-   , LI0_Motor2Temp
+   , LI0_BDC_2_RespPos
   
-   , LI0_MotorDirection
+   , LI0_BDC_2_MotorStatus
   
-   , LI0_MotorSpeed
+   , LI0_BDC_2_TempWarn
   
-   , LI0_Motor1Position
+   , LI0_BDC_2_MoveEnable
   
-   , LI0_Motor2Position
+   , LI0_BDC_2_voltageErr
+  
+   , LI0_BDC_2_Fault_Signal
+  
+   , LI0_BDC_2_Rsp_Comm_Err
+  
+   , LI0_CCV4_ReqMovePos
+  
+   , LI0_CCV4_RespPos
+  
+   , LI0_CCV4_MotorStatus
+  
+   , LI0_CCV4_TempWarn
+  
+   , LI0_CCV4_MoveEnable
+  
+   , LI0_CCV4_voltageErr
+  
+   , LI0_CCV4_Fault_Signal
+  
+   , LI0_CCV4_Rsp_Comm_Err
+  
+   , LI0_PositionRequest_EXV2
+  
+   , LI0_EnableRequest_EXV2
+  
+   , LI0_InitRequest_EXV2
+  
+   , LI0_ResponseError_EXV2
+  
+   , LI0_CurrentInitState_EXV2
+  
+   , LI0_RunState_EXV2
+  
+   , LI0_FaultState_EXV2
+  
+   , LI0_VoltageState_EXV2
+  
+   , LI0_TemperatureWarn_EXV2
+  
+   , LI0_CurrentPosition_EXV2
+  
+   , LI0_TMM_EXV_PositionRequest
+  
+   , LI0_TMM_EXV_EnableRequest
+  
+   , LI0_TMM_EXV_initRequest
+  
+   , LI0_EXV_ResponseError
+  
+   , LI0_EXV_CurrentInitState
+  
+   , LI0_EXV_RunState
+  
+   , LI0_EXV_FaultState
+  
+   , LI0_EXV_VoltageState
+  
+   , LI0_EXV_TemperatureWarn
+  
+   , LI0_EXV_CurrentPosition
+  
+   , LI0_ECM_TargetPosReqIgOn_A
+  
+   , LI0_ECM_CalibReq_A
+  
+   , LI0_ECM_IgStatusReq_A
+  
+   , LI0_ECM_TargetPosReqIgOff_A
+  
+   , LI0_AGM_A_ActualPosition
+  
+   , LI0_AGM_A_Err_MechBreak
+  
+   , LI0_AGM_A_Err_MechBlock
+  
+   , LI0_AGM_A_CalibActive
+  
+   , LI0_AGM_A_CalibRequired
+  
+   , LI0_AGM_A_Err_Electrical
+  
+   , LI0_AGM_A_Err_OverTemp
+  
+   , LI0_AGM_A_Err_Voltage
+  
+   , LI0_AGM_A_Err_LINResp
+  
+   , LI0_ECM_TargetPosReqIgOn_B
+  
+   , LI0_ECM_CalibReq_B
+  
+   , LI0_ECM_IgStatusReq_B
+  
+   , LI0_ECM_TargetPosReqIgOff_B
+  
+   , LI0_AGM_B_ActualPosition
+  
+   , LI0_AGM_B_Err_MechBreak
+  
+   , LI0_AGM_B_Err_MechBlock
+  
+   , LI0_AGM_B_CalibActive
+  
+   , LI0_AGM_B_CalibRequired
+  
+   , LI0_AGM_B_Err_Electrical
+  
+   , LI0_AGM_B_Err_OverTemp
+  
+   , LI0_AGM_B_Err_Voltage
+  
+   , LI0_AGM_B_Err_LINResp
   
 } l_signal_handle;
 /**********************************************************************/
 /*****************               Frame             ********************/
 /**********************************************************************/
 /* Number of frames */
-#define LIN_NUM_OF_FRMS  10U
+#define LIN_NUM_OF_FRMS  16U
 /* List of frames */
 typedef enum {
 /* All frames for master node */
 
    /* Interface_name = LI0 */
 
-   LI0_Motor1Control
+   LI0_BDC_1_Cmd
 
-   , LI0_Motor1State_Cycl
+   , LI0_BDC_1_Rsp
   
-   , LI0_Motor1State_Event
+   , LI0_BDC_2_Cmd
   
-   , LI0_Motor2Control
+   , LI0_BDC_2_Rsp
   
-   , LI0_Motor2State_Cycl
+   , LI0_CCV4_Cmd
   
-   , LI0_Motor2State_Event
+   , LI0_CCV4_Rsq
   
-   , LI0_MotorsControl
+   , LI0_ATC_4
   
-   , LI0_SporadicControlFrame
+   , LI0_EXV_2
+  
+   , LI0_VCU_EXV
+  
+   , LI0_EXV_VCU
+  
+   , LI0_ECM_AGM_A_DEMAND
+  
+   , LI0_AGM_A_ECM_STATUS
+  
+   , LI0_ECM_AGM_B_DEMAND
+  
+   , LI0_AGM_B_ECM_STATUS
   
    , LI0_MasterReq
   
@@ -217,7 +341,7 @@ typedef enum {
 
 
 /* Size of configuration in ROM and RAM used for interface: LI0 */
-#define LI0_LIN_SIZE_OF_CFG  12U
+#define LI0_LIN_SIZE_OF_CFG  18U
 
 
 
@@ -335,102 +459,494 @@ typedef enum {
 
 
 
-#define LIN_LI0_Motor1ErrorCode_BYTE_OFFSET    8U
-#define LIN_LI0_Motor1ErrorCode_BIT_OFFSET    0U
-#define LIN_LI0_Motor1ErrorCode_SIGNAL_SIZE    8U
-#define LIN_LI0_Motor1ErrorCode_FLAG_BYTE_OFFSET    2U
-#define LIN_LI0_Motor1ErrorCode_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_ReqMovePos_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_ReqMovePos_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_ReqMovePos_SIGNAL_SIZE    8U
+#define LIN_LI0_BDC_1_ReqMovePos_FLAG_BYTE_OFFSET    0U
+#define LIN_LI0_BDC_1_ReqMovePos_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_Motor1ErrorValue_BYTE_OFFSET    9U
-#define LIN_LI0_Motor1ErrorValue_BIT_OFFSET    0U
-#define LIN_LI0_Motor1ErrorValue_SIGNAL_SIZE    8U
-#define LIN_LI0_Motor1ErrorValue_FLAG_BYTE_OFFSET    2U
-#define LIN_LI0_Motor1ErrorValue_FLAG_BIT_OFFSET    1U
+#define LIN_LI0_BDC_1_RespPos_BYTE_OFFSET    10U
+#define LIN_LI0_BDC_1_RespPos_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_RespPos_SIGNAL_SIZE    8U
+#define LIN_LI0_BDC_1_RespPos_FLAG_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_RespPos_FLAG_BIT_OFFSET    5U
 
 
-#define LIN_LI0_Motor1LinError_BYTE_OFFSET    6U
-#define LIN_LI0_Motor1LinError_BIT_OFFSET    0U
-#define LIN_LI0_Motor1LinError_SIGNAL_SIZE    1U
-#define LIN_LI0_Motor1LinError_FLAG_BYTE_OFFSET    1U
-#define LIN_LI0_Motor1LinError_FLAG_BIT_OFFSET    2U
+#define LIN_LI0_BDC_1_MotorStatus_BYTE_OFFSET    9U
+#define LIN_LI0_BDC_1_MotorStatus_BIT_OFFSET    7U
+#define LIN_LI0_BDC_1_MotorStatus_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_1_MotorStatus_FLAG_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_MotorStatus_FLAG_BIT_OFFSET    4U
 
 
-#define LIN_LI0_Motor1Selection_BYTE_OFFSET    0U
-#define LIN_LI0_Motor1Selection_BIT_OFFSET    0U
-#define LIN_LI0_Motor1Selection_SIGNAL_SIZE    2U
-#define LIN_LI0_Motor1Selection_FLAG_BYTE_OFFSET    0U
-#define LIN_LI0_Motor1Selection_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_TempWarn_BYTE_OFFSET    9U
+#define LIN_LI0_BDC_1_TempWarn_BIT_OFFSET    6U
+#define LIN_LI0_BDC_1_TempWarn_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_1_TempWarn_FLAG_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_TempWarn_FLAG_BIT_OFFSET    3U
 
 
-#define LIN_LI0_Motor1Temp_BYTE_OFFSET    1U
-#define LIN_LI0_Motor1Temp_BIT_OFFSET    0U
-#define LIN_LI0_Motor1Temp_SIGNAL_SIZE    8U
-#define LIN_LI0_Motor1Temp_FLAG_BYTE_OFFSET    1U
-#define LIN_LI0_Motor1Temp_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_MoveEnable_BYTE_OFFSET    0U
+#define LIN_LI0_BDC_1_MoveEnable_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_MoveEnable_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_1_MoveEnable_FLAG_BYTE_OFFSET    0U
+#define LIN_LI0_BDC_1_MoveEnable_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_Motor2ErrorCode_BYTE_OFFSET    18U
-#define LIN_LI0_Motor2ErrorCode_BIT_OFFSET    0U
-#define LIN_LI0_Motor2ErrorCode_SIGNAL_SIZE    8U
-#define LIN_LI0_Motor2ErrorCode_FLAG_BYTE_OFFSET    5U
-#define LIN_LI0_Motor2ErrorCode_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_voltageErr_BYTE_OFFSET    9U
+#define LIN_LI0_BDC_1_voltageErr_BIT_OFFSET    4U
+#define LIN_LI0_BDC_1_voltageErr_SIGNAL_SIZE    2U
+#define LIN_LI0_BDC_1_voltageErr_FLAG_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_voltageErr_FLAG_BIT_OFFSET    2U
 
 
-#define LIN_LI0_Motor2ErrorValue_BYTE_OFFSET    19U
-#define LIN_LI0_Motor2ErrorValue_BIT_OFFSET    0U
-#define LIN_LI0_Motor2ErrorValue_SIGNAL_SIZE    8U
-#define LIN_LI0_Motor2ErrorValue_FLAG_BYTE_OFFSET    5U
-#define LIN_LI0_Motor2ErrorValue_FLAG_BIT_OFFSET    1U
+#define LIN_LI0_BDC_1_Fault_Signal_BYTE_OFFSET    8U
+#define LIN_LI0_BDC_1_Fault_Signal_BIT_OFFSET    2U
+#define LIN_LI0_BDC_1_Fault_Signal_SIGNAL_SIZE    4U
+#define LIN_LI0_BDC_1_Fault_Signal_FLAG_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_Fault_Signal_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_Motor2LinError_BYTE_OFFSET    16U
-#define LIN_LI0_Motor2LinError_BIT_OFFSET    0U
-#define LIN_LI0_Motor2LinError_SIGNAL_SIZE    1U
-#define LIN_LI0_Motor2LinError_FLAG_BYTE_OFFSET    4U
-#define LIN_LI0_Motor2LinError_FLAG_BIT_OFFSET    2U
+#define LIN_LI0_BDC_1_Rsp_Comm_Err_BYTE_OFFSET    8U
+#define LIN_LI0_BDC_1_Rsp_Comm_Err_BIT_OFFSET    0U
+#define LIN_LI0_BDC_1_Rsp_Comm_Err_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BYTE_OFFSET    1U
+#define LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_Motor2Selection_BYTE_OFFSET    10U
-#define LIN_LI0_Motor2Selection_BIT_OFFSET    0U
-#define LIN_LI0_Motor2Selection_SIGNAL_SIZE    2U
-#define LIN_LI0_Motor2Selection_FLAG_BYTE_OFFSET    3U
-#define LIN_LI0_Motor2Selection_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_ReqMovePos_BYTE_OFFSET    17U
+#define LIN_LI0_BDC_2_ReqMovePos_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_ReqMovePos_SIGNAL_SIZE    8U
+#define LIN_LI0_BDC_2_ReqMovePos_FLAG_BYTE_OFFSET    2U
+#define LIN_LI0_BDC_2_ReqMovePos_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_Motor2Temp_BYTE_OFFSET    11U
-#define LIN_LI0_Motor2Temp_BIT_OFFSET    0U
-#define LIN_LI0_Motor2Temp_SIGNAL_SIZE    8U
-#define LIN_LI0_Motor2Temp_FLAG_BYTE_OFFSET    4U
-#define LIN_LI0_Motor2Temp_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_RespPos_BYTE_OFFSET    26U
+#define LIN_LI0_BDC_2_RespPos_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_RespPos_SIGNAL_SIZE    8U
+#define LIN_LI0_BDC_2_RespPos_FLAG_BYTE_OFFSET    3U
+#define LIN_LI0_BDC_2_RespPos_FLAG_BIT_OFFSET    5U
 
 
-#define LIN_LI0_MotorDirection_BYTE_OFFSET    20U
-#define LIN_LI0_MotorDirection_BIT_OFFSET    0U
-#define LIN_LI0_MotorDirection_SIGNAL_SIZE    2U
-#define LIN_LI0_MotorDirection_FLAG_BYTE_OFFSET    6U
-#define LIN_LI0_MotorDirection_FLAG_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_MotorStatus_BYTE_OFFSET    25U
+#define LIN_LI0_BDC_2_MotorStatus_BIT_OFFSET    7U
+#define LIN_LI0_BDC_2_MotorStatus_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_2_MotorStatus_FLAG_BYTE_OFFSET    3U
+#define LIN_LI0_BDC_2_MotorStatus_FLAG_BIT_OFFSET    4U
 
 
-#define LIN_LI0_MotorSpeed_BYTE_OFFSET    20U
-#define LIN_LI0_MotorSpeed_BIT_OFFSET    2U
-#define LIN_LI0_MotorSpeed_SIGNAL_SIZE    10U
-#define LIN_LI0_MotorSpeed_FLAG_BYTE_OFFSET    6U
-#define LIN_LI0_MotorSpeed_FLAG_BIT_OFFSET    1U
+#define LIN_LI0_BDC_2_TempWarn_BYTE_OFFSET    25U
+#define LIN_LI0_BDC_2_TempWarn_BIT_OFFSET    6U
+#define LIN_LI0_BDC_2_TempWarn_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_2_TempWarn_FLAG_BYTE_OFFSET    3U
+#define LIN_LI0_BDC_2_TempWarn_FLAG_BIT_OFFSET    3U
 
 
-#define LIN_LI0_Motor1Position_BYTE_OFFSET    2U
-#define LIN_LI0_Motor1Position_BIT_OFFSET    0U
-#define LIN_LI0_Motor1Position_SIGNAL_SIZE    32U
-#define LIN_LI0_Motor1Position_FLAG_BYTE_OFFSET    1U
-#define LIN_LI0_Motor1Position_FLAG_BIT_OFFSET    1U
+#define LIN_LI0_BDC_2_MoveEnable_BYTE_OFFSET    16U
+#define LIN_LI0_BDC_2_MoveEnable_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_MoveEnable_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_2_MoveEnable_FLAG_BYTE_OFFSET    2U
+#define LIN_LI0_BDC_2_MoveEnable_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_Motor2Position_BYTE_OFFSET    12U
-#define LIN_LI0_Motor2Position_BIT_OFFSET    0U
-#define LIN_LI0_Motor2Position_SIGNAL_SIZE    32U
-#define LIN_LI0_Motor2Position_FLAG_BYTE_OFFSET    4U
-#define LIN_LI0_Motor2Position_FLAG_BIT_OFFSET    1U
+#define LIN_LI0_BDC_2_voltageErr_BYTE_OFFSET    25U
+#define LIN_LI0_BDC_2_voltageErr_BIT_OFFSET    4U
+#define LIN_LI0_BDC_2_voltageErr_SIGNAL_SIZE    2U
+#define LIN_LI0_BDC_2_voltageErr_FLAG_BYTE_OFFSET    3U
+#define LIN_LI0_BDC_2_voltageErr_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_BDC_2_Fault_Signal_BYTE_OFFSET    24U
+#define LIN_LI0_BDC_2_Fault_Signal_BIT_OFFSET    2U
+#define LIN_LI0_BDC_2_Fault_Signal_SIGNAL_SIZE    4U
+#define LIN_LI0_BDC_2_Fault_Signal_FLAG_BYTE_OFFSET    3U
+#define LIN_LI0_BDC_2_Fault_Signal_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_BDC_2_Rsp_Comm_Err_BYTE_OFFSET    24U
+#define LIN_LI0_BDC_2_Rsp_Comm_Err_BIT_OFFSET    0U
+#define LIN_LI0_BDC_2_Rsp_Comm_Err_SIGNAL_SIZE    1U
+#define LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BYTE_OFFSET    3U
+#define LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_CCV4_ReqMovePos_BYTE_OFFSET    32U
+#define LIN_LI0_CCV4_ReqMovePos_BIT_OFFSET    1U
+#define LIN_LI0_CCV4_ReqMovePos_SIGNAL_SIZE    1U
+#define LIN_LI0_CCV4_ReqMovePos_FLAG_BYTE_OFFSET    4U
+#define LIN_LI0_CCV4_ReqMovePos_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_CCV4_RespPos_BYTE_OFFSET    40U
+#define LIN_LI0_CCV4_RespPos_BIT_OFFSET    6U
+#define LIN_LI0_CCV4_RespPos_SIGNAL_SIZE    2U
+#define LIN_LI0_CCV4_RespPos_FLAG_BYTE_OFFSET    5U
+#define LIN_LI0_CCV4_RespPos_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_CCV4_MotorStatus_BYTE_OFFSET    41U
+#define LIN_LI0_CCV4_MotorStatus_BIT_OFFSET    7U
+#define LIN_LI0_CCV4_MotorStatus_SIGNAL_SIZE    1U
+#define LIN_LI0_CCV4_MotorStatus_FLAG_BYTE_OFFSET    5U
+#define LIN_LI0_CCV4_MotorStatus_FLAG_BIT_OFFSET    5U
+
+
+#define LIN_LI0_CCV4_TempWarn_BYTE_OFFSET    41U
+#define LIN_LI0_CCV4_TempWarn_BIT_OFFSET    6U
+#define LIN_LI0_CCV4_TempWarn_SIGNAL_SIZE    1U
+#define LIN_LI0_CCV4_TempWarn_FLAG_BYTE_OFFSET    5U
+#define LIN_LI0_CCV4_TempWarn_FLAG_BIT_OFFSET    4U
+
+
+#define LIN_LI0_CCV4_MoveEnable_BYTE_OFFSET    32U
+#define LIN_LI0_CCV4_MoveEnable_BIT_OFFSET    0U
+#define LIN_LI0_CCV4_MoveEnable_SIGNAL_SIZE    1U
+#define LIN_LI0_CCV4_MoveEnable_FLAG_BYTE_OFFSET    4U
+#define LIN_LI0_CCV4_MoveEnable_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_CCV4_voltageErr_BYTE_OFFSET    41U
+#define LIN_LI0_CCV4_voltageErr_BIT_OFFSET    4U
+#define LIN_LI0_CCV4_voltageErr_SIGNAL_SIZE    2U
+#define LIN_LI0_CCV4_voltageErr_FLAG_BYTE_OFFSET    5U
+#define LIN_LI0_CCV4_voltageErr_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_CCV4_Fault_Signal_BYTE_OFFSET    40U
+#define LIN_LI0_CCV4_Fault_Signal_BIT_OFFSET    2U
+#define LIN_LI0_CCV4_Fault_Signal_SIGNAL_SIZE    4U
+#define LIN_LI0_CCV4_Fault_Signal_FLAG_BYTE_OFFSET    5U
+#define LIN_LI0_CCV4_Fault_Signal_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_CCV4_Rsp_Comm_Err_BYTE_OFFSET    40U
+#define LIN_LI0_CCV4_Rsp_Comm_Err_BIT_OFFSET    0U
+#define LIN_LI0_CCV4_Rsp_Comm_Err_SIGNAL_SIZE    1U
+#define LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BYTE_OFFSET    5U
+#define LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET    48U
+#define LIN_LI0_PositionRequest_EXV2_BIT_OFFSET    0U
+#define LIN_LI0_PositionRequest_EXV2_SIGNAL_SIZE    16U
+#define LIN_LI0_PositionRequest_EXV2_FLAG_BYTE_OFFSET    6U
+#define LIN_LI0_PositionRequest_EXV2_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_EnableRequest_EXV2_BYTE_OFFSET    50U
+#define LIN_LI0_EnableRequest_EXV2_BIT_OFFSET    0U
+#define LIN_LI0_EnableRequest_EXV2_SIGNAL_SIZE    1U
+#define LIN_LI0_EnableRequest_EXV2_FLAG_BYTE_OFFSET    6U
+#define LIN_LI0_EnableRequest_EXV2_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_InitRequest_EXV2_BYTE_OFFSET    51U
+#define LIN_LI0_InitRequest_EXV2_BIT_OFFSET    0U
+#define LIN_LI0_InitRequest_EXV2_SIGNAL_SIZE    3U
+#define LIN_LI0_InitRequest_EXV2_FLAG_BYTE_OFFSET    6U
+#define LIN_LI0_InitRequest_EXV2_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_ResponseError_EXV2_BYTE_OFFSET    56U
+#define LIN_LI0_ResponseError_EXV2_BIT_OFFSET    0U
+#define LIN_LI0_ResponseError_EXV2_SIGNAL_SIZE    1U
+#define LIN_LI0_ResponseError_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_ResponseError_EXV2_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_CurrentInitState_EXV2_BYTE_OFFSET    56U
+#define LIN_LI0_CurrentInitState_EXV2_BIT_OFFSET    1U
+#define LIN_LI0_CurrentInitState_EXV2_SIGNAL_SIZE    2U
+#define LIN_LI0_CurrentInitState_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_CurrentInitState_EXV2_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_RunState_EXV2_BYTE_OFFSET    56U
+#define LIN_LI0_RunState_EXV2_BIT_OFFSET    3U
+#define LIN_LI0_RunState_EXV2_SIGNAL_SIZE    1U
+#define LIN_LI0_RunState_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_RunState_EXV2_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_FaultState_EXV2_BYTE_OFFSET    56U
+#define LIN_LI0_FaultState_EXV2_BIT_OFFSET    4U
+#define LIN_LI0_FaultState_EXV2_SIGNAL_SIZE    4U
+#define LIN_LI0_FaultState_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_FaultState_EXV2_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_VoltageState_EXV2_BYTE_OFFSET    57U
+#define LIN_LI0_VoltageState_EXV2_BIT_OFFSET    0U
+#define LIN_LI0_VoltageState_EXV2_SIGNAL_SIZE    2U
+#define LIN_LI0_VoltageState_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_VoltageState_EXV2_FLAG_BIT_OFFSET    4U
+
+
+#define LIN_LI0_TemperatureWarn_EXV2_BYTE_OFFSET    57U
+#define LIN_LI0_TemperatureWarn_EXV2_BIT_OFFSET    2U
+#define LIN_LI0_TemperatureWarn_EXV2_SIGNAL_SIZE    2U
+#define LIN_LI0_TemperatureWarn_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_TemperatureWarn_EXV2_FLAG_BIT_OFFSET    5U
+
+
+#define LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET    58U
+#define LIN_LI0_CurrentPosition_EXV2_BIT_OFFSET    0U
+#define LIN_LI0_CurrentPosition_EXV2_SIGNAL_SIZE    16U
+#define LIN_LI0_CurrentPosition_EXV2_FLAG_BYTE_OFFSET    7U
+#define LIN_LI0_CurrentPosition_EXV2_FLAG_BIT_OFFSET    6U
+
+
+#define LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET    64U
+#define LIN_LI0_TMM_EXV_PositionRequest_BIT_OFFSET    0U
+#define LIN_LI0_TMM_EXV_PositionRequest_SIGNAL_SIZE    16U
+#define LIN_LI0_TMM_EXV_PositionRequest_FLAG_BYTE_OFFSET    8U
+#define LIN_LI0_TMM_EXV_PositionRequest_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_TMM_EXV_EnableRequest_BYTE_OFFSET    66U
+#define LIN_LI0_TMM_EXV_EnableRequest_BIT_OFFSET    0U
+#define LIN_LI0_TMM_EXV_EnableRequest_SIGNAL_SIZE    1U
+#define LIN_LI0_TMM_EXV_EnableRequest_FLAG_BYTE_OFFSET    8U
+#define LIN_LI0_TMM_EXV_EnableRequest_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_TMM_EXV_initRequest_BYTE_OFFSET    67U
+#define LIN_LI0_TMM_EXV_initRequest_BIT_OFFSET    0U
+#define LIN_LI0_TMM_EXV_initRequest_SIGNAL_SIZE    3U
+#define LIN_LI0_TMM_EXV_initRequest_FLAG_BYTE_OFFSET    8U
+#define LIN_LI0_TMM_EXV_initRequest_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_EXV_ResponseError_BYTE_OFFSET    72U
+#define LIN_LI0_EXV_ResponseError_BIT_OFFSET    0U
+#define LIN_LI0_EXV_ResponseError_SIGNAL_SIZE    1U
+#define LIN_LI0_EXV_ResponseError_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_ResponseError_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_EXV_CurrentInitState_BYTE_OFFSET    72U
+#define LIN_LI0_EXV_CurrentInitState_BIT_OFFSET    1U
+#define LIN_LI0_EXV_CurrentInitState_SIGNAL_SIZE    2U
+#define LIN_LI0_EXV_CurrentInitState_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_CurrentInitState_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_EXV_RunState_BYTE_OFFSET    72U
+#define LIN_LI0_EXV_RunState_BIT_OFFSET    3U
+#define LIN_LI0_EXV_RunState_SIGNAL_SIZE    1U
+#define LIN_LI0_EXV_RunState_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_RunState_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_EXV_FaultState_BYTE_OFFSET    72U
+#define LIN_LI0_EXV_FaultState_BIT_OFFSET    4U
+#define LIN_LI0_EXV_FaultState_SIGNAL_SIZE    4U
+#define LIN_LI0_EXV_FaultState_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_FaultState_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_EXV_VoltageState_BYTE_OFFSET    73U
+#define LIN_LI0_EXV_VoltageState_BIT_OFFSET    0U
+#define LIN_LI0_EXV_VoltageState_SIGNAL_SIZE    2U
+#define LIN_LI0_EXV_VoltageState_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_VoltageState_FLAG_BIT_OFFSET    4U
+
+
+#define LIN_LI0_EXV_TemperatureWarn_BYTE_OFFSET    73U
+#define LIN_LI0_EXV_TemperatureWarn_BIT_OFFSET    2U
+#define LIN_LI0_EXV_TemperatureWarn_SIGNAL_SIZE    2U
+#define LIN_LI0_EXV_TemperatureWarn_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_TemperatureWarn_FLAG_BIT_OFFSET    5U
+
+
+#define LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET    74U
+#define LIN_LI0_EXV_CurrentPosition_BIT_OFFSET    0U
+#define LIN_LI0_EXV_CurrentPosition_SIGNAL_SIZE    16U
+#define LIN_LI0_EXV_CurrentPosition_FLAG_BYTE_OFFSET    9U
+#define LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET    6U
+
+
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_BYTE_OFFSET    80U
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_BIT_OFFSET    0U
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_SIGNAL_SIZE    8U
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_ECM_CalibReq_A_BYTE_OFFSET    81U
+#define LIN_LI0_ECM_CalibReq_A_BIT_OFFSET    0U
+#define LIN_LI0_ECM_CalibReq_A_SIGNAL_SIZE    1U
+#define LIN_LI0_ECM_CalibReq_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_CalibReq_A_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_ECM_IgStatusReq_A_BYTE_OFFSET    81U
+#define LIN_LI0_ECM_IgStatusReq_A_BIT_OFFSET    2U
+#define LIN_LI0_ECM_IgStatusReq_A_SIGNAL_SIZE    1U
+#define LIN_LI0_ECM_IgStatusReq_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_IgStatusReq_A_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_BYTE_OFFSET    82U
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_BIT_OFFSET    0U
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_SIGNAL_SIZE    8U
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_AGM_A_ActualPosition_BYTE_OFFSET    84U
+#define LIN_LI0_AGM_A_ActualPosition_BIT_OFFSET    0U
+#define LIN_LI0_AGM_A_ActualPosition_SIGNAL_SIZE    8U
+#define LIN_LI0_AGM_A_ActualPosition_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_ActualPosition_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_AGM_A_Err_MechBreak_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_MechBreak_BIT_OFFSET    0U
+#define LIN_LI0_AGM_A_Err_MechBreak_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_Err_MechBreak_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_MechBreak_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_AGM_A_Err_MechBlock_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_MechBlock_BIT_OFFSET    5U
+#define LIN_LI0_AGM_A_Err_MechBlock_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_Err_MechBlock_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_MechBlock_FLAG_BIT_OFFSET    5U
+
+
+#define LIN_LI0_AGM_A_CalibActive_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_CalibActive_BIT_OFFSET    2U
+#define LIN_LI0_AGM_A_CalibActive_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_CalibActive_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_CalibActive_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_AGM_A_CalibRequired_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_CalibRequired_BIT_OFFSET    3U
+#define LIN_LI0_AGM_A_CalibRequired_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_CalibRequired_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_CalibRequired_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_AGM_A_Err_Electrical_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_Electrical_BIT_OFFSET    6U
+#define LIN_LI0_AGM_A_Err_Electrical_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_Err_Electrical_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_Electrical_FLAG_BIT_OFFSET    6U
+
+
+#define LIN_LI0_AGM_A_Err_OverTemp_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_OverTemp_BIT_OFFSET    7U
+#define LIN_LI0_AGM_A_Err_OverTemp_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_Err_OverTemp_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_OverTemp_FLAG_BIT_OFFSET    7U
+
+
+#define LIN_LI0_AGM_A_Err_Voltage_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_Voltage_BIT_OFFSET    4U
+#define LIN_LI0_AGM_A_Err_Voltage_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_Err_Voltage_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_Voltage_FLAG_BIT_OFFSET    4U
+
+
+#define LIN_LI0_AGM_A_Err_LINResp_BYTE_OFFSET    86U
+#define LIN_LI0_AGM_A_Err_LINResp_BIT_OFFSET    0U
+#define LIN_LI0_AGM_A_Err_LINResp_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_A_Err_LINResp_FLAG_BYTE_OFFSET    12U
+#define LIN_LI0_AGM_A_Err_LINResp_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_BYTE_OFFSET    88U
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_BIT_OFFSET    0U
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_SIGNAL_SIZE    8U
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_ECM_CalibReq_B_BYTE_OFFSET    89U
+#define LIN_LI0_ECM_CalibReq_B_BIT_OFFSET    0U
+#define LIN_LI0_ECM_CalibReq_B_SIGNAL_SIZE    1U
+#define LIN_LI0_ECM_CalibReq_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_CalibReq_B_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_ECM_IgStatusReq_B_BYTE_OFFSET    89U
+#define LIN_LI0_ECM_IgStatusReq_B_BIT_OFFSET    2U
+#define LIN_LI0_ECM_IgStatusReq_B_SIGNAL_SIZE    1U
+#define LIN_LI0_ECM_IgStatusReq_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_IgStatusReq_B_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_BYTE_OFFSET    90U
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_BIT_OFFSET    0U
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_SIGNAL_SIZE    8U
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_AGM_B_ActualPosition_BYTE_OFFSET    92U
+#define LIN_LI0_AGM_B_ActualPosition_BIT_OFFSET    0U
+#define LIN_LI0_AGM_B_ActualPosition_SIGNAL_SIZE    8U
+#define LIN_LI0_AGM_B_ActualPosition_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_ActualPosition_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_AGM_B_Err_MechBreak_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_MechBreak_BIT_OFFSET    0U
+#define LIN_LI0_AGM_B_Err_MechBreak_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_Err_MechBreak_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_MechBreak_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_AGM_B_Err_MechBlock_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_MechBlock_BIT_OFFSET    5U
+#define LIN_LI0_AGM_B_Err_MechBlock_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_Err_MechBlock_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_MechBlock_FLAG_BIT_OFFSET    5U
+
+
+#define LIN_LI0_AGM_B_CalibActive_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_CalibActive_BIT_OFFSET    2U
+#define LIN_LI0_AGM_B_CalibActive_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_CalibActive_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_CalibActive_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_AGM_B_CalibRequired_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_CalibRequired_BIT_OFFSET    3U
+#define LIN_LI0_AGM_B_CalibRequired_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_CalibRequired_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_CalibRequired_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_AGM_B_Err_Electrical_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_Electrical_BIT_OFFSET    6U
+#define LIN_LI0_AGM_B_Err_Electrical_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_Err_Electrical_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_Electrical_FLAG_BIT_OFFSET    6U
+
+
+#define LIN_LI0_AGM_B_Err_OverTemp_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_OverTemp_BIT_OFFSET    7U
+#define LIN_LI0_AGM_B_Err_OverTemp_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_Err_OverTemp_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_OverTemp_FLAG_BIT_OFFSET    7U
+
+
+#define LIN_LI0_AGM_B_Err_Voltage_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_Voltage_BIT_OFFSET    4U
+#define LIN_LI0_AGM_B_Err_Voltage_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_Err_Voltage_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_Voltage_FLAG_BIT_OFFSET    4U
+
+
+#define LIN_LI0_AGM_B_Err_LINResp_BYTE_OFFSET    94U
+#define LIN_LI0_AGM_B_Err_LINResp_BIT_OFFSET    0U
+#define LIN_LI0_AGM_B_Err_LINResp_SIGNAL_SIZE    1U
+#define LIN_LI0_AGM_B_Err_LINResp_FLAG_BYTE_OFFSET    15U
+#define LIN_LI0_AGM_B_Err_LINResp_FLAG_BIT_OFFSET    0U
 
 
 
@@ -443,348 +959,1642 @@ typedef enum {
 
 
  
-/* static access macros for signal LI0_Motor1ErrorCode */
+/* static access macros for signal LI0_BDC_1_ReqMovePos */
  
-#define l_u8_rd_LI0_Motor1ErrorCode() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor1ErrorCode_BYTE_OFFSET]) >> 0U) & 0xffU))
+#define l_u8_rd_LI0_BDC_1_ReqMovePos() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_1_ReqMovePos_BYTE_OFFSET]) >> 0U) & 0xffU))
 
 
-#define l_u8_wr_LI0_Motor1ErrorCode(A) \
+#define l_u8_wr_LI0_BDC_1_ReqMovePos(A) \
     { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor1ErrorCode_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor1ErrorCode_BYTE_OFFSET] & 0x00U) | \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_1_ReqMovePos_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_1_ReqMovePos_BYTE_OFFSET] & 0x00U) | \
     (((A) << 0U) & 0xffU)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1ErrorCode_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1ErrorCode_FLAG_BIT_OFFSET); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_ReqMovePos_FLAG_BIT_OFFSET); \
     }
 
 
  
-/* static access macros for signal LI0_Motor1ErrorValue */
+/* static access macros for signal LI0_BDC_1_RespPos */
  
-#define l_u8_rd_LI0_Motor1ErrorValue() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor1ErrorValue_BYTE_OFFSET]) >> 0U) & 0xffU))
+#define l_u8_rd_LI0_BDC_1_RespPos() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_1_RespPos_BYTE_OFFSET]) >> 0U) & 0xffU))
 
 
-#define l_u8_wr_LI0_Motor1ErrorValue(A) \
+#define l_u8_wr_LI0_BDC_1_RespPos(A) \
     { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor1ErrorValue_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor1ErrorValue_BYTE_OFFSET] & 0x00U) | \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_1_RespPos_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_1_RespPos_BYTE_OFFSET] & 0x00U) | \
     (((A) << 0U) & 0xffU)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1ErrorValue_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1ErrorValue_FLAG_BIT_OFFSET); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_RespPos_FLAG_BIT_OFFSET); \
     }
 
 
-/* static access macros for signal LI0_Motor1LinError */
+/* static access macros for signal LI0_BDC_1_MotorStatus */
 
  
-#define l_bool_rd_LI0_Motor1LinError() \
-    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_Motor1LinError_BYTE_OFFSET], \
-    LIN_LI0_Motor1LinError_BIT_OFFSET))
+#define l_bool_rd_LI0_BDC_1_MotorStatus() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_MotorStatus_BIT_OFFSET))
 
-#define l_bool_wr_LI0_Motor1LinError(A) \
+#define l_bool_wr_LI0_BDC_1_MotorStatus(A) \
     {(A) ? \
-    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_Motor1LinError_BYTE_OFFSET], \
-    LIN_LI0_Motor1LinError_BIT_OFFSET)):\
-    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_Motor1LinError_BYTE_OFFSET], \
-    LIN_LI0_Motor1LinError_BIT_OFFSET));\
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1LinError_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1LinError_FLAG_BIT_OFFSET);}
- 
-/* static access macros for signal LI0_Motor1Selection */
- 
-#define l_u8_rd_LI0_Motor1Selection() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor1Selection_BYTE_OFFSET]) >> 0U) & 0x03U))
-
-
-#define l_u8_wr_LI0_Motor1Selection(A) \
-    { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor1Selection_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor1Selection_BYTE_OFFSET] & 0xfcU) | \
-    (((A) << 0U) & 0x03U)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Selection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Selection_FLAG_BIT_OFFSET); \
-    }
-
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_MotorStatus_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_MotorStatus_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_MotorStatus_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_BDC_1_TempWarn */
 
  
-/* static access macros for signal LI0_Motor1Temp */
- 
-#define l_u8_rd_LI0_Motor1Temp() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor1Temp_BYTE_OFFSET]) >> 0U) & 0xffU))
+#define l_bool_rd_LI0_BDC_1_TempWarn() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_TempWarn_BIT_OFFSET))
 
-
-#define l_u8_wr_LI0_Motor1Temp(A) \
-    { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor1Temp_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor1Temp_BYTE_OFFSET] & 0x00U) | \
-    (((A) << 0U) & 0xffU)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Temp_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Temp_FLAG_BIT_OFFSET); \
-    }
-
-
- 
-/* static access macros for signal LI0_Motor2ErrorCode */
- 
-#define l_u8_rd_LI0_Motor2ErrorCode() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor2ErrorCode_BYTE_OFFSET]) >> 0U) & 0xffU))
-
-
-#define l_u8_wr_LI0_Motor2ErrorCode(A) \
-    { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor2ErrorCode_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor2ErrorCode_BYTE_OFFSET] & 0x00U) | \
-    (((A) << 0U) & 0xffU)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2ErrorCode_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2ErrorCode_FLAG_BIT_OFFSET); \
-    }
-
-
- 
-/* static access macros for signal LI0_Motor2ErrorValue */
- 
-#define l_u8_rd_LI0_Motor2ErrorValue() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor2ErrorValue_BYTE_OFFSET]) >> 0U) & 0xffU))
-
-
-#define l_u8_wr_LI0_Motor2ErrorValue(A) \
-    { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor2ErrorValue_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor2ErrorValue_BYTE_OFFSET] & 0x00U) | \
-    (((A) << 0U) & 0xffU)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2ErrorValue_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2ErrorValue_FLAG_BIT_OFFSET); \
-    }
-
-
-/* static access macros for signal LI0_Motor2LinError */
-
- 
-#define l_bool_rd_LI0_Motor2LinError() \
-    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_Motor2LinError_BYTE_OFFSET], \
-    LIN_LI0_Motor2LinError_BIT_OFFSET))
-
-#define l_bool_wr_LI0_Motor2LinError(A) \
+#define l_bool_wr_LI0_BDC_1_TempWarn(A) \
     {(A) ? \
-    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_Motor2LinError_BYTE_OFFSET], \
-    LIN_LI0_Motor2LinError_BIT_OFFSET)):\
-    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_Motor2LinError_BYTE_OFFSET], \
-    LIN_LI0_Motor2LinError_BIT_OFFSET));\
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2LinError_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2LinError_FLAG_BIT_OFFSET);}
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_TempWarn_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_TempWarn_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_TempWarn_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_BDC_1_MoveEnable */
+
  
-/* static access macros for signal LI0_Motor2Selection */
+#define l_bool_rd_LI0_BDC_1_MoveEnable() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_MoveEnable_BIT_OFFSET))
+
+#define l_bool_wr_LI0_BDC_1_MoveEnable(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_MoveEnable_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_MoveEnable_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_MoveEnable_FLAG_BIT_OFFSET);}
  
-#define l_u8_rd_LI0_Motor2Selection() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor2Selection_BYTE_OFFSET]) >> 0U) & 0x03U))
+/* static access macros for signal LI0_BDC_1_voltageErr */
+ 
+#define l_u8_rd_LI0_BDC_1_voltageErr() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_1_voltageErr_BYTE_OFFSET]) >> 4U) & 0x03U))
 
 
-#define l_u8_wr_LI0_Motor2Selection(A) \
+#define l_u8_wr_LI0_BDC_1_voltageErr(A) \
     { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor2Selection_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor2Selection_BYTE_OFFSET] & 0xfcU) | \
-    (((A) << 0U) & 0x03U)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Selection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Selection_FLAG_BIT_OFFSET); \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_1_voltageErr_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_1_voltageErr_BYTE_OFFSET] & 0xcfU) | \
+    (((A) << 4U) & 0x30U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_voltageErr_FLAG_BIT_OFFSET); \
     }
 
 
  
-/* static access macros for signal LI0_Motor2Temp */
+/* static access macros for signal LI0_BDC_1_Fault_Signal */
  
-#define l_u8_rd_LI0_Motor2Temp() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_Motor2Temp_BYTE_OFFSET]) >> 0U) & 0xffU))
+#define l_u8_rd_LI0_BDC_1_Fault_Signal() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_1_Fault_Signal_BYTE_OFFSET]) >> 2U) & 0x0fU))
 
 
-#define l_u8_wr_LI0_Motor2Temp(A) \
+#define l_u8_wr_LI0_BDC_1_Fault_Signal(A) \
     { \
-    g_lin_frame_data_buffer[LIN_LI0_Motor2Temp_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_Motor2Temp_BYTE_OFFSET] & 0x00U) | \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_1_Fault_Signal_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_1_Fault_Signal_BYTE_OFFSET] & 0xc3U) | \
+    (((A) << 2U) & 0x3cU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_Fault_Signal_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_BDC_1_Rsp_Comm_Err */
+
+ 
+#define l_bool_rd_LI0_BDC_1_Rsp_Comm_Err() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_Rsp_Comm_Err_BIT_OFFSET))
+
+#define l_bool_wr_LI0_BDC_1_Rsp_Comm_Err(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_Rsp_Comm_Err_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_1_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_BDC_1_Rsp_Comm_Err_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_BDC_2_ReqMovePos */
+ 
+#define l_u8_rd_LI0_BDC_2_ReqMovePos() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_2_ReqMovePos_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_BDC_2_ReqMovePos(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_2_ReqMovePos_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_2_ReqMovePos_BYTE_OFFSET] & 0x00U) | \
     (((A) << 0U) & 0xffU)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Temp_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Temp_FLAG_BIT_OFFSET); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_ReqMovePos_FLAG_BIT_OFFSET); \
     }
 
 
  
-/* static access macros for signal LI0_MotorDirection */
+/* static access macros for signal LI0_BDC_2_RespPos */
  
-#define l_u8_rd_LI0_MotorDirection() \
-    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_MotorDirection_BYTE_OFFSET]) >> 0U) & 0x03U))
+#define l_u8_rd_LI0_BDC_2_RespPos() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_2_RespPos_BYTE_OFFSET]) >> 0U) & 0xffU))
 
 
-#define l_u8_wr_LI0_MotorDirection(A) \
+#define l_u8_wr_LI0_BDC_2_RespPos(A) \
     { \
-    g_lin_frame_data_buffer[LIN_LI0_MotorDirection_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_MotorDirection_BYTE_OFFSET] & 0xfcU) | \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_2_RespPos_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_2_RespPos_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_RespPos_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_BDC_2_MotorStatus */
+
+ 
+#define l_bool_rd_LI0_BDC_2_MotorStatus() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_MotorStatus_BIT_OFFSET))
+
+#define l_bool_wr_LI0_BDC_2_MotorStatus(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_MotorStatus_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_MotorStatus_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_MotorStatus_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_BDC_2_TempWarn */
+
+ 
+#define l_bool_rd_LI0_BDC_2_TempWarn() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_TempWarn_BIT_OFFSET))
+
+#define l_bool_wr_LI0_BDC_2_TempWarn(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_TempWarn_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_TempWarn_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_TempWarn_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_BDC_2_MoveEnable */
+
+ 
+#define l_bool_rd_LI0_BDC_2_MoveEnable() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_MoveEnable_BIT_OFFSET))
+
+#define l_bool_wr_LI0_BDC_2_MoveEnable(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_MoveEnable_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_MoveEnable_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_MoveEnable_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_BDC_2_voltageErr */
+ 
+#define l_u8_rd_LI0_BDC_2_voltageErr() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_2_voltageErr_BYTE_OFFSET]) >> 4U) & 0x03U))
+
+
+#define l_u8_wr_LI0_BDC_2_voltageErr(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_2_voltageErr_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_2_voltageErr_BYTE_OFFSET] & 0xcfU) | \
+    (((A) << 4U) & 0x30U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_voltageErr_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_BDC_2_Fault_Signal */
+ 
+#define l_u8_rd_LI0_BDC_2_Fault_Signal() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_BDC_2_Fault_Signal_BYTE_OFFSET]) >> 2U) & 0x0fU))
+
+
+#define l_u8_wr_LI0_BDC_2_Fault_Signal(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_BDC_2_Fault_Signal_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_BDC_2_Fault_Signal_BYTE_OFFSET] & 0xc3U) | \
+    (((A) << 2U) & 0x3cU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_Fault_Signal_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_BDC_2_Rsp_Comm_Err */
+
+ 
+#define l_bool_rd_LI0_BDC_2_Rsp_Comm_Err() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_Rsp_Comm_Err_BIT_OFFSET))
+
+#define l_bool_wr_LI0_BDC_2_Rsp_Comm_Err(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_Rsp_Comm_Err_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_BDC_2_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_BDC_2_Rsp_Comm_Err_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_CCV4_ReqMovePos */
+
+ 
+#define l_bool_rd_LI0_CCV4_ReqMovePos() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_ReqMovePos_BYTE_OFFSET], \
+    LIN_LI0_CCV4_ReqMovePos_BIT_OFFSET))
+
+#define l_bool_wr_LI0_CCV4_ReqMovePos(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_ReqMovePos_BYTE_OFFSET], \
+    LIN_LI0_CCV4_ReqMovePos_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_ReqMovePos_BYTE_OFFSET], \
+    LIN_LI0_CCV4_ReqMovePos_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_ReqMovePos_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_CCV4_RespPos */
+ 
+#define l_u8_rd_LI0_CCV4_RespPos() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_CCV4_RespPos_BYTE_OFFSET]) >> 6U) & 0x03U))
+
+
+#define l_u8_wr_LI0_CCV4_RespPos(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_CCV4_RespPos_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_CCV4_RespPos_BYTE_OFFSET] & 0x3fU) | \
+    (((A) << 6U) & 0xc0U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_RespPos_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_CCV4_MotorStatus */
+
+ 
+#define l_bool_rd_LI0_CCV4_MotorStatus() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_CCV4_MotorStatus_BIT_OFFSET))
+
+#define l_bool_wr_LI0_CCV4_MotorStatus(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_CCV4_MotorStatus_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_MotorStatus_BYTE_OFFSET], \
+    LIN_LI0_CCV4_MotorStatus_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_MotorStatus_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_CCV4_TempWarn */
+
+ 
+#define l_bool_rd_LI0_CCV4_TempWarn() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_CCV4_TempWarn_BIT_OFFSET))
+
+#define l_bool_wr_LI0_CCV4_TempWarn(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_CCV4_TempWarn_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_TempWarn_BYTE_OFFSET], \
+    LIN_LI0_CCV4_TempWarn_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_TempWarn_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_CCV4_MoveEnable */
+
+ 
+#define l_bool_rd_LI0_CCV4_MoveEnable() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_CCV4_MoveEnable_BIT_OFFSET))
+
+#define l_bool_wr_LI0_CCV4_MoveEnable(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_CCV4_MoveEnable_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_MoveEnable_BYTE_OFFSET], \
+    LIN_LI0_CCV4_MoveEnable_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_MoveEnable_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_CCV4_voltageErr */
+ 
+#define l_u8_rd_LI0_CCV4_voltageErr() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_CCV4_voltageErr_BYTE_OFFSET]) >> 4U) & 0x03U))
+
+
+#define l_u8_wr_LI0_CCV4_voltageErr(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_CCV4_voltageErr_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_CCV4_voltageErr_BYTE_OFFSET] & 0xcfU) | \
+    (((A) << 4U) & 0x30U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_voltageErr_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_CCV4_Fault_Signal */
+ 
+#define l_u8_rd_LI0_CCV4_Fault_Signal() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_CCV4_Fault_Signal_BYTE_OFFSET]) >> 2U) & 0x0fU))
+
+
+#define l_u8_wr_LI0_CCV4_Fault_Signal(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_CCV4_Fault_Signal_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_CCV4_Fault_Signal_BYTE_OFFSET] & 0xc3U) | \
+    (((A) << 2U) & 0x3cU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_Fault_Signal_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_CCV4_Rsp_Comm_Err */
+
+ 
+#define l_bool_rd_LI0_CCV4_Rsp_Comm_Err() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_CCV4_Rsp_Comm_Err_BIT_OFFSET))
+
+#define l_bool_wr_LI0_CCV4_Rsp_Comm_Err(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_CCV4_Rsp_Comm_Err_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_CCV4_Rsp_Comm_Err_BYTE_OFFSET], \
+    LIN_LI0_CCV4_Rsp_Comm_Err_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_PositionRequest_EXV2 */
+ 
+#define l_u16_rd_LI0_PositionRequest_EXV2() \
+    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET + 1U] << 8U)) >> 0U) & 0xffffU))
+
+
+#define l_u16_wr_LI0_PositionRequest_EXV2(A) \
+    { \
+    g_buffer_backup_data[0U] =  g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET]; \
+    g_lin_frame_updating_flag_tbl[LI0_ATC_4] |= (1U << 0); \
+    g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    g_buffer_backup_data[0U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET + 1U]; \
+    g_lin_frame_updating_flag_tbl[LI0_ATC_4] |= (1U << (0 + 1U)); \
+    g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET + 1U] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_PositionRequest_EXV2_BYTE_OFFSET + 1U] & 0x00U) | \
+    (((A) >> 8U) & 0xffU)); \
+    g_lin_frame_updating_flag_tbl[LI0_ATC_4] &= (~(0x03 << 0)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_PositionRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_PositionRequest_EXV2_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_EnableRequest_EXV2 */
+
+ 
+#define l_bool_rd_LI0_EnableRequest_EXV2() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_EnableRequest_EXV2_BYTE_OFFSET], \
+    LIN_LI0_EnableRequest_EXV2_BIT_OFFSET))
+
+#define l_bool_wr_LI0_EnableRequest_EXV2(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_EnableRequest_EXV2_BYTE_OFFSET], \
+    LIN_LI0_EnableRequest_EXV2_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_EnableRequest_EXV2_BYTE_OFFSET], \
+    LIN_LI0_EnableRequest_EXV2_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EnableRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EnableRequest_EXV2_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_InitRequest_EXV2 */
+ 
+#define l_u8_rd_LI0_InitRequest_EXV2() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_InitRequest_EXV2_BYTE_OFFSET]) >> 0U) & 0x07U))
+
+
+#define l_u8_wr_LI0_InitRequest_EXV2(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_InitRequest_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_InitRequest_EXV2_BYTE_OFFSET] & 0xf8U) | \
+    (((A) << 0U) & 0x07U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_InitRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_InitRequest_EXV2_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_ResponseError_EXV2 */
+
+ 
+#define l_bool_rd_LI0_ResponseError_EXV2() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_ResponseError_EXV2_BYTE_OFFSET], \
+    LIN_LI0_ResponseError_EXV2_BIT_OFFSET))
+
+#define l_bool_wr_LI0_ResponseError_EXV2(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_ResponseError_EXV2_BYTE_OFFSET], \
+    LIN_LI0_ResponseError_EXV2_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_ResponseError_EXV2_BYTE_OFFSET], \
+    LIN_LI0_ResponseError_EXV2_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ResponseError_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ResponseError_EXV2_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_CurrentInitState_EXV2 */
+ 
+#define l_u8_rd_LI0_CurrentInitState_EXV2() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_CurrentInitState_EXV2_BYTE_OFFSET]) >> 1U) & 0x03U))
+
+
+#define l_u8_wr_LI0_CurrentInitState_EXV2(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_CurrentInitState_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_CurrentInitState_EXV2_BYTE_OFFSET] & 0xf9U) | \
+    (((A) << 1U) & 0x06U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CurrentInitState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CurrentInitState_EXV2_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_RunState_EXV2 */
+
+ 
+#define l_bool_rd_LI0_RunState_EXV2() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_RunState_EXV2_BYTE_OFFSET], \
+    LIN_LI0_RunState_EXV2_BIT_OFFSET))
+
+#define l_bool_wr_LI0_RunState_EXV2(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_RunState_EXV2_BYTE_OFFSET], \
+    LIN_LI0_RunState_EXV2_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_RunState_EXV2_BYTE_OFFSET], \
+    LIN_LI0_RunState_EXV2_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_RunState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_RunState_EXV2_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_FaultState_EXV2 */
+ 
+#define l_u8_rd_LI0_FaultState_EXV2() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_FaultState_EXV2_BYTE_OFFSET]) >> 4U) & 0x0fU))
+
+
+#define l_u8_wr_LI0_FaultState_EXV2(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_FaultState_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_FaultState_EXV2_BYTE_OFFSET] & 0x0fU) | \
+    (((A) << 4U) & 0xf0U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_FaultState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_FaultState_EXV2_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_VoltageState_EXV2 */
+ 
+#define l_u8_rd_LI0_VoltageState_EXV2() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_VoltageState_EXV2_BYTE_OFFSET]) >> 0U) & 0x03U))
+
+
+#define l_u8_wr_LI0_VoltageState_EXV2(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_VoltageState_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_VoltageState_EXV2_BYTE_OFFSET] & 0xfcU) | \
     (((A) << 0U) & 0x03U)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_MotorDirection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_MotorDirection_FLAG_BIT_OFFSET); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_VoltageState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_VoltageState_EXV2_FLAG_BIT_OFFSET); \
     }
 
 
  
-/* static access macros for signal LI0_MotorSpeed */
+/* static access macros for signal LI0_TemperatureWarn_EXV2 */
  
-#define l_u16_rd_LI0_MotorSpeed() \
-    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET + 1U] << 8U)) >> 2U) & 0x3ffU))
+#define l_u8_rd_LI0_TemperatureWarn_EXV2() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_TemperatureWarn_EXV2_BYTE_OFFSET]) >> 2U) & 0x03U))
 
 
-#define l_u16_wr_LI0_MotorSpeed(A) \
+#define l_u8_wr_LI0_TemperatureWarn_EXV2(A) \
     { \
-    g_buffer_backup_data[0U] =  g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET]; \
-    g_lin_frame_updating_flag_tbl[LI0_MotorsControl] |= (1U << 0); \
-    g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET] & 0x03U) | \
-    (((A) << 2U) & 0xfcU)); \
-    g_buffer_backup_data[0U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET + 1U]; \
-    g_lin_frame_updating_flag_tbl[LI0_MotorsControl] |= (1U << (0 + 1U)); \
-    g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET + 1U] = \
-    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_MotorSpeed_BYTE_OFFSET + 1U] & 0xf0U) | \
-    (((A) >> 6U) & 0x0fU)); \
-    g_lin_frame_updating_flag_tbl[LI0_MotorsControl] &= (~(0x03 << 0)); \
-    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_MotorSpeed_FLAG_BYTE_OFFSET],\
-         LIN_LI0_MotorSpeed_FLAG_BIT_OFFSET); \
+    g_lin_frame_data_buffer[LIN_LI0_TemperatureWarn_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TemperatureWarn_EXV2_BYTE_OFFSET] & 0xf3U) | \
+    (((A) << 2U) & 0x0cU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TemperatureWarn_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TemperatureWarn_EXV2_FLAG_BIT_OFFSET); \
     }
 
 
-/* static access macros for signal LI0_Motor1Position */
  
-#define l_bytes_rd_LI0_Motor1Position(start, count, data) \
-    {l_u8       i; \
-     for (i = 0; i < (count); ++i)  (data)[i] = g_lin_frame_data_buffer[LIN_LI0_Motor1Position_BYTE_OFFSET + i + (start)];}
-
-#define l_bytes_wr_LI0_Motor1Position(start, count, data) \
-    {l_u8       i; \
-     for (i = 0; i < (count); ++i) \
-     { \
-        g_buffer_backup_data[i + (start) + 1] =  g_lin_frame_data_buffer[LIN_LI0_Motor1Position_BYTE_OFFSET + i + (start)]; \
-        g_lin_frame_updating_flag_tbl[LI0_Motor1State_Cycl] |= (1 << (i + (start) + 1)); \
-        g_lin_frame_data_buffer[LIN_LI0_Motor1Position_BYTE_OFFSET + i + (start)]  = (data)[i]; \
-     } \
-     g_lin_frame_updating_flag_tbl[LI0_Motor1State_Cycl] &= (~(((1 << count) -1) << (start + 1))); \
-     LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Position_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Position_FLAG_BIT_OFFSET);}
-/* static access macros for signal LI0_Motor2Position */
+/* static access macros for signal LI0_CurrentPosition_EXV2 */
  
-#define l_bytes_rd_LI0_Motor2Position(start, count, data) \
-    {l_u8       i; \
-     for (i = 0; i < (count); ++i)  (data)[i] = g_lin_frame_data_buffer[LIN_LI0_Motor2Position_BYTE_OFFSET + i + (start)];}
+#define l_u16_rd_LI0_CurrentPosition_EXV2() \
+    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET + 1U] << 8U)) >> 0U) & 0xffffU))
 
-#define l_bytes_wr_LI0_Motor2Position(start, count, data) \
-    {l_u8       i; \
-     for (i = 0; i < (count); ++i) \
-     { \
-        g_buffer_backup_data[i + (start) + 1] =  g_lin_frame_data_buffer[LIN_LI0_Motor2Position_BYTE_OFFSET + i + (start)]; \
-        g_lin_frame_updating_flag_tbl[LI0_Motor2State_Cycl] |= (1 << (i + (start) + 1)); \
-        g_lin_frame_data_buffer[LIN_LI0_Motor2Position_BYTE_OFFSET + i + (start)]  = (data)[i]; \
-     } \
-     g_lin_frame_updating_flag_tbl[LI0_Motor2State_Cycl] &= (~(((1 << count) -1) << (start + 1))); \
-     LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Position_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Position_FLAG_BIT_OFFSET);}
+
+#define l_u16_wr_LI0_CurrentPosition_EXV2(A) \
+    { \
+    g_buffer_backup_data[2U] =  g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET]; \
+    g_lin_frame_updating_flag_tbl[LI0_EXV_2] |= (1U << 2); \
+    g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    g_buffer_backup_data[2U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET + 1U]; \
+    g_lin_frame_updating_flag_tbl[LI0_EXV_2] |= (1U << (2 + 1U)); \
+    g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET + 1U] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_CurrentPosition_EXV2_BYTE_OFFSET + 1U] & 0x00U) | \
+    (((A) >> 8U) & 0xffU)); \
+    g_lin_frame_updating_flag_tbl[LI0_EXV_2] &= (~(0x03 << 2)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CurrentPosition_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CurrentPosition_EXV2_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_TMM_EXV_PositionRequest */
+ 
+#define l_u16_rd_LI0_TMM_EXV_PositionRequest() \
+    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET + 1U] << 8U)) >> 0U) & 0xffffU))
+
+
+#define l_u16_wr_LI0_TMM_EXV_PositionRequest(A) \
+    { \
+    g_buffer_backup_data[0U] =  g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET]; \
+    g_lin_frame_updating_flag_tbl[LI0_VCU_EXV] |= (1U << 0); \
+    g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    g_buffer_backup_data[0U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET + 1U]; \
+    g_lin_frame_updating_flag_tbl[LI0_VCU_EXV] |= (1U << (0 + 1U)); \
+    g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET + 1U] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_PositionRequest_BYTE_OFFSET + 1U] & 0x00U) | \
+    (((A) >> 8U) & 0xffU)); \
+    g_lin_frame_updating_flag_tbl[LI0_VCU_EXV] &= (~(0x03 << 0)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_PositionRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_PositionRequest_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_TMM_EXV_EnableRequest */
+
+ 
+#define l_bool_rd_LI0_TMM_EXV_EnableRequest() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_EnableRequest_BYTE_OFFSET], \
+    LIN_LI0_TMM_EXV_EnableRequest_BIT_OFFSET))
+
+#define l_bool_wr_LI0_TMM_EXV_EnableRequest(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_EnableRequest_BYTE_OFFSET], \
+    LIN_LI0_TMM_EXV_EnableRequest_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_EnableRequest_BYTE_OFFSET], \
+    LIN_LI0_TMM_EXV_EnableRequest_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_EnableRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_EnableRequest_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_TMM_EXV_initRequest */
+ 
+#define l_u8_rd_LI0_TMM_EXV_initRequest() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_initRequest_BYTE_OFFSET]) >> 0U) & 0x07U))
+
+
+#define l_u8_wr_LI0_TMM_EXV_initRequest(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_initRequest_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV_initRequest_BYTE_OFFSET] & 0xf8U) | \
+    (((A) << 0U) & 0x07U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_initRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_initRequest_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_EXV_ResponseError */
+
+ 
+#define l_bool_rd_LI0_EXV_ResponseError() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV_ResponseError_BYTE_OFFSET], \
+    LIN_LI0_EXV_ResponseError_BIT_OFFSET))
+
+#define l_bool_wr_LI0_EXV_ResponseError(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV_ResponseError_BYTE_OFFSET], \
+    LIN_LI0_EXV_ResponseError_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV_ResponseError_BYTE_OFFSET], \
+    LIN_LI0_EXV_ResponseError_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_ResponseError_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_ResponseError_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_EXV_CurrentInitState */
+ 
+#define l_u8_rd_LI0_EXV_CurrentInitState() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentInitState_BYTE_OFFSET]) >> 1U) & 0x03U))
+
+
+#define l_u8_wr_LI0_EXV_CurrentInitState(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentInitState_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentInitState_BYTE_OFFSET] & 0xf9U) | \
+    (((A) << 1U) & 0x06U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentInitState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_CurrentInitState_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_EXV_RunState */
+
+ 
+#define l_bool_rd_LI0_EXV_RunState() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV_RunState_BYTE_OFFSET], \
+    LIN_LI0_EXV_RunState_BIT_OFFSET))
+
+#define l_bool_wr_LI0_EXV_RunState(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV_RunState_BYTE_OFFSET], \
+    LIN_LI0_EXV_RunState_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV_RunState_BYTE_OFFSET], \
+    LIN_LI0_EXV_RunState_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_RunState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_RunState_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_EXV_FaultState */
+ 
+#define l_u8_rd_LI0_EXV_FaultState() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV_FaultState_BYTE_OFFSET]) >> 4U) & 0x0fU))
+
+
+#define l_u8_wr_LI0_EXV_FaultState(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV_FaultState_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV_FaultState_BYTE_OFFSET] & 0x0fU) | \
+    (((A) << 4U) & 0xf0U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_FaultState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_FaultState_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_EXV_VoltageState */
+ 
+#define l_u8_rd_LI0_EXV_VoltageState() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV_VoltageState_BYTE_OFFSET]) >> 0U) & 0x03U))
+
+
+#define l_u8_wr_LI0_EXV_VoltageState(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV_VoltageState_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV_VoltageState_BYTE_OFFSET] & 0xfcU) | \
+    (((A) << 0U) & 0x03U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_VoltageState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_VoltageState_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_EXV_TemperatureWarn */
+ 
+#define l_u8_rd_LI0_EXV_TemperatureWarn() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV_TemperatureWarn_BYTE_OFFSET]) >> 2U) & 0x03U))
+
+
+#define l_u8_wr_LI0_EXV_TemperatureWarn(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV_TemperatureWarn_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV_TemperatureWarn_BYTE_OFFSET] & 0xf3U) | \
+    (((A) << 2U) & 0x0cU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_TemperatureWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_TemperatureWarn_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_EXV_CurrentPosition */
+ 
+#define l_u16_rd_LI0_EXV_CurrentPosition() \
+    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET + 1U] << 8U)) >> 0U) & 0xffffU))
+
+
+#define l_u16_wr_LI0_EXV_CurrentPosition(A) \
+    { \
+    g_buffer_backup_data[2U] =  g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET]; \
+    g_lin_frame_updating_flag_tbl[LI0_EXV_VCU] |= (1U << 2); \
+    g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    g_buffer_backup_data[2U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET + 1U]; \
+    g_lin_frame_updating_flag_tbl[LI0_EXV_VCU] |= (1U << (2 + 1U)); \
+    g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET + 1U] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV_CurrentPosition_BYTE_OFFSET + 1U] & 0x00U) | \
+    (((A) >> 8U) & 0xffU)); \
+    g_lin_frame_updating_flag_tbl[LI0_EXV_VCU] &= (~(0x03 << 2)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_ECM_TargetPosReqIgOn_A */
+ 
+#define l_u8_rd_LI0_ECM_TargetPosReqIgOn_A() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOn_A_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_ECM_TargetPosReqIgOn_A(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOn_A_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOn_A_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_ECM_CalibReq_A */
+
+ 
+#define l_bool_rd_LI0_ECM_CalibReq_A() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_CalibReq_A_BYTE_OFFSET], \
+    LIN_LI0_ECM_CalibReq_A_BIT_OFFSET))
+
+#define l_bool_wr_LI0_ECM_CalibReq_A(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_CalibReq_A_BYTE_OFFSET], \
+    LIN_LI0_ECM_CalibReq_A_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_CalibReq_A_BYTE_OFFSET], \
+    LIN_LI0_ECM_CalibReq_A_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_CalibReq_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_CalibReq_A_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_ECM_IgStatusReq_A */
+
+ 
+#define l_bool_rd_LI0_ECM_IgStatusReq_A() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_IgStatusReq_A_BYTE_OFFSET], \
+    LIN_LI0_ECM_IgStatusReq_A_BIT_OFFSET))
+
+#define l_bool_wr_LI0_ECM_IgStatusReq_A(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_IgStatusReq_A_BYTE_OFFSET], \
+    LIN_LI0_ECM_IgStatusReq_A_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_IgStatusReq_A_BYTE_OFFSET], \
+    LIN_LI0_ECM_IgStatusReq_A_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_IgStatusReq_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_IgStatusReq_A_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_ECM_TargetPosReqIgOff_A */
+ 
+#define l_u8_rd_LI0_ECM_TargetPosReqIgOff_A() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOff_A_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_ECM_TargetPosReqIgOff_A(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOff_A_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOff_A_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_AGM_A_ActualPosition */
+ 
+#define l_u8_rd_LI0_AGM_A_ActualPosition() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_AGM_A_ActualPosition_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_AGM_A_ActualPosition(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_AGM_A_ActualPosition_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_AGM_A_ActualPosition_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_ActualPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_ActualPosition_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_AGM_A_Err_MechBreak */
+
+ 
+#define l_bool_rd_LI0_AGM_A_Err_MechBreak() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_MechBreak_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_MechBreak_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_Err_MechBreak(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_MechBreak_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_MechBreak_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_MechBreak_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_MechBreak_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_MechBreak_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_MechBreak_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_Err_MechBlock */
+
+ 
+#define l_bool_rd_LI0_AGM_A_Err_MechBlock() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_MechBlock_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_MechBlock_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_Err_MechBlock(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_MechBlock_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_MechBlock_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_MechBlock_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_MechBlock_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_MechBlock_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_MechBlock_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_CalibActive */
+
+ 
+#define l_bool_rd_LI0_AGM_A_CalibActive() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_CalibActive_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_CalibActive_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_CalibActive(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_CalibActive_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_CalibActive_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_CalibActive_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_CalibActive_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_CalibActive_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_CalibActive_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_CalibRequired */
+
+ 
+#define l_bool_rd_LI0_AGM_A_CalibRequired() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_CalibRequired_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_CalibRequired_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_CalibRequired(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_CalibRequired_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_CalibRequired_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_CalibRequired_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_CalibRequired_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_CalibRequired_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_CalibRequired_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_Err_Electrical */
+
+ 
+#define l_bool_rd_LI0_AGM_A_Err_Electrical() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_Electrical_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_Electrical_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_Err_Electrical(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_Electrical_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_Electrical_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_Electrical_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_Electrical_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_Electrical_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_Electrical_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_Err_OverTemp */
+
+ 
+#define l_bool_rd_LI0_AGM_A_Err_OverTemp() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_OverTemp_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_OverTemp_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_Err_OverTemp(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_OverTemp_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_OverTemp_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_OverTemp_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_OverTemp_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_OverTemp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_OverTemp_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_Err_Voltage */
+
+ 
+#define l_bool_rd_LI0_AGM_A_Err_Voltage() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_Voltage_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_Voltage_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_Err_Voltage(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_Voltage_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_Voltage_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_Voltage_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_Voltage_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_Voltage_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_Voltage_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_A_Err_LINResp */
+
+ 
+#define l_bool_rd_LI0_AGM_A_Err_LINResp() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_LINResp_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_LINResp_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_A_Err_LINResp(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_LINResp_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_LINResp_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_A_Err_LINResp_BYTE_OFFSET], \
+    LIN_LI0_AGM_A_Err_LINResp_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_LINResp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_LINResp_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_ECM_TargetPosReqIgOn_B */
+ 
+#define l_u8_rd_LI0_ECM_TargetPosReqIgOn_B() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOn_B_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_ECM_TargetPosReqIgOn_B(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOn_B_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOn_B_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_ECM_CalibReq_B */
+
+ 
+#define l_bool_rd_LI0_ECM_CalibReq_B() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_CalibReq_B_BYTE_OFFSET], \
+    LIN_LI0_ECM_CalibReq_B_BIT_OFFSET))
+
+#define l_bool_wr_LI0_ECM_CalibReq_B(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_CalibReq_B_BYTE_OFFSET], \
+    LIN_LI0_ECM_CalibReq_B_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_CalibReq_B_BYTE_OFFSET], \
+    LIN_LI0_ECM_CalibReq_B_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_CalibReq_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_CalibReq_B_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_ECM_IgStatusReq_B */
+
+ 
+#define l_bool_rd_LI0_ECM_IgStatusReq_B() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_IgStatusReq_B_BYTE_OFFSET], \
+    LIN_LI0_ECM_IgStatusReq_B_BIT_OFFSET))
+
+#define l_bool_wr_LI0_ECM_IgStatusReq_B(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_IgStatusReq_B_BYTE_OFFSET], \
+    LIN_LI0_ECM_IgStatusReq_B_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_ECM_IgStatusReq_B_BYTE_OFFSET], \
+    LIN_LI0_ECM_IgStatusReq_B_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_IgStatusReq_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_IgStatusReq_B_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_ECM_TargetPosReqIgOff_B */
+ 
+#define l_u8_rd_LI0_ECM_TargetPosReqIgOff_B() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOff_B_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_ECM_TargetPosReqIgOff_B(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOff_B_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_ECM_TargetPosReqIgOff_B_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_AGM_B_ActualPosition */
+ 
+#define l_u8_rd_LI0_AGM_B_ActualPosition() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_AGM_B_ActualPosition_BYTE_OFFSET]) >> 0U) & 0xffU))
+
+
+#define l_u8_wr_LI0_AGM_B_ActualPosition(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_AGM_B_ActualPosition_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_AGM_B_ActualPosition_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_ActualPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_ActualPosition_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_AGM_B_Err_MechBreak */
+
+ 
+#define l_bool_rd_LI0_AGM_B_Err_MechBreak() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_MechBreak_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_MechBreak_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_Err_MechBreak(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_MechBreak_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_MechBreak_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_MechBreak_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_MechBreak_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_MechBreak_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_MechBreak_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_Err_MechBlock */
+
+ 
+#define l_bool_rd_LI0_AGM_B_Err_MechBlock() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_MechBlock_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_MechBlock_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_Err_MechBlock(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_MechBlock_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_MechBlock_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_MechBlock_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_MechBlock_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_MechBlock_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_MechBlock_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_CalibActive */
+
+ 
+#define l_bool_rd_LI0_AGM_B_CalibActive() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_CalibActive_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_CalibActive_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_CalibActive(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_CalibActive_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_CalibActive_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_CalibActive_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_CalibActive_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_CalibActive_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_CalibActive_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_CalibRequired */
+
+ 
+#define l_bool_rd_LI0_AGM_B_CalibRequired() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_CalibRequired_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_CalibRequired_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_CalibRequired(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_CalibRequired_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_CalibRequired_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_CalibRequired_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_CalibRequired_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_CalibRequired_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_CalibRequired_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_Err_Electrical */
+
+ 
+#define l_bool_rd_LI0_AGM_B_Err_Electrical() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_Electrical_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_Electrical_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_Err_Electrical(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_Electrical_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_Electrical_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_Electrical_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_Electrical_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_Electrical_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_Electrical_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_Err_OverTemp */
+
+ 
+#define l_bool_rd_LI0_AGM_B_Err_OverTemp() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_OverTemp_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_OverTemp_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_Err_OverTemp(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_OverTemp_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_OverTemp_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_OverTemp_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_OverTemp_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_OverTemp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_OverTemp_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_Err_Voltage */
+
+ 
+#define l_bool_rd_LI0_AGM_B_Err_Voltage() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_Voltage_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_Voltage_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_Err_Voltage(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_Voltage_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_Voltage_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_Voltage_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_Voltage_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_Voltage_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_Voltage_FLAG_BIT_OFFSET);}
+/* static access macros for signal LI0_AGM_B_Err_LINResp */
+
+ 
+#define l_bool_rd_LI0_AGM_B_Err_LINResp() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_LINResp_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_LINResp_BIT_OFFSET))
+
+#define l_bool_wr_LI0_AGM_B_Err_LINResp(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_LINResp_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_LINResp_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_AGM_B_Err_LINResp_BYTE_OFFSET], \
+    LIN_LI0_AGM_B_Err_LINResp_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_LINResp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_LINResp_FLAG_BIT_OFFSET);}
 
 
 /* Signal flag APIs */
 
-#define l_flg_tst_LI0_Motor1ErrorCode_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1ErrorCode_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1ErrorCode_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor1ErrorCode_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1ErrorCode_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1ErrorCode_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_ReqMovePos_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_ReqMovePos_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_ReqMovePos_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_ReqMovePos_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor1ErrorValue_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1ErrorValue_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1ErrorValue_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor1ErrorValue_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1ErrorValue_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1ErrorValue_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_RespPos_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_RespPos_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_RespPos_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_RespPos_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor1LinError_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1LinError_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1LinError_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor1LinError_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1LinError_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1LinError_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_MotorStatus_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_MotorStatus_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_MotorStatus_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_MotorStatus_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor1Selection_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Selection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Selection_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor1Selection_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Selection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Selection_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_TempWarn_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_TempWarn_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_TempWarn_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_TempWarn_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor1Temp_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Temp_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Temp_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor1Temp_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Temp_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Temp_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_MoveEnable_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_MoveEnable_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_MoveEnable_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_MoveEnable_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor2ErrorCode_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2ErrorCode_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2ErrorCode_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor2ErrorCode_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2ErrorCode_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2ErrorCode_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_voltageErr_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_voltageErr_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_voltageErr_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_voltageErr_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor2ErrorValue_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2ErrorValue_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2ErrorValue_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor2ErrorValue_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2ErrorValue_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2ErrorValue_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_Fault_Signal_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_Fault_Signal_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_Fault_Signal_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_Fault_Signal_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor2LinError_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2LinError_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2LinError_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor2LinError_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2LinError_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2LinError_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_1_Rsp_Comm_Err_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_1_Rsp_Comm_Err_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_1_Rsp_Comm_Err_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor2Selection_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Selection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Selection_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor2Selection_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Selection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Selection_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_2_ReqMovePos_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_ReqMovePos_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_ReqMovePos_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_ReqMovePos_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor2Temp_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Temp_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Temp_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor2Temp_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Temp_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Temp_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_2_RespPos_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_RespPos_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_RespPos_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_RespPos_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_MotorDirection_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_MotorDirection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_MotorDirection_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_MotorDirection_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_MotorDirection_FLAG_BYTE_OFFSET],\
-         LIN_LI0_MotorDirection_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_2_MotorStatus_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_MotorStatus_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_MotorStatus_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_MotorStatus_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_MotorSpeed_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_MotorSpeed_FLAG_BYTE_OFFSET],\
-         LIN_LI0_MotorSpeed_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_MotorSpeed_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_MotorSpeed_FLAG_BYTE_OFFSET],\
-         LIN_LI0_MotorSpeed_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_2_TempWarn_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_TempWarn_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_TempWarn_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_TempWarn_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor1Position_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Position_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Position_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor1Position_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor1Position_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor1Position_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_2_MoveEnable_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_MoveEnable_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_MoveEnable_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_MoveEnable_FLAG_BIT_OFFSET)
 
-#define l_flg_tst_LI0_Motor2Position_flag() \
-         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Position_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Position_FLAG_BIT_OFFSET)
-#define l_flg_clr_LI0_Motor2Position_flag() \
-         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_Motor2Position_FLAG_BYTE_OFFSET],\
-         LIN_LI0_Motor2Position_FLAG_BIT_OFFSET)
+#define l_flg_tst_LI0_BDC_2_voltageErr_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_voltageErr_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_voltageErr_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_voltageErr_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_BDC_2_Fault_Signal_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_Fault_Signal_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_Fault_Signal_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_Fault_Signal_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_BDC_2_Rsp_Comm_Err_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_BDC_2_Rsp_Comm_Err_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_BDC_2_Rsp_Comm_Err_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_ReqMovePos_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_ReqMovePos_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_ReqMovePos_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_ReqMovePos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_ReqMovePos_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_RespPos_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_RespPos_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_RespPos_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_RespPos_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_RespPos_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_MotorStatus_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_MotorStatus_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_MotorStatus_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_MotorStatus_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_MotorStatus_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_TempWarn_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_TempWarn_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_TempWarn_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_TempWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_TempWarn_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_MoveEnable_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_MoveEnable_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_MoveEnable_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_MoveEnable_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_MoveEnable_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_voltageErr_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_voltageErr_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_voltageErr_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_voltageErr_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_voltageErr_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_Fault_Signal_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_Fault_Signal_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_Fault_Signal_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_Fault_Signal_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_Fault_Signal_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CCV4_Rsp_Comm_Err_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CCV4_Rsp_Comm_Err_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CCV4_Rsp_Comm_Err_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_PositionRequest_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_PositionRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_PositionRequest_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_PositionRequest_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_PositionRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_PositionRequest_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EnableRequest_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EnableRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EnableRequest_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EnableRequest_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EnableRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EnableRequest_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_InitRequest_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_InitRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_InitRequest_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_InitRequest_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_InitRequest_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_InitRequest_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ResponseError_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ResponseError_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ResponseError_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ResponseError_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ResponseError_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ResponseError_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CurrentInitState_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CurrentInitState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CurrentInitState_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CurrentInitState_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CurrentInitState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CurrentInitState_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_RunState_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_RunState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_RunState_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_RunState_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_RunState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_RunState_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_FaultState_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_FaultState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_FaultState_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_FaultState_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_FaultState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_FaultState_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_VoltageState_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_VoltageState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_VoltageState_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_VoltageState_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_VoltageState_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_VoltageState_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_TemperatureWarn_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TemperatureWarn_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TemperatureWarn_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TemperatureWarn_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TemperatureWarn_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TemperatureWarn_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_CurrentPosition_EXV2_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_CurrentPosition_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CurrentPosition_EXV2_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_CurrentPosition_EXV2_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_CurrentPosition_EXV2_FLAG_BYTE_OFFSET],\
+         LIN_LI0_CurrentPosition_EXV2_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_TMM_EXV_PositionRequest_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_PositionRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_PositionRequest_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TMM_EXV_PositionRequest_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_PositionRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_PositionRequest_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_TMM_EXV_EnableRequest_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_EnableRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_EnableRequest_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TMM_EXV_EnableRequest_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_EnableRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_EnableRequest_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_TMM_EXV_initRequest_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_initRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_initRequest_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TMM_EXV_initRequest_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_initRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV_initRequest_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_ResponseError_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_ResponseError_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_ResponseError_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_ResponseError_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_ResponseError_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_ResponseError_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_CurrentInitState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentInitState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_CurrentInitState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_CurrentInitState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentInitState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_CurrentInitState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_RunState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_RunState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_RunState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_RunState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_RunState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_RunState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_FaultState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_FaultState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_FaultState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_FaultState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_FaultState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_FaultState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_VoltageState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_VoltageState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_VoltageState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_VoltageState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_VoltageState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_VoltageState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_TemperatureWarn_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_TemperatureWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_TemperatureWarn_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_TemperatureWarn_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_TemperatureWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_TemperatureWarn_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV_CurrentPosition_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV_CurrentPosition_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_TargetPosReqIgOn_A_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_TargetPosReqIgOn_A_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_CalibReq_A_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_CalibReq_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_CalibReq_A_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_CalibReq_A_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_CalibReq_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_CalibReq_A_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_IgStatusReq_A_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_IgStatusReq_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_IgStatusReq_A_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_IgStatusReq_A_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_IgStatusReq_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_IgStatusReq_A_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_TargetPosReqIgOff_A_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_TargetPosReqIgOff_A_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_ActualPosition_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_ActualPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_ActualPosition_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_ActualPosition_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_ActualPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_ActualPosition_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_Err_MechBreak_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_MechBreak_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_MechBreak_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_Err_MechBreak_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_MechBreak_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_MechBreak_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_Err_MechBlock_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_MechBlock_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_MechBlock_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_Err_MechBlock_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_MechBlock_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_MechBlock_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_CalibActive_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_CalibActive_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_CalibActive_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_CalibActive_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_CalibActive_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_CalibActive_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_CalibRequired_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_CalibRequired_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_CalibRequired_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_CalibRequired_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_CalibRequired_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_CalibRequired_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_Err_Electrical_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_Electrical_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_Electrical_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_Err_Electrical_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_Electrical_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_Electrical_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_Err_OverTemp_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_OverTemp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_OverTemp_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_Err_OverTemp_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_OverTemp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_OverTemp_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_Err_Voltage_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_Voltage_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_Voltage_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_Err_Voltage_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_Voltage_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_Voltage_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_A_Err_LINResp_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_LINResp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_LINResp_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_A_Err_LINResp_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_A_Err_LINResp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_A_Err_LINResp_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_TargetPosReqIgOn_B_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_TargetPosReqIgOn_B_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_CalibReq_B_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_CalibReq_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_CalibReq_B_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_CalibReq_B_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_CalibReq_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_CalibReq_B_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_IgStatusReq_B_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_IgStatusReq_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_IgStatusReq_B_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_IgStatusReq_B_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_IgStatusReq_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_IgStatusReq_B_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_ECM_TargetPosReqIgOff_B_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_ECM_TargetPosReqIgOff_B_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BYTE_OFFSET],\
+         LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_ActualPosition_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_ActualPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_ActualPosition_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_ActualPosition_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_ActualPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_ActualPosition_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_Err_MechBreak_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_MechBreak_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_MechBreak_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_Err_MechBreak_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_MechBreak_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_MechBreak_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_Err_MechBlock_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_MechBlock_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_MechBlock_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_Err_MechBlock_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_MechBlock_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_MechBlock_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_CalibActive_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_CalibActive_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_CalibActive_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_CalibActive_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_CalibActive_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_CalibActive_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_CalibRequired_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_CalibRequired_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_CalibRequired_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_CalibRequired_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_CalibRequired_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_CalibRequired_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_Err_Electrical_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_Electrical_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_Electrical_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_Err_Electrical_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_Electrical_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_Electrical_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_Err_OverTemp_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_OverTemp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_OverTemp_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_Err_OverTemp_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_OverTemp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_OverTemp_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_Err_Voltage_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_Voltage_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_Voltage_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_Err_Voltage_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_Voltage_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_Voltage_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_AGM_B_Err_LINResp_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_LINResp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_LINResp_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_AGM_B_Err_LINResp_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_AGM_B_Err_LINResp_FLAG_BYTE_OFFSET],\
+         LIN_LI0_AGM_B_Err_LINResp_FLAG_BIT_OFFSET)
 
 
 
@@ -792,45 +2602,75 @@ typedef enum {
 
    /* Interface_name = LI0 */
 
- #define l_flg_tst_LI0_Motor1Control_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor1Control]
- #define l_flg_clr_LI0_Motor1Control_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor1Control] = 0
+ #define l_flg_tst_LI0_BDC_1_Cmd_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_1_Cmd]
+ #define l_flg_clr_LI0_BDC_1_Cmd_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_1_Cmd] = 0
 
- #define l_flg_tst_LI0_Motor1State_Cycl_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor1State_Cycl]
- #define l_flg_clr_LI0_Motor1State_Cycl_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor1State_Cycl] = 0
+ #define l_flg_tst_LI0_BDC_1_Rsp_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_1_Rsp]
+ #define l_flg_clr_LI0_BDC_1_Rsp_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_1_Rsp] = 0
 
- #define l_flg_tst_LI0_Motor1State_Event_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor1State_Event]
- #define l_flg_clr_LI0_Motor1State_Event_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor1State_Event] = 0
+ #define l_flg_tst_LI0_BDC_2_Cmd_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_2_Cmd]
+ #define l_flg_clr_LI0_BDC_2_Cmd_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_2_Cmd] = 0
 
- #define l_flg_tst_LI0_Motor2Control_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor2Control]
- #define l_flg_clr_LI0_Motor2Control_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor2Control] = 0
+ #define l_flg_tst_LI0_BDC_2_Rsp_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_2_Rsp]
+ #define l_flg_clr_LI0_BDC_2_Rsp_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_BDC_2_Rsp] = 0
 
- #define l_flg_tst_LI0_Motor2State_Cycl_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor2State_Cycl]
- #define l_flg_clr_LI0_Motor2State_Cycl_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor2State_Cycl] = 0
+ #define l_flg_tst_LI0_CCV4_Cmd_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_CCV4_Cmd]
+ #define l_flg_clr_LI0_CCV4_Cmd_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_CCV4_Cmd] = 0
 
- #define l_flg_tst_LI0_Motor2State_Event_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor2State_Event]
- #define l_flg_clr_LI0_Motor2State_Event_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_Motor2State_Event] = 0
+ #define l_flg_tst_LI0_CCV4_Rsq_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_CCV4_Rsq]
+ #define l_flg_clr_LI0_CCV4_Rsq_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_CCV4_Rsq] = 0
 
- #define l_flg_tst_LI0_MotorsControl_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_MotorsControl]
- #define l_flg_clr_LI0_MotorsControl_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_MotorsControl] = 0
+ #define l_flg_tst_LI0_ATC_4_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_ATC_4]
+ #define l_flg_clr_LI0_ATC_4_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_ATC_4] = 0
 
- #define l_flg_tst_LI0_SporadicControlFrame_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_SporadicControlFrame]
- #define l_flg_clr_LI0_SporadicControlFrame_flag() \
-          g_lin_frame_flag_handle_tbl[LI0_SporadicControlFrame] = 0
+ #define l_flg_tst_LI0_EXV_2_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_EXV_2]
+ #define l_flg_clr_LI0_EXV_2_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_EXV_2] = 0
+
+ #define l_flg_tst_LI0_VCU_EXV_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_VCU_EXV]
+ #define l_flg_clr_LI0_VCU_EXV_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_VCU_EXV] = 0
+
+ #define l_flg_tst_LI0_EXV_VCU_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_EXV_VCU]
+ #define l_flg_clr_LI0_EXV_VCU_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_EXV_VCU] = 0
+
+ #define l_flg_tst_LI0_ECM_AGM_A_DEMAND_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_ECM_AGM_A_DEMAND]
+ #define l_flg_clr_LI0_ECM_AGM_A_DEMAND_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_ECM_AGM_A_DEMAND] = 0
+
+ #define l_flg_tst_LI0_AGM_A_ECM_STATUS_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_AGM_A_ECM_STATUS]
+ #define l_flg_clr_LI0_AGM_A_ECM_STATUS_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_AGM_A_ECM_STATUS] = 0
+
+ #define l_flg_tst_LI0_ECM_AGM_B_DEMAND_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_ECM_AGM_B_DEMAND]
+ #define l_flg_clr_LI0_ECM_AGM_B_DEMAND_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_ECM_AGM_B_DEMAND] = 0
+
+ #define l_flg_tst_LI0_AGM_B_ECM_STATUS_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_AGM_B_ECM_STATUS]
+ #define l_flg_clr_LI0_AGM_B_ECM_STATUS_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_AGM_B_ECM_STATUS] = 0
 
  #define l_flg_tst_LI0_MasterReq_flag() \
           g_lin_frame_flag_handle_tbl[LI0_MasterReq]

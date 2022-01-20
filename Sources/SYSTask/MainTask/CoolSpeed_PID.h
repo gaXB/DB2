@@ -20,8 +20,10 @@
 #include "RunPID.h"
 
 extern PIDPARAMETER sCoolSpeedPar;
+extern PIDPARAMETER sBatCoolSpeedPar;
 extern PIDDATA   sCoolSpeedPidData;
 int16 Deal_CoolSpeedPID(void);
 int16 CoolSpeed_Init(void);
-
+int16 PIDCool_Revis(int16 CurrentData);
+void CoolSpeedPIDMode(uint8 bBathMode);
 #endif /* MIXVENT_PID_H_ */

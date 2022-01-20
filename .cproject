@@ -73,14 +73,16 @@
 									<listOptionValue builtIn="false" value="CPU_S32K144HFT0VLLT"/>
 									<listOptionValue builtIn="false" value="_PROJECT_CAN_=1"/>
 									<listOptionValue builtIn="false" value="_PROJECT_AUTO_=1"/>
-									<listOptionValue builtIn="false" value="_OPENSDA_CAN_=1"/>
+									<listOptionValue builtIn="false" value="_OPENSDA_CAN_=0"/>
 									<listOptionValue builtIn="false" value="_PROJECT_LCD_=1"/>
 									<listOptionValue builtIn="false" value="_PROJECT_LDO_MODE=LDO_MODE_BATTIGN"/>
 									<listOptionValue builtIn="false" value="DEBUG_PRINT_=1"/>
 									<listOptionValue builtIn="false" value="NOINIT_TYPE=NOINIT_TYPE_KEA"/>
 									<listOptionValue builtIn="false" value="NOINIT_TYPE_KEA=2"/>
 									<listOptionValue builtIn="false" value="NOINIT_TYPE_RL78=1"/>
+									<listOptionValue builtIn="false" value="PCDEBUG_CONFIG=2"/>
 								</option>
+								<option id="gnu.c.compiler.option.dialect.std.214236172" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2016455271" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.compiler.1341570256" name="Standard S32DS C++ Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.compiler">
@@ -493,6 +495,7 @@
 							<tool id="com.freescale.s32ds.cross.gnu.disassembler.294664124" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler.1895509732"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157.886566814" name="MCU_PORT.h" rcbsApplicability="disable" resourcePath="Sources/HardWareDrive/MCU_PORT.h" toolsToInvoke=""/>
 					<folderInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157.1386118998" name="/" resourcePath="Sources/SystemSave">
 						<toolChain id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.toolchain.debug.155603651" name="ARM Bare-Metal 32-bit Target Binary Toolchain" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.toolchain.debug" unusedChildren="">
 							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.674798972.1773908391.1162525989" name="Print size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.674798972.1773908391"/>
@@ -625,6 +628,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/DebugPrint&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2105873602" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -683,6 +687,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${S32K144_SDK_3.0.0_PATH}/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.194397737" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.1924266188" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
@@ -693,6 +698,73 @@
 							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.626947122" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor.1567228302"/>
 							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.1328046479" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor.1305467636"/>
 							<tool id="com.freescale.s32ds.cross.gnu.disassembler.1748470493" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler.1895509732"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157.488790330" name="/" resourcePath="Sources/GWMMN/Canif">
+						<toolChain id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.toolchain.debug.689360441" name="ARM Bare-Metal 32-bit Target Binary Toolchain" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.toolchain.debug" unusedChildren="">
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.674798972.1773908391.76452101.1173310049" name="Print size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.674798972.1773908391.76452101"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.libraries.78593602.1104766193.522863825.1541891446" name="Libraries support" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.libraries.78593602.1104766193.522863825"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.sysroot.777970492.301960278.567219043.1182199777" name="Sysroot" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.sysroot.777970492.301960278.567219043"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.abi.1246222372.354109149.641790871.1070748420" name="Float ABI" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.abi.1246222372.354109149.641790871"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.unit.966299621.258462735.2085547707.2123229800" name="FPU Type" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.unit.966299621.258462735.2085547707"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.mcpu.1127575376.387490994.508802040.6192474" name="ARM family" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.mcpu.1127575376.387490994.508802040"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.1986628672.1764154637" name="Print size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.1986628672"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.1737874389" name="Standard S32DS C Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.1177175278">
+								<option id="gnu.c.compiler.option.include.paths.1339607850" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_C/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_C/include/arm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_Runtime/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_Runtime/include/arm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Generated_Code&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/drivers/src/clock/S32K1xx&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/rtos/osif/&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices/common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices/S32K144/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices/S32K144/startup&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/drivers/src/flexcan&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/Galib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/BSP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/CAUTO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/Header&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/Module&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/PowerMange&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SYSTask&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SYSTask/MainTask&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SystemData&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SystemSave&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/Common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/Canif&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/InterLayCan&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/UDS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/NM&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/HardWareDrive&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/DebugPrint&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.468149574" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.compiler.1809631362" name="Standard S32DS C++ Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.compiler.1309469116"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.linker.1718123524" name="Standard S32DS C Linker" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.linker.121871080"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.linker.718408372" name="Standard S32DS C++ Linker" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.linker.324901112"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.archiver.1738224265" name="Standard S32DS Archiver" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.archiver.1834992402"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.assembler.480032316" name="Standard S32DS Assembler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.assembler.1941456060">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1916878348" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.2039525983" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.createflash.671853830" name="Standard S32DS Create Flash Image" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.createflash.1357867711"/>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.createlisting.898448017" name="Standard S32DS Create Listing" superClass="com.freescale.s32ds.cross.gnu.tool.createlisting.868459579"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.printsize.530924870" name="Standard S32DS Print Size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.printsize.1772226948"/>
+							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.74710968" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor.626947122"/>
+							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.34413571" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor.1328046479"/>
+							<tool id="com.freescale.s32ds.cross.gnu.disassembler.117396817" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler.1748470493"/>
 						</toolChain>
 					</folderInfo>
 					<folderInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157.1674013144" name="/" resourcePath="Sources/GWMMN/UDS">
@@ -742,6 +814,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/DebugPrint&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.390758429" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -857,6 +930,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/DebugPrint&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1543415402" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -874,6 +948,73 @@
 							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.2032544062" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor.626947122"/>
 							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.1649492753" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor.1328046479"/>
 							<tool id="com.freescale.s32ds.cross.gnu.disassembler.924599462" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler.1748470493"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157.2128688043" name="/" resourcePath="Sources/GWMMN/InterLayCan">
+						<toolChain id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.toolchain.debug.1596398729" name="ARM Bare-Metal 32-bit Target Binary Toolchain" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.toolchain.debug" unusedChildren="">
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.674798972.1773908391.76452101.829813622" name="Print size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.674798972.1773908391.76452101"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.libraries.78593602.1104766193.522863825.1158357941" name="Libraries support" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.libraries.78593602.1104766193.522863825"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.sysroot.777970492.301960278.567219043.100258664" name="Sysroot" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.sysroot.777970492.301960278.567219043"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.abi.1246222372.354109149.641790871.242598972" name="Float ABI" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.abi.1246222372.354109149.641790871"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.unit.966299621.258462735.2085547707.1495530368" name="FPU Type" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.fpu.unit.966299621.258462735.2085547707"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.mcpu.1127575376.387490994.508802040.1263261665" name="ARM family" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.target.mcpu.1127575376.387490994.508802040"/>
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.1986628672.2104980719" name="Print size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.option.addtools.printsize.1986628672"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.1714036578" name="Standard S32DS C Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.1177175278">
+								<option id="gnu.c.compiler.option.include.paths.930423592" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_C/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_C/include/arm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_Runtime/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${S32DS_ARM32_EWL_DIR}/EWL_Runtime/include/arm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Generated_Code&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/drivers/src/clock/S32K1xx&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/rtos/osif/&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices/common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices/S32K144/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/devices/S32K144/startup&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/platform/drivers/src/flexcan&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/Galib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/BSP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/CAUTO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/Header&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/Module&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/PowerMange&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SYSTask&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SYSTask/MainTask&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SystemData&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/SystemSave&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/Common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/Canif&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/UDS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/NM&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/HardWareDrive&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/DebugPrint&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/InterLayCan&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1634799904" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.compiler.801636595" name="Standard S32DS C++ Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.compiler.1309469116"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.linker.575729328" name="Standard S32DS C Linker" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.linker.121871080"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.linker.1757119742" name="Standard S32DS C++ Linker" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.cpp.linker.324901112"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.archiver.1818078076" name="Standard S32DS Archiver" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.archiver.1834992402"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.assembler.1700497776" name="Standard S32DS Assembler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.assembler.1941456060">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2049235693" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.2109907886" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.createflash.396137302" name="Standard S32DS Create Flash Image" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.createflash.1357867711"/>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.createlisting.1908043571" name="Standard S32DS Create Listing" superClass="com.freescale.s32ds.cross.gnu.tool.createlisting.868459579"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.printsize.2008583676" name="Standard S32DS Print Size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.printsize.1772226948"/>
+							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.429855133" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor.626947122"/>
+							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.555305569" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor.1328046479"/>
+							<tool id="com.freescale.s32ds.cross.gnu.disassembler.1826822605" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler.1748470493"/>
 						</toolChain>
 					</folderInfo>
 					<folderInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157.1608087668" name="/" resourcePath="Generated_Code">
@@ -1767,6 +1908,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${S32K144_SDK_3.0.0_PATH}/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1842536206" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -1828,6 +1970,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${S32K144_SDK_3.0.0_PATH}/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1404815074" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.421095179" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
@@ -2866,6 +3009,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${S32K144_SDK_3.0.0_PATH}/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.589193593" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -2927,6 +3071,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/drive&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/SDK/middleware/lin/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${S32K144_SDK_3.0.0_PATH}/platform/drivers/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources/GWMMN/CANDrive&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1709790026" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.495954834" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>

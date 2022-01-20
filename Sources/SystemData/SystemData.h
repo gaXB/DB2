@@ -45,7 +45,10 @@ ACTORDATA sActorData;
 #if _PROJECT_CAN_
 extern PCCONTROLEN_TYPE PCControlEn;
 extern SENSORDATA     sSenSorData_PC;
+extern EVSENSORDATA     sEVSensorData_PC;
 extern OUTDATA sOutData_PC;
+extern EVOUTDATA sEVOutData_PC;
+extern PANLEDATA sPanleData;
 #endif
 
 SYSTEMCONTROL* SystemControlGet(void);

@@ -104,6 +104,7 @@ void IIC_Send_Ack(uint8 data)
 	
 	IICHW_SCLWrite(0);
 	IIC_Bit_Delay();
+	WaitSDA();
 }
 
 /*************************************************************************
@@ -113,6 +114,18 @@ void IIC_Send_Ack(uint8 data)
  *
  *Return:       1发送成功，0发送失败
  *************************************************************************/
+void WaitSDA(void)
+{
+	uint8 i = 0;
+	while(i <100)
+	{
+		i++;
+		if (IICHW_SDARead() == 1)
+		{
+			i =255;
+		}
+	}
+}
 uint8 IIC_Send_Byte(uint8 data)
 {
 	uint8 i=0;
@@ -145,12 +158,14 @@ uint8 IIC_Send_Byte(uint8 data)
    {
       IICHW_SCLWrite(0);
       IIC_Bit_Delay();
+      WaitSDA();
       return 1; 
    }
    else 
    {
       IICHW_SCLWrite(0);
       IIC_Bit_Delay();
+      WaitSDA();
       return  0;   
    }
 }
@@ -188,6 +203,36 @@ uint8 IIC_Receive_Byte(void)
   //接收数据结束 将时钟拉低
   IICHW_SCLWrite(0);
   IIC_Bit_Delay();
-  
+ // WaitSDA();
+  return (data); //返回数据
+}
+
+uint8 IIC_Receive2_Byte(uint8 bend)
+{
+	uint8 data=0,m=0;
+
+	IICHW_SDAWrite(1);
+
+	for (m = 0; m < 8; m++) //接收数据
+	{
+		IICHW_SCLWrite(0);
+		IIC_Bit_Delay();
+
+		IICHW_SCLWrite(1);
+		IIC_Bit_Delay();
+
+		data <<= 1;
+
+		if (IICHW_SDARead() == 1)
+		{
+			data |= 0b00000001;
+		}
+		else{}
+  }
+
+  //接收数据结束 将时钟拉低
+  IICHW_SCLWrite(0);
+  IIC_Bit_Delay();
+
   return (data); //返回数据
 }

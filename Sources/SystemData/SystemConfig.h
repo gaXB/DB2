@@ -46,7 +46,7 @@
 #define  _TEVP_DEFAULT_     SCD_T(-2)
 #define  _VENT_DEFAULT_     SCD_T(25)
 #define  _FOOT_DEFAULT_     SCD_T(25)
-#define  _TWATER_DEFAULT_   SCD_T(90)        // 水温默认80
+#define  _TWATER_DEFAULT_   SCD_T(40)        // 水温默认80
 /*******************************************************************************
  * HP SENSOR 的默认值
  *
@@ -65,7 +65,7 @@
 //将设置温度转换成CAN信号
 #define  _TT05(Data)    ((Data)/10 + 14)   //设置温度转换
 #define  TSET_ZERO      0               //温度值0
-#define  MAX_FELVL      8               //最大风挡
+#define  MAX_FELVL      7               //最大风挡
 #define  MIN_FELVL      1               //最小风挡 非off
 
 /*******************************************************************************

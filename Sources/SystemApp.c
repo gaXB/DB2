@@ -80,11 +80,14 @@ static void System_Default(void)
 	SystemControl.AutoBits.MODE = 0;
 	SystemControl.AutoBits.NCF = 0;
 				
-	SystemControl.acMode = AC_MODE_OFF;
+	SystemControl.acMode = AC_MODE_ON;
 	SystemControl.fanMode = FAN_MODE_1L;
 	SystemControl.mdMode = MD_MODE_OSF;
 	SystemControl.ncfMode = NCF_MODE_NEW;
 	SystemControl.RdefMode = RDEF_MODE_OFF;
+
+	SystemControl.u8TestLevel = 4;
+	SystemControl.tset = 40;
 }
 
 

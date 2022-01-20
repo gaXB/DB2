@@ -107,6 +107,38 @@ Std_ReturnType CanIf_Transmit(PduIdType CanTxPduId, PduInfoType const * PduInfoP
 	return CANIF_RETURN_OK;
 }
 
+Std_ReturnType Can2If_Transmit(PduIdType CanTxPduId, PduInfoType const * PduInfoPtr)
+{
+	uint32 u32ID;
+	if (CanTxPduId >= MAX_SEND2_NUM)
+	{
+		return CANIF_RETURN_INVALID;
+	}
+	u32ID = TBL_SEND2ID[CanTxPduId];
+
+//	if (pduSetMode == CANIF_SET_RX_OFFLINE)
+//	{暂时取消此功能
+
+//	}
+//	else
+	{
+#if (_NEED_OSKNM_ || _NEED_AUTOSARNM_)
+		if (u32ID == CANID_NETMANGE)
+		{
+			u8AckLogic = 1;
+		}
+#endif
+		if (CAN2Drive_SendFram(u32ID, PduInfoPtr->SduDataPtr))
+		{
+			return CANIF_RETURN_OK;
+		}
+		else
+		{
+			return CANIF_RETURN_EOK;
+		}
+	}
+	return CANIF_RETURN_OK;
+}
 /*******************************************************************************
  * Function:        void CanIf_SetPduMode(uint8 ControllerId, CanIf_PduSetModeType PduModeRequest)
  *
@@ -204,6 +236,41 @@ void CanIf_RxIndication(uint32 id, uint8* buff)
 	else
 	{
 		InCAN_L_Data_Indication(id, 8, buff);
+	}
+
+}
+
+
+extern void InCAN2_L_Data_Indication(uint32 Identifier, uint8 DLC, uint8 *Data);
+void Can2If_RxIndication(uint32 id, uint8* buff)
+{
+
+#if (_NEED_OSKNM_ || _NEED_AUTOSARNM_)
+	if (ID_R_NM_BIEGIN <= id && id <= ID_R_NM_END)
+	{
+		PduInfoType pduData;
+		pduData.SduDataPtr = buff;
+		pduData.SduLength = 8;
+#if _NEED_AUTOSARNM_
+		CanNm_RxIndication(0, (SAICPduInfo_t*)&pduData);
+		NMAPP_RxIndication();
+#else
+		CanNm_RxIndication(0, id, &pduData);
+#endif
+	}
+	else
+#endif
+	if (id == ID_DIAG_FUNCT)
+	{
+		NetLay_ReciveDiag(ID_DIAG_FUNCT_IF, buff);
+	}
+	else if (id == ID_DIAG_PHYSIC)
+	{
+		NetLay_ReciveDiag(ID_DIAG_PHYSIC_IF, buff);
+	}
+	else
+	{
+		InCAN2_L_Data_Indication(id, 8, buff);
 	}
 
 }

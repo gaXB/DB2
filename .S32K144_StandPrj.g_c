@@ -2,7 +2,7 @@
 <GenerationInfo_G_C>
   <Options>
     <ProjectName>S32K144_StandPrj</ProjectName>
-    <ProjectDirectory>C:\Users\Lenovo\workspaceS32DS.ARM.2018.R1\S32K144_StandPrj\S32K144_StandPrj\</ProjectDirectory>
+    <ProjectDirectory>C:\Users\Administrator\Desktop\delet\DB2\S32K144_StandPrj\</ProjectDirectory>
     <ProjectMainModuleName>main</ProjectMainModuleName>
     <DestEventsDirectory>Sources\</DestEventsDirectory>
     <DestDriversSubDirectory>..\Generated_Code\</DestDriversSubDirectory>
@@ -722,7 +722,8 @@
         <Line>Events</Line>
       </GenEventModules>
       <GenMethodsInEvents lines_count="0" />
-      <GenAllModules lines_count="10">
+      <GenAllModules lines_count="11">
+        <Line>CAN2_EVCAN</Line>
         <Line>canCom1</Line>
         <Line>clockMan1</Line>
         <Line>Cpu</Line>
@@ -735,7 +736,7 @@
         <Line>watchdog1</Line>
       </GenAllModules>
       <GenExternModules lines_count="0" />
-      <GenBeanModules lines_count="8">
+      <GenBeanModules lines_count="9">
         <Line>clockMan1</Line>
         <Line>dmaController1</Line>
         <Line>canCom1</Line>
@@ -744,11 +745,12 @@
         <Line>lin_cfg</Line>
         <Line>lin1</Line>
         <Line>watchdog1</Line>
+        <Line>CAN2_EVCAN</Line>
       </GenBeanModules>
     </GenFiles>
     <SignalListFile />
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>31</ProjectModificationStamp>
+    <ProjectModificationStamp>48</ProjectModificationStamp>
   </Options>
   <CpuID_1>
     <Generated>true</Generated>
@@ -756,8 +758,8 @@
     <GenComponentVersion>01.197</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
-    <HeaderAge>1400326456</HeaderAge>
-    <CodeAge>1400219948</CodeAge>
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>3</GenNumMethods>
     <SystemInit>true</SystemInit>
@@ -789,8 +791,8 @@
     <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1400219948</HeaderAge>
-    <CodeAge>1400219948</CodeAge>
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>6</GenNumMethods>
     <CLOCK_DRV_Init>true</CLOCK_DRV_Init>
@@ -854,8 +856,8 @@
     <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1400219948</HeaderAge>
-    <CodeAge>1400219948</CodeAge>
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>32</GenNumMethods>
     <EDMA_DRV_Init>true</EDMA_DRV_Init>
@@ -938,8 +940,8 @@
     <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1400219948</HeaderAge>
-    <CodeAge>1400219948</CodeAge>
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>34</GenNumMethods>
     <FLEXCAN_DRV_SetBitrate>true</FLEXCAN_DRV_SetBitrate>
@@ -995,8 +997,8 @@
     <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1400219948</HeaderAge>
-    <CodeAge>1400219948</CodeAge>
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>17</GenNumMethods>
     <LPTMR_DRV_InitConfigStruct>true</LPTMR_DRV_InitConfigStruct>
@@ -1033,8 +1035,8 @@
     <GenComponentVersion>1.2.0</GenComponentVersion>
     <GenDriverVersion>1.4</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1400219948</HeaderAge>
-    <CodeAge>1400219948</CodeAge>
+    <HeaderAge>1412264546</HeaderAge>
+    <CodeAge>1412264546</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>25</GenNumMethods>
     <PINS_DRV_Init>true</PINS_DRV_Init>
@@ -1080,8 +1082,8 @@
     <GenComponentVersion>01.000</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1402031786</HeaderAge>
-    <CodeAge>1402031786</CodeAge>
+    <HeaderAge>1412264562</HeaderAge>
+    <CodeAge>1412264562</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>0</GenNumMethods>
     <GenNumEvents>0</GenNumEvents>
@@ -1125,8 +1127,8 @@
       <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
       <GenDriverVersion>01.00</GenDriverVersion>
       <GenEventModule>Events</GenEventModule>
-      <HeaderAge>1400219948</HeaderAge>
-      <CodeAge>1400219948</CodeAge>
+      <HeaderAge>1411797570</HeaderAge>
+      <CodeAge>1411797570</CodeAge>
       <AsemblAge>-1</AsemblAge>
       <GenNumMethods>24</GenNumMethods>
       <LIN_DRV_Init>true</LIN_DRV_Init>
@@ -1182,8 +1184,8 @@
     <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1400326456</HeaderAge>
-    <CodeAge>1400783600</CodeAge>
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>13</GenNumMethods>
     <WDOG_DRV_Init>true</WDOG_DRV_Init>
@@ -1210,6 +1212,63 @@
     <ExtraFile2>SDK\platform\drivers\src\wdog\wdog_hw_access.c</ExtraFile2>
     <ExtraFile3>SDK\platform\drivers\src\wdog\wdog_driver.c</ExtraFile3>
   </ComponentID_26>
+  <ComponentID_29>
+    <Generated>true</Generated>
+    <GenCompName>CAN2_EVCAN</GenCompName>
+    <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
+    <GenDriverVersion>01.00</GenDriverVersion>
+    <GenEventModule />
+    <HeaderAge>1411797570</HeaderAge>
+    <CodeAge>1411797570</CodeAge>
+    <AsemblAge>-1</AsemblAge>
+    <GenNumMethods>34</GenNumMethods>
+    <FLEXCAN_DRV_SetBitrate>true</FLEXCAN_DRV_SetBitrate>
+    <FLEXCAN_DRV_GetBitrate>true</FLEXCAN_DRV_GetBitrate>
+    <FLEXCAN_DRV_SetRxMaskType>true</FLEXCAN_DRV_SetRxMaskType>
+    <FLEXCAN_DRV_SetRxFifoGlobalMask>true</FLEXCAN_DRV_SetRxFifoGlobalMask>
+    <FLEXCAN_DRV_SetRxMbGlobalMask>true</FLEXCAN_DRV_SetRxMbGlobalMask>
+    <FLEXCAN_DRV_SetRxIndividualMask>true</FLEXCAN_DRV_SetRxIndividualMask>
+    <FLEXCAN_DRV_Init>true</FLEXCAN_DRV_Init>
+    <FLEXCAN_DRV_Deinit>true</FLEXCAN_DRV_Deinit>
+    <FLEXCAN_DRV_ConfigTxMb>true</FLEXCAN_DRV_ConfigTxMb>
+    <FLEXCAN_DRV_ConfigRemoteResponseMb>true</FLEXCAN_DRV_ConfigRemoteResponseMb>
+    <FLEXCAN_DRV_SendBlocking>true</FLEXCAN_DRV_SendBlocking>
+    <FLEXCAN_DRV_Send>true</FLEXCAN_DRV_Send>
+    <FLEXCAN_DRV_AbortTransfer>true</FLEXCAN_DRV_AbortTransfer>
+    <FLEXCAN_DRV_ConfigRxMb>true</FLEXCAN_DRV_ConfigRxMb>
+    <FLEXCAN_DRV_ConfigRxFifo>true</FLEXCAN_DRV_ConfigRxFifo>
+    <FLEXCAN_DRV_ReceiveBlocking>true</FLEXCAN_DRV_ReceiveBlocking>
+    <FLEXCAN_DRV_Receive>true</FLEXCAN_DRV_Receive>
+    <FLEXCAN_DRV_RxFifoBlocking>true</FLEXCAN_DRV_RxFifoBlocking>
+    <FLEXCAN_DRV_RxFifo>true</FLEXCAN_DRV_RxFifo>
+    <FLEXCAN_DRV_GetTransferStatus>true</FLEXCAN_DRV_GetTransferStatus>
+    <FLEXCAN_DRV_InstallErrorCallback>true</FLEXCAN_DRV_InstallErrorCallback>
+    <FLEXCAN_DRV_InstallEventCallback>true</FLEXCAN_DRV_InstallEventCallback>
+    <FLEXCAN_DRV_GetDefaultConfig>true</FLEXCAN_DRV_GetDefaultConfig>
+    <FLEXCAN_DRV_SetRxMb14Mask>true</FLEXCAN_DRV_SetRxMb14Mask>
+    <FLEXCAN_DRV_SetRxMb15Mask>true</FLEXCAN_DRV_SetRxMb15Mask>
+    <FLEXCAN_DRV_GetErrorStatus>true</FLEXCAN_DRV_GetErrorStatus>
+    <FLEXCAN_DRV_ConfigPN>true</FLEXCAN_DRV_ConfigPN>
+    <FLEXCAN_DRV_GetWMB>true</FLEXCAN_DRV_GetWMB>
+    <FLEXCAN_DRV_SetBitrateCbt>true</FLEXCAN_DRV_SetBitrateCbt>
+    <FLEXCAN_DRV_GetBitrateFD>true</FLEXCAN_DRV_GetBitrateFD>
+    <FLEXCAN_DRV_SetTDCOffset>true</FLEXCAN_DRV_SetTDCOffset>
+    <FLEXCAN_DRV_GetTDCValue>true</FLEXCAN_DRV_GetTDCValue>
+    <FLEXCAN_DRV_GetTDCFail>true</FLEXCAN_DRV_GetTDCFail>
+    <FLEXCAN_DRV_ClearTDCFail>true</FLEXCAN_DRV_ClearTDCFail>
+    <GenNumEvents>0</GenNumEvents>
+    <GenSmartUserChangesDetected_Header>false</GenSmartUserChangesDetected_Header>
+    <GenSmartUserChangesDetected_Code>false</GenSmartUserChangesDetected_Code>
+    <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
+    <GenMethodPos>0</GenMethodPos>
+    <GenExtraFilesCount>6</GenExtraFilesCount>
+    <ExtraFile0>SDK\platform\drivers\inc\flexcan_driver.h</ExtraFile0>
+    <ExtraFile1>SDK\platform\drivers\src\flexcan\flexcan_irq.c</ExtraFile1>
+    <ExtraFile2>SDK\platform\drivers\src\flexcan\flexcan_irq.h</ExtraFile2>
+    <ExtraFile3>SDK\platform\drivers\src\flexcan\flexcan_driver.c</ExtraFile3>
+    <ExtraFile4>SDK\platform\drivers\src\flexcan\flexcan_hw_access.h</ExtraFile4>
+    <ExtraFile5>SDK\platform\drivers\src\flexcan\flexcan_hw_access.c</ExtraFile5>
+  </ComponentID_29>
   <UsedSrcFiles>
     <SrcFile0>Drivers\interrupt_manager.src=-1</SrcFile0>
     <SrcFile1>Drivers\osifcommon\osif.drv=-1</SrcFile1>

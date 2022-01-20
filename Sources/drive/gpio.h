@@ -391,7 +391,84 @@ typedef volatile union {
 #define  GPIO_PTD30   OGPIOD->Bits.PTD30
 #define  GPIO_PTD31   OGPIOD->Bits.PTD31
 
+/******************************************************************************
+*define gpioE pin name
+*
+*******************************************************************************/
+typedef volatile union {
+	uint32_t Byte;
+  struct {
+    unsigned PTE0        :1;
+    unsigned PTE1        :1;
+    unsigned PTE2	     :1;
+    unsigned PTE3        :1;
+    unsigned PTE4        :1;
+    unsigned PTE5   	 :1;
+    unsigned PTE6   	 :1;
+    unsigned PTE7	     :1;
+    unsigned PTE8        :1;
+    unsigned PTE9        :1;
+    unsigned PTE10	     :1;
+    unsigned PTE11        :1;
+    unsigned PTE12        :1;
+    unsigned PTE13   	 :1;
+    unsigned PTE14   	 :1;
+    unsigned PTE15	     :1;
+    unsigned PTE16        :1;
+    unsigned PTE17        :1;
+    unsigned PTE18	     :1;
+    unsigned PTE19        :1;
+    unsigned PTE20        :1;
+    unsigned PTE21   	 :1;
+    unsigned PTE22   	 :1;
+    unsigned PTE23	     :1;
+    unsigned PTE24        :1;
+    unsigned PTE25        :1;
+    unsigned PTE26	     :1;
+    unsigned PTE27        :1;
+    unsigned PTE28        :1;
+    unsigned PTE29   	 :1;
+    unsigned PTE30   	 :1;
+    unsigned PTE31	     :1;
+  } Bits;
+} PORTESTR;
+#define  OGPIOE  ((PORTESTR*)PTE_BASE)
 
+#define  GPIO_PTE0    OGPIOE->Bits.PTE0
+#define  GPIO_PTE1    OGPIOE->Bits.PTE1
+#define  GPIO_PTE2    OGPIOE->Bits.PTE2
+#define  GPIO_PTE3    OGPIOE->Bits.PTE3
+#define  GPIO_PTE4    OGPIOE->Bits.PTE4
+#define  GPIO_PTE5    OGPIOE->Bits.PTE5
+#define  GPIO_PTE6    OGPIOE->Bits.PTE6
+#define  GPIO_PTE7    OGPIOE->Bits.PTE7
+
+#define  GPIO_PTE8    OGPIOE->Bits.PTE8
+#define  GPIO_PTE9    OGPIOE->Bits.PTE9
+#define  GPIO_PTE10   OGPIOE->Bits.PTE10
+#define  GPIO_PTE11   OGPIOE->Bits.PTE11
+#define  GPIO_PTE12   OGPIOE->Bits.PTE12
+#define  GPIO_PTE13   OGPIOE->Bits.PTE13
+#define  GPIO_PTE14   OGPIOE->Bits.PTE14
+#define  GPIO_PTE15   OGPIOE->Bits.PTE15
+
+#define  GPIO_PTE16   OGPIOE->Bits.PTE16
+#define  GPIO_PTE17   OGPIOE->Bits.PTE17
+#define  GPIO_PTE18   OGPIOE->Bits.PTE18
+#define  GPIO_PTE19   OGPIOE->Bits.PTE19
+#define  GPIO_PTE20   OGPIOE->Bits.PTE20
+#define  GPIO_PTE21   OGPIOE->Bits.PTE21
+#define  GPIO_PTE22   OGPIOE->Bits.PTE22
+#define  GPIO_PTE23   OGPIOE->Bits.PTE23
+
+#define  GPIO_PTE24   OGPIOE->Bits.PTE24
+#define  GPIO_PTE25   OGPIOE->Bits.PTE25
+#define  GPIO_PTE26   OGPIOE->Bits.PTE26
+#define  GPIO_PTE27   OGPIOE->Bits.PTE27
+#define  GPIO_PTE28   OGPIOE->Bits.PTE28
+#define  GPIO_PTE29   OGPIOE->Bits.PTE29
+#define  GPIO_PTE30   OGPIOE->Bits.PTE30
+#define  GPIO_PTE31   OGPIOE->Bits.PTE31
 /******************************************************************************
 *define Igpio pin name
 *
@@ -564,4 +641,46 @@ typedef volatile union {
 #define  IGPIO_PTD29   IGPIOD->Bits.PTD29
 #define  IGPIO_PTD30   IGPIOD->Bits.PTD30
 #define  IGPIO_PTD31   IGPIOD->Bits.PTD31
+
+/******************************************************************************
+*define IGPIOE pin name
+*
+*******************************************************************************/
+#define  IGPIOE  ((PORTESTR*)(PTE_BASE + 0X10))
+
+#define  IGPIO_PTE0    IGPIOE->Bits.PTE0
+#define  IGPIO_PTE1    IGPIOE->Bits.PTE1
+#define  IGPIO_PTE2    IGPIOE->Bits.PTE2
+#define  IGPIO_PTE3    IGPIOE->Bits.PTE3
+#define  IGPIO_PTE4    IGPIOE->Bits.PTE4
+#define  IGPIO_PTE5    IGPIOE->Bits.PTE5
+#define  IGPIO_PTE6    IGPIOE->Bits.PTE6
+#define  IGPIO_PTE7    IGPIOE->Bits.PTE7
+
+#define  IGPIO_PTE8    IGPIOE->Bits.PTE8
+#define  IGPIO_PTE9    IGPIOE->Bits.PTE9
+#define  IGPIO_PTE10   IGPIOE->Bits.PTE10
+#define  IGPIO_PTE11   IGPIOE->Bits.PTE11
+#define  IGPIO_PTE12   IGPIOE->Bits.PTE12
+#define  IGPIO_PTE13   IGPIOE->Bits.PTE13
+#define  IGPIO_PTE14   IGPIOE->Bits.PTE14
+#define  IGPIO_PTE15   IGPIOE->Bits.PTE15
+
+#define  IGPIO_PTE16   IGPIOE->Bits.PTE16
+#define  IGPIO_PTE17   IGPIOE->Bits.PTE17
+#define  IGPIO_PTE18   IGPIOE->Bits.PTE18
+#define  IGPIO_PTE19   IGPIOE->Bits.PTE19
+#define  IGPIO_PTE20   IGPIOE->Bits.PTE20
+#define  IGPIO_PTE21   IGPIOE->Bits.PTE21
+#define  IGPIO_PTE22   IGPIOE->Bits.PTE22
+#define  IGPIO_PTE23   IGPIOE->Bits.PTE23
+
+#define  IGPIO_PTE24   IGPIOE->Bits.PTE24
+#define  IGPIO_PTE25   IGPIOE->Bits.PTE25
+#define  IGPIO_PTE26   IGPIOE->Bits.PTE26
+#define  IGPIO_PTE27   IGPIOE->Bits.PTE27
+#define  IGPIO_PTE28   IGPIOE->Bits.PTE28
+#define  IGPIO_PTE29   IGPIOE->Bits.PTE29
+#define  IGPIO_PTE30   IGPIOE->Bits.PTE30
+#define  IGPIO_PTE31   IGPIOE->Bits.PTE31
 #endif /* #ifndef _GPIO_H_ */

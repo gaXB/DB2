@@ -113,7 +113,8 @@ static N_RecData  RData_FL=
  };         //funct and phy all use this
 
 static uint8 Bug_Num;
-
+N_PDU   nPduTest[8];
+uint8 iTestNum;
   // static uint16 st_i,stmin[8];
   
 /*******************************************************************************
@@ -140,6 +141,7 @@ void  NetLay_Recive(N_PDU   *nPdu);
  *
 ********************************************************************************/
 static uint16 u16DigSErrTimes;
+extern Std_ReturnType Can2If_Transmit(PduIdType CanTxPduId, PduInfoType const * PduInfoPtr);
 void L_SendDiagFram(uint8* NetData)
 {
 	PduInfoType lPdu;
@@ -149,7 +151,7 @@ void L_SendDiagFram(uint8* NetData)
 	
 	do
 	{
-		if (CanIf_Transmit(CANDIAG_IFID, &lPdu) == CANIF_RETURN_OK)
+		if (Can2If_Transmit(CANDIAG_IFID, &lPdu) == CANIF_RETURN_OK)
 		{
 			break;
 		}
@@ -662,7 +664,11 @@ void  NetLay_ReciveDiag(uint8 nId,uint8* L_data)
     
     
    MemCopy(nPdu.Data, &L_data[1], 7) ;
-  
+   nPduTest[iTestNum++] = nPdu;
+   if (iTestNum >= 8)
+   {
+   	iTestNum = 0;
+   }
    #ifdef _DEBUG_ 
    if( Test_Ser)  Test_Ser=0;
 
@@ -732,8 +738,9 @@ void  Deal_UDSNetLay(void)
          nPdu_Buffer[deal_num-1]=nPdu_Buffer[deal_num];
          deal_num--;
       }*/
+
    }
-   
+
 //   EnableInterrupts ;
    EnableCanRxInterrupt();
    

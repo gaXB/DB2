@@ -44,6 +44,7 @@ __attribute__ ((section(".noinit"))) SENSORDATA     sSenSorData;      //传感器信
 VEHICLECONTROL  sVehicleControl;
 EVSENSORDATA sEVSensorData;
 ACTORDATA sActorData;
+PANLEDATA sPanleData;
 #elif NOINIT_TYPE == NOINIT_TYPE_RL78
 #pragma section bss NOINIT
 SYSTEMCONTROL  SystemControl;    //系统变量 
@@ -62,7 +63,9 @@ DISPLAYDATA sDisplayData;
 //pc 设置变量
 PCCONTROLEN_TYPE PCControlEn;
 SENSORDATA     sSenSorData_PC;
+EVSENSORDATA sEVSensorData_PC;
 OUTDATA sOutData_PC;
+EVOUTDATA sEVOutData_PC;
 #endif
 /*******************************************************************************
  * Function:   SYSTEMCONTROL* SystemControlGet(void)

@@ -191,7 +191,7 @@ static void Init_SIM(void)
 static void Init_WDOG(void)
 {
 	/* Initialize WDOG */
-	WDOG_DRV_Init(INST_WATCHDOG1, &watchdog1_Config0);
+	//WDOG_DRV_Init(INST_WATCHDOG1, &watchdog1_Config0);
 }
 
 /*******************************************************************************
@@ -230,9 +230,14 @@ void  Init_GPIO_1(void)
 //		  PORTE->PCR[i] |=  PORT_PCR_MUX(1);
 //	  }
     PINS_DRV_Init(NUM_OF_CONFIGURED_PINS, g_pin_mux_InitConfigArr);
-	TLE94112_CS = 1;
-	TLE9262_CS = 1;
+//	TLE94112_CS = 1;
+//	TLE9262_CS = 1;
 
+    O_CAN_EN_1 = 0;
+    O_CAN_EN_2 = 0;
+    O_CAN_EN_3 = 0;
+    LIN_EN = 1;
+    TrOut_5VEN(1);
 }
 
 /*******************************************************************************
@@ -364,16 +369,16 @@ static void Init_PWM_1(void)
 	 * ===================================================
 	 */
 	FTM0->MODE |= FTM_MODE_WPDIS_MASK;  /* Write protect to registers disabled (default) 				*/
-	FTM0->SC	=	FTM_SC_PWMEN5_MASK	/* Enable PWM channel 0 output									*/
+	FTM0->SC	=	FTM_SC_PWMEN6_MASK	/* Enable PWM channel 0 output									*/
 					 /* Enable PWM channel 1 output									*/
-					|FTM_SC_PS(0);     	/* TOIE (Timer Overflow Interrupt Ena) = 0 (default) 			*/
+					|FTM_SC_PS(4);     	/* TOIE (Timer Overflow Interrupt Ena) = 0 (default) 			*/
 										/* CPWMS (Center aligned PWM Select) = 0 (default, up count) 	*/
 										/* CLKS (Clock source) = 0 (default, no clock; FTM disabled) 	*/
 										/* PS (Prescaler factor) = 7. Prescaler = 128 					*/
 
 	FTM0->COMBINE = 0x00000000;	/* FTM mode settings used: DECAPENx, MCOMBINEx, COMBINEx=0 */
 	FTM0->POL = 0x00000000;    	/* Polarity for all channels is active high (default) 		*/
-	FTM0->MOD = 4000 -1 ;     	/* FTM1 counter final value (used for PWM mode) 			*/
+	FTM0->MOD = 5000 -1 ;     	/* FTM1 counter final value (used for PWM mode) 			*/
 								/* FTM1 Period = MOD-CNTIN+0x0001 ~= 62500 ctr clks  		*/
 								/* 8MHz /128 = 62.5kHz ->  ticks -> 1Hz 					*/
 
@@ -381,15 +386,109 @@ static void Init_PWM_1(void)
 	 * FTM0, Channel 1 in PWM Mode:
 	 * ==================================================
 	 */
-	FTM0->CONTROLS[5].CnSC = FTM_CnSC_MSB_MASK
+	FTM0->CONTROLS[6].CnSC = FTM_CnSC_MSB_MASK
 							|FTM_CnSC_ELSB_MASK;  	/* FTM0 ch1: edge-aligned PWM, low true pulses 		*/
 													/* CHIE (Chan Interrupt Ena) = 0 (default) 			*/
 													/* MSB:MSA (chan Mode Select)=0b10, Edge Align PWM		*/
 													/* ELSB:ELSA (chan Edge/Level Select)=0b10, low true 	*/
 
-	FTM0->CONTROLS[5].CnV =  2000;	/* FTM0 ch1 compare value (~75% duty cycle) */
+	FTM0->CONTROLS[6].CnV =  0;	/* FTM0 ch1 compare value (~75% duty cycle) */
 
 	FTM0->SC |= FTM_SC_CLKS(3);
+	/* Start FTM0 counter with clk source = external clock (SOSCDIV1_CLK)*/
+
+
+	/**
+	 * FTM1 Clocking:
+	 * ==================================================
+	 */
+	PCC->PCCn[PCC_FTM1_INDEX] &= ~PCC_PCCn_CGC_MASK; 	/* Ensure clk disabled for config 	*/
+	PCC->PCCn[PCC_FTM1_INDEX] |= PCC_PCCn_PCS(0b010)	/* Clock Src=1, 8 MHz SIRCDIV1_CLK */
+                              |  PCC_PCCn_CGC_MASK;  	/* Enable clock for FTM regs 		*/
+
+	/*!
+	 * FTM1 Initialization:
+	 * ===================================================
+	 */
+	FTM1->MODE |= FTM_MODE_WPDIS_MASK;  /* Write protect to registers disabled (default) 				*/
+	FTM1->SC	=	FTM_SC_PWMEN6_MASK | FTM_SC_PWMEN5_MASK	/* Enable PWM channel 0 output									*/
+					 /* Enable PWM channel 1 output									*/
+					|FTM_SC_PS(4);     	/* TOIE (Timer Overflow Interrupt Ena) = 0 (default) 			*/
+										/* CPWMS (Center aligned PWM Select) = 0 (default, up count) 	*/
+										/* CLKS (Clock source) = 0 (default, no clock; FTM disabled) 	*/
+										/* PS (Prescaler factor) = 7. Prescaler = 128 					*/
+
+	FTM1->COMBINE = 0x00000000;	/* FTM mode settings used: DECAPENx, MCOMBINEx, COMBINEx=0 */
+	FTM1->POL = 0x00000000;    	/* Polarity for all channels is active high (default) 		*/
+	FTM1->MOD = 5000 -1 ;     	/* FTM1 counter final value (used for PWM mode) 			*/
+								/* FTM1 Period = MOD-CNTIN+0x0001 ~= 62500 ctr clks  		*/
+								/* 8MHz /128 = 62.5kHz ->  ticks -> 1Hz 					*/
+
+	/**
+	 * FTM1, Channel 1 in PWM Mode:
+	 * ==================================================
+	 */
+	FTM1->CONTROLS[6].CnSC = FTM_CnSC_MSB_MASK
+							|FTM_CnSC_ELSB_MASK;  	/* FTM0 ch1: edge-aligned PWM, low true pulses 		*/
+													/* CHIE (Chan Interrupt Ena) = 0 (default) 			*/
+													/* MSB:MSA (chan Mode Select)=0b10, Edge Align PWM		*/
+													/* ELSB:ELSA (chan Edge/Level Select)=0b10, low true 	*/
+
+	FTM1->CONTROLS[6].CnV =  0;	/* FTM0 ch1 compare value (~75% duty cycle) */
+
+	FTM1->CONTROLS[5].CnSC = FTM_CnSC_MSB_MASK
+							|FTM_CnSC_ELSB_MASK;  	/* FTM0 ch1: edge-aligned PWM, low true pulses 		*/
+													/* CHIE (Chan Interrupt Ena) = 0 (default) 			*/
+													/* MSB:MSA (chan Mode Select)=0b10, Edge Align PWM		*/
+													/* ELSB:ELSA (chan Edge/Level Select)=0b10, low true 	*/
+
+	FTM1->CONTROLS[5].CnV =  0;	/* FTM0 ch1 compare value (~75% duty cycle) */
+
+
+	FTM1->SC |= FTM_SC_CLKS(3);
+	/* Start FTM1 counter with clk source = external clock (SOSCDIV1_CLK)*/
+
+
+	/**
+	 * FTM2 Clocking:
+	 * ==================================================
+	 */
+	PCC->PCCn[PCC_FTM2_INDEX] &= ~PCC_PCCn_CGC_MASK; 	/* Ensure clk disabled for config 	*/
+	PCC->PCCn[PCC_FTM2_INDEX] |= PCC_PCCn_PCS(0b010)	/* Clock Src=1, 8 MHz SIRCDIV1_CLK */
+										|  PCC_PCCn_CGC_MASK;  	/* Enable clock for FTM regs 		*/
+
+	/*!
+	 * FTM2 Initialization:
+	 * ===================================================
+	 */
+	FTM2->MODE |= FTM_MODE_WPDIS_MASK;  /* Write protect to registers disabled (default) 				*/
+	FTM2->SC	=	FTM_SC_PWMEN2_MASK	/* Enable PWM channel 0 output									*/
+					 /* Enable PWM channel 1 output									*/
+					|FTM_SC_PS(0);     	/* TOIE (Timer Overflow Interrupt Ena) = 0 (default) 			*/
+										/* CPWMS (Center aligned PWM Select) = 0 (default, up count) 	*/
+										/* CLKS (Clock source) = 0 (default, no clock; FTM disabled) 	*/
+										/* PS (Prescaler factor) = 7. Prescaler = 128 					*/
+
+	FTM2->COMBINE = 0x00000000;	/* FTM mode settings used: DECAPENx, MCOMBINEx, COMBINEx=0 */
+	FTM2->POL = 0x00000000;    	/* Polarity for all channels is active high (default) 		*/
+	FTM2->MOD = 4000 -1 ;     	/* FTM1 counter final value (used for PWM mode) 			*/
+								/* FTM1 Period = MOD-CNTIN+0x0001 ~= 62500 ctr clks  		*/
+								/* 8MHz /128 = 62.5kHz ->  ticks -> 1Hz 					*/
+
+	/**
+	 * FTM2, Channel 1 in PWM Mode:
+	 * ==================================================
+	 */
+	FTM2->CONTROLS[2].CnSC = FTM_CnSC_MSB_MASK
+							|FTM_CnSC_ELSB_MASK;  	/* FTM0 ch1: edge-aligned PWM, low true pulses 		*/
+													/* CHIE (Chan Interrupt Ena) = 0 (default) 			*/
+													/* MSB:MSA (chan Mode Select)=0b10, Edge Align PWM		*/
+													/* ELSB:ELSA (chan Edge/Level Select)=0b10, low true 	*/
+
+	FTM2->CONTROLS[2].CnV =  2000;	/* FTM0 ch1 compare value (~75% duty cycle) */
+
+
+	FTM2->SC |= FTM_SC_CLKS(3);
 	/* Start FTM0 counter with clk source = external clock (SOSCDIV1_CLK)*/
 }
 
@@ -411,14 +510,14 @@ void LPTMR_ISR(void)
 	 */
 	static uint32_t interruptCount = 0UL;
     /* Timer Interrupt Handler */
-//    lin_lld_timeout_service(LI0);
-//
-//    /* If 5 ms have passed, provide the required tick */
-//    if(++interruptCount == 10UL)
-//    {
-//    	l_sch_tick(LI0);
-//    	interruptCount = 0UL;
-//    }
+    lin_lld_timeout_service(LI0);
+
+    /* If 5 ms have passed, provide the required tick */
+    if(++interruptCount == 10UL)
+    {
+    	l_sch_tick(LI0);
+    	interruptCount = 0UL;
+    }
 	/* Clear compare flag */
 	LPTMR_DRV_ClearCompareFlag(INST_LPTMR1);
 }
@@ -426,7 +525,7 @@ void LPTMR_ISR(void)
 
 void Init_MCU(void)
 {	
-	//MCUPM_SetReset(1);//(SIM->SRSID);
+	MCUPM_SetReset(RCM->SRS);//(SIM->SRSID);
    //此项建议放在最前，
 	Init_WDOG();
 	Init_MCG_EXT();

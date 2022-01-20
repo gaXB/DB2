@@ -21,6 +21,37 @@
 #include "ADC.h"
 
 
+uint8 GetPinV_CD4051(uint8 chValue)
+{
+	uint8 ch = chValue & 0x0f;
+	uint8 ICNum= chValue>>4;
+	uint8 IPinValue = 0;
+	if (ICNum == 1)
+	{
+		GPIO_BIT_EQUAL( CD4051_A_1, ch&0x1);
+		GPIO_BIT_EQUAL( CD4051_B_1, ch&0x2);
+		GPIO_BIT_EQUAL( CD4051_C_1, ch&0x4);
+		GaLib_MCUNOP(10);
+		MCU_NOP;
+		MCU_NOP;
+		MCU_NOP;
+		IPinValue = AD_CD4051_1;
+	}
+	else if (ICNum == 2)
+	{
+		GPIO_BIT_EQUAL( CD4051_A_2, ch&0x1);
+		GPIO_BIT_EQUAL( CD4051_B_2, ch&0x2);
+		GPIO_BIT_EQUAL( CD4051_C_2, ch&0x4);
+		GaLib_MCUNOP(10);
+		MCU_NOP;
+		MCU_NOP;
+		MCU_NOP;
+		IPinValue = AD_CD4051_2;
+	}
+
+	return IPinValue;
+}
+
 int i16GPIO, i16GPION, i16ADCH;
 
 /*******************************************************************************
@@ -124,7 +155,9 @@ void ADC1_IRQHandler(void)
 //uint8 TBL_ADCH[ADID_MAXNUM] = {0x84, 0x84, 0x8f, 0x8e, 0x89, 0x88, 0x81, 1, 0x86, 0x87,
 //		0x82, 0x83, 0x8b, 0x8d, 0x00, 0x85, 0x8c, 0x8a};
 
-uint8 TBL_ADCH[ADID_MAXNUM] = {0x84, 0x84, 0x8f, 0x8e, 0x89, 0x88, 0x81, 1,};
+uint8 TBL_ADCH[ADID_MAXNUM] = {0x01, 0x8c, 0x0, 0x0, 0x88, 0x8b, 0x80, 0x83,
+		0x89, 0x8a, 0x81, 0x87, 0x82, 0x8f, 0x8e, 0x86};
+
 void ADCH_SEL(uint8 adid)   
 {//TODO:  ADCH 设置
 	uint8 MCU_ADCH;
@@ -267,6 +300,73 @@ uint16 KeyPadHW_ReadSignal(void)
 	//TODO:  按键采集驱动
 	uint16  keyword =0;
 	
+	O_KEY1 = 0;
+	O_KEY2 = 1;
+	O_KEY3 = 1;
+	O_KEY4 = 1;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	if (GetPinV_CD4051(IKEY1_CH) == 0)
+	{
+		keyword |= KEY_AC;
+	}
+	if (GetPinV_CD4051(IKEY2_CH) == 0)
+	{
+		keyword |= KEY_ON;
+	}
+
+	O_KEY1 = 1;
+	O_KEY2 = 0;
+	O_KEY3 = 1;
+	O_KEY4 = 1;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	if (GetPinV_CD4051(IKEY1_CH) == 0)
+	{
+		keyword |= KEY_OST;
+	}
+	if (GetPinV_CD4051(IKEY2_CH) == 0)
+	{
+		keyword |= KEY_NCF;
+	}
+
+	O_KEY1 = 1;
+	O_KEY2 = 1;
+	O_KEY3 = 0;
+	O_KEY4 = 1;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	if (GetPinV_CD4051(IKEY1_CH) == 0)
+	{
+		keyword |= KEY_PTC;
+	}
+	if (GetPinV_CD4051(IKEY2_CH) == 0)
+	{
+		keyword |= KEY_MODE;
+	}
+
+	O_KEY1 = 1;
+	O_KEY2 = 1;
+	O_KEY3 = 1;
+	O_KEY4 = 0;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	MCU_NOP;
+	if (GetPinV_CD4051(IKEY1_CH) == 0)
+	{
+		keyword |= KEY_OFF;
+	}
+	if (GetPinV_CD4051(IKEY2_CH) == 0)
+	{
+		keyword |= KEY_RHEAT;
+	}
 	return keyword;
 }
 /*******************************************************************************
@@ -353,14 +453,16 @@ uint8 Code28HW_ReadPin(uint8 num)
    return CodeData;
 }
 
-#define		ICD_FAN_A      GPIO_UNUSE   //风挡编码器
-#define     ICD_FAN_C		GPIO_UNUSE
-#define     ICD_FAN_B      GPIO_UNUSE
+#define		ICD_FAN_A       GetPinV_CD4051(CD35_FAN_1_CH)   //风挡编码器
+#define     ICD_FAN_C		 GetPinV_CD4051(CD35_FAN_2_CH)
+#define     ICD_FAN_B       GetPinV_CD4051(CD35_FAN_3_CH)
 
-#define		ICD_MIX_C		GPIO_UNUSE   //温度设定编码器
-#define		ICD_MIX_B		GPIO_UNUSE
-#define		ICD_MIX_A		GPIO_UNUSE
-uint8 Read_Code35Data(uint8 num)
+#define		ICD_MIX_C		GetPinV_CD4051(CD35_TEMP_1_CH)   //温度设定编码器
+#define		ICD_MIX_B		GetPinV_CD4051(CD35_TEMP_2_CH)
+#define		ICD_MIX_A		GetPinV_CD4051(CD35_TEMP_3_CH)
+
+//uint8 Code35HW_ReadPin(uint8 num)
+uint8 Code35HW_ReadPin(uint8 num)
 {
 	uint8 CodeData = 0;
 	if (num == CODE_NUM_FAN)
@@ -477,7 +579,7 @@ void SPIHW_DataWrite(uint8 bSetState)
 uint8 SPIHW_DataRead(void)
 {
 	//GaLib_MCUNOP(2);
-	return SPI_IN;
+	return 1;
 }
 
 
@@ -501,11 +603,11 @@ void McpHW_CSSet(uint8 u8ICId, PinOutState BitSet)
 	{
 		if (BitSet)
 		{
-			//mcp_cs = GPIO_SET;
+			O_MCP_CS = GPIO_SET;
 		}
 		else
 		{
-			//mcp_cs = GPIO_CLEAR;
+			O_MCP_CS = GPIO_CLEAR;
 		}
 	}
 	else
@@ -523,18 +625,61 @@ void McpHW_CSSet(uint8 u8ICId, PinOutState BitSet)
  * Notes:     	请按以下模板编写
  *
 *******************************************************************************/
+#define   SDA  IGPIO_PTB10
+#define   SCL  IGPIO_PTB9
+
+#define   SDA_OUT  GPIO_PTB10
+#define   SCL_OUT  GPIO_PTB9
+
+#define   SDA_OUT_LOW      PTB->PDDR |= 0x400u;  SDA_OUT=0;//设置数据脚输出低电平
+#define   SDA_OUT_HIGH     PTB->PDDR &= 0xFFFFFBFFu;   //设置数据脚为输入，外接上拉电阻
+
+#define   SCL_OUT_LOW      PTB->PDDR |= 0x200u;    SCL_OUT=0; //设置时钟脚输出低电平
+#define   SCL_OUT_HIGH     PTB->PDDR &= 0xFFFFFDFFu;   //设置时钟脚为输入，外接上拉电阻
+
+
+
 void IICHW_SDAWrite(uint8 bSetState)
 {
-
+	if (bSetState)
+	{
+		SDA_OUT_HIGH
+	}
+	else
+	{
+		SDA_OUT_LOW
+	}
+	GaLib_MCUNOP(30);
 }
 
 BOOL IICHW_SDARead(void)
 {
-	return 1;
+	GaLib_MCUNOP(3);
+	return SDA;
 }
 void IICHW_SCLWrite(uint8 bSetState)
 {
-
+	uint8 bOK= 0;
+	while(bOK < 30)
+	{
+		if (bSetState)
+		{
+			SCL_OUT_HIGH
+		}
+		else
+		{
+			SCL_OUT_LOW
+		}
+		if (SCL == bSetState)
+		{
+			bOK = 30;
+		}
+		else
+		{
+			bOK++;
+		}
+	}
+	//GaLib_MCUNOP(30);
 }
 
 /*******************************************************************************
@@ -559,7 +704,7 @@ ADVoltType FanHW_SupperVolt(void)
 //TODO: 鼓风机驱动固定格式
 void  FanHW_OutPWM(uint16 pwm)
 {
-	//OUTFAN_PWM =  (uint32)pwm * PWMMODE_FAN / 10000;
+	OUTFAN_PWM =  (uint32)pwm * PWMMODE_FAN / 10000;
 }
 
 void FanHW_OutFanRealy(uint8 bSetState)

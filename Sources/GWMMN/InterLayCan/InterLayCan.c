@@ -65,7 +65,7 @@ static uint16 TimerBusOff;
 static uint8  bBusOffInd;
 static uint8  InBusOffState;
 
-#define  _INCAN_DEBUG_TEST_ 1
+#define  _INCAN_DEBUG_TEST_ 0
 #if _INCAN_DEBUG_TEST_
 volatile uint8 DepthMax;
 #endif
@@ -87,7 +87,7 @@ typedef struct
   uint8         Optr;    //当前数据位置
   uint8         Depth;   //buff 数量
 }INCANRxMsgFIFOStruct;
-INCANRxMsgFIFOStruct     sCANRxMsgFIFO;
+static INCANRxMsgFIFOStruct     sCANRxMsgFIFO;
 /******************************************************************************
 CAN通信控制结构
 ******************************************************************************/
@@ -98,7 +98,7 @@ typedef struct
   uint8   RxState;  //接收状态
   uint16  TimerMode;  //初始化发送时使用
 }INCANCtrlStruct;
-INCANCtrlStruct          sInCANCtrl;
+static INCANCtrlStruct          sInCANCtrl;
 
 #define  ILCAN_DATA_LENGTH     8      //can 数据长度默认为8字节
 

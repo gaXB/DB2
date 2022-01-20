@@ -68,6 +68,21 @@ void PowerOffTask(void)
 	sOutData.RHeatOut = 0;
 	sOutData.u8LCheat = 0;
 	sOutData.u8RCheat = 0;
+
+	sEVOutData.AGS_Postion = 0;
+	sEVOutData.SOV1 = 0;
+	sEVOutData.SOV2 = 0;
+	sEVOutData.EWPT1 = 0;
+	sEVOutData.EWPT2 = 0;
+	sEVOutData.EWPT3 = 0;
+	sEVOutData.EACSpeed = 0;
+	sEVOutData.PTCPower = 0;
+	sEVOutData.IncarFAN_L = 0;
+	sEVOutData.IncarFAN_H = 0;
+	sEVOutData.ThemalSysRequest = 0;
+	sEVOutData.HeatConfirmation = 0;
+	sEVOutData.CoolConfirmation = 0;
+	sEVOutData.TMU_Realay = 0;
 	//(void)NcfMotor_SetPosition(0,NCF_MODE_CIRF);
 	//NcfMotor_Control();
 

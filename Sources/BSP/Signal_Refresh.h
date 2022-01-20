@@ -32,10 +32,18 @@
 #define  SIG_NUM_TIN       0
 #define  SIG_NUM_TAMB      1 
 #define  SIG_NUM_TEVP      2
-#define  SIG_NUM_FVENT     3
-#define  SIG_NUM_DVENT     4
-#define  SIG_NUM_SUN       5
-#define   SIG_MAXNUM       6  //设置最大个数，应用程序初始化时使用
+#define  SIG_NUM_VENTF     3
+#define  SIG_NUM_VENTD     4
+#define  SIG_NUM_PT1TEMP   5
+#define  SIG_NUM_PT2TEMP   6
+#define  SIG_NUM_PT3TEMP   7
+#define  SIG_NUM_PT1PRESS  8
+#define  SIG_NUM_PT2PRESS  9
+#define  SIG_NUM_PT3PRESS  10
+#define  SIG_NUM_PTCTEMP   11
+#define  SIG_NUM_RHEAT_FB  12
+#define  SIG_NUM_SUN       13
+#define   SIG_MAXNUM       14 //设置最大个数，应用程序初始化时使用
 
 
 void Deal_Signal_Refresh(void);

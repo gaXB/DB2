@@ -22,14 +22,14 @@
 #define   FANVOLT_RATE_INIT  20     
                                
 /**************************项目可配置参数****************************************/
-uint8  u8MIXMOTOR_HI_AD = 236, u8MIXMOTOR_LO_AD = 21;     //全冷全热参数
-uint8  TBL_MODE_OSET[5] ={25, 84, 123, 168, 225};         //模式AD参数
-uint8 TBL_NCFAD[]={10,240};                               //内外AD参数
+uint8  u8MIXMOTOR_HI_AD = 230, u8MIXMOTOR_LO_AD = 25;     //全冷全热参数
+uint8  TBL_MODE_OSET[5] ={25, 74, 122, 168, 230};         //模式AD参数
+uint8 TBL_NCFAD[]={50,240};                               //内外AD参数
 //蒸发传感器参数
 TempType   tACON_EVP= SCD_T(4) ,tACOFF_EVP = SCD_T(1);   
 
 //鼓风机每当电压
-VoltType  TBL_FANVOLT[MAX_FELVL+1] ={0 , 388, 489, 587, 683, 788, 890, 1090, 1300}; // {0 , 50, 60, 70, 80, 90, 105, 120, 130};      //实车鼓风机电压数据
+VoltType  TBL_FANVOLT[MAX_FELVL+1] ={0 , 400, 500, 600, 700, 800, 1050, 1300}; // {0 , 50, 60, 70, 80, 90, 105, 120, 130};      //实车鼓风机电压数据
 
 //ac 外温保护
 const TempType  tAC_TAMBPRO_ON = SCD_T(-5) ;

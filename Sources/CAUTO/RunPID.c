@@ -22,14 +22,14 @@
 
 BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter)
 {
-	int16 i16dTdt_I;
+	int16 i16dTdt_I, SumTimes;
 	int32 i32lData, i32DValue;
 	if (TimeOutChkTenthSLong(&pPData->Timer01, pParameter->u16Period))
 	{
 		//处理下面pid逻辑
 		//i16AM_FF0 由上层逻辑实现
 		pParameter->pGetRunState();
-		pPData->TenthSTimes++;
+		pPData->TenthSTimes+= pParameter->u16Period;
 
 		if (pPData->bRunEn)
 		{
@@ -42,17 +42,19 @@ BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter)
 			}
 			else
 			{
-				if (pPData->TenthSTimes %10 == 0)
+				if (1)//(pPData->TenthSTimes %10 == 0)
 				{//每1s采集一次
 					pPData->i32GetSum += pPData->i16Get;
 					if (pPData->TenthSTimes >= 300)
 					{ //30s
+						SumTimes = pPData->TenthSTimes /pParameter->u16Period;
 						pPData->TenthSTimes = 0;
 						pPData->i16FilterValue_1 = pPData->i16FilterValue;
-						pPData->i16FilterValue =(int16)(pPData->i32GetSum / 30);
+						pPData->i16FilterValue =(int16)(pPData->i32GetSum / SumTimes);
+						pPData->i32GetSum = 0;
 						if (pPData->i16FilterValue_1 != -32768)
 						{
-							if (GAMath_abs(pPData->i16FilterValue_1 - pPData->i16FilterValue) > pPData->i16OutInitValue)
+							if (GAMath_abs(pPData->i16FilterValue_1 - pPData->i16FilterValue) <= pPData->i16OutInitValue)
 							{//脱离INIT
 								pPData->u8RunState = PIDRUN_STATE_RUN;
 							}
@@ -72,7 +74,7 @@ BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter)
 			}//else end
 		}
 		else
-		{
+		{//不运行就关闭
 			pPData->u8RunState = PIDRUN_STATE_CLOSE;
 		}
 		if (pPData->u8RunState == PIDRUN_STATE_CLOSE)
@@ -133,13 +135,13 @@ BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter)
 			
 			if (pPData->i16AM_Hfs >= pParameter->i16ResMax) 
 			{
-				if (i16dTdt_I > 0)
-					i16dTdt_I = 0;
+//				if (i16dTdt_I > 0)
+//					i16dTdt_I = 0;
 			}
 			else if (pPData->i16AM_Hfs <= pParameter->i16ResMin) 
 			{
-				if (i16dTdt_I < 0)
-					i16dTdt_I = 0;
+//				if (i16dTdt_I < 0)
+//					i16dTdt_I = 0;
 			}else{} 
 			
 			//AM_I=AM_I + T3* dTdt_I;
@@ -175,10 +177,14 @@ BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter)
 			if (pPData->i16AM_Hfs >= pParameter->i16ResMax)
 			{
 				pPData->i16AM_Hfs = pParameter->i16ResMax;
+				pPData->int16AM_I = pPData->i16AM_Hfs  - pPData->i16AM_FF0 - pPData->int16AM_D/10 - pPData->int16AM_P;
+				pPData->int16AM_I = pPData->int16AM_I *10;
 			}
 			else if (pPData->i16AM_Hfs <= pParameter->i16ResMin)
 			{
 				pPData->i16AM_Hfs = pParameter->i16ResMin;
+				pPData->int16AM_I = pPData->i16AM_Hfs  - pPData->i16AM_FF0 - pPData->int16AM_D/10 - pPData->int16AM_P;
+				pPData->int16AM_I = pPData->int16AM_I *10;
 			}
 			else{}
 		}
@@ -194,4 +200,31 @@ BOOL Deal_PIDFun(PIDDATA *pPData, PIDPARAMETER *pParameter)
 	{
 		return FALSE;
 	}
+}
+
+
+int16 PID_Revis(PIDDATA *pPData, int16 CValue)
+{
+	int16 RetValue;
+
+	if (pPData->i16AM_Hfs != CValue)
+	{
+		if (CValue == 0)
+		{
+			pPData->u8RunState = PIDRUN_STATE_CLOSE;
+		}
+		else
+		{
+			pPData->int16AM_I = CValue - pPData->i16AM_FF0 - pPData->int16AM_D/10 - pPData->int16AM_P;
+			pPData->int16AM_I = pPData->int16AM_I *10;
+		}
+		pPData->i16AM_Hfs = CValue;
+		RetValue = 1;
+	}
+	else
+	{
+		RetValue = 0;
+	}
+
+	return RetValue;
 }

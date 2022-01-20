@@ -7,7 +7,7 @@
 **     Version     : Component 01.197, Driver 01.00, CPU db: 3.00.000
 **     Datasheet   : S32K14XRM Rev. 2, 02/2017
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-11-23, 09:09, # CodeGen: 5
+**     Date/Time   : 2022-01-03, 11:53, # CodeGen: 49
 **     Abstract    :
 **
 **     Settings    :
@@ -77,6 +77,7 @@
 #include "lin_cfg.h"
 #include "lin1.h"
 #include "watchdog1.h"
+#include "CAN2_EVCAN.h"
 
 #ifdef __cplusplus
 extern "C" {

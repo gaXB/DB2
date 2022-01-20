@@ -20,8 +20,9 @@
 #include "RunPID.h"
 
 extern PIDPARAMETER sPTCPowerPar;
+extern PIDPARAMETER sBatPTCPowerPar;
 extern PIDDATA   sPTCPowerPidData;
 int16 Deal_PTCPowerPID(void);
 int16 PTCPower_Init(void);
-
+void  PTCPowerPIDMode(uint8 bBathMode);
 #endif /* MIXVENT_PID_H_ */

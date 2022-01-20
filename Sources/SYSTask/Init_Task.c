@@ -85,7 +85,16 @@ static  void Deal_Keypad_Code(void)
 uint8 Run_Init_Task(void)
 {
 	uint8 u8RunEndFlg;
-	
+	sPanleData.LCDONOFF = 0;
+	sPanleData.AC = 0;
+	sPanleData.CIRF = 0;
+	sPanleData.FANLevel = 0;
+	sPanleData.PTCn = 0;
+	sPanleData.RHEAT = 0;
+	sPanleData.VentMode = 0;
+	sPanleData.VerClient = 0;
+	sPanleData.VerSelf = 0;
+	sPanleData.i16Temp = 0;
    switch(InitState)
    {
       default:

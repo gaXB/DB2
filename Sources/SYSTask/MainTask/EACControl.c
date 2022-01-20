@@ -35,7 +35,7 @@ static uint16 TimerEACStep;
 
 
 uint32 EACErrCode;
-uint32 EACStopReason;
+uint16 EACStopReason;
 
 static uint8 bTambCool;
 static uint8 bTambDef;
@@ -47,8 +47,9 @@ EACRUNSTATE sEACRunState;
 int16 i16SignalCarMaxSpeed = 4000;//E-COM_Hcoolmax
 int16 i16SignalBatMaxSpeed = 3000;
 int16 i16BatCInitSpeed = 2300; //E-COM_Bcoolmax 电池初始转速
-int16 i16BothCoolMaxSpeed = 7500; //E-COM_Hhot&E-COM_Bhotmax
+int16 i16BothCoolMaxSpeed = 6300; //E-COM_Hhot&E-COM_Bhotmax
 int16 i16EXVCharge = 250;    //EXV_charge
+int16 i16EXVDrive = 250; //实际没用到
 int16 i16EXVMin = 150;
 uint8 u8EXVAdjStep = 5;
 uint8 u8EXVAdjTime = 10;
@@ -75,6 +76,8 @@ int16 i16SignalCarMaxSpeed_HP = 4000;//E-COM_Hcoolmax
 int16 TBL_HPInitSpeed[3] = {3000, 4000, 5000};
 int16 i16BatHInitPSpeed = 2500;  //E-COM_Bhot
 int16 i16BatHMaxSpeed = 3000; // E-COM_BHotmax
+int16 i16BothMaxSpeed_HP = 7500;  //E-COM_Hhot&E-COM_Bhotmax
+
 
 int16 TBL_BEXV_HOTX[2] = {2000, 8000};
 int16 TBL_BEXV_HOTY[2] = {250, 310};
@@ -82,8 +85,13 @@ int16 TBL_BEXV_HOTY[2] = {250, 310};
 int16 TBLWPTC_TargetTemp[3] = {SCD_T(50), SCD_T(55),  SCD_T(65)};
 int16 TBLWPTC_InitPower[3] = {3000, 4000,  5000};
 int16 Parameter_C = 150;
+int16 Parameter_D = 150;  //为用到
 int16 i16BatPTC_InitPower = 3000;
+int16 i16BatPTC_MaxPower = 4000;
+int16 i16CarPTC_MaxPower = 6000;
+int16 i16BothPTC_MaxPower = 7000;
 int16 i16PTCPowerMin = 200;
+uint8 bStartMode = 1;
 extern TempType   tACON_EVP ,tACOFF_EVP;
 
 //状态值
@@ -91,10 +99,18 @@ static uint8 HighPreState;
 static int16 i16HiP_LimtPress = 1000;
 static int16 i16MinSpeed = 800;
 int16 HPreePro_T1 = 10;
+
+//heat 3way2
+uint16 Adj3wayTime = 10;
+uint8  u8Bat3WayAdjStep = 2;
+int16 i163Way2Min = 150;  //没用到
+
 #define   HIGHPRESS_STATE_NULL    0
 #define   HIGHPRESS_STATE_LIMT    1
 #define   HIGHPRESS_STATE_OFF     2
 #define   HIGHPRESS_STATE_UP      3
+
+EVOUTDATA sEVOutState;
 LevelModeType GetTSETLevelMode(uint8 level)
 {
 	LevelModeType u8LevelMode;
@@ -118,7 +134,7 @@ LevelModeType GetTSETLevelMode(uint8 level)
 	{
 		u8LevelMode = LEVELMODE_WPTC;
 	}
-	else if (level == TSETTEM_MODE_DEBUG)
+	else if (level == TSETTEM_MODE_DEBUG || level == TSETEM_MODE_JIAZHU || level == TSETTEM_MODE_WATERWAY_DEBUG)
 	{
 		u8LevelMode = LEVELMODE_DEBUG;
 	}
@@ -178,11 +194,11 @@ void DealModeSwitch(LevelModeType EnterMode)
 			break;
 		case LEVELMODE_COOLDEF:
 			SystemControl.mdMode = MD_MODE_OSF;
-			SystemControl.ncfMode = NCF_MODE_CIRF;
+			SystemControl.ncfMode = NCF_MODE_NEW;
 			break;
 		case LEVELMODE_HOTDEF:
 			SystemControl.mdMode = MD_MODE_OSFD;
-			SystemControl.ncfMode = NCF_MODE_CIRF;
+			SystemControl.ncfMode = NCF_MODE_NEW;
 			break;
 		case LEVELMODE_HPMODE:
 			SystemControl.mdMode = MD_MODE_OSD;
@@ -191,6 +207,28 @@ void DealModeSwitch(LevelModeType EnterMode)
 		case LEVELMODE_WPTC:
 			SystemControl.mdMode = MD_MODE_OSD;
 			SystemControl.ncfMode = NCF_MODE_NEW;
+			break;
+	}
+}
+
+//系统模式切换时 调用
+void DealSystemModeSwitch(SYSTEMMODE EnterMode)
+{
+	switch (EnterMode)
+	{
+		default:
+		case SYSTEM_MODE_DEFAULT:
+			break;
+		case SYSTEM_MODE_BATTCOOL:
+			sEVOutState.EXV_Postion = i16EXVCharge;
+			break;
+		case SYSTEM_MODE_BOTHCOOL:
+			//SystemControl.acMode
+			sEVOutState.EXV_Postion = i16EXVCharge;
+			break;
+		case  SYSTEM_MODE_BOTH_HPMODE:
+		case  SYSTEM_MODE_BOTH_WPTC:
+			sEVOutState.ThreeWay2_Postion = 50;
 			break;
 	}
 }
@@ -228,10 +266,11 @@ void TestModeControl(void)
 			(void)TimeOutChkTenthSLong(&TimerLevelSwitch, 0);
 			SystemControl.LevelMode = LEVELMODE_DEFAULT;
 			SystemControl.TestMode = TSETTEM_MODE_DEFAULT;
+			bStartMode = 0;
 		}
 		else
 		{//在默认模式
-			if (TimeOutChkTenthSLong(&TimerLevelSwitch, 600))
+			if (TimeOutChkTenthSLong(&TimerLevelSwitch, 600) || bStartMode)
 			{
 				SystemControl.LevelMode = curLevel;
 				LastLevel = curLevel;
@@ -244,17 +283,32 @@ void TestModeControl(void)
 				//
 			}
 		}
+		EACStopReason |= EAC_REASON_MODESWITCH;
 	}
 	else
 	{//一样直接切换
-		SystemControl.LevelMode = curLevel;
+		if (SystemControl.LevelMode != curLevel)
+		{
+			SystemControl.LevelMode = curLevel;
+			DealModeSwitch(SystemControl.LevelMode);
+    	}
 		SystemControl.TestMode = SystemControl.u8TestLevel;
+		EACStopReason &= ~EAC_REASON_MODESWITCH;
 	}
+
+	if (curLevel == LEVELMODE_DEBUG)
+	{//调试模式直接进入
+		SystemControl.LevelMode = curLevel;
+		LastLevel = curLevel;
+		SystemControl.TestMode = SystemControl.u8TestLevel;
+
+		DealModeSwitch(SystemControl.LevelMode);
+	}else{}
 
 	if (SystemControl.OffState == OFF_STATE_OFF)
 	{
-		SystemControl.acMode = AC_MODE_OFF;
-		SystemControl.ptcMode = 0;
+	//	SystemControl.acMode = AC_MODE_OFF;
+	//	SystemControl.ptcMode = 0;
 		SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
 	}
 	else
@@ -263,6 +317,10 @@ void TestModeControl(void)
 		{
 			default:
 			case TSETTEM_MODE_DEFAULT:
+				SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+				SystemControl.thBathMode = THEMAL_MODE_NULL;
+				SystemControl.thCarMode = THEMAL_MODE_NULL;
+				break;
 			case TSETEM_MODE_JIAZHU:
 				EACControlState.ThreeWay1_Postion = 50;
 				EACControlState.ThreeWay2_Postion = 50;
@@ -297,7 +355,7 @@ void TestModeControl(void)
 				EACControlState.EACStart = 0;
 				EACControlState.PTCStart = 0;
 				EACControlState.IncarFAN = 0;
-				SystemControl.systemMode = SYSTEM_MODE_JIAZHU;
+				SystemControl.systemMode = SYSTEM_MODE_WATERWAY_DEBUG;
 				SystemControl.thBathMode = THEMAL_MODE_NULL;
 				SystemControl.thCarMode = THEMAL_MODE_NULL;
 				break;
@@ -468,6 +526,7 @@ void TestModeControl(void)
 				}
 				break;
 			case TSETTEM_MODE_DEBUG:
+				SystemControl.systemMode = SYSTEM_MODE_DEBUG;
 				break;
 		}
 	}
@@ -530,16 +589,26 @@ void TestModeControl(void)
 			if (bTambCool)
 			{
 				SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+				sVehicleControl.u16SystemErrCode |= SYSTEM_CODE_TAMB;
 			}
-			else{}
+			else
+			{
+				sVehicleControl.u16SystemErrCode &= ~SYSTEM_CODE_TAMB;
+			}
 			break;
 		case SYSTEM_MODE_COOLDEF1:
 		case SYSTEM_MODE_HOTDEF2:
 			if (bTambDef)
 			{
 				SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+				sVehicleControl.u16SystemErrCode |= SYSTEM_CODE_TAMB;
+				EACStopReason |= EAC_REASON_TAMBSYSTEM;
 			}
-			else{}
+			else
+			{
+				sVehicleControl.u16SystemErrCode &= ~SYSTEM_CODE_TAMB;
+				EACStopReason &= ~EAC_REASON_TAMBSYSTEM;
+			}
 			break;
 		case SYSTEM_MODE_HPMODE:
 		case SYSTEM_MODE_BAT_HPMODE:
@@ -547,8 +616,12 @@ void TestModeControl(void)
 			if (bTambHP)
 			{
 				SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+				sVehicleControl.u16SystemErrCode |= SYSTEM_CODE_TAMB;
 			}
-			else{}
+			else
+			{
+				sVehicleControl.u16SystemErrCode &= ~SYSTEM_CODE_TAMB;
+			}
 			break;
 		case SYSTEM_MODE_WPTC:
 		case SYSTEM_MODE_BOTH_WPTC:
@@ -556,8 +629,12 @@ void TestModeControl(void)
 			if (bTambWPTC)
 			{
 				SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+				sVehicleControl.u16SystemErrCode |= SYSTEM_CODE_TAMB;
 			}
-			else{}
+			else
+			{
+				sVehicleControl.u16SystemErrCode &= ~SYSTEM_CODE_TAMB;
+			}
 			break;
 	}
 
@@ -656,9 +733,16 @@ void BatCoolStep_Fun(void)
 void SystemModeControl(void)
 {
 	int16 lData1;
+	static SYSTEMMODE LastSysMode;
 	(void)Deal_CoolSpeedPID();
 	(void)Deal_PTCPowerPID();
 
+	if (LastSysMode != SystemControl.systemMode)
+	{
+		LastSysMode = SystemControl.systemMode;
+		DealSystemModeSwitch(LastSysMode);
+	}
+	else{}
 
 	if (SystemControl.systemMode == SYSTEM_MODE_CARCOOL)
 	{
@@ -667,6 +751,7 @@ void SystemModeControl(void)
 		lData1 = SystemControl.TestMode - TSETTEM_MODE_COOL_1;
 
 		sCoolSpeedPidData.i16Set = TBL_COOLTEVP[lData1];
+		sEVSensorData.TevpTarge =sCoolSpeedPidData.i16Set;
 		sCoolSpeedPidData.i16Get = sSenSorData.TevpCal;
 		sCoolSpeedPidData.i16AM_FF0 = TBL_COOLInitSpeed[lData1];
 		if (sSenSorData.TambCal <= SCD_T(25))
@@ -683,15 +768,15 @@ void SystemModeControl(void)
 		}
 		sCoolSpeedPidData.i16AM_FF0 +=  (lData1 - 430) * Parameter_A/ 10 ;
 
-		if (SystemControl.fanMode > 6)
-		{
-			lData1 = 6;
-		}
-		else
-		{
-			lData1 = SystemControl.fanMode;
-		}
-		sCoolSpeedPidData.i16AM_FF0 += (lData1 -4) * Parameter_B;
+//		if (SystemControl.fanMode > 6)
+//		{
+//			lData1 = 6;
+//		}
+//		else
+//		{
+//			lData1 = SystemControl.fanMode;
+//		}
+//		sCoolSpeedPidData.i16AM_FF0 += (lData1 -4) * Parameter_B;
 
 		EACControlState.MixPer = 0;
 		EACControlState.EACStart = 1;
@@ -710,32 +795,34 @@ void SystemModeControl(void)
 		lData1 = SystemControl.TestMode - TSETTEM_MODE_COOL_1;
 
 		sCoolSpeedPidData.i16Set = TBL_COOLTEVP[lData1];
+		sEVSensorData.TevpTarge =sCoolSpeedPidData.i16Set;
+
 		sCoolSpeedPidData.i16Get = sSenSorData.TevpCal;
-		sCoolSpeedPidData.i16AM_FF0 = TBL_COOLInitSpeed[lData1];
-		if (sSenSorData.TambCal <= SCD_T(25))
-		{
-			lData1 = SCD_T(25);
-		}
-		else if (sSenSorData.TambCal >= SCD_T(43))
-		{
-			lData1 = SCD_T(43);
-		}
-		else
-		{
-			lData1 = sSenSorData.TambCal;
-		}
-		sCoolSpeedPidData.i16AM_FF0 +=  (lData1 - 430) * Parameter_A/ 10 ;
-
-		if (SystemControl.fanMode > 6)
-		{
-			lData1 = 6;
-		}
-		else
-		{
-			lData1 = SystemControl.fanMode;
-		}
-		sCoolSpeedPidData.i16AM_FF0 += (lData1 -4) * Parameter_B;
-
+//		sCoolSpeedPidData.i16AM_FF0 = TBL_COOLInitSpeed[lData1];
+//		if (sSenSorData.TambCal <= SCD_T(25))
+//		{
+//			lData1 = SCD_T(25);
+//		}
+//		else if (sSenSorData.TambCal >= SCD_T(43))
+//		{
+//			lData1 = SCD_T(43);
+//		}
+//		else
+//		{
+//			lData1 = sSenSorData.TambCal;
+//		}
+//		sCoolSpeedPidData.i16AM_FF0 +=  (lData1 - 430) * Parameter_A/ 10 ;
+//
+//		if (SystemControl.fanMode > 6)
+//		{
+//			lData1 = 6;
+//		}
+//		else
+//		{
+//			lData1 = SystemControl.fanMode;
+//		}
+//		sCoolSpeedPidData.i16AM_FF0 += (lData1 -4) * Parameter_B;
+		sCoolSpeedPidData.i16AM_FF0  = i16BatCInitSpeed;
 		EACControlState.MixPer = 0;
 		EACControlState.i16MaxSpeed = i16BothCoolMaxSpeed;
 		EACControlState.i16MinSpeed = i6CoolMinSpeed;
@@ -805,6 +892,7 @@ void SystemModeControl(void)
 		EACControlState.bCompMode = THEMAL_MODE_COOL;
 
 		sCoolSpeedPidData.i16Set = SCD_T(3);
+		sEVSensorData.TevpTarge =sCoolSpeedPidData.i16Set;
 		sCoolSpeedPidData.i16Get = sSenSorData.TevpCal;
 		lData1 = SystemControl.TestMode - TSETTEM_MODE_COOLDEF_1;
 		sCoolSpeedPidData.i16AM_FF0 = TBL_CoolDefInitSpeed[lData1];
@@ -836,8 +924,9 @@ void SystemModeControl(void)
 		}else{}
 
 		sCoolSpeedPidData.i16Set = SCD_T(3);
+		sEVSensorData.TevpTarge =sCoolSpeedPidData.i16Set;
 		sCoolSpeedPidData.i16Get = sSenSorData.TevpCal;
-		lData1 = SystemControl.TestMode - TSETTEM_MODE_COOLDEF_1;
+		lData1 = SystemControl.TestMode - TSETTEM_MODE_HOTDEF_1;
 		sCoolSpeedPidData.i16AM_FF0 = TBL_HotDefInitSpeed[lData1];
 		EACControlState.MixPer = TBL_HotDefMix[lData1];
 
@@ -854,6 +943,7 @@ void SystemModeControl(void)
 
 		sPTCPowerPidData.i16Set = TBL_HotDefTWater[lData1];
 		sPTCPowerPidData.i16Get = sSenSorData.TwaterCal;
+		sEVSensorData.TwaterTarge = sPTCPowerPidData.i16Set;
 		sPTCPowerPidData.i16AM_FF0 = TBL_HotDefInitPTC[lData1];
 		if (SystemControl.ptcMode)
 		{
@@ -863,6 +953,7 @@ void SystemModeControl(void)
 		{
 			EACControlState.PTCStart = 0;
 		}
+		EACControlState.i16MaxPTCPower = 5000;
 	//	EACControlState.ModePer = 0;
 	//	EACControlState.NcfPer = 0;
 	}
@@ -877,8 +968,9 @@ void SystemModeControl(void)
 		EACControlState.i16MaxSpeed = i16SignalCarMaxSpeed_HP;
 		EACControlState.i16MinSpeed = MathG_GetSegLinei16(sSenSorData.TambCal, lTBL_TempX, lTBL_SpeedY, 2);
 
-		lData1 = SystemControl.TestMode - TSETTEM_MODE_HOTDEF_1;
+		lData1 = SystemControl.TestMode - TSETTEM_MODE_HPMODE_1;
 		sHotSpeedPidData.i16Set = TBL_HPWaterTaget[lData1];
+		sEVSensorData.TwaterTarge = sHotSpeedPidData.i16Set;
 		sHotSpeedPidData.i16Get = sSenSorData.TwaterCal;
 		sHotSpeedPidData.i16AM_FF0 = TBL_HPInitSpeed[lData1];
 
@@ -888,15 +980,15 @@ void SystemModeControl(void)
 			sHotSpeedPidData.i16AM_FF0 = 800;
 		}else{}
 
-		if (SystemControl.fanMode >= 4)
-		{
-			lData1 = 4;
-		}
-		else
-		{
-			lData1 = SystemControl.fanMode;
-		}
-		sHotSpeedPidData.i16AM_FF0 += (SystemControl.fanMode - 2) * Parameter_B;
+//		if (SystemControl.fanMode >= 4)
+//		{
+//			lData1 = 4;
+//		}
+//		else
+//		{
+//			lData1 = SystemControl.fanMode;
+//		}
+//		sHotSpeedPidData.i16AM_FF0 += (SystemControl.fanMode - 2) * Parameter_B;
 
 		EACControlState.MixPer = 1000;
 
@@ -921,8 +1013,9 @@ void SystemModeControl(void)
 		EACControlState.EACStart = 1;
 		EACControlState.bCompMode = 2;
 
-		lData1 = SystemControl.TestMode - TSETTEM_MODE_HOTDEF_1;
+		lData1 = SystemControl.TestMode - TSETTEM_MODE_HPMODE_1;
 		sHotSpeedPidData.i16Set = TBL_HPWaterTaget[lData1];
+		sEVSensorData.TwaterTarge = sHotSpeedPidData.i16Set;
 		sHotSpeedPidData.i16Get = sSenSorData.TwaterCal;
 		sHotSpeedPidData.i16AM_FF0 = TBL_HPInitSpeed[lData1];
 
@@ -932,15 +1025,15 @@ void SystemModeControl(void)
 			sHotSpeedPidData.i16AM_FF0 = 800;
 		}else{}
 
-		if (SystemControl.fanMode >= 4)
-		{
-			lData1 = 4;
-		}
-		else
-		{
-			lData1 = SystemControl.fanMode;
-		}
-		sHotSpeedPidData.i16AM_FF0 += (SystemControl.fanMode - 2) * Parameter_B;
+//		if (SystemControl.fanMode >= 4)
+//		{
+//			lData1 = 4;
+//		}
+//		else
+//		{
+//			lData1 = SystemControl.fanMode;
+//		}
+//		sHotSpeedPidData.i16AM_FF0 += (SystemControl.fanMode - 2) * Parameter_B;
 
 		EACControlState.MixPer = 1000;
 
@@ -958,7 +1051,7 @@ void SystemModeControl(void)
 		int16 lTBL_TempX[2] = {SCD_T(0), SCD_T(5)};
 		int16 lTBL_SpeedY[2] = {800, 1500};
 		EACControlState.i16MinSpeed = MathG_GetSegLinei16(sSenSorData.TambCal, lTBL_TempX, lTBL_SpeedY, 2);
-		EACControlState.i16MaxSpeed = i16SignalCarMaxSpeed_HP;
+		EACControlState.i16MaxSpeed = i16BothMaxSpeed_HP;
 		EACControlState.EWPT2 = 1;
 	}
 	else if (SystemControl.systemMode == SYSTEM_MODE_BAT_HPMODE)
@@ -1001,19 +1094,21 @@ void SystemModeControl(void)
 		EACControlState.EACStart = 0;
 		EACControlState.bCompMode = 0;
 		EACControlState.PTCStart = 1;
+		EACControlState.i16MaxPTCPower = i16CarPTC_MaxPower;
 
 		lData1 = SystemControl.TestMode - TSETTEM_MODE_WPTC_1;
 
 		sPTCPowerPidData.i16Set = TBLWPTC_TargetTemp[lData1];
+		sEVSensorData.TwaterTarge = sPTCPowerPidData.i16Set;
 		sPTCPowerPidData.i16Get = sSenSorData.TwaterCal;
 		sPTCPowerPidData.i16AM_FF0 = TBLWPTC_InitPower[lData1];;
-		sPTCPowerPidData.i16AM_FF0 -= (sSenSorData.TambCal + SCD_T(20)) * Parameter_C;
+		sPTCPowerPidData.i16AM_FF0 -= (sSenSorData.TambCal + SCD_T(20)) * Parameter_C/10;
 
-		if (SystemControl.fanMode >= 6)
-		{
-			SystemControl.fanMode = 6;
-		}else{}
-		sPTCPowerPidData.i16AM_FF0 += (SystemControl.fanMode -3) * Parameter_B;
+//		if (SystemControl.fanMode >= 6)
+//		{
+//			SystemControl.fanMode = 6;
+//		}else{}
+//		sPTCPowerPidData.i16AM_FF0 += (SystemControl.fanMode -3) * Parameter_B;
 
 		if (sPTCPowerPidData.i16AM_FF0 <= 300)
 		{
@@ -1033,19 +1128,21 @@ void SystemModeControl(void)
 		EACControlState.EACStart = 0;
 		EACControlState.bCompMode = 0;
 		EACControlState.PTCStart = 1;
+		EACControlState.i16MaxPTCPower = i16BothPTC_MaxPower;
 
 		lData1 = SystemControl.TestMode - TSETTEM_MODE_WPTC_1;
 
 		sPTCPowerPidData.i16Set = TBLWPTC_TargetTemp[lData1];
+		sEVSensorData.TwaterTarge = sPTCPowerPidData.i16Set;
 		sPTCPowerPidData.i16Get = sSenSorData.TwaterCal;
 		sPTCPowerPidData.i16AM_FF0 = TBLWPTC_InitPower[lData1];;
-		sPTCPowerPidData.i16AM_FF0 -= (sSenSorData.TambCal + SCD_T(20)) * Parameter_C;
+		sPTCPowerPidData.i16AM_FF0 -= (sSenSorData.TambCal + SCD_T(20)) * Parameter_C/10;
 
-		if (SystemControl.fanMode >= 6)
-		{
-			SystemControl.fanMode = 6;
-		}else{}
-		sPTCPowerPidData.i16AM_FF0 += (SystemControl.fanMode -3) * Parameter_B;
+//		if (SystemControl.fanMode >= 6)
+//		{
+//			SystemControl.fanMode = 6;
+//		}else{}
+//		sPTCPowerPidData.i16AM_FF0 += (SystemControl.fanMode -3) * Parameter_B;
 
 		if (sPTCPowerPidData.i16AM_FF0 <= 300)
 		{
@@ -1063,16 +1160,18 @@ void SystemModeControl(void)
 		EACControlState.EACStart = 0;
 		EACControlState.bCompMode = 0;
 		EACControlState.PTCStart = 1;
+		EACControlState.i16MaxPTCPower = i16BatPTC_MaxPower;
 
 		sPTCPowerPidData.i16Set =  sEVSensorData.BattTargetWater;
 		sPTCPowerPidData.i16Get =  sEVSensorData.BattInWater;
 		sPTCPowerPidData.i16AM_FF0 = i16BatPTC_InitPower;
 
-		if (SystemControl.fanMode >= 6)
-		{
-			SystemControl.fanMode = 6;
-		}else{}
-		sPTCPowerPidData.i16AM_FF0 += (SystemControl.fanMode -3) * Parameter_B;
+
+//		if (SystemControl.fanMode >= 6)
+//		{
+//			SystemControl.fanMode = 6;
+//		}else{}
+//		sPTCPowerPidData.i16AM_FF0 += (SystemControl.fanMode -3) * Parameter_B;
 
 		if (sPTCPowerPidData.i16AM_FF0 <= 300)
 		{
@@ -1094,7 +1193,7 @@ void SystemModeControl(void)
 //{
 //
 //}OutType;
-EVOUTDATA sEVOutState;
+
 void EACSpeedControl(void)
 {
 	//int16 lData1;
@@ -1107,35 +1206,58 @@ void EACSpeedControl(void)
 
 
 //蒸发器控制点
+	static uint16 TimerTevpOn;
 	if (sSenSorData.TevpCal >= tACON_EVP)
 	{
-		bACTevp = 0;
+		if (TimeOutChkSLong(&TimerTevpOn, 10))
+		{
+			bACTevp = 0;
+			EACStopReason &= ~EAC_REASON_TEVP;
+		}else{}
 	}
-	if (sSenSorData.TevpCal <= tACOFF_EVP)
+	if (sSenSorData.TevpCal <= tACOFF_EVP && sEVOutData.EACSpeed <= 830)
 	{
+		(void)TimeOutChkSLong(&TimerTevpOn, 0);
 		bACTevp = 1;
+		EACStopReason |= EAC_REASON_TEVP;
 	}
 //压力保护
+#if 0
 	if ( (sEVSensorData.TPL1_Press <= 300 || (sEVSensorData.TPH_Press - sEVSensorData.TPL1_Press) > 500)
 			&& sEVOutData.EACSpeed == 0)
 	{
 		bACPressCool = 1;
+		EACStopReason |= EAC_REASON_LOWRESS;
+	}
+	else
+	{
+		bACPressCool = 0;
+		EACStopReason &= ~EAC_REASON_LOWRESS;
 	}
 
 	if ( (sEVSensorData.TPL1_Press <= 200 || (sEVSensorData.TPH_Press - sEVSensorData.TPL1_Press) > 500)
 			&& sEVOutData.EACSpeed == 0)
 	{
 		bACPressHot = 1;
+		EACStopReason |= EAC_REASON_LOWRESS;
 	}
+	else
+	{
+		bACPressHot = 0;
+		EACStopReason &= ~EAC_REASON_LOWRESS;
+	}
+#endif
 //热泵进入的条件
 	if (sSenSorData.TambCal >= SCD_T(-7) && sSenSorData.TambCal <= SCD_T(15))
 	{
 		bHPTamb = 0;
+		EACStopReason &= ~EAC_REASON_TAMBSYSTEM;
 	}
 
 	if (sSenSorData.TambCal >= SCD_T(20) || sSenSorData.TambCal <= SCD_T(-12))
 	{
 		bHPTamb = 1;
+		EACStopReason |= ~EAC_REASON_TAMBSYSTEM;
 	}
 	if ( (SystemControl.thCarMode & THEMAL_MODE_COOL) >0 ||
 			(SystemControl.thBathMode & THEMAL_MODE_COOL) >0)
@@ -1146,6 +1268,14 @@ void EACSpeedControl(void)
 		{
 			sCoolSpeedPidData.bRunEn = 1;
 			sEVOutState.EACSpeed = sCoolSpeedPidData.i16AM_Hfs;
+			if ((SystemControl.thCarMode & THEMAL_MODE_COOL) >0)
+			{
+				CoolSpeedPIDMode(0);
+			}
+			else
+			{
+				CoolSpeedPIDMode(1);
+			}
 		}
 		else
 		{
@@ -1153,14 +1283,23 @@ void EACSpeedControl(void)
 			sEVOutState.EACSpeed = 0;
 		}
 	}
-	else if ((SystemControl.thCarMode & THEMAL_MODE_HOT) >0 ||
+	else if( ((SystemControl.thCarMode & THEMAL_MODE_HOT) >0 ||
 			(SystemControl.thBathMode & THEMAL_MODE_HOT) >0 )
+			&& SystemControl.acMode == AC_MODE_ON)
 	{//制热
 		EACControlState.EACStartReq = 1;
 		if ( bACPressHot == 0 && bHPTamb == 0)
 		{
 			sHotSpeedPidData.bRunEn = 1;
 			sEVOutState.EACSpeed = sHotSpeedPidData.i16AM_Hfs;
+			if ((SystemControl.thCarMode & THEMAL_MODE_HOT) >0)
+			{
+				HotSpeedPIDMode(0);
+			}
+			else
+			{
+				HotSpeedPIDMode(1);
+			}
 		}
 		else
 		{
@@ -1303,7 +1442,9 @@ void EACSpeedControl(void)
 				}
 			}
 			else
-			{}
+			{
+				(void)TimeOutChkTenthSLong(&TimerEACStep, 0);
+			}
 			break;
 		case EACSTEP_SOVCLOSE:
 			//等待阀关
@@ -1327,12 +1468,12 @@ void EACSpeedControl(void)
 	{
 	//功率限制
 		lACSpeed = sEVOutState.EACSpeed;
+
 		if (lACSpeed > sVehicleControl.i16SpeedLimte)
 		{
 			lACSpeed = sVehicleControl.i16SpeedLimte;
 		}
 		else{}
-
 		if (lACSpeed > EACControlState.i16MaxSpeed)
 		{
 			lACSpeed = EACControlState.i16MaxSpeed;
@@ -1356,13 +1497,46 @@ void EACSpeedControl(void)
 			lACSpeed = i16HiP_LimtPress;
 		}else{}
 
+
+
+		if (sEVOutState.EACSpeed == 0)
+		{
+			lACSpeed = 0;
+		}
+		else{}
+		if (sVehicleControl.i16SpeedLimte < 800)
+		{
+			EACStopReason |= EAC_REASON_POWERLMT;
+			lACSpeed = 0;
+		}
+		else
+		{
+			EACStopReason &= ~EAC_REASON_POWERLMT;
+		}
 		EACStopReason &= ~EAC_REASON_STEP;
+
+
 	}
 	else
 	{
 		lACSpeed = 0;
 		EACStopReason |= EAC_REASON_STEP;
 	}
+
+	if (lACSpeed >= 800)
+	{
+		EACStopReason =0;
+	}
+
+	if (sCoolSpeedPidData.bRunEn == 1)
+	{
+		(void)PID_Revis(&sCoolSpeedPidData, lACSpeed);
+	}
+	else if (sHotSpeedPidData.bRunEn == 1)
+	{
+		(void)PID_Revis(&sHotSpeedPidData, lACSpeed);
+	}
+	else{}
 
 	static uint16 TimerSpeedAdj;
 	if (TimeOutChkMsLong(&TimerSpeedAdj, 50))
@@ -1403,25 +1577,46 @@ void PTCPowerControl(void)
 	{
 		sPTCPowerPidData.bRunEn = 1;
 		sEVOutState.PTCPower = sPTCPowerPidData.i16AM_Hfs;
-
+		if ((SystemControl.thCarMode & THEMAL_MODE_HOT) > 0)
+		{
+			PTCPowerPIDMode(0);
+		}
+		else
+		{
+			PTCPowerPIDMode(1);
+		}
 		if (sEVOutState.PTCPower < i16PTCPowerMin)
 		{
 			sEVOutState.PTCPower = i16PTCPowerMin;
 		}else{}
+
+		if (sEVOutState.PTCPower > sVehicleControl.i16PTCPowerLimte)
+		{
+			sEVOutState.PTCPower = sVehicleControl.i16PTCPowerLimte;
+		}
+		else{}
+
+		if (EACControlState.i16MaxPTCPower <2000)
+		{
+			EACControlState.i16MaxPTCPower = 2000;
+		}
+		if (sEVOutState.PTCPower > EACControlState.i16MaxPTCPower)
+		{
+			sEVOutState.PTCPower = EACControlState.i16MaxPTCPower;
+		}
+		else{}
+		(void)PID_Revis(&sPTCPowerPidData, sEVOutState.PTCPower);
+
 	}
 	else
 	{
-		sPTCPowerPidData.bRunEn = 1;
+		sPTCPowerPidData.bRunEn = 0;
 		sEVOutState.PTCPower = 0;
 	}
 
-	if (sEVOutState.PTCPower > sVehicleControl.i16PTCPowerLimte)
-	{
-		sEVOutState.PTCPower = sVehicleControl.i16PTCPowerLimte;
-	}
-	else{}
 
 
+	sEVOutData.PTCPower = sEVOutState.PTCPower;
 }
 //SOVCONTORL
 void SOVControl(void)
@@ -1456,6 +1651,8 @@ void SOVControl(void)
 			EACErrCode |= EAC_ECODE_SOV;
 		}
 		else{}
+		sEVOutData.SOV1 = sEVOutState.SOV1;
+		sEVOutData.SOV2 = sEVOutState.SOV2;
 	}
 	else
 	{//可以关
@@ -1471,7 +1668,11 @@ void SOVControl(void)
 	}
 
 	//FBEXV 控制
-	if (SystemControl.systemMode == SYSTEM_MODE_DEFAULT)
+	if (SystemControl.systemMode == SYSTEM_MODE_JIAZHU || SystemControl.systemMode == SYSTEM_MODE_WATERWAY_DEBUG)
+	{
+		sEVOutState.BEXV_Postion = 640;
+	}
+	else if (SystemControl.systemMode == SYSTEM_MODE_DEFAULT)
 	{
 		//默认模式保持
 	}
@@ -1524,8 +1725,8 @@ void SOVControl(void)
 		}
 	}
 	else
-	{//其他模式不改变
-
+	{//其他模式0
+		sEVOutState.EXV_Postion = 0;
 	}
 	sEVOutData.EXV_Postion = sEVOutState.EXV_Postion;
 
@@ -1538,49 +1739,91 @@ void SOVControl(void)
 			break;
 		case  SYSTEM_MODE_JIAZHU:
 		case  SYSTEM_MODE_WATERWAY_DEBUG:
+			sEVOutState.ThreeWay1_Postion = 50;
+			break;
 		case  SYSTEM_MODE_BOTHCOOL:
 		case	SYSTEM_MODE_BOTH_HPMODE:
 		case	SYSTEM_MODE_BOTH_WPTC:
-			sEVOutState.ThreeWay1_Postion = 50;
-			break;
 		case  SYSTEM_MODE_BAT_HPMODE:
 		case  SYSTEM_MODE_BAT_WPTC:
-			sEVOutState.ThreeWay1_Postion = 100;
-			break;
+			//sEVOutState.ThreeWay1_Postion = 100;
+			//break;
 		case  SYSTEM_MODE_CARCOOL:
 		case  SYSTEM_MODE_BATTCOOL:
 		case  SYSTEM_MODE_HOTDEF2:
 		case  SYSTEM_MODE_COOLDEF1:
 		case  SYSTEM_MODE_HPMODE:
 		case  SYSTEM_MODE_WPTC:
-			sEVOutState.ThreeWay1_Postion = 0;
+			sEVOutState.ThreeWay1_Postion = 100;
 			break;
 	}
 	sEVOutData.ThreeWay1_Postion = sEVOutState.ThreeWay1_Postion;
 
 	static uint8 bLastEWPT2;
-	static uint16 TimerEWP2;
+	static uint16 TimerEWP3;
+	static uint16 TimerAdjThreeway2;
+
 	if (SystemControl.systemMode == SYSTEM_MODE_DEFAULT)
 	{
 		//默认模式保持
 	}
-	else if (SystemControl.systemMode == SYSTEM_MODE_JIAZHU || SystemControl.systemMode == SYSTEM_MODE_JIAZHU
-			||	SystemControl.systemMode == SYSTEM_MODE_WATERWAY_DEBUG)
+	else if (SystemControl.systemMode == SYSTEM_MODE_BAT_HPMODE || SystemControl.systemMode == SYSTEM_MODE_BAT_WPTC)
+	{
+		//电池制热100
+		sEVOutState.ThreeWay2_Postion = 100;
+	}
+	else if (SystemControl.systemMode == SYSTEM_MODE_JIAZHU || SystemControl.systemMode == SYSTEM_MODE_WATERWAY_DEBUG)
 	{
 		sEVOutState.ThreeWay2_Postion = 50;
 	}
+	else if (SystemControl.systemMode == SYSTEM_MODE_BOTH_HPMODE || SystemControl.systemMode == SYSTEM_MODE_BOTH_WPTC)
+	{//进入调节模式
+		if (sEVOutData.EACSpeed == 800)
+		{//没有开
+			sEVOutState.ThreeWay2_Postion = 50;
+			(void)TimeOutChkSLong(&TimerAdjThreeway2, 0);
+		}
+		else
+		{
+			if (TimeOutChkSLong(&TimerAdjThreeway2, Adj3wayTime))
+			{
+				if (sEVSensorData.BattInWater < (sEVSensorData.BattTargetWater - 20))
+				{//小于2
+					sEVOutState.ThreeWay2_Postion += u8Bat3WayAdjStep;
+				}
+				else if (sEVSensorData.BattInWater > (sEVSensorData.BattTargetWater + 20))
+				{
+					if (sEVOutState.ThreeWay2_Postion <= u8Bat3WayAdjStep)
+					{
+						sEVOutState.ThreeWay2_Postion = 0;
+					}
+					else
+					{
+						sEVOutState.ThreeWay2_Postion -= u8Bat3WayAdjStep;
+					}
+				}
+				else{}
+
+				if (sEVOutState.ThreeWay2_Postion > 100)
+				{
+					sEVOutState.ThreeWay2_Postion = 100;
+				}else{}
+			}
+		}
+	}
 	else
 	{
-		if (sEVOutState.EWPT2 == 1 )
+		//关闭时
+		if (sEVOutState.EWPT2 > 30 )
 		{
 			if (bLastEWPT2 == 0)
 			{
 				sEVOutState.ThreeWay2_Postion = 50;
-				(void)TimeOutChkSLong(&TimerEWP2, 0);
+				(void)TimeOutChkSLong(&TimerEWP3, 0);
 			}
 			else
 			{
-				if (TimeOutChkSLong(&TimerEWP2, 60))
+				if (TimeOutChkSLong(&TimerEWP3, 60))
 				{
 					sEVOutState.ThreeWay2_Postion = 0;
 				}else{}
@@ -1592,6 +1835,7 @@ void SOVControl(void)
 		}
 	}
 	bLastEWPT2 = sEVOutState.EWPT2;
+	sEVOutData.ThreeWay2_Postion = sEVOutState.ThreeWay2_Postion;
 
 	//4way
 	switch(SystemControl.systemMode)
@@ -1602,7 +1846,7 @@ void SOVControl(void)
 			break;
 		case  SYSTEM_MODE_JIAZHU:
 		case  SYSTEM_MODE_WATERWAY_DEBUG:
-			sEVOutState.FourWay_Postion = 1;
+			sEVOutState.FourWay_Postion = 0;
 			break;
 		case  SYSTEM_MODE_BOTHCOOL:
 		case	SYSTEM_MODE_BOTH_HPMODE:
@@ -1615,7 +1859,7 @@ void SOVControl(void)
 		case  SYSTEM_MODE_COOLDEF1:
 		case  SYSTEM_MODE_HPMODE:
 		case  SYSTEM_MODE_WPTC:
-			sEVOutState.FourWay_Postion = 0;
+			sEVOutState.FourWay_Postion = 1;
 			break;
 	}
 	sEVOutData.FourWay_Postion = sEVOutState.FourWay_Postion;
@@ -1630,7 +1874,7 @@ void PowerUseCal(void)
 	{
 		if (sVehicleControl.i16PowerLimte > 500)
 		{
-			sVehicleControl.i16SpeedLimte = sVehicleControl.i16PowerLimte - 500 *80/43;
+			sVehicleControl.i16SpeedLimte = (sVehicleControl.i16PowerLimte - 500) *80/43;
 		}
 		else
 		{
@@ -1648,7 +1892,7 @@ void PowerUseCal(void)
 
 	if (sVehicleControl.i16PowerLimte > sVehicleControl.i16COMPPower)
 	{
-		sVehicleControl.i16PTCPowerLimte = sVehicleControl.i16PowerLimte > sVehicleControl.i16COMPPower;
+		sVehicleControl.i16PTCPowerLimte = sVehicleControl.i16PowerLimte - sVehicleControl.i16COMPPower;
 	}
 	else
 	{
@@ -1659,7 +1903,240 @@ void PowerUseCal(void)
 	{
 		sVehicleControl.i16PTCPowerLimte = 0;
 	}else{}
+
+	//REQUESET
+	if (SystemControl.thBathMode != THEMAL_MODE_NULL || SystemControl.thCarMode != THEMAL_MODE_NULL)
+	{
+		sEVOutData.ThemalSysRequest = 1;
+		if ( (SystemControl.thBathMode & THEMAL_MODE_COOL) == THEMAL_MODE_COOL ||
+				(SystemControl.thCarMode & THEMAL_MODE_COOL) == THEMAL_MODE_COOL)
+		{
+			sEVOutData.CoolConfirmation = 1;
+		}
+		else
+		{
+			sEVOutData.CoolConfirmation = 0;
+		}
+
+		if ( (SystemControl.thBathMode & THEMAL_MODE_HOT) == THEMAL_MODE_HOT ||
+				(SystemControl.thCarMode & THEMAL_MODE_HOT) == THEMAL_MODE_HOT)
+		{
+			sEVOutData.HeatConfirmation = 1;
+		}
+		else
+		{
+			sEVOutData.HeatConfirmation = 0;
+		}
+	}
+	else
+	{
+		sEVOutData.ThemalSysRequest = 0;
+		sEVOutData.HeatConfirmation = 0;
+		sEVOutData.CoolConfirmation = 0;
+	}
 }
+
+//EWPControl
+const int16 TBL_WP1SPEEDY[2] = {43, 93};
+const int16 TBL_WP1X[2] = {SCD_T(30), SCD_T(40)};
+const int16 TBL_WP1MOTORT[2] = {SCD_T(40), SCD_T(110)};
+void 	EWPControl(void)
+{
+	int16 i16WPT1_Value[4];
+
+	if (SystemControl.systemMode == SYSTEM_MODE_JIAZHU)
+	{
+		sEVOutState.EWPT1 = 0;
+	}
+	else if (SystemControl.systemMode == SYSTEM_MODE_WATERWAY_DEBUG)
+	{
+		sEVOutState.EWPT1 = 100;
+	}
+	else
+	{
+		i16WPT1_Value[0] = MathG_GetSegLinei16(sEVSensorData.CurrentIGBTemp,(int16*) TBL_WP1X, (int16*)TBL_WP1SPEEDY, 2);
+		i16WPT1_Value[1] = MathG_GetSegLinei16(sEVSensorData.CurrentMotorTemp, (int16*)TBL_WP1MOTORT, (int16*)TBL_WP1SPEEDY, 2);
+		i16WPT1_Value[2] = MathG_GetSegLinei16(sEVSensorData.OBCtemp, (int16*)TBL_WP1X, (int16*)TBL_WP1SPEEDY, 2);
+		i16WPT1_Value[3] = MathG_GetSegLinei16(sEVSensorData.DCDCbodyTemp, (int16*)TBL_WP1X, (int16*)TBL_WP1SPEEDY, 2);
+
+
+		sEVOutState.EWPT1 = i16WPT1_Value[0];
+		if (sEVOutState.EWPT1 < i16WPT1_Value[1])
+		{
+			sEVOutState.EWPT1 = i16WPT1_Value[1];
+		}
+		if (sEVOutState.EWPT1 < i16WPT1_Value[2])
+		{
+			sEVOutState.EWPT1 = i16WPT1_Value[2];
+		}
+		if (sEVOutState.EWPT1 < i16WPT1_Value[3])
+		{
+			sEVOutState.EWPT1 = i16WPT1_Value[3];
+		}
+	}
+	sEVOutData.EWPT1 = sEVOutState.EWPT1;
+
+	//EWP2
+	if (SystemControl.systemMode == SYSTEM_MODE_JIAZHU)
+	{
+		sEVOutState.EWPT2 = 0;
+	}
+	else if (SystemControl.systemMode == SYSTEM_MODE_WATERWAY_DEBUG)
+	{
+		sEVOutState.EWPT2 = 100;
+	}
+	else if (SystemControl.thBathMode != THEMAL_MODE_NULL)
+	{
+		sEVOutState.EWPT2 = 100;
+	}
+	else
+	{
+		sEVOutState.EWPT2 = 0;
+	}
+
+	sEVOutData.EWPT2 = sEVOutState.EWPT2;
+	//EWP3
+	if (SystemControl.systemMode == SYSTEM_MODE_WATERWAY_DEBUG || SystemControl.systemMode == SYSTEM_MODE_COOLDEF1 ||
+			SystemControl.systemMode == SYSTEM_MODE_HOTDEF2 )
+	{
+		sEVOutState.EWPT3 = 100;
+	}
+	else
+	{
+		if ( (SystemControl.thBathMode & THEMAL_MODE_HOT) ||
+				(SystemControl.thCarMode & THEMAL_MODE_HOT) )
+		{
+			sEVOutState.EWPT3 = 100;
+		}
+		else
+		{
+			sEVOutState.EWPT3 = 0;
+		}
+	}
+	sEVOutData.EWPT3 = sEVOutState.EWPT3;
+
+
+	//ags
+	static uint8 bSpeedFlg;
+	if (sSenSorData.u8VehicleSpeed > 85)
+	{
+		bSpeedFlg = 1;
+	}
+	if (sSenSorData.u8VehicleSpeed  < 80)
+	{
+		bSpeedFlg = 0;
+	}
+
+	if (SystemControl.u8CompressMode == THEMAL_MODE_NULL || sEVOutData.EWPT1 == 0)
+	{
+		sEVOutState.AGS_Postion = 0;
+	}
+	else
+	{
+		if (bSpeedFlg == 1)
+		{
+			sEVOutState.AGS_Postion = 70;
+		}
+		else
+		{
+			sEVOutState.AGS_Postion = 100;
+		}
+	}
+
+	sEVOutData.AGS_Postion = sEVOutState.AGS_Postion;
+
+	//风扇
+   //static BOOL bsgHPPress, bsgCompPress;
+	if (bSpeedFlg)
+	{//》85
+		sEVOutState.IncarFAN_H = 0;
+		sEVOutState.IncarFAN_L = 0;
+	}
+	else
+	{
+		if (SystemControl.u8CompressMode != THEMAL_MODE_NULL)
+		{
+			sEVOutState.IncarFAN_L = 1;
+
+			if (SystemControl.u8CompressMode == THEMAL_MODE_COOL)
+			{
+				if (sEVSensorData.TPH_Press > 1200)
+				{
+					sEVOutState.IncarFAN_H = 1;
+				}
+				if (sEVSensorData.TPH_Press < 1000)
+				{
+					sEVOutState.IncarFAN_H = 0;
+				}
+			}
+			else
+			{
+				if (sEVSensorData.TPH_Press > 1600)
+				{
+					sEVOutState.IncarFAN_H = 1;
+				}
+				if (sEVSensorData.TPH_Press < 1200)
+				{
+					sEVOutState.IncarFAN_H = 0;
+				}
+			}
+		}
+		else
+		{
+			if (sEVSensorData.DCDCbodyTemp >= SCD_T(40))
+			{
+				sEVOutState.IncarFAN_L = 1;
+			}
+
+			if (sEVSensorData.DCDCbodyTemp <= SCD_T(37))
+			{
+				sEVOutState.IncarFAN_L = 0;
+			}
+
+			if (sEVSensorData.DCDCbodyTemp >= SCD_T(50))
+			{
+				sEVOutState.IncarFAN_H = 1;
+			}
+
+			if (sEVSensorData.DCDCbodyTemp <= SCD_T(47))
+			{
+				sEVOutState.IncarFAN_H = 0;
+			}
+		}
+	}
+	sEVOutData.IncarFAN_H = sEVOutState.IncarFAN_H ;
+	sEVOutData.IncarFAN_L = sEVOutState.IncarFAN_L ;
+
+}
+
+void HVACControl(void)
+{
+	extern uint8 TBL_NCFAD[2];
+	if (SystemControl.LevelMode == LEVELMODE_HPMODE)
+	{
+		if (SystemControl.ncfMode == NCF_MODE_CIRF)
+		{
+			sOutData.NCFAD = TBL_NCFAD[1];
+		}
+		else
+		{
+			sOutData.NCFAD =(TBL_NCFAD[1] - TBL_NCFAD[0])/4 + TBL_NCFAD[0] ;
+		}
+	}
+	else
+	{
+		if (SystemControl.ncfMode == NCF_MODE_CIRF)
+		{
+			sOutData.NCFAD = TBL_NCFAD[1];
+		}
+		else
+		{
+			sOutData.NCFAD = TBL_NCFAD[0];
+		}
+	}
+	extern uint8  u8MIXMOTOR_HI_AD, u8MIXMOTOR_LO_AD;
+	sOutData.MIXAD = EACControlState.MixPer*(u8MIXMOTOR_HI_AD - u8MIXMOTOR_LO_AD) /1000 + u8MIXMOTOR_LO_AD;
+ }
 //EACCONTROL
 void EVACControl(void)
 {
@@ -1668,5 +2145,22 @@ void EVACControl(void)
 	EACSpeedControl();
 	PTCPowerControl();
 	SOVControl();
+	EWPControl();
 	PowerUseCal();
+	HVACControl();
+
+}
+
+
+
+BOOL GetFanOffEn(void)
+{
+	if (EACStepState == EACSTEP_COMP)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 }

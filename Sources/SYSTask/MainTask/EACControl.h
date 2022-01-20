@@ -40,8 +40,10 @@ typedef struct
 	uint8  EACStart;      //
 	uint8  EACStartReq;      //
 	uint16 PTCStart;      //
-	uint16 i16MaxSpeed;
+	int16 i16MaxSpeed;
 	int16 i16MinSpeed;
+	int16 i16MaxPTCPower;
+	int16 i16MinPTCPower;
 }EACCONTROL;
 
 typedef struct
@@ -58,5 +60,9 @@ typedef struct
 #define EAC_REASON_NULL  0
 #define EAC_REASON_HIGHPRESS   0x0001
 #define EAC_REASON_STEP        0x0002
-
+#define EAC_REASON_POWERLMT        0x0004
+#define EAC_REASON_LOWRESS      0x0008
+#define EAC_REASON_TEVP        0x0010
+#define EAC_REASON_TAMBSYSTEM        0x0020
+#define EAC_REASON_MODESWITCH        0x0040
 #endif /* EACCONTROL_H_ */
