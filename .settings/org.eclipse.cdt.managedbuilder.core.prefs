@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/CPATH/delimiter=;
+environment/buildEnvironmentInclude/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/CPATH/operation=remove
+environment/buildEnvironmentInclude/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/append=true
+environment/buildEnvironmentInclude/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/appendContributed=true
+environment/buildEnvironmentLibrary/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/append=true
+environment/buildEnvironmentLibrary/com.nxp.s32ds.cle.arm.mbs.arm32.bare.exe.debug.1239287157/appendContributed=true
