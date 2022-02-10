@@ -43,6 +43,21 @@ uint8 EXVIF_GetRecFlag(EXVDATA* pEXV, uint8 num)
 		l_bool_wr_LI0_TMM_EXV_EnableRequest(pEXV->bEnable);
 		l_u8_wr_LI0_TMM_EXV_initRequest(pEXV->InitReq);
 	}
+	else if (num == EXV_NUM_BEXV2)
+	{
+		if (l_flg_tst_LI0_EXV2_VCU_flag())
+		{
+			l_flg_clr_LI0_EXV2_VCU_flag();
+
+			pEXV->InitRet = l_u8_rd_LI0_EXV2_CurrentInitState();
+			pEXV->u16RetPostion = l_u16_rd_LI0_EXV2_CurrentPosition();
+			bGetComm = 1;
+		}else{}
+
+		l_u16_wr_LI0_TMM_EXV2_PositionRequest(pEXV->u16ComPostion);
+		l_bool_wr_LI0_TMM_EXV2_EnableRequest(pEXV->bEnable);
+		l_u8_wr_LI0_TMM_EXV2_initRequest(pEXV->InitReq);
+	}
 	else if (num == EXV_NUM_THREEWAY1)
 	{
 		if (l_flg_tst_LI0_BDC_1_Rsp_flag())
@@ -54,7 +69,7 @@ uint8 EXVIF_GetRecFlag(EXVDATA* pEXV, uint8 num)
 		}else{}
 
 		pEXV->InitRet = 1;
-		l_u8_wr_LI0_BDC_1_ReqMovePos(pEXV->u16ComPostion);
+		l_u8_wr_LI0_BDC_1_ReqMovePos(pEXV->u16ComPostion *255 /100);
 		l_bool_wr_LI0_BDC_1_MoveEnable(pEXV->bEnable);
 	//	l_u8_wr_LI0_TMM_EXV_initRequest(pEXV->InitReq);
 
@@ -70,7 +85,7 @@ uint8 EXVIF_GetRecFlag(EXVDATA* pEXV, uint8 num)
 		}else{}
 
 		pEXV->InitRet = 1;
-		l_u8_wr_LI0_BDC_2_ReqMovePos(pEXV->u16ComPostion);
+		l_u8_wr_LI0_BDC_2_ReqMovePos(pEXV->u16ComPostion * 255 /100);
 		l_bool_wr_LI0_BDC_2_MoveEnable(pEXV->bEnable);
 	//	l_u8_wr_LI0_TMM_EXV_initRequest(pEXV->InitReq);
 	}

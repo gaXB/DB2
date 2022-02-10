@@ -14,6 +14,7 @@ Nodes {
       BDC_2,
       EXV_2,
       EXV_VCU,
+      EXV2_VCU,
       AGM_A,
       AGM_B,
       CCV4;
@@ -58,6 +59,9 @@ Signals {
    TMM_EXV_PositionRequest       : 16,                                0x00,        LDFMasterNode, EXV_VCU;
    TMM_EXV_EnableRequest         :  1,                                0x00,        LDFMasterNode, EXV_VCU;
    TMM_EXV_initRequest           :  3,                                0x00,        LDFMasterNode, EXV_VCU;
+   TMM_EXV2_PositionRequest      : 16,                                0x00,        LDFMasterNode, EXV2_VCU;
+   TMM_EXV2_EnableRequest        :  1,                                0x00,        LDFMasterNode, EXV2_VCU;
+   TMM_EXV2_initRequest          :  3,                                0x00,        LDFMasterNode, EXV2_VCU;
    EXV_ResponseError             :  1,                                0x00,              EXV_VCU, LDFMasterNode;
    EXV_CurrentInitState          :  2,                                0x00,              EXV_VCU, LDFMasterNode;
    EXV_RunState                  :  1,                                0x00,              EXV_VCU, LDFMasterNode;
@@ -65,6 +69,13 @@ Signals {
    EXV_VoltageState              :  2,                                0x00,              EXV_VCU, LDFMasterNode;
    EXV_TemperatureWarn           :  2,                                0x00,              EXV_VCU, LDFMasterNode;
    EXV_CurrentPosition           : 16,                                0x00,              EXV_VCU, LDFMasterNode;
+   EXV2_ResponseError            :  1,                                0x00,             EXV2_VCU, LDFMasterNode;
+   EXV2_CurrentInitState         :  2,                                0x00,             EXV2_VCU, LDFMasterNode;
+   EXV2_RunState                 :  1,                                0x00,             EXV2_VCU, LDFMasterNode;
+   EXV2_FaultState               :  4,                                0x00,             EXV2_VCU, LDFMasterNode;
+   EXV2_VoltageState             :  2,                                0x00,             EXV2_VCU, LDFMasterNode;
+   EXV2_TemperatureWarn          :  2,                                0x00,             EXV2_VCU, LDFMasterNode;
+   EXV2_CurrentPosition          : 16,                                0x00,             EXV2_VCU, LDFMasterNode;
    ECM_TargetPosReqIgOn_A        :  8,                                0x00,        LDFMasterNode, AGM_A;
    ECM_CalibReq_A                :  1,                                0x00,        LDFMasterNode, AGM_A;
    ECM_IgStatusReq_A             :  1,                                0x00,        LDFMasterNode, AGM_A;
@@ -178,6 +189,20 @@ Frames {
       EXV_VoltageState    , 8;
       EXV_TemperatureWarn , 10;
       EXV_CurrentPosition , 16;
+   }
+   VCU_EXV2            : 0x1E, LDFMasterNode       ,    8 {
+      TMM_EXV2_PositionRequest, 0;
+      TMM_EXV2_EnableRequest, 16;
+      TMM_EXV2_initRequest, 24;
+   }
+   EXV2_VCU            : 0x1F, EXV2_VCU            ,    8 {
+      EXV2_ResponseError  , 0;
+      EXV2_CurrentInitState, 1;
+      EXV2_RunState       , 3;
+      EXV2_FaultState     , 4;
+      EXV2_VoltageState   , 8;
+      EXV2_TemperatureWarn, 10;
+      EXV2_CurrentPosition, 16;
    }
    ECM_AGM_A_DEMAND    : 0x1C, LDFMasterNode       ,    4 {
       ECM_TargetPosReqIgOn_A, 0;
@@ -299,6 +324,21 @@ Node_attributes {
          EXV_VCU;
       }
    }
+   EXV2_VCU {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x0B;                     /* configured NAD of node */
+      initial_NAD                = 0x0B;                     /* initial NAD of node */
+      product_id                 = 0x0125, 0x091E, 0x00;     /* Product id */
+      response_error             = EXV2_ResponseError;       /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         VCU_EXV2;
+         EXV2_VCU;
+      }
+   }
    CCV4 {
       LIN_protocol               = "2.1";                    /* Node protocol version */
       configured_NAD             = 0x04;                     /* configured NAD of node */
@@ -358,6 +398,8 @@ Schedule_tables {
       EXV_2                                              delay 20 ms;
       VCU_EXV                                            delay 20 ms;
       EXV_VCU                                            delay 20 ms;
+      VCU_EXV2                                           delay 20 ms;
+      EXV2_VCU                                           delay 20 ms;
       ECM_AGM_A_DEMAND                                   delay 20 ms;
       AGM_A_ECM_STATUS                                   delay 20 ms;
       ECM_AGM_B_DEMAND                                   delay 20 ms;

@@ -571,9 +571,10 @@ typedef union{
 		unsigned	TMU_HVAC_MODE_1  :1;	 //<<2
 		unsigned	TMU_HVAC_BLW_V  :4;	 //
 		unsigned	TMU_HVAC_RF_2  :3;	 //<<0
-		unsigned	Reserved_0  :6;	 //Ô¤Áô_0
+		unsigned	TMU_FBEV2_Pulse_NUM_2  :2;	 //<<0
+		unsigned	Reserved_0  :4;	 //
 		unsigned	TMU_HVAC_MODE_2  :2;	 //<<0
-		unsigned	Reserved_1  :8;	 //Ô¤Áô_1
+		unsigned	TMU_FBEV2_Pulse_NUM_1  :8;	 //<<2
 		unsigned	Reserved_2  :8;	 //Ô¤Áô_2
 	}Bits;
 	uint8 data[8];

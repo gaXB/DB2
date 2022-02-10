@@ -120,7 +120,11 @@ void PowerMange(void)
 	{
 		bIgnErr = PM_VOLT_OK;
 	}
-	bIgnErr = PM_VOLT_OK;
+	if (sCANMsg115.Bits.SLEEPINDICATIONSIGNAL)
+	{
+		bIgnErr = PM_VOLT_ERR;
+	}
+	//bIgnErr = PM_VOLT_OK;
    //300ms  延时关机逻辑， 
    if (bIgnErr == PM_VOLT_OK)
    { 
@@ -310,7 +314,7 @@ void PowerMange(void)
 
       		}
 #endif
-   			if(ReadIgn_Only(ADID_VOLT) > IGN_VOLT_WAKEUP)
+   			if(ReadIgn_Only(ADID_VOLT) > IGN_VOLT_WAKEUP && sCANMsg115.Bits.SLEEPINDICATIONSIGNAL == 0)
    			{//只读取点火ad ，正常则大于休眠电压返回1
    				u8IgnOkTimes++;
    			}

@@ -298,9 +298,14 @@ static void InterLayCANSend(void)
    	
    }
 #endif
+
+   if (sCANMsg115.Bits.SLEEPINDICATIONSIGNAL)
+   {
+   	sInCANCtrl.TxState = InCAN_TX_DISABLE;
+   }
    if (sInCANCtrl.TxState != InCAN_TX_ENABLE)
    {
-   //	return ;
+   	return ;
    }
 
    if (u8SendBuffInder < CANMSG_TXATTR)

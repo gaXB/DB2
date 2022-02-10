@@ -69,6 +69,8 @@ void PowerOffTask(void)
 	sOutData.u8LCheat = 0;
 	sOutData.u8RCheat = 0;
 
+
+	//sEVOutData.AGS_Postion
 	sEVOutData.AGS_Postion = 0;
 	sEVOutData.SOV1 = 0;
 	sEVOutData.SOV2 = 0;
@@ -83,6 +85,19 @@ void PowerOffTask(void)
 	sEVOutData.HeatConfirmation = 0;
 	sEVOutData.CoolConfirmation = 0;
 	sEVOutData.TMU_Realay = 0;
+
+
+	sPanleData.LCDONOFF = 0;
+	sPanleData.AC = 0;
+	sPanleData.CIRF = 0;
+	sPanleData.FANLevel = 0;
+	sPanleData.PTCn = 0;
+	sPanleData.RHEAT = 0;
+	sPanleData.VentMode = 0;
+	sPanleData.VerClient = SwV_CLIENT *16 + SwsV_CLIENT;
+	sPanleData.VerSelf = SwV_ *16 + SwsV_;
+	sPanleData.i16Temp = SystemControl.u8TestLevel*10;
+
 	//(void)NcfMotor_SetPosition(0,NCF_MODE_CIRF);
 	//NcfMotor_Control();
 

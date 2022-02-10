@@ -351,3 +351,25 @@ int16 MathG_GetSegLinei16(int16 Cvalue,int16* DataX, int16 *Datay, uint8 Num)
    
    return i16ResultY;
 }
+
+int16 MathG_GetSegLinei16_rev(int16 Cvalue,int16* DataX, int16 *Datay, uint8 Num)
+{
+   uint8 nSeg;
+   int16 i16ResultY;
+   nSeg = GAMath_CalDataSegI16(Cvalue, DataX, Num, 1);
+   if (nSeg ==0)
+   {
+   	i16ResultY = Datay[0];
+   }
+   else if (nSeg == Num)
+   {
+   	i16ResultY = Datay[Num-1];
+   }
+   else
+   {
+   	i16ResultY = GAMath_LineFuni16(DataX[nSeg-1], DataX[nSeg], Datay[nSeg-1], Datay[nSeg], Cvalue);
+   }
+
+   return i16ResultY;
+}
+

@@ -53,7 +53,7 @@ void EXVControl(void)
 				case IN_CONTROL:// &&
 					if(pExvData->InitRet)
 					{
-						pExvData->InitReq = 2;
+						pExvData->InitReq = 0;
 						pExvData->bEnable = 1;
 						pExvData->u16ComPostion = pExvData->u16SetValue;
 					}
@@ -75,4 +75,10 @@ void EXVControl(void)
 void EXVSetPostion(uint8 num, uint16 postion)
 {
 	sEXVData[num].u16SetValue = postion;
+}
+
+
+uint8 EXVGetLostErr(uint8 num)
+{
+	return sEXVData[num].bLostErr;
 }

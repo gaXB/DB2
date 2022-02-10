@@ -753,6 +753,9 @@ void SignalCAN2_RecTimeOut(uint32 u32Id)
 	{
 		default:
 			break;
+		case R_ID_115:
+			//sCANMsg115.Bits.SLEEPINDICATIONSIGNAL = 0;
+			break;
 		case R_ID_22F:
 #if PCDEBUG_CONFIG > 0
 			sVehicleControl.i16PowerLimte = 5000;

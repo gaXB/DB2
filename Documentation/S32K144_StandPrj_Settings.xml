@@ -181,18 +181,19 @@
               <Time_base__ms_ v="5" />
               <Jitter__ms_ v="1" />
             </group>
-            <list name="List of slaves" v="7">
+            <list name="List of slaves" v="8">
               <Name0 v="BDC_1" />
               <Name1 v="BDC_2" />
               <Name2 v="EXV_2" />
               <Name3 v="EXV_VCU" />
-              <Name4 v="AGM_A" />
-              <Name5 v="AGM_B" />
-              <Name6 v="CCV4" />
+              <Name4 v="EXV2_VCU" />
+              <Name5 v="AGM_A" />
+              <Name6 v="AGM_B" />
+              <Name7 v="CCV4" />
             </list>
           </group>
           <group name="Signal definition">
-            <list name="List of signals" v="70">
+            <list name="List of signals" v="80">
               <group name="Signal">
                 <Name v="BDC_1_ReqMovePos" />
                 <Type v="Scalar" />
@@ -712,6 +713,48 @@
                 </list>
               </group>
               <group name="Signal">
+                <Name v="TMM_EXV2_PositionRequest" />
+                <Type v="Scalar" />
+                <Size__bits_ v="16" />
+                <Publisher v="LDFMasterNode" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="EXV2_VCU" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="TMM_EXV2_EnableRequest" />
+                <Type v="Scalar" />
+                <Size__bits_ v="1" />
+                <Publisher v="LDFMasterNode" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="EXV2_VCU" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="TMM_EXV2_initRequest" />
+                <Type v="Scalar" />
+                <Size__bits_ v="3" />
+                <Publisher v="LDFMasterNode" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="EXV2_VCU" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
                 <Name v="EXV_ResponseError" />
                 <Type v="Scalar" />
                 <Size__bits_ v="1" />
@@ -800,6 +843,104 @@
                 <Type v="Scalar" />
                 <Size__bits_ v="16" />
                 <Publisher v="EXV_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_ResponseError" />
+                <Type v="Scalar" />
+                <Size__bits_ v="1" />
+                <Publisher v="EXV2_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_CurrentInitState" />
+                <Type v="Scalar" />
+                <Size__bits_ v="2" />
+                <Publisher v="EXV2_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_RunState" />
+                <Type v="Scalar" />
+                <Size__bits_ v="1" />
+                <Publisher v="EXV2_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_FaultState" />
+                <Type v="Scalar" />
+                <Size__bits_ v="4" />
+                <Publisher v="EXV2_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_VoltageState" />
+                <Type v="Scalar" />
+                <Size__bits_ v="2" />
+                <Publisher v="EXV2_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_TemperatureWarn" />
+                <Type v="Scalar" />
+                <Size__bits_ v="2" />
+                <Publisher v="EXV2_VCU" />
+                <list name="List of subscribers" v="1">
+                  <Name0 v="LDFMasterNode" />
+                </list>
+                <list name="Init value" v="1">
+                  <group name="Init value">
+                    <Value v="0" />
+                  </group>
+                </list>
+              </group>
+              <group name="Signal">
+                <Name v="EXV2_CurrentPosition" />
+                <Type v="Scalar" />
+                <Size__bits_ v="16" />
+                <Publisher v="EXV2_VCU" />
                 <list name="List of subscribers" v="1">
                   <Name0 v="LDFMasterNode" />
                 </list>
@@ -1176,7 +1317,7 @@
             </list>
           </group>
           <group name="Unconditional frame definition">
-            <list name="List of unconditional frames" v="14">
+            <list name="List of unconditional frames" v="16">
               <group name="Unconditional frame">
                 <Name v="BDC_1_Cmd" />
                 <ID v="42" />
@@ -1498,6 +1639,76 @@
                 </list>
               </group>
               <group name="Unconditional frame">
+                <Name v="VCU_EXV2" />
+                <ID v="30" />
+                <ID_HEX v="30" />
+                <PID v="94" />
+                <Publisher v="LDFMasterNode" />
+                <Size__bytes_ v="8" />
+                <list name="List of signals" v="3">
+                  <group name="Signal List">
+                    <Name v="TMM_EXV2_PositionRequest" />
+                    <Size__bits_ v="16" />
+                    <Offset__bit_ v="0" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="TMM_EXV2_EnableRequest" />
+                    <Size__bits_ v="1" />
+                    <Offset__bit_ v="16" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="TMM_EXV2_initRequest" />
+                    <Size__bits_ v="3" />
+                    <Offset__bit_ v="24" />
+                  </group>
+                </list>
+              </group>
+              <group name="Unconditional frame">
+                <Name v="EXV2_VCU" />
+                <ID v="31" />
+                <ID_HEX v="31" />
+                <PID v="31" />
+                <Publisher v="EXV2_VCU" />
+                <Size__bytes_ v="8" />
+                <list name="List of signals" v="7">
+                  <group name="Signal List">
+                    <Name v="EXV2_ResponseError" />
+                    <Size__bits_ v="1" />
+                    <Offset__bit_ v="0" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="EXV2_CurrentInitState" />
+                    <Size__bits_ v="2" />
+                    <Offset__bit_ v="1" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="EXV2_RunState" />
+                    <Size__bits_ v="1" />
+                    <Offset__bit_ v="3" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="EXV2_FaultState" />
+                    <Size__bits_ v="4" />
+                    <Offset__bit_ v="4" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="EXV2_VoltageState" />
+                    <Size__bits_ v="2" />
+                    <Offset__bit_ v="8" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="EXV2_TemperatureWarn" />
+                    <Size__bits_ v="2" />
+                    <Offset__bit_ v="10" />
+                  </group>
+                  <group name="Signal List">
+                    <Name v="EXV2_CurrentPosition" />
+                    <Size__bits_ v="16" />
+                    <Offset__bit_ v="16" />
+                  </group>
+                </list>
+              </group>
+              <group name="Unconditional frame">
                 <Name v="ECM_AGM_A_DEMAND" />
                 <ID v="28" />
                 <ID_HEX v="28" />
@@ -1680,7 +1891,7 @@
             </list>
           </group>
           <group name="Node attribute definition">
-            <list name="List of node attributes" v="7">
+            <list name="List of node attributes" v="8">
               <group name="Node Attribute">
                 <Name v="BDC_1" />
                 <Protocol v="2.1" />
@@ -1810,6 +2021,38 @@
                 </list>
               </group>
               <group name="Node Attribute">
+                <Name v="EXV2_VCU" />
+                <Protocol v="2.1" />
+                <Configured_NAD v="11" />
+                <Initial_NAD v="11" />
+                <group name="Product ID">
+                  <Supplier_ID v="293" />
+                  <Function_ID v="2334" />
+                  <Variant_ID v="0" />
+                </group>
+                <Serial_0 v="1" />
+                <Serial_1 v="1" />
+                <Serial_2 v="1" />
+                <Serial_3 v="1" />
+                <Response_error v="EXV2_ResponseError" />
+                <P2_min__ms_ v="50" />
+                <ST_min__ms_ v="0" />
+                <boolgroup name="LIN 2.1, 2.2, 2.2A protocol" v="yes">
+                  <N_As_timeout__ms_ v="1000" />
+                  <N_Cr_timeout__ms_ v="1000" />
+                </boolgroup>
+                <list name="List of frames" v="2">
+                  <group name="Frame">
+                    <Name v="VCU_EXV2" />
+                    <boolgroup name="LIN J2602 protocol" v="no" />
+                  </group>
+                  <group name="Frame">
+                    <Name v="EXV2_VCU" />
+                    <boolgroup name="LIN J2602 protocol" v="no" />
+                  </group>
+                </list>
+              </group>
+              <group name="Node Attribute">
                 <Name v="CCV4" />
                 <Protocol v="2.1" />
                 <Configured_NAD v="4" />
@@ -1911,7 +2154,13 @@
             <list name="List of schedule tables" v="1">
               <group name="Schedule table definition">
                 <Name v="NormalTable" />
-                <list name="Number of frames" v="14">
+                <list name="Number of frames" v="16">
+                  <group name="Schedule table item detail">
+                    <Schedule_table_item_type v="Frame" />
+                  </group>
+                  <group name="Schedule table item detail">
+                    <Schedule_table_item_type v="Frame" />
+                  </group>
                   <group name="Schedule table item detail">
                     <Schedule_table_item_type v="Frame" />
                   </group>

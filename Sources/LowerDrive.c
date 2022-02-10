@@ -73,7 +73,15 @@ static const uint16  TBL_TAMB_SAIC_51[] = //已更改
 		998, 988, 974, 957, 934, 907, 873, 834, 788, 738,
 		684, 627, 569, 512, 456, 403, 354, 310, 270, 235,
 		204, 177, 153, 133, 115,
-};     
+};
+
+
+static const uint16 TBL_SENSOR3K[] =
+{
+		986, 971, 952, 927, 896, 858, 813, 763, 707, 648,
+		587, 525, 466, 409, 357, 309, 267, 230, 197, 169,
+		145, 125, 107, 93, 80,
+};
 
 static const uint16 TBL_TIN_SAIC_51[] =
 {
@@ -95,6 +103,9 @@ static const  uint16  TBL_INTAKE_SAIC_51[] =
 		504, 450, 398, 351, 308, 269, 235, 204, 178, 155,
 		135, 118, 103, 90, 79,
 };
+
+
+int16 AD3KValue;
 
 
 //外部函数调用
@@ -179,7 +190,7 @@ void Init_LowerDrive(void)
 	}
 	
 	//7708 初始化
-	MCPComPinType TBL_Set7708[6] = {M7708_COMBINPIN2, M7708_COMBINPIN1, M7708_COMBINPIN4, M7708_COMBINPIN3, M7708_COMBINPIN6, M7708_COMBINPIN5};  //7708 电机配置
+	MCPComPinType TBL_Set7708[6] = {M7708_COMBINPIN2, M7708_COMBINPIN1, M7708_COMBINPIN3, M7708_COMBINPIN4, M7708_COMBINPIN5, M7708_COMBINPIN6};  //7708 电机配置
 	if (Mcp_MotorInit(3, TBL_Set7708))
 	{
 	}
@@ -347,6 +358,13 @@ void LowDrive_Loop(void)
 //	Updata_LCD();
 	Treat_Read_Code35();
 	ReadTouch_MainControl();
+	SRealyControl();
+	Deal_ActorErr();
+
+	extern int16 MathG_GetSegLinei16_rev(int16 Cvalue,int16* DataX, int16 *Datay, uint8 Num);
+	AD3KValue = ADValue_Get(ADID_TAMB, ADVALUE_GETTYPE_10AD);
+	AD3KValue = MathG_GetSegLinei16_rev(AD3KValue, (int16*)TBL_TAMB_SAIC_51, (int16*)TBL_SENSOR3K, 25);
+
 }
 
 /*******************************************************************************

@@ -26,108 +26,108 @@
   </ToolchainSettings>
   <GeneratedFilesList>
     <GeneratedByPE>
-      <File Name="SDK/platform/drivers/inc/wdog_driver.h" FileDate="2021-12-31, 15:20:04" FileAge="1640935204318" FileType="1048576" CompNumb="26" />
-      <File Name="SDK/platform/drivers/src/pins/pins_port_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513614" FileType="1048576" CompNumb="2" />
-      <File Name="SDK/platform/devices/common/s32_core_cm4.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513391" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/pins/pins_port_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513613" FileType="1048576" CompNumb="2" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/sim_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513492" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/inc/clock_manager.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513446" FileType="1048576" CompNumb="3" />
       <File Name="SDK/platform/devices/startup.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513408" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/wdog/wdog_hw_access.h" FileDate="2021-12-31, 15:20:04" FileAge="1640935204332" FileType="1048576" CompNumb="26" />
+      <File Name="Generated_Code/CAN2_EVCAN.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366150" FileType="45637" CompNumb="29" />
       <File Name="SDK/platform/devices/startup.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513407" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/interrupt/interrupt_manager.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513541" FileType="1048576" CompNumb="4" />
-      <File Name="Generated_Code/lpTmr1.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485739" FileType="45637" CompNumb="20" />
-      <File Name="Generated_Code/Cpu.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485746" FileType="45637" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/wdog/wdog_hw_access.c" FileDate="2021-12-31, 15:20:04" FileAge="1640935204331" FileType="1048576" CompNumb="26" />
-      <File Name="Generated_Code/lpTmr1.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485736" FileType="45637" CompNumb="20" />
-      <File Name="SDK/middleware/lin/coreapi/lin_common_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513301" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/middleware/lin/include/lin_types.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513328" FileType="1048576" CompNumb="16" />
-      <File Name="Generated_Code/Cpu.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485744" FileType="45637" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/smc_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513493" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/platform/drivers/inc/lptmr_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513452" FileType="1048576" CompNumb="20" />
-      <File Name="SDK/middleware/lin/coreapi/lin_common_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513300" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/middleware/lin/include/lin_commontl_api.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513327" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/lptmr/lptmr_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513565" FileType="1048576" CompNumb="20" />
-      <File Name="SDK/platform/drivers/inc/clock.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513445" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/clock_S32K1xx.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513488" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/platform/devices/device_registers.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513406" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/clock_S32K1xx.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513486" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/platform/drivers/inc/pins_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513455" FileType="1048576" CompNumb="2" />
-      <File Name="SDK/platform/drivers/src/lpuart/lpuart_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513592" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/platform/devices/status.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513409" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/wdog/wdog_driver.c" FileDate="2021-12-31, 15:20:04" FileAge="1640935204330" FileType="1048576" CompNumb="26" />
-      <File Name="Generated_Code/lin1.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485734" FileType="45637" CompNumb="17" />
-      <File Name="SDK/platform/drivers/inc/lpuart_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513453" FileType="1048576" CompNumb="0" />
-      <File Name="Generated_Code/pin_mux.h" FileDate="2022-01-13, 14:19:05" FileAge="1642054745794" FileType="45637" CompNumb="2" />
-      <File Name="SDK/rtos/osif/osif.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513627" FileType="1048576" CompNumb="8" />
-      <File Name="SDK/platform/drivers/src/flexcan/flexcan_driver.c" FileDate="2022-01-05, 10:26:24" FileAge="1641349584599" FileType="1048576" CompNumb="0" />
-      <File Name="Sources/main.c" FileDate="2022-01-10, 15:13:42" FileAge="1641798822063" FileType="128" />
-      <File Name="Generated_Code/lin1.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485730" FileType="45637" CompNumb="17" />
-      <File Name="Generated_Code/pin_mux.c" FileDate="2022-01-13, 14:19:05" FileAge="1642054745809" FileType="45637" CompNumb="2" />
-      <File Name="SDK/platform/devices/devassert.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513405" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/middleware/lin/transport/lin_commontl_api.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513344" FileType="1048576" CompNumb="16" />
+      <File Name="Generated_Code/CAN2_EVCAN.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366146" FileType="45637" CompNumb="29" />
       <File Name="SDK/platform/drivers/inc/flexcan_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513448" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/middleware/lin/lowlevel/lin.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513333" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/middleware/lin/coreapi/lin_lin21_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513304" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/lptmr/lptmr_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513567" FileType="1048576" CompNumb="20" />
-      <File Name="SDK/platform/drivers/src/lpuart/lpuart_irq.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513596" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/pcc_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513489" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/middleware/lin/coreapi/lin_lin21_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513303" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/inc/interrupt_manager.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513450" FileType="1048576" CompNumb="4" />
-      <File Name="SDK/platform/drivers/src/edma/edma_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513511" FileType="1048576" CompNumb="6" />
-      <File Name="SDK/platform/drivers/src/lptmr/lptmr_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513566" FileType="1048576" CompNumb="20" />
-      <File Name="SDK/platform/drivers/src/lpuart/lpuart_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513595" FileType="1048576" CompNumb="0" />
-      <File Name="Generated_Code/dmaController1.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485745" FileType="45637" CompNumb="6" />
-      <File Name="Generated_Code/lin_cfg.h" FileDate="2022-01-13, 14:19:36" FileAge="1642054776066" FileType="45637" CompNumb="16" />
-      <File Name="SDK/platform/drivers/inc/lin_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513451" FileType="1048576" CompNumb="0" />
-      <File Name="Generated_Code/dmaController1.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485742" FileType="45637" CompNumb="6" />
-      <File Name="SDK/platform/drivers/src/pins/pins_gpio_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513612" FileType="1048576" CompNumb="2" />
-      <File Name="Generated_Code/lin_cfg.c" FileDate="2022-01-13, 14:19:36" FileAge="1642054776070" FileType="45637" CompNumb="16" />
-      <File Name="Generated_Code/CAN2_EVCAN.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485731" FileType="45637" CompNumb="29" />
-      <File Name="Generated_Code/watchdog1.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485743" FileType="45637" CompNumb="26" />
-      <File Name="Generated_Code/CAN2_EVCAN.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485746" FileType="45637" CompNumb="29" />
       <File Name="SDK/platform/drivers/inc/edma_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513448" FileType="1048576" CompNumb="6" />
       <File Name="SDK/platform/drivers/src/lin/lin_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513553" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/platform/devices/S32K144/startup/system_S32K144.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513380" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/flexcan/flexcan_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513533" FileType="1048576" CompNumb="0" />
-      <File Name="Generated_Code/watchdog1.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485739" FileType="45637" CompNumb="26" />
-      <File Name="SDK/platform/devices/S32K144/include/S32K144.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513371" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/middleware/lin/diagnostic/lin_diagnostic_service.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513310" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/devices/S32K144/startup/system_S32K144.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513379" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/flexcan/flexcan_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513532" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/middleware/lin/include/lin_common_api.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513326" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/scg_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513491" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/platform/drivers/src/lin/lin_common.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513551" FileType="1048576" CompNumb="0" />
       <File Name="SDK/middleware/lin/include/lin.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513325" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/clock/S32K1xx/pmc_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513490" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/middleware/lin/coreapi/lin_j2602_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513303" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/lpuart/lpuart_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513594" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/middleware/lin/coreapi/lin_j2602_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513302" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/middleware/lin/transport/lin_commontl_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513346" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/lpuart/lpuart_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513593" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/platform/drivers/src/edma/edma_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513512" FileType="1048576" CompNumb="6" />
-      <File Name="SDK/platform/devices/callbacks.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513390" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/flexcan/flexcan_irq.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513535" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/middleware/lin/transport/lin_commontl_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513345" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/edma/edma_irq.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513514" FileType="1048576" CompNumb="6" />
-      <File Name="SDK/platform/drivers/src/edma/edma_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513512" FileType="1048576" CompNumb="6" />
-      <File Name="SDK/platform/drivers/src/flexcan/flexcan_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513534" FileType="1048576" CompNumb="0" />
-      <File Name="Generated_Code/canCom1.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485741" FileType="45637" CompNumb="10" />
-      <File Name="SDK/platform/drivers/src/edma/edma_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513513" FileType="1048576" CompNumb="6" />
-      <File Name="Generated_Code/canCom1.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485738" FileType="45637" CompNumb="10" />
-      <File Name="SDK/rtos/osif/osif_baremetal.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513628" FileType="1048576" CompNumb="8" />
-      <File Name="Generated_Code/clockMan1.h" FileDate="2022-01-06, 10:18:05" FileAge="1641435485735" FileType="45637" CompNumb="3" />
-      <File Name="Generated_Code/clockMan1.c" FileDate="2022-01-06, 10:18:05" FileAge="1641435485733" FileType="45637" CompNumb="3" />
-      <File Name="SDK/middleware/lin/coreapi/lin_common_api.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513299" FileType="1048576" CompNumb="16" />
-      <File Name="SDK/platform/drivers/src/lpuart/lin_lpuart_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513591" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/platform/drivers/src/lin/lin_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513552" FileType="1048576" CompNumb="0" />
-      <File Name="SDK/platform/drivers/inc/clock_manager.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513446" FileType="1048576" CompNumb="3" />
-      <File Name="SDK/platform/drivers/src/lpuart/lin_lpuart_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513590" FileType="1048576" CompNumb="0" />
-      <File Name="Documentation/S32K144_StandPrj.txt" FileDate="2022-01-03, 10:23:20" FileAge="1641176600254" FileType="3072" />
       <File Name="SDK/middleware/lin/include/lin_diagnostic_service.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513327" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/middleware/lin/coreapi/lin_common_api.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513299" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/sim_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513492" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/src/lpuart/lin_lpuart_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513591" FileType="1048576" CompNumb="0" />
+      <File Name="Generated_Code/dmaController1.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366144" FileType="45637" CompNumb="6" />
+      <File Name="SDK/platform/drivers/src/interrupt/interrupt_manager.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513541" FileType="1048576" CompNumb="4" />
+      <File Name="SDK/platform/drivers/src/pins/pins_port_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513614" FileType="1048576" CompNumb="2" />
+      <File Name="SDK/platform/drivers/src/lpuart/lin_lpuart_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513590" FileType="1048576" CompNumb="0" />
+      <File Name="Generated_Code/dmaController1.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366139" FileType="45637" CompNumb="6" />
+      <File Name="SDK/platform/drivers/src/pins/pins_port_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513613" FileType="1048576" CompNumb="2" />
       <File Name="SDK/platform/drivers/src/pins/pins_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513611" FileType="1048576" CompNumb="2" />
-      <File Name="Documentation/S32K144_StandPrj_Settings.xml" FileDate="2022-01-03, 10:23:20" FileAge="1641176600256" FileType="3072" />
+      <File Name="Generated_Code/watchdog1.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366141" FileType="45637" CompNumb="26" />
+      <File Name="Documentation/S32K144_StandPrj_Settings.xml" FileDate="2022-01-20, 11:43:23" FileAge="1642650203469" FileType="3072" />
+      <File Name="Generated_Code/watchdog1.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366174" FileType="45637" CompNumb="26" />
+      <File Name="SDK/platform/devices/common/s32_core_cm4.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513391" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/platform/devices/callbacks.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513390" FileType="1048576" CompNumb="1" />
+      <File Name="Generated_Code/lpTmr1.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366133" FileType="45637" CompNumb="20" />
+      <File Name="Generated_Code/Cpu.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366145" FileType="45637" CompNumb="1" />
+      <File Name="SDK/platform/drivers/inc/lpuart_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513453" FileType="1048576" CompNumb="0" />
+      <File Name="Generated_Code/lpTmr1.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366168" FileType="45637" CompNumb="20" />
+      <File Name="Generated_Code/Cpu.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366142" FileType="45637" CompNumb="1" />
+      <File Name="SDK/platform/drivers/src/lin/lin_common.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513551" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/smc_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513493" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/src/flexcan/flexcan_driver.c" FileDate="2022-01-05, 10:26:24" FileAge="1641349584599" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/flexcan/flexcan_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513533" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/lpuart/lpuart_irq.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513596" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/flexcan/flexcan_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513532" FileType="1048576" CompNumb="0" />
+      <File Name="Generated_Code/clockMan1.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366166" FileType="45637" CompNumb="3" />
+      <File Name="SDK/platform/devices/S32K144/startup/system_S32K144.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513380" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/platform/drivers/inc/interrupt_manager.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513450" FileType="1048576" CompNumb="4" />
+      <File Name="SDK/platform/drivers/src/lpuart/lpuart_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513595" FileType="1048576" CompNumb="0" />
+      <File Name="Generated_Code/clockMan1.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366154" FileType="45637" CompNumb="3" />
+      <File Name="SDK/platform/devices/S32K144/include/S32K144.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513371" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/platform/drivers/src/lpuart/lpuart_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513594" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/devices/S32K144/startup/system_S32K144.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513379" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/clock_S32K1xx.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513488" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/src/lpuart/lpuart_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513593" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/clock_S32K1xx.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513486" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/middleware/lin/coreapi/lin_lin21_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513304" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/wdog/wdog_driver.c" FileDate="2021-12-31, 15:20:04" FileAge="1640935204330" FileType="1048576" CompNumb="26" />
+      <File Name="SDK/middleware/lin/coreapi/lin_lin21_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513303" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/inc/wdog_driver.h" FileDate="2021-12-31, 15:20:04" FileAge="1640935204318" FileType="1048576" CompNumb="26" />
+      <File Name="SDK/platform/drivers/src/lin/lin_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513552" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/edma/edma_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513511" FileType="1048576" CompNumb="6" />
+      <File Name="SDK/platform/devices/status.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513409" FileType="1048576" CompNumb="1" />
+      <File Name="Generated_Code/pin_mux.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366136" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/pin_mux.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366170" FileType="45637" CompNumb="2" />
+      <File Name="SDK/platform/drivers/src/edma/edma_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513512" FileType="1048576" CompNumb="6" />
+      <File Name="SDK/platform/drivers/src/lpuart/lpuart_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513592" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/platform/drivers/src/flexcan/flexcan_irq.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513535" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/middleware/lin/coreapi/lin_common_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513301" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/rtos/osif/osif.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513627" FileType="1048576" CompNumb="8" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/pcc_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513489" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/src/edma/edma_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513512" FileType="1048576" CompNumb="6" />
       <File Name="SDK/platform/devices/S32K144/include/S32K144_features.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513373" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/platform/drivers/src/flexcan/flexcan_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513534" FileType="1048576" CompNumb="0" />
+      <File Name="SDK/middleware/lin/coreapi/lin_common_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513300" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/middleware/lin/include/lin_commontl_api.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513327" FileType="1048576" CompNumb="16" />
+      <File Name="Documentation/S32K144_StandPrj.txt" FileDate="2022-01-03, 10:23:20" FileAge="1641176600254" FileType="3072" />
+      <File Name="SDK/middleware/lin/include/lin_types.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513328" FileType="1048576" CompNumb="16" />
+      <File Name="Generated_Code/lin_cfg.h" FileDate="2022-02-10, 14:31:53" FileAge="1644474713930" FileType="45637" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/lptmr/lptmr_driver.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513565" FileType="1048576" CompNumb="20" />
+      <File Name="Generated_Code/lin1.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366155" FileType="45637" CompNumb="17" />
+      <File Name="SDK/platform/drivers/inc/lin_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513451" FileType="1048576" CompNumb="0" />
+      <File Name="Sources/main.c" FileDate="2022-01-10, 15:13:42" FileAge="1641798822063" FileType="128" />
+      <File Name="Generated_Code/lin_cfg.c" FileDate="2022-02-10, 14:31:53" FileAge="1644474713957" FileType="45637" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/pins/pins_gpio_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513612" FileType="1048576" CompNumb="2" />
+      <File Name="Generated_Code/lin1.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366149" FileType="45637" CompNumb="17" />
+      <File Name="SDK/middleware/lin/diagnostic/lin_diagnostic_service.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513310" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/inc/lptmr_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513452" FileType="1048576" CompNumb="20" />
+      <File Name="SDK/platform/drivers/inc/clock.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513445" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/scg_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513491" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/platform/drivers/src/edma/edma_irq.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513514" FileType="1048576" CompNumb="6" />
+      <File Name="SDK/platform/drivers/inc/pins_driver.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513455" FileType="1048576" CompNumb="2" />
+      <File Name="SDK/middleware/lin/transport/lin_commontl_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513346" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/middleware/lin/transport/lin_commontl_api.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513344" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/wdog/wdog_hw_access.h" FileDate="2021-12-31, 15:20:04" FileAge="1640935204332" FileType="1048576" CompNumb="26" />
+      <File Name="SDK/platform/drivers/src/edma/edma_irq.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513513" FileType="1048576" CompNumb="6" />
+      <File Name="SDK/platform/drivers/src/clock/S32K1xx/pmc_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513490" FileType="1048576" CompNumb="3" />
+      <File Name="SDK/middleware/lin/transport/lin_commontl_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513345" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/wdog/wdog_hw_access.c" FileDate="2021-12-31, 15:20:04" FileAge="1640935204331" FileType="1048576" CompNumb="26" />
+      <File Name="SDK/rtos/osif/osif_baremetal.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513628" FileType="1048576" CompNumb="8" />
+      <File Name="SDK/middleware/lin/coreapi/lin_j2602_proto.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513303" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/devices/devassert.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513405" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/middleware/lin/coreapi/lin_j2602_proto.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513302" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/middleware/lin/include/lin_common_api.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513326" FileType="1048576" CompNumb="16" />
+      <File Name="SDK/platform/drivers/src/lptmr/lptmr_hw_access.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513567" FileType="1048576" CompNumb="20" />
+      <File Name="SDK/platform/drivers/src/lptmr/lptmr_hw_access.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513566" FileType="1048576" CompNumb="20" />
+      <File Name="SDK/platform/devices/device_registers.h" FileDate="2021-12-31, 10:25:13" FileAge="1640917513406" FileType="1048576" CompNumb="1" />
+      <File Name="SDK/middleware/lin/lowlevel/lin.c" FileDate="2021-12-31, 10:25:13" FileAge="1640917513333" FileType="1048576" CompNumb="16" />
+      <File Name="Generated_Code/canCom1.h" FileDate="2022-01-20, 11:12:46" FileAge="1642648366137" FileType="45637" CompNumb="10" />
+      <File Name="Generated_Code/canCom1.c" FileDate="2022-01-20, 11:12:46" FileAge="1642648366172" FileType="45637" CompNumb="10" />
     </GeneratedByPE>
   </GeneratedFilesList>
-  <CodeGenReference>64</CodeGenReference>
+  <CodeGenReference>72</CodeGenReference>
 </CodeGenerationInfo>

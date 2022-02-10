@@ -20,11 +20,14 @@
 "./Sources/PowerMange/PowerMange.o"
 "./Sources/Module/WaterPumpIF.o"
 "./Sources/Module/WaterPump.o"
+"./Sources/Module/SpecialRealy.o"
+"./Sources/Module/SRealy_IF.o"
 "./Sources/Module/ReadTouchID.o"
 "./Sources/Module/MoudleDrive.o"
 "./Sources/Module/LINEXV.o"
 "./Sources/Module/EXV_IF.o"
 "./Sources/Module/Deal_DTC.o"
+"./Sources/Module/ActorErr.o"
 "./Sources/main.o"
 "./Sources/file2.o"
 "./Sources/file1.o"
@@ -131,7 +134,7 @@
 "./Generated_Code/Cpu.o"
 "./Generated_Code/CAN2_EVCAN.o"
 -T
-"C:/Users/Administrator/Desktop/delet/DB2/S32K144_StandPrj/Project_Settings/Linker_Files/S32K144_64_flash.ld"
+"E:/DVP/GA/DB2/S32K/DB2/S32K144_StandPrj/Project_Settings/Linker_Files/S32K144_64_flash.ld"
 -Wl,-Map,"S32K144_StandPrj.map"
 -Xlinker
 --gc-sections

@@ -46,8 +46,8 @@ EACCONTROL  EACControlState;
 EACRUNSTATE sEACRunState;
 int16 i16SignalCarMaxSpeed = 4000;//E-COM_Hcoolmax
 int16 i16SignalBatMaxSpeed = 3000;
-int16 i16BatCInitSpeed = 2300; //E-COM_Bcoolmax 电池初始转速
-int16 i16BothCoolMaxSpeed = 6300; //E-COM_Hhot&E-COM_Bhotmax
+int16 i16BatCInitSpeed = 2500; //E-COM_Bcoolmax 电池初始转速
+int16 i16BothCoolMaxSpeed = 6000; //E-COM_Hhot&E-COM_Bhotmax
 int16 i16EXVCharge = 250;    //EXV_charge
 int16 i16EXVDrive = 250; //实际没用到
 int16 i16EXVMin = 150;
@@ -74,9 +74,9 @@ int16 Parameter_B = 150;
 //热泵相关参数
 int16 i16SignalCarMaxSpeed_HP = 4000;//E-COM_Hcoolmax
 int16 TBL_HPInitSpeed[3] = {3000, 4000, 5000};
-int16 i16BatHInitPSpeed = 2500;  //E-COM_Bhot
-int16 i16BatHMaxSpeed = 3000; // E-COM_BHotmax
-int16 i16BothMaxSpeed_HP = 7500;  //E-COM_Hhot&E-COM_Bhotmax
+int16 i16BatHInitPSpeed = 2000;  //E-COM_Bhot
+int16 i16BatHMaxSpeed = 2300; // E-COM_BHotmax
+int16 i16BothMaxSpeed_HP = 6000;  //E-COM_Hhot&E-COM_Bhotmax
 
 
 int16 TBL_BEXV_HOTX[2] = {2000, 8000};
@@ -309,7 +309,25 @@ void TestModeControl(void)
 	{
 	//	SystemControl.acMode = AC_MODE_OFF;
 	//	SystemControl.ptcMode = 0;
-		SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+		if (sVehicleControl.bBattHotReq)
+		{
+			if (bHotPTCTamb)
+			{
+				SystemControl.systemMode = SYSTEM_MODE_BAT_WPTC;
+			}
+			else
+			{
+				SystemControl.systemMode = SYSTEM_MODE_BAT_HPMODE;
+			}
+		}
+		else	if (sVehicleControl.bBattCoolReq)
+		{
+			SystemControl.systemMode = SYSTEM_MODE_BATTCOOL;
+		}
+		else
+		{
+			SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+		}
 	}
 	else
 	{
@@ -358,6 +376,30 @@ void TestModeControl(void)
 				SystemControl.systemMode = SYSTEM_MODE_WATERWAY_DEBUG;
 				SystemControl.thBathMode = THEMAL_MODE_NULL;
 				SystemControl.thCarMode = THEMAL_MODE_NULL;
+				break;
+			case TSETTEM_MODE_NULL_3:
+			case TSETTEM_MODE_NULL_7:
+			case TSETTEM_MODE_NULL_15:
+			case TSETTEM_MODE_NULL_19:
+				if (sVehicleControl.bBattHotReq)
+				{
+					if (bHotPTCTamb)
+					{
+						SystemControl.systemMode = SYSTEM_MODE_BAT_WPTC;
+					}
+					else
+					{
+						SystemControl.systemMode = SYSTEM_MODE_BAT_HPMODE;
+					}
+				}
+				else	if (sVehicleControl.bBattCoolReq)
+				{
+					SystemControl.systemMode = SYSTEM_MODE_BATTCOOL;
+				}
+				else
+				{
+					SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
+				}
 				break;
 			case TSETTEM_MODE_COOL_1:
 			case TSETTEM_MODE_COOL_2:
@@ -590,9 +632,11 @@ void TestModeControl(void)
 			{
 				SystemControl.systemMode = SYSTEM_MODE_DEFAULT;
 				sVehicleControl.u16SystemErrCode |= SYSTEM_CODE_TAMB;
+				EACStopReason |= EAC_REASON_TAMBSYSTEM;
 			}
 			else
 			{
+				EACStopReason &= ~EAC_REASON_TAMBSYSTEM;
 				sVehicleControl.u16SystemErrCode &= ~SYSTEM_CODE_TAMB;
 			}
 			break;
@@ -1037,16 +1081,18 @@ void SystemModeControl(void)
 
 		EACControlState.MixPer = 1000;
 
-		if (SystemControl.acMode == AC_MODE_ON)
-		{
-			EACControlState.EACStart = 1;
-			EACControlState.bCompMode = 2;
-		}
-		else
-		{
-			EACControlState.EACStart = 0;
-			EACControlState.bCompMode = 0;
-		}
+//		if (SystemControl.acMode == AC_MODE_ON)
+//		{
+//			EACControlState.EACStart = 1;
+//			EACControlState.bCompMode = 2;
+//		}
+//		else
+//		{
+//			EACControlState.EACStart = 0;
+//			EACControlState.bCompMode = 0;
+//		}
+		EACControlState.EACStart = 1;
+		EACControlState.bCompMode = 2;
 
 		int16 lTBL_TempX[2] = {SCD_T(0), SCD_T(5)};
 		int16 lTBL_SpeedY[2] = {800, 1500};
@@ -1067,16 +1113,8 @@ void SystemModeControl(void)
 
 		EACControlState.MixPer = 1000;
 
-		if (SystemControl.acMode == AC_MODE_ON)
-		{
-			EACControlState.EACStart = 1;
-			EACControlState.bCompMode = 2;
-		}
-		else
-		{
-			EACControlState.EACStart = 0;
-			EACControlState.bCompMode = 0;
-		}
+		EACControlState.EACStart = 1;
+		EACControlState.bCompMode = 2;
 
 		int16 lTBL_TempX[2] = {SCD_T(0), SCD_T(5)};
 		int16 lTBL_SpeedY[2] = {800, 1500};
@@ -1264,7 +1302,8 @@ void EACSpeedControl(void)
 	{//制冷
 		//SystemControl.acMode == AC_MODE_ON && 不需要判断
 		EACControlState.EACStartReq = 1;
-		if ( bACTevp == 0 && bACPressCool == 0 && bTambCool == 0)
+		if ( ( bACTevp == 0 || (SystemControl.thBathMode & THEMAL_MODE_COOL) >0)
+				&& bACPressCool == 0 && bTambCool == 0)
 		{
 			sCoolSpeedPidData.bRunEn = 1;
 			sEVOutState.EACSpeed = sCoolSpeedPidData.i16AM_Hfs;
@@ -1285,7 +1324,7 @@ void EACSpeedControl(void)
 	}
 	else if( ((SystemControl.thCarMode & THEMAL_MODE_HOT) >0 ||
 			(SystemControl.thBathMode & THEMAL_MODE_HOT) >0 )
-			&& SystemControl.acMode == AC_MODE_ON)
+			&& EACControlState.bCompMode != THEMAL_MODE_NULL)
 	{//制热
 		EACControlState.EACStartReq = 1;
 		if ( bACPressHot == 0 && bHPTamb == 0)
@@ -1571,7 +1610,7 @@ void PTCPowerControl(void)
 {
 	(void)Deal_PTCPowerPID();
 
-	if (SystemControl.ptcMode &&
+	if (EACControlState.bCompMode == THEMAL_MODE_NULL &&
 			((SystemControl.thBathMode & THEMAL_MODE_HOT) > 0 || (SystemControl.thCarMode & THEMAL_MODE_HOT) > 0)
 		)
 	{
@@ -2112,7 +2151,7 @@ void 	EWPControl(void)
 void HVACControl(void)
 {
 	extern uint8 TBL_NCFAD[2];
-	if (SystemControl.LevelMode == LEVELMODE_HPMODE)
+	if (SystemControl.LevelMode == LEVELMODE_HPMODE || SystemControl.LevelMode == LEVELMODE_WPTC)
 	{
 		if (SystemControl.ncfMode == NCF_MODE_CIRF)
 		{

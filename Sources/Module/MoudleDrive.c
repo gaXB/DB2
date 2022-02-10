@@ -810,6 +810,11 @@ void PCSet_OutData(void)
 		sEVOutData.AGS_Postion = sCANMsg451.Bits.TMU_AGS_POSITION*100/15;
 		sEVOutData.EXV_Postion = (sCANMsg452.Bits.TMU_EXV_PULSE_NUM_1 <<7) + sCANMsg452.Bits.TMU_EXV_PULSE_NUM_2;
 		sEVOutData.BEXV_Postion = (sCANMsg452.Bits.TMU_FBEV_PULSE_NUM_1 <<5) + sCANMsg452.Bits.TMU_FBEV_PULSE_NUM_2;
+		sEVOutData.BEXV2_Postion = (sCANMsg451.Bits.TMU_FBEV2_Pulse_NUM_2 <<8) + sCANMsg451.Bits.TMU_FBEV2_Pulse_NUM_1;
+		if (sEVOutData.BEXV2_Postion >640)
+		{
+			sEVOutData.BEXV2_Postion = 640;
+		}
 		if (sCANMsg452.Bits.TMU_RAD_FAN_LV == 2)
 		{
 			sEVOutData.IncarFAN_H = 1;

@@ -44,7 +44,8 @@
 #include "WaterPump.h"
 #include "ReadTouchID.h"
 
-
+#include "SpecialRealy.h"
+#include "ActorErr.h"
 #if  _PROJECT_CAN_
 #include "ApplayLay.h"
 #include "IndirectNM.h"

@@ -19,6 +19,8 @@
 
 #ifndef MCUPMLOGIC_H_
 #define MCUPMLOGIC_H_
+#include "DataType.h"
+
 
 //外部可查看的寄存器，及其含义
 extern uint32 u32MCUData[7];

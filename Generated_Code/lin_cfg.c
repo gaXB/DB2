@@ -3,7 +3,7 @@
 **
 **     @file      lin_cfg.c
 **
-**     @date      14:19:31, 2022-1-13
+**     @date      14:31:49, 2022-2-10
 **
 **     @brief     Hardware configuration file
 **
@@ -219,37 +219,69 @@ volatile l_u8    g_lin_frame_data_buffer[LIN_FRAME_BUF_SIZE] =
 
   ,0xff /* 79 : 11111111 */
 
-  ,0x00 /* 80 : 00000000 */ /* start of frame LI0_ECM_AGM_A_DEMAND */
+  ,0x00 /* 80 : 00000000 */ /* start of frame LI0_VCU_EXV2 */
 
-  ,0xfa /* 81 : 11111010 */
+  ,0x00 /* 81 : 00000000 */
 
-  ,0x00 /* 82 : 00000000 */
+  ,0xfe /* 82 : 11111110 */
 
-  ,0xff /* 83 : 11111111 */
+  ,0xf8 /* 83 : 11111000 */
 
-  ,0x7f /* 84 : 01111111 */ /* start of frame LI0_AGM_A_ECM_STATUS */
+  ,0xff /* 84 : 11111111 */
 
-  ,0x0a /* 85 : 00001010 */
+  ,0xff /* 85 : 11111111 */
 
-  ,0xfe /* 86 : 11111110 */
+  ,0xff /* 86 : 11111111 */
 
   ,0xff /* 87 : 11111111 */
 
-  ,0x00 /* 88 : 00000000 */ /* start of frame LI0_ECM_AGM_B_DEMAND */
+  ,0x00 /* 88 : 00000000 */ /* start of frame LI0_EXV2_VCU */
 
-  ,0xfa /* 89 : 11111010 */
+  ,0xf0 /* 89 : 11110000 */
 
   ,0x00 /* 90 : 00000000 */
 
-  ,0xff /* 91 : 11111111 */
+  ,0x00 /* 91 : 00000000 */
 
-  ,0x7f /* 92 : 01111111 */ /* start of frame LI0_AGM_B_ECM_STATUS */
+  ,0xff /* 92 : 11111111 */
 
-  ,0x0a /* 93 : 00001010 */
+  ,0xff /* 93 : 11111111 */
 
-  ,0xfe /* 94 : 11111110 */
+  ,0xff /* 94 : 11111111 */
 
   ,0xff /* 95 : 11111111 */
+
+  ,0x00 /* 96 : 00000000 */ /* start of frame LI0_ECM_AGM_A_DEMAND */
+
+  ,0xfa /* 97 : 11111010 */
+
+  ,0x00 /* 98 : 00000000 */
+
+  ,0xff /* 99 : 11111111 */
+
+  ,0x7f /* 100 : 01111111 */ /* start of frame LI0_AGM_A_ECM_STATUS */
+
+  ,0x0a /* 101 : 00001010 */
+
+  ,0xfe /* 102 : 11111110 */
+
+  ,0xff /* 103 : 11111111 */
+
+  ,0x00 /* 104 : 00000000 */ /* start of frame LI0_ECM_AGM_B_DEMAND */
+
+  ,0xfa /* 105 : 11111010 */
+
+  ,0x00 /* 106 : 00000000 */
+
+  ,0xff /* 107 : 11111111 */
+
+  ,0x7f /* 108 : 01111111 */ /* start of frame LI0_AGM_B_ECM_STATUS */
+
+  ,0x0a /* 109 : 00001010 */
+
+  ,0xfe /* 110 : 11111110 */
+
+  ,0xff /* 111 : 11111111 */
 };
 
 /* definition and initialization of signal array */
@@ -275,24 +307,28 @@ volatile l_u8    g_lin_flag_handle_tbl[LIN_FLAG_BUF_SIZE] =
 
   ,0xFF /* 9: start of flag frame LI0_EXV_VCU */
 
-  ,0xFF /* 10: start of flag frame LI0_ECM_AGM_A_DEMAND */
+  ,0xFF /* 10: start of flag frame LI0_VCU_EXV2 */
 
-  ,0xFF /* 11: start of flag frame LI0_AGM_A_ECM_STATUS */
+  ,0xFF /* 11: start of flag frame LI0_EXV2_VCU */
 
-  ,0xFF /* 12: */
+  ,0xFF /* 12: start of flag frame LI0_ECM_AGM_A_DEMAND */
 
-  ,0xFF /* 13: start of flag frame LI0_ECM_AGM_B_DEMAND */
+  ,0xFF /* 13: start of flag frame LI0_AGM_A_ECM_STATUS */
 
-  ,0xFF /* 14: start of flag frame LI0_AGM_B_ECM_STATUS */
+  ,0xFF /* 14: */
 
-  ,0xFF /* 15: */
+  ,0xFF /* 15: start of flag frame LI0_ECM_AGM_B_DEMAND */
+
+  ,0xFF /* 16: start of flag frame LI0_AGM_B_ECM_STATUS */
+
+  ,0xFF /* 17: */
 };
 
 /* definition and initialization for flag of frame */
-volatile l_bool g_lin_frame_flag_handle_tbl[LIN_NUM_OF_FRMS] = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+volatile l_bool g_lin_frame_flag_handle_tbl[LIN_NUM_OF_FRMS] = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
 /*************************** Frame flag for updating signal in frame ****************/
-volatile l_u8 g_lin_frame_updating_flag_tbl[LIN_NUM_OF_FRMS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+volatile l_u8 g_lin_frame_updating_flag_tbl[LIN_NUM_OF_FRMS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 
 
@@ -321,13 +357,17 @@ static const lin_frame_t lin_frame_tbl[LIN_NUM_OF_FRMS] ={
   
    ,{ LIN_FRM_UNCD, 8, LIN_RES_SUB, 72, 9, 1 , (lin_associate_frame_t*)0 }
   
-   ,{ LIN_FRM_UNCD, 4, LIN_RES_PUB, 80, 10, 1 , (lin_associate_frame_t*)0 }
+   ,{ LIN_FRM_UNCD, 8, LIN_RES_PUB, 80, 10, 1 , (lin_associate_frame_t*)0 }
   
-   ,{ LIN_FRM_UNCD, 4, LIN_RES_SUB, 84, 11, 2 , (lin_associate_frame_t*)0 }
+   ,{ LIN_FRM_UNCD, 8, LIN_RES_SUB, 88, 11, 1 , (lin_associate_frame_t*)0 }
   
-   ,{ LIN_FRM_UNCD, 4, LIN_RES_PUB, 88, 13, 1 , (lin_associate_frame_t*)0 }
+   ,{ LIN_FRM_UNCD, 4, LIN_RES_PUB, 96, 12, 1 , (lin_associate_frame_t*)0 }
   
-   ,{ LIN_FRM_UNCD, 4, LIN_RES_SUB, 92, 14, 2 , (lin_associate_frame_t*)0 }
+   ,{ LIN_FRM_UNCD, 4, LIN_RES_SUB, 100, 13, 2 , (lin_associate_frame_t*)0 }
+  
+   ,{ LIN_FRM_UNCD, 4, LIN_RES_PUB, 104, 15, 1 , (lin_associate_frame_t*)0 }
+  
+   ,{ LIN_FRM_UNCD, 4, LIN_RES_SUB, 108, 16, 2 , (lin_associate_frame_t*)0 }
   
    ,{ LIN_FRM_DIAG, 8, LIN_RES_PUB, 0, 0, 0 , (lin_associate_frame_t*)0 }
   
@@ -335,9 +375,9 @@ static const lin_frame_t lin_frame_tbl[LIN_NUM_OF_FRMS] ={
   
 };
 
-static l_u8 LI0_lin_configuration_RAM[LI0_LIN_SIZE_OF_CFG]= {0x00, 0x2A, 0x2B, 0x29, 0x28, 0x19, 0x09, 0x12, 0x22, 0x11, 0x21, 0x1C, 0x1B, 0x14, 0x13, 0x3C, 0x3D ,0xFF};
+static l_u8 LI0_lin_configuration_RAM[LI0_LIN_SIZE_OF_CFG]= {0x00, 0x2A, 0x2B, 0x29, 0x28, 0x19, 0x09, 0x12, 0x22, 0x11, 0x21, 0x1E, 0x1F, 0x1C, 0x1B, 0x14, 0x13, 0x3C, 0x3D ,0xFF};
 
-static const l_u16  LI0_lin_configuration_ROM[LI0_LIN_SIZE_OF_CFG]= {0x0000, 0x2A, 0x2B, 0x29, 0x28, 0x19, 0x09, 0x12, 0x22, 0x11, 0x21, 0x1C, 0x1B, 0x14, 0x13, 0x3C, 0x3D ,0xFFFF};
+static const l_u16  LI0_lin_configuration_ROM[LI0_LIN_SIZE_OF_CFG]= {0x0000, 0x2A, 0x2B, 0x29, 0x28, 0x19, 0x09, 0x12, 0x22, 0x11, 0x21, 0x1E, 0x1F, 0x1C, 0x1B, 0x14, 0x13, 0x3C, 0x3D ,0xFFFF};
 
 
 /********************** Go to sleep Initialization *************************/
@@ -349,7 +389,7 @@ static const lin_schedule_data_t LI0_lin_gotosleep_data[1] = {
 
 
 /******************** Schedule table Initialization ************************/
-static const lin_schedule_data_t LI0_NormalTable_data[14] = {
+static const lin_schedule_data_t LI0_NormalTable_data[16] = {
 
    {LI0_BDC_1_Cmd, 4, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
   
@@ -370,6 +410,10 @@ static const lin_schedule_data_t LI0_NormalTable_data[14] = {
    , {LI0_VCU_EXV, 4, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
   
    , {LI0_EXV_VCU, 4, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
+  
+   , {LI0_VCU_EXV2, 4, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
+  
+   , {LI0_EXV2_VCU, 4, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
   
    , {LI0_ECM_AGM_A_DEMAND, 4, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
   
@@ -413,7 +457,7 @@ static const lin_schedule_t lin_schedule_tbl[LIN_NUM_OF_SCHD_TBL] ={
   
    ,{1, LIN_SCH_TBL_DIAG  , &LI0_SlaveRespTable_data[0] }
   
-   ,{14, LIN_SCH_TBL_NORM  , &LI0_NormalTable_data[0] }
+   ,{16, LIN_SCH_TBL_NORM  , &LI0_NormalTable_data[0] }
   
 };
 /****************************LIN interface configuration ****************************/
@@ -426,7 +470,7 @@ const lin_protocol_user_config_t g_lin_protocol_user_cfg_array[LIN_NUM_OF_IFCS] 
         .diagnostic_class = LIN_DIAGNOSTIC_CLASS_I,            /* LIN Diagnostic Class */
         .function = (bool)LIN_MASTER,                 /*  function LIN_MASTER*/
 
-        .number_of_configurable_frames = 16,                            /*  num_of_frames */
+        .number_of_configurable_frames = 18,                            /*  num_of_frames */
         .frame_start = 0,                              /*  frame_start */
         .frame_tbl_ptr = lin_frame_tbl,                                          /*  frame_tbl */
 

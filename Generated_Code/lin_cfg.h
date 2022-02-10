@@ -3,7 +3,7 @@
 **
 **     @file      lin_cfg.h
 **
-**     @date      14:19:28, 2022-1-13
+**     @date      14:31:45, 2022-2-10
 **
 **     @brief     Hardware configuration file
 **
@@ -100,8 +100,8 @@
 #define LIN_NUM_OF_MASTER_IFCS 1U
 
 /* frame buffer size */
-#define LIN_FRAME_BUF_SIZE          96U
-#define LIN_FLAG_BUF_SIZE           18U
+#define LIN_FRAME_BUF_SIZE          112U
+#define LIN_FLAG_BUF_SIZE           21U
 
 /**********************************************************************/
 /***************               Interfaces           *******************/
@@ -123,7 +123,7 @@ typedef enum {
 /***************               Signals              *******************/
 /**********************************************************************/
 /* Number of signals */
-#define LIN_NUM_OF_SIGS  70U
+#define LIN_NUM_OF_SIGS  80U
 /* List of signals */
 typedef enum {
 
@@ -203,6 +203,12 @@ typedef enum {
   
    , LI0_TMM_EXV_initRequest
   
+   , LI0_TMM_EXV2_PositionRequest
+  
+   , LI0_TMM_EXV2_EnableRequest
+  
+   , LI0_TMM_EXV2_initRequest
+  
    , LI0_EXV_ResponseError
   
    , LI0_EXV_CurrentInitState
@@ -216,6 +222,20 @@ typedef enum {
    , LI0_EXV_TemperatureWarn
   
    , LI0_EXV_CurrentPosition
+  
+   , LI0_EXV2_ResponseError
+  
+   , LI0_EXV2_CurrentInitState
+  
+   , LI0_EXV2_RunState
+  
+   , LI0_EXV2_FaultState
+  
+   , LI0_EXV2_VoltageState
+  
+   , LI0_EXV2_TemperatureWarn
+  
+   , LI0_EXV2_CurrentPosition
   
    , LI0_ECM_TargetPosReqIgOn_A
   
@@ -274,7 +294,7 @@ typedef enum {
 /*****************               Frame             ********************/
 /**********************************************************************/
 /* Number of frames */
-#define LIN_NUM_OF_FRMS  16U
+#define LIN_NUM_OF_FRMS  18U
 /* List of frames */
 typedef enum {
 /* All frames for master node */
@@ -300,6 +320,10 @@ typedef enum {
    , LI0_VCU_EXV
   
    , LI0_EXV_VCU
+  
+   , LI0_VCU_EXV2
+  
+   , LI0_EXV2_VCU
   
    , LI0_ECM_AGM_A_DEMAND
   
@@ -341,7 +365,7 @@ typedef enum {
 
 
 /* Size of configuration in ROM and RAM used for interface: LI0 */
-#define LI0_LIN_SIZE_OF_CFG  18U
+#define LI0_LIN_SIZE_OF_CFG  20U
 
 
 
@@ -718,6 +742,27 @@ typedef enum {
 #define LIN_LI0_TMM_EXV_initRequest_FLAG_BIT_OFFSET    2U
 
 
+#define LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET    80U
+#define LIN_LI0_TMM_EXV2_PositionRequest_BIT_OFFSET    0U
+#define LIN_LI0_TMM_EXV2_PositionRequest_SIGNAL_SIZE    16U
+#define LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_TMM_EXV2_EnableRequest_BYTE_OFFSET    82U
+#define LIN_LI0_TMM_EXV2_EnableRequest_BIT_OFFSET    0U
+#define LIN_LI0_TMM_EXV2_EnableRequest_SIGNAL_SIZE    1U
+#define LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_TMM_EXV2_initRequest_BYTE_OFFSET    83U
+#define LIN_LI0_TMM_EXV2_initRequest_BIT_OFFSET    0U
+#define LIN_LI0_TMM_EXV2_initRequest_SIGNAL_SIZE    3U
+#define LIN_LI0_TMM_EXV2_initRequest_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_TMM_EXV2_initRequest_FLAG_BIT_OFFSET    2U
+
+
 #define LIN_LI0_EXV_ResponseError_BYTE_OFFSET    72U
 #define LIN_LI0_EXV_ResponseError_BIT_OFFSET    0U
 #define LIN_LI0_EXV_ResponseError_SIGNAL_SIZE    1U
@@ -767,185 +812,234 @@ typedef enum {
 #define LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET    6U
 
 
-#define LIN_LI0_ECM_TargetPosReqIgOn_A_BYTE_OFFSET    80U
+#define LIN_LI0_EXV2_ResponseError_BYTE_OFFSET    88U
+#define LIN_LI0_EXV2_ResponseError_BIT_OFFSET    0U
+#define LIN_LI0_EXV2_ResponseError_SIGNAL_SIZE    1U
+#define LIN_LI0_EXV2_ResponseError_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_ResponseError_FLAG_BIT_OFFSET    0U
+
+
+#define LIN_LI0_EXV2_CurrentInitState_BYTE_OFFSET    88U
+#define LIN_LI0_EXV2_CurrentInitState_BIT_OFFSET    1U
+#define LIN_LI0_EXV2_CurrentInitState_SIGNAL_SIZE    2U
+#define LIN_LI0_EXV2_CurrentInitState_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_CurrentInitState_FLAG_BIT_OFFSET    1U
+
+
+#define LIN_LI0_EXV2_RunState_BYTE_OFFSET    88U
+#define LIN_LI0_EXV2_RunState_BIT_OFFSET    3U
+#define LIN_LI0_EXV2_RunState_SIGNAL_SIZE    1U
+#define LIN_LI0_EXV2_RunState_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_RunState_FLAG_BIT_OFFSET    2U
+
+
+#define LIN_LI0_EXV2_FaultState_BYTE_OFFSET    88U
+#define LIN_LI0_EXV2_FaultState_BIT_OFFSET    4U
+#define LIN_LI0_EXV2_FaultState_SIGNAL_SIZE    4U
+#define LIN_LI0_EXV2_FaultState_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_FaultState_FLAG_BIT_OFFSET    3U
+
+
+#define LIN_LI0_EXV2_VoltageState_BYTE_OFFSET    89U
+#define LIN_LI0_EXV2_VoltageState_BIT_OFFSET    0U
+#define LIN_LI0_EXV2_VoltageState_SIGNAL_SIZE    2U
+#define LIN_LI0_EXV2_VoltageState_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_VoltageState_FLAG_BIT_OFFSET    4U
+
+
+#define LIN_LI0_EXV2_TemperatureWarn_BYTE_OFFSET    89U
+#define LIN_LI0_EXV2_TemperatureWarn_BIT_OFFSET    2U
+#define LIN_LI0_EXV2_TemperatureWarn_SIGNAL_SIZE    2U
+#define LIN_LI0_EXV2_TemperatureWarn_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_TemperatureWarn_FLAG_BIT_OFFSET    5U
+
+
+#define LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET    90U
+#define LIN_LI0_EXV2_CurrentPosition_BIT_OFFSET    0U
+#define LIN_LI0_EXV2_CurrentPosition_SIGNAL_SIZE    16U
+#define LIN_LI0_EXV2_CurrentPosition_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_EXV2_CurrentPosition_FLAG_BIT_OFFSET    6U
+
+
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_BYTE_OFFSET    96U
 #define LIN_LI0_ECM_TargetPosReqIgOn_A_BIT_OFFSET    0U
 #define LIN_LI0_ECM_TargetPosReqIgOn_A_SIGNAL_SIZE    8U
-#define LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET    12U
 #define LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_ECM_CalibReq_A_BYTE_OFFSET    81U
+#define LIN_LI0_ECM_CalibReq_A_BYTE_OFFSET    97U
 #define LIN_LI0_ECM_CalibReq_A_BIT_OFFSET    0U
 #define LIN_LI0_ECM_CalibReq_A_SIGNAL_SIZE    1U
-#define LIN_LI0_ECM_CalibReq_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_CalibReq_A_FLAG_BYTE_OFFSET    12U
 #define LIN_LI0_ECM_CalibReq_A_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_ECM_IgStatusReq_A_BYTE_OFFSET    81U
+#define LIN_LI0_ECM_IgStatusReq_A_BYTE_OFFSET    97U
 #define LIN_LI0_ECM_IgStatusReq_A_BIT_OFFSET    2U
 #define LIN_LI0_ECM_IgStatusReq_A_SIGNAL_SIZE    1U
-#define LIN_LI0_ECM_IgStatusReq_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_IgStatusReq_A_FLAG_BYTE_OFFSET    12U
 #define LIN_LI0_ECM_IgStatusReq_A_FLAG_BIT_OFFSET    2U
 
 
-#define LIN_LI0_ECM_TargetPosReqIgOff_A_BYTE_OFFSET    82U
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_BYTE_OFFSET    98U
 #define LIN_LI0_ECM_TargetPosReqIgOff_A_BIT_OFFSET    0U
 #define LIN_LI0_ECM_TargetPosReqIgOff_A_SIGNAL_SIZE    8U
-#define LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BYTE_OFFSET    10U
+#define LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BYTE_OFFSET    12U
 #define LIN_LI0_ECM_TargetPosReqIgOff_A_FLAG_BIT_OFFSET    3U
 
 
-#define LIN_LI0_AGM_A_ActualPosition_BYTE_OFFSET    84U
+#define LIN_LI0_AGM_A_ActualPosition_BYTE_OFFSET    100U
 #define LIN_LI0_AGM_A_ActualPosition_BIT_OFFSET    0U
 #define LIN_LI0_AGM_A_ActualPosition_SIGNAL_SIZE    8U
-#define LIN_LI0_AGM_A_ActualPosition_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_ActualPosition_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_ActualPosition_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_AGM_A_Err_MechBreak_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_MechBreak_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_Err_MechBreak_BIT_OFFSET    0U
 #define LIN_LI0_AGM_A_Err_MechBreak_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_Err_MechBreak_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_MechBreak_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_Err_MechBreak_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_AGM_A_Err_MechBlock_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_MechBlock_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_Err_MechBlock_BIT_OFFSET    5U
 #define LIN_LI0_AGM_A_Err_MechBlock_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_Err_MechBlock_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_MechBlock_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_Err_MechBlock_FLAG_BIT_OFFSET    5U
 
 
-#define LIN_LI0_AGM_A_CalibActive_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_CalibActive_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_CalibActive_BIT_OFFSET    2U
 #define LIN_LI0_AGM_A_CalibActive_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_CalibActive_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_CalibActive_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_CalibActive_FLAG_BIT_OFFSET    2U
 
 
-#define LIN_LI0_AGM_A_CalibRequired_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_CalibRequired_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_CalibRequired_BIT_OFFSET    3U
 #define LIN_LI0_AGM_A_CalibRequired_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_CalibRequired_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_CalibRequired_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_CalibRequired_FLAG_BIT_OFFSET    3U
 
 
-#define LIN_LI0_AGM_A_Err_Electrical_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_Electrical_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_Err_Electrical_BIT_OFFSET    6U
 #define LIN_LI0_AGM_A_Err_Electrical_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_Err_Electrical_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_Electrical_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_Err_Electrical_FLAG_BIT_OFFSET    6U
 
 
-#define LIN_LI0_AGM_A_Err_OverTemp_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_OverTemp_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_Err_OverTemp_BIT_OFFSET    7U
 #define LIN_LI0_AGM_A_Err_OverTemp_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_Err_OverTemp_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_OverTemp_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_Err_OverTemp_FLAG_BIT_OFFSET    7U
 
 
-#define LIN_LI0_AGM_A_Err_Voltage_BYTE_OFFSET    85U
+#define LIN_LI0_AGM_A_Err_Voltage_BYTE_OFFSET    101U
 #define LIN_LI0_AGM_A_Err_Voltage_BIT_OFFSET    4U
 #define LIN_LI0_AGM_A_Err_Voltage_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_Err_Voltage_FLAG_BYTE_OFFSET    11U
+#define LIN_LI0_AGM_A_Err_Voltage_FLAG_BYTE_OFFSET    13U
 #define LIN_LI0_AGM_A_Err_Voltage_FLAG_BIT_OFFSET    4U
 
 
-#define LIN_LI0_AGM_A_Err_LINResp_BYTE_OFFSET    86U
+#define LIN_LI0_AGM_A_Err_LINResp_BYTE_OFFSET    102U
 #define LIN_LI0_AGM_A_Err_LINResp_BIT_OFFSET    0U
 #define LIN_LI0_AGM_A_Err_LINResp_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_A_Err_LINResp_FLAG_BYTE_OFFSET    12U
+#define LIN_LI0_AGM_A_Err_LINResp_FLAG_BYTE_OFFSET    14U
 #define LIN_LI0_AGM_A_Err_LINResp_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_ECM_TargetPosReqIgOn_B_BYTE_OFFSET    88U
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_BYTE_OFFSET    104U
 #define LIN_LI0_ECM_TargetPosReqIgOn_B_BIT_OFFSET    0U
 #define LIN_LI0_ECM_TargetPosReqIgOn_B_SIGNAL_SIZE    8U
-#define LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BYTE_OFFSET    15U
 #define LIN_LI0_ECM_TargetPosReqIgOn_B_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_ECM_CalibReq_B_BYTE_OFFSET    89U
+#define LIN_LI0_ECM_CalibReq_B_BYTE_OFFSET    105U
 #define LIN_LI0_ECM_CalibReq_B_BIT_OFFSET    0U
 #define LIN_LI0_ECM_CalibReq_B_SIGNAL_SIZE    1U
-#define LIN_LI0_ECM_CalibReq_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_CalibReq_B_FLAG_BYTE_OFFSET    15U
 #define LIN_LI0_ECM_CalibReq_B_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_ECM_IgStatusReq_B_BYTE_OFFSET    89U
+#define LIN_LI0_ECM_IgStatusReq_B_BYTE_OFFSET    105U
 #define LIN_LI0_ECM_IgStatusReq_B_BIT_OFFSET    2U
 #define LIN_LI0_ECM_IgStatusReq_B_SIGNAL_SIZE    1U
-#define LIN_LI0_ECM_IgStatusReq_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_IgStatusReq_B_FLAG_BYTE_OFFSET    15U
 #define LIN_LI0_ECM_IgStatusReq_B_FLAG_BIT_OFFSET    2U
 
 
-#define LIN_LI0_ECM_TargetPosReqIgOff_B_BYTE_OFFSET    90U
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_BYTE_OFFSET    106U
 #define LIN_LI0_ECM_TargetPosReqIgOff_B_BIT_OFFSET    0U
 #define LIN_LI0_ECM_TargetPosReqIgOff_B_SIGNAL_SIZE    8U
-#define LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BYTE_OFFSET    13U
+#define LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BYTE_OFFSET    15U
 #define LIN_LI0_ECM_TargetPosReqIgOff_B_FLAG_BIT_OFFSET    3U
 
 
-#define LIN_LI0_AGM_B_ActualPosition_BYTE_OFFSET    92U
+#define LIN_LI0_AGM_B_ActualPosition_BYTE_OFFSET    108U
 #define LIN_LI0_AGM_B_ActualPosition_BIT_OFFSET    0U
 #define LIN_LI0_AGM_B_ActualPosition_SIGNAL_SIZE    8U
-#define LIN_LI0_AGM_B_ActualPosition_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_ActualPosition_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_ActualPosition_FLAG_BIT_OFFSET    0U
 
 
-#define LIN_LI0_AGM_B_Err_MechBreak_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_MechBreak_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_Err_MechBreak_BIT_OFFSET    0U
 #define LIN_LI0_AGM_B_Err_MechBreak_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_Err_MechBreak_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_MechBreak_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_Err_MechBreak_FLAG_BIT_OFFSET    1U
 
 
-#define LIN_LI0_AGM_B_Err_MechBlock_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_MechBlock_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_Err_MechBlock_BIT_OFFSET    5U
 #define LIN_LI0_AGM_B_Err_MechBlock_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_Err_MechBlock_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_MechBlock_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_Err_MechBlock_FLAG_BIT_OFFSET    5U
 
 
-#define LIN_LI0_AGM_B_CalibActive_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_CalibActive_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_CalibActive_BIT_OFFSET    2U
 #define LIN_LI0_AGM_B_CalibActive_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_CalibActive_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_CalibActive_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_CalibActive_FLAG_BIT_OFFSET    2U
 
 
-#define LIN_LI0_AGM_B_CalibRequired_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_CalibRequired_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_CalibRequired_BIT_OFFSET    3U
 #define LIN_LI0_AGM_B_CalibRequired_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_CalibRequired_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_CalibRequired_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_CalibRequired_FLAG_BIT_OFFSET    3U
 
 
-#define LIN_LI0_AGM_B_Err_Electrical_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_Electrical_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_Err_Electrical_BIT_OFFSET    6U
 #define LIN_LI0_AGM_B_Err_Electrical_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_Err_Electrical_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_Electrical_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_Err_Electrical_FLAG_BIT_OFFSET    6U
 
 
-#define LIN_LI0_AGM_B_Err_OverTemp_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_OverTemp_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_Err_OverTemp_BIT_OFFSET    7U
 #define LIN_LI0_AGM_B_Err_OverTemp_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_Err_OverTemp_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_OverTemp_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_Err_OverTemp_FLAG_BIT_OFFSET    7U
 
 
-#define LIN_LI0_AGM_B_Err_Voltage_BYTE_OFFSET    93U
+#define LIN_LI0_AGM_B_Err_Voltage_BYTE_OFFSET    109U
 #define LIN_LI0_AGM_B_Err_Voltage_BIT_OFFSET    4U
 #define LIN_LI0_AGM_B_Err_Voltage_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_Err_Voltage_FLAG_BYTE_OFFSET    14U
+#define LIN_LI0_AGM_B_Err_Voltage_FLAG_BYTE_OFFSET    16U
 #define LIN_LI0_AGM_B_Err_Voltage_FLAG_BIT_OFFSET    4U
 
 
-#define LIN_LI0_AGM_B_Err_LINResp_BYTE_OFFSET    94U
+#define LIN_LI0_AGM_B_Err_LINResp_BYTE_OFFSET    110U
 #define LIN_LI0_AGM_B_Err_LINResp_BIT_OFFSET    0U
 #define LIN_LI0_AGM_B_Err_LINResp_SIGNAL_SIZE    1U
-#define LIN_LI0_AGM_B_Err_LINResp_FLAG_BYTE_OFFSET    15U
+#define LIN_LI0_AGM_B_Err_LINResp_FLAG_BYTE_OFFSET    17U
 #define LIN_LI0_AGM_B_Err_LINResp_FLAG_BIT_OFFSET    0U
 
 
@@ -1577,6 +1671,63 @@ typedef enum {
     }
 
 
+ 
+/* static access macros for signal LI0_TMM_EXV2_PositionRequest */
+ 
+#define l_u16_rd_LI0_TMM_EXV2_PositionRequest() \
+    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET + 1U] << 8U)) >> 0U) & 0xffffU))
+
+
+#define l_u16_wr_LI0_TMM_EXV2_PositionRequest(A) \
+    { \
+    g_buffer_backup_data[0U] =  g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET]; \
+    g_lin_frame_updating_flag_tbl[LI0_VCU_EXV2] |= (1U << 0); \
+    g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    g_buffer_backup_data[0U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET + 1U]; \
+    g_lin_frame_updating_flag_tbl[LI0_VCU_EXV2] |= (1U << (0 + 1U)); \
+    g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET + 1U] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_PositionRequest_BYTE_OFFSET + 1U] & 0x00U) | \
+    (((A) >> 8U) & 0xffU)); \
+    g_lin_frame_updating_flag_tbl[LI0_VCU_EXV2] &= (~(0x03 << 0)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_TMM_EXV2_EnableRequest */
+
+ 
+#define l_bool_rd_LI0_TMM_EXV2_EnableRequest() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_EnableRequest_BYTE_OFFSET], \
+    LIN_LI0_TMM_EXV2_EnableRequest_BIT_OFFSET))
+
+#define l_bool_wr_LI0_TMM_EXV2_EnableRequest(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_EnableRequest_BYTE_OFFSET], \
+    LIN_LI0_TMM_EXV2_EnableRequest_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_EnableRequest_BYTE_OFFSET], \
+    LIN_LI0_TMM_EXV2_EnableRequest_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_TMM_EXV2_initRequest */
+ 
+#define l_u8_rd_LI0_TMM_EXV2_initRequest() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_initRequest_BYTE_OFFSET]) >> 0U) & 0x07U))
+
+
+#define l_u8_wr_LI0_TMM_EXV2_initRequest(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_initRequest_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_TMM_EXV2_initRequest_BYTE_OFFSET] & 0xf8U) | \
+    (((A) << 0U) & 0x07U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_initRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_initRequest_FLAG_BIT_OFFSET); \
+    }
+
+
 /* static access macros for signal LI0_EXV_ResponseError */
 
  
@@ -1697,6 +1848,129 @@ typedef enum {
     g_lin_frame_updating_flag_tbl[LI0_EXV_VCU] &= (~(0x03 << 2)); \
     LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentPosition_FLAG_BYTE_OFFSET],\
          LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_EXV2_ResponseError */
+
+ 
+#define l_bool_rd_LI0_EXV2_ResponseError() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV2_ResponseError_BYTE_OFFSET], \
+    LIN_LI0_EXV2_ResponseError_BIT_OFFSET))
+
+#define l_bool_wr_LI0_EXV2_ResponseError(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV2_ResponseError_BYTE_OFFSET], \
+    LIN_LI0_EXV2_ResponseError_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV2_ResponseError_BYTE_OFFSET], \
+    LIN_LI0_EXV2_ResponseError_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_ResponseError_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_ResponseError_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_EXV2_CurrentInitState */
+ 
+#define l_u8_rd_LI0_EXV2_CurrentInitState() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentInitState_BYTE_OFFSET]) >> 1U) & 0x03U))
+
+
+#define l_u8_wr_LI0_EXV2_CurrentInitState(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentInitState_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentInitState_BYTE_OFFSET] & 0xf9U) | \
+    (((A) << 1U) & 0x06U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_CurrentInitState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_CurrentInitState_FLAG_BIT_OFFSET); \
+    }
+
+
+/* static access macros for signal LI0_EXV2_RunState */
+
+ 
+#define l_bool_rd_LI0_EXV2_RunState() \
+    (LIN_TEST_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV2_RunState_BYTE_OFFSET], \
+    LIN_LI0_EXV2_RunState_BIT_OFFSET))
+
+#define l_bool_wr_LI0_EXV2_RunState(A) \
+    {(A) ? \
+    (LIN_SET_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV2_RunState_BYTE_OFFSET], \
+    LIN_LI0_EXV2_RunState_BIT_OFFSET)):\
+    (LIN_CLEAR_BIT(g_lin_frame_data_buffer[LIN_LI0_EXV2_RunState_BYTE_OFFSET], \
+    LIN_LI0_EXV2_RunState_BIT_OFFSET));\
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_RunState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_RunState_FLAG_BIT_OFFSET);}
+ 
+/* static access macros for signal LI0_EXV2_FaultState */
+ 
+#define l_u8_rd_LI0_EXV2_FaultState() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV2_FaultState_BYTE_OFFSET]) >> 4U) & 0x0fU))
+
+
+#define l_u8_wr_LI0_EXV2_FaultState(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV2_FaultState_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV2_FaultState_BYTE_OFFSET] & 0x0fU) | \
+    (((A) << 4U) & 0xf0U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_FaultState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_FaultState_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_EXV2_VoltageState */
+ 
+#define l_u8_rd_LI0_EXV2_VoltageState() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV2_VoltageState_BYTE_OFFSET]) >> 0U) & 0x03U))
+
+
+#define l_u8_wr_LI0_EXV2_VoltageState(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV2_VoltageState_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV2_VoltageState_BYTE_OFFSET] & 0xfcU) | \
+    (((A) << 0U) & 0x03U)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_VoltageState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_VoltageState_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_EXV2_TemperatureWarn */
+ 
+#define l_u8_rd_LI0_EXV2_TemperatureWarn() \
+    ((l_u8)  (((g_lin_frame_data_buffer[LIN_LI0_EXV2_TemperatureWarn_BYTE_OFFSET]) >> 2U) & 0x03U))
+
+
+#define l_u8_wr_LI0_EXV2_TemperatureWarn(A) \
+    { \
+    g_lin_frame_data_buffer[LIN_LI0_EXV2_TemperatureWarn_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV2_TemperatureWarn_BYTE_OFFSET] & 0xf3U) | \
+    (((A) << 2U) & 0x0cU)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_TemperatureWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_TemperatureWarn_FLAG_BIT_OFFSET); \
+    }
+
+
+ 
+/* static access macros for signal LI0_EXV2_CurrentPosition */
+ 
+#define l_u16_rd_LI0_EXV2_CurrentPosition() \
+    ((l_u16)  (((g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET] + (g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET + 1U] << 8U)) >> 0U) & 0xffffU))
+
+
+#define l_u16_wr_LI0_EXV2_CurrentPosition(A) \
+    { \
+    g_buffer_backup_data[2U] =  g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET]; \
+    g_lin_frame_updating_flag_tbl[LI0_EXV2_VCU] |= (1U << 2); \
+    g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET] & 0x00U) | \
+    (((A) << 0U) & 0xffU)); \
+    g_buffer_backup_data[2U + 1U] =  g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET + 1U]; \
+    g_lin_frame_updating_flag_tbl[LI0_EXV2_VCU] |= (1U << (2 + 1U)); \
+    g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET + 1U] = \
+    (l_u8)((g_lin_frame_data_buffer[LIN_LI0_EXV2_CurrentPosition_BYTE_OFFSET + 1U] & 0x00U) | \
+    (((A) >> 8U) & 0xffU)); \
+    g_lin_frame_updating_flag_tbl[LI0_EXV2_VCU] &= (~(0x03 << 2)); \
+    LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_CurrentPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_CurrentPosition_FLAG_BIT_OFFSET); \
     }
 
 
@@ -2365,6 +2639,27 @@ typedef enum {
          LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV_initRequest_FLAG_BYTE_OFFSET],\
          LIN_LI0_TMM_EXV_initRequest_FLAG_BIT_OFFSET)
 
+#define l_flg_tst_LI0_TMM_EXV2_PositionRequest_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TMM_EXV2_PositionRequest_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_PositionRequest_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_TMM_EXV2_EnableRequest_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TMM_EXV2_EnableRequest_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_EnableRequest_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_TMM_EXV2_initRequest_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_initRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_initRequest_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_TMM_EXV2_initRequest_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_TMM_EXV2_initRequest_FLAG_BYTE_OFFSET],\
+         LIN_LI0_TMM_EXV2_initRequest_FLAG_BIT_OFFSET)
+
 #define l_flg_tst_LI0_EXV_ResponseError_flag() \
          LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_ResponseError_FLAG_BYTE_OFFSET],\
          LIN_LI0_EXV_ResponseError_FLAG_BIT_OFFSET)
@@ -2413,6 +2708,55 @@ typedef enum {
 #define l_flg_clr_LI0_EXV_CurrentPosition_flag() \
          LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV_CurrentPosition_FLAG_BYTE_OFFSET],\
          LIN_LI0_EXV_CurrentPosition_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_ResponseError_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_ResponseError_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_ResponseError_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_ResponseError_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_ResponseError_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_ResponseError_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_CurrentInitState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_CurrentInitState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_CurrentInitState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_CurrentInitState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_CurrentInitState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_CurrentInitState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_RunState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_RunState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_RunState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_RunState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_RunState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_RunState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_FaultState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_FaultState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_FaultState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_FaultState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_FaultState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_FaultState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_VoltageState_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_VoltageState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_VoltageState_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_VoltageState_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_VoltageState_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_VoltageState_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_TemperatureWarn_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_TemperatureWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_TemperatureWarn_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_TemperatureWarn_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_TemperatureWarn_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_TemperatureWarn_FLAG_BIT_OFFSET)
+
+#define l_flg_tst_LI0_EXV2_CurrentPosition_flag() \
+         LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_CurrentPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_CurrentPosition_FLAG_BIT_OFFSET)
+#define l_flg_clr_LI0_EXV2_CurrentPosition_flag() \
+         LIN_CLEAR_BIT(g_lin_flag_handle_tbl[LIN_LI0_EXV2_CurrentPosition_FLAG_BYTE_OFFSET],\
+         LIN_LI0_EXV2_CurrentPosition_FLAG_BIT_OFFSET)
 
 #define l_flg_tst_LI0_ECM_TargetPosReqIgOn_A_flag() \
          LIN_TEST_BIT(g_lin_flag_handle_tbl[LIN_LI0_ECM_TargetPosReqIgOn_A_FLAG_BYTE_OFFSET],\
@@ -2651,6 +2995,16 @@ typedef enum {
           g_lin_frame_flag_handle_tbl[LI0_EXV_VCU]
  #define l_flg_clr_LI0_EXV_VCU_flag() \
           g_lin_frame_flag_handle_tbl[LI0_EXV_VCU] = 0
+
+ #define l_flg_tst_LI0_VCU_EXV2_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_VCU_EXV2]
+ #define l_flg_clr_LI0_VCU_EXV2_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_VCU_EXV2] = 0
+
+ #define l_flg_tst_LI0_EXV2_VCU_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_EXV2_VCU]
+ #define l_flg_clr_LI0_EXV2_VCU_flag() \
+          g_lin_frame_flag_handle_tbl[LI0_EXV2_VCU] = 0
 
  #define l_flg_tst_LI0_ECM_AGM_A_DEMAND_flag() \
           g_lin_frame_flag_handle_tbl[LI0_ECM_AGM_A_DEMAND]

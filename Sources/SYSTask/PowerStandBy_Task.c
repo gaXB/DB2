@@ -41,6 +41,16 @@ void PowerStandByTask(void)
 	}
 	else
 	{} */
+	sPanleData.LCDONOFF = 0;
+	sPanleData.AC = 0;
+	sPanleData.CIRF = 0;
+	sPanleData.FANLevel = 0;
+	sPanleData.PTCn = 0;
+	sPanleData.RHEAT = 0;
+	sPanleData.VentMode = 0;
+	sPanleData.VerClient = SwV_CLIENT *16 + SwsV_CLIENT;
+	sPanleData.VerSelf = SwV_ *16 + SwsV_;
+	sPanleData.i16Temp = SystemControl.u8TestLevel*10;
 }
 
 /*******************************************************************************

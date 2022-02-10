@@ -102,5 +102,18 @@ void  WPumpControl(void)
 
 void  WPumpSetDuty(uint8 id, uint8 duty)
 {
-	sWPumpData[id].SetDuty = duty;
+	if (duty >= 93)
+	{
+		sWPumpData[id].SetDuty = 93;
+	}
+	else
+	{
+		sWPumpData[id].SetDuty = duty;
+	}
+}
+
+
+uint8  WPumpGetErr(uint8 id)
+{
+	return sWPumpData[id].ErrCode;
 }

@@ -279,10 +279,11 @@ typedef struct
 //actor struct
 typedef struct
 {
-	uint8 EXVError;
-	uint8 FourWayErr; //0 正常， 1 故障
-	uint8 ThreeWay1Err; //0 正常， 1 故障
-	uint8 ThreeWay2Err;  //0：正常  1：LIN通信错误 2: 过压 3：欠压 4： 线圈开路， 5： 堵转
+	uint8 EXVError;    //0 正常， 1 故障
+	uint8 BEXVError;   //0 正常， 1 故障
+	uint8 FourWayErr;   //0 正常， 1  故障
+	uint8 ThreeWay1Err; //0 正常， 1：LIN通信错误 2: 过压 ，欠压 ， 线圈开路，， 堵转
+	uint8 ThreeWay2Err;  //0：正常  1：LIN通信错误 2: 过压 ，欠压 ， 线圈开路，， 堵转
 	uint8 AGS_AError;  //0 no
 	uint8 AGS_BError;  //0 no
 	uint8 SOV2Error;   //0 正常， 1 短路 2断路
@@ -358,6 +359,7 @@ typedef struct
 	uint16  ThreeWay2_Postion;            //LIN
 	uint16   FourWay_Postion;             //LIN 1/0  0：1-2，3-4   1：1-4， 2-3
 	uint16  BEXV_Postion;
+	uint16  BEXV2_Postion;
 	uint16  EXV_Postion;    // 0-500
 	uint16  AGS_Postion;   //0-100 , 100 的是15
 	uint8 SOV1;

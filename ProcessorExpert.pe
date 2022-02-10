@@ -4346,7 +4346,7 @@
         <ItemSymbol>ProjectComponentsCountChanged</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>0</Value>
+        <Value>2</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>ModuleName_ADC</ItemSymbol>
@@ -17754,7 +17754,7 @@
       <ItemState>
         <ItemSymbol>LNode0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>8</ListItemCount>
+        <ListItemCount>9</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -17807,6 +17807,12 @@
         <Value />
       </ItemState>
       <ItemState>
+        <ItemSymbol>Node0_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+      </ItemState>
+      <ItemState>
         <ItemSymbol>TimerGetTimeIntervalCallback0</ItemSymbol>
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
@@ -17815,7 +17821,7 @@
       <ItemState>
         <ItemSymbol>SerNumList0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>7</ListItemCount>
+        <ListItemCount>8</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -18005,7 +18011,7 @@
         <ItemSymbol>SlaveName0_4</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>CCV4</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Ser00_4</ItemSymbol>
@@ -18049,7 +18055,7 @@
         <ItemSymbol>SlaveName0_5</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>CCV4</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Ser00_5</ItemSymbol>
@@ -18093,7 +18099,7 @@
         <ItemSymbol>SlaveName0_6</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Ser00_6</ItemSymbol>
@@ -18121,6 +18127,50 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>Ser30_6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>lstserialnumber0_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SlaveName0_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Ser00_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Ser10_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Ser20_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Ser30_7</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -18264,7 +18314,7 @@
         <ItemSymbol>NPFFileName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>C:\Users\Administrator\Desktop\delet\DB2\S32K144_StandPrj\Sources\SystemSave\LinStackCfg.npf</Value>
+        <Value>E:\DVP\GA\DB2\S32K\DB2\S32K144_StandPrj\Sources\SystemSave\LinStackCfg.npf</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>ListMaster</ItemSymbol>
@@ -18391,7 +18441,7 @@
       <ItemState>
         <ItemSymbol>Slave</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>7</ListItemCount>
+        <ListItemCount>8</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -18423,16 +18473,22 @@
         <ItemSymbol>SlaveName4</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SlaveName5</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SlaveName6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SlaveName7</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <Value>CCV4</Value>
@@ -18446,7 +18502,7 @@
       <ItemState>
         <ItemSymbol>SignalsList</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>70</ListItemCount>
+        <ListItemCount>80</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -20976,7 +21032,7 @@
         <ItemSymbol>SignalName37</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_ResponseError</Value>
+        <Value>TMM_EXV2_PositionRequest</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType37</ItemSymbol>
@@ -20991,14 +21047,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher37</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_VCU</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList37</ItemSymbol>
@@ -21011,7 +21067,7 @@
         <ItemSymbol>SubscriberName37_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList37</ItemSymbol>
@@ -21044,7 +21100,7 @@
         <ItemSymbol>SignalName38</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_CurrentInitState</Value>
+        <Value>TMM_EXV2_EnableRequest</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType38</ItemSymbol>
@@ -21059,14 +21115,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>2</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher38</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_VCU</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList38</ItemSymbol>
@@ -21079,7 +21135,7 @@
         <ItemSymbol>SubscriberName38_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList38</ItemSymbol>
@@ -21112,7 +21168,7 @@
         <ItemSymbol>SignalName39</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_RunState</Value>
+        <Value>TMM_EXV2_initRequest</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType39</ItemSymbol>
@@ -21127,14 +21183,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>3</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher39</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_VCU</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList39</ItemSymbol>
@@ -21147,7 +21203,7 @@
         <ItemSymbol>SubscriberName39_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList39</ItemSymbol>
@@ -21180,7 +21236,7 @@
         <ItemSymbol>SignalName40</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_FaultState</Value>
+        <Value>EXV_ResponseError</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType40</ItemSymbol>
@@ -21195,7 +21251,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>4</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -21248,7 +21304,7 @@
         <ItemSymbol>SignalName41</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_VoltageState</Value>
+        <Value>EXV_CurrentInitState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType41</ItemSymbol>
@@ -21316,7 +21372,7 @@
         <ItemSymbol>SignalName42</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_TemperatureWarn</Value>
+        <Value>EXV_RunState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType42</ItemSymbol>
@@ -21331,7 +21387,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>2</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -21384,7 +21440,7 @@
         <ItemSymbol>SignalName43</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>EXV_CurrentPosition</Value>
+        <Value>EXV_FaultState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType43</ItemSymbol>
@@ -21399,7 +21455,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>16</Value>
+        <Value>4</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -21452,7 +21508,7 @@
         <ItemSymbol>SignalName44</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOn_A</Value>
+        <Value>EXV_VoltageState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType44</ItemSymbol>
@@ -21467,14 +21523,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher44</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList44</ItemSymbol>
@@ -21487,7 +21543,7 @@
         <ItemSymbol>SubscriberName44_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList44</ItemSymbol>
@@ -21520,7 +21576,7 @@
         <ItemSymbol>SignalName45</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_CalibReq_A</Value>
+        <Value>EXV_TemperatureWarn</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType45</ItemSymbol>
@@ -21535,14 +21591,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher45</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList45</ItemSymbol>
@@ -21555,7 +21611,7 @@
         <ItemSymbol>SubscriberName45_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList45</ItemSymbol>
@@ -21588,7 +21644,7 @@
         <ItemSymbol>SignalName46</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_IgStatusReq_A</Value>
+        <Value>EXV_CurrentPosition</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType46</ItemSymbol>
@@ -21603,14 +21659,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher46</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList46</ItemSymbol>
@@ -21623,7 +21679,7 @@
         <ItemSymbol>SubscriberName46_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList46</ItemSymbol>
@@ -21656,7 +21712,7 @@
         <ItemSymbol>SignalName47</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOff_A</Value>
+        <Value>EXV2_ResponseError</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType47</ItemSymbol>
@@ -21671,14 +21727,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher47</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList47</ItemSymbol>
@@ -21691,7 +21747,7 @@
         <ItemSymbol>SubscriberName47_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList47</ItemSymbol>
@@ -21724,7 +21780,7 @@
         <ItemSymbol>SignalName48</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_ActualPosition</Value>
+        <Value>EXV2_CurrentInitState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType48</ItemSymbol>
@@ -21739,14 +21795,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher48</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList48</ItemSymbol>
@@ -21779,7 +21835,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>127</Value>
+        <Value>0</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -21792,7 +21848,7 @@
         <ItemSymbol>SignalName49</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_MechBreak</Value>
+        <Value>EXV2_RunState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType49</ItemSymbol>
@@ -21814,7 +21870,7 @@
         <ItemSymbol>SignalPublisher49</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList49</ItemSymbol>
@@ -21860,7 +21916,7 @@
         <ItemSymbol>SignalName50</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_MechBlock</Value>
+        <Value>EXV2_FaultState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType50</ItemSymbol>
@@ -21875,14 +21931,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>4</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher50</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList50</ItemSymbol>
@@ -21928,7 +21984,7 @@
         <ItemSymbol>SignalName51</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_CalibActive</Value>
+        <Value>EXV2_VoltageState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType51</ItemSymbol>
@@ -21943,14 +21999,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher51</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList51</ItemSymbol>
@@ -21996,7 +22052,7 @@
         <ItemSymbol>SignalName52</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_CalibRequired</Value>
+        <Value>EXV2_TemperatureWarn</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType52</ItemSymbol>
@@ -22011,14 +22067,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher52</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList52</ItemSymbol>
@@ -22051,7 +22107,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>0</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -22064,7 +22120,7 @@
         <ItemSymbol>SignalName53</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_Electrical</Value>
+        <Value>EXV2_CurrentPosition</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType53</ItemSymbol>
@@ -22079,14 +22135,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher53</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList53</ItemSymbol>
@@ -22132,7 +22188,7 @@
         <ItemSymbol>SignalName54</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_OverTemp</Value>
+        <Value>ECM_TargetPosReqIgOn_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType54</ItemSymbol>
@@ -22147,14 +22203,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>8</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher54</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList54</ItemSymbol>
@@ -22167,7 +22223,7 @@
         <ItemSymbol>SubscriberName54_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList54</ItemSymbol>
@@ -22200,7 +22256,7 @@
         <ItemSymbol>SignalName55</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_Voltage</Value>
+        <Value>ECM_CalibReq_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType55</ItemSymbol>
@@ -22222,7 +22278,7 @@
         <ItemSymbol>SignalPublisher55</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList55</ItemSymbol>
@@ -22235,7 +22291,7 @@
         <ItemSymbol>SubscriberName55_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList55</ItemSymbol>
@@ -22268,7 +22324,7 @@
         <ItemSymbol>SignalName56</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_LINResp</Value>
+        <Value>ECM_IgStatusReq_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType56</ItemSymbol>
@@ -22290,7 +22346,7 @@
         <ItemSymbol>SignalPublisher56</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList56</ItemSymbol>
@@ -22303,7 +22359,7 @@
         <ItemSymbol>SubscriberName56_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList56</ItemSymbol>
@@ -22336,7 +22392,7 @@
         <ItemSymbol>SignalName57</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOn_B</Value>
+        <Value>ECM_TargetPosReqIgOff_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType57</ItemSymbol>
@@ -22371,7 +22427,7 @@
         <ItemSymbol>SubscriberName57_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList57</ItemSymbol>
@@ -22404,7 +22460,7 @@
         <ItemSymbol>SignalName58</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_CalibReq_B</Value>
+        <Value>AGM_A_ActualPosition</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType58</ItemSymbol>
@@ -22419,14 +22475,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>8</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher58</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList58</ItemSymbol>
@@ -22439,7 +22495,7 @@
         <ItemSymbol>SubscriberName58_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList58</ItemSymbol>
@@ -22459,7 +22515,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>0</Value>
+        <Value>127</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -22472,7 +22528,7 @@
         <ItemSymbol>SignalName59</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_IgStatusReq_B</Value>
+        <Value>AGM_A_Err_MechBreak</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType59</ItemSymbol>
@@ -22494,7 +22550,7 @@
         <ItemSymbol>SignalPublisher59</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList59</ItemSymbol>
@@ -22507,7 +22563,7 @@
         <ItemSymbol>SubscriberName59_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList59</ItemSymbol>
@@ -22540,7 +22596,7 @@
         <ItemSymbol>SignalName60</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOff_B</Value>
+        <Value>AGM_A_Err_MechBlock</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType60</ItemSymbol>
@@ -22555,14 +22611,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher60</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList60</ItemSymbol>
@@ -22575,7 +22631,7 @@
         <ItemSymbol>SubscriberName60_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList60</ItemSymbol>
@@ -22608,7 +22664,7 @@
         <ItemSymbol>SignalName61</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_ActualPosition</Value>
+        <Value>AGM_A_CalibActive</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType61</ItemSymbol>
@@ -22623,14 +22679,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher61</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList61</ItemSymbol>
@@ -22663,7 +22719,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>127</Value>
+        <Value>0</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -22676,7 +22732,7 @@
         <ItemSymbol>SignalName62</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_MechBreak</Value>
+        <Value>AGM_A_CalibRequired</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType62</ItemSymbol>
@@ -22698,7 +22754,7 @@
         <ItemSymbol>SignalPublisher62</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList62</ItemSymbol>
@@ -22731,7 +22787,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>0</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -22744,7 +22800,7 @@
         <ItemSymbol>SignalName63</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_MechBlock</Value>
+        <Value>AGM_A_Err_Electrical</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType63</ItemSymbol>
@@ -22766,7 +22822,7 @@
         <ItemSymbol>SignalPublisher63</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList63</ItemSymbol>
@@ -22812,7 +22868,7 @@
         <ItemSymbol>SignalName64</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_CalibActive</Value>
+        <Value>AGM_A_Err_OverTemp</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType64</ItemSymbol>
@@ -22834,7 +22890,7 @@
         <ItemSymbol>SignalPublisher64</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList64</ItemSymbol>
@@ -22880,7 +22936,7 @@
         <ItemSymbol>SignalName65</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_CalibRequired</Value>
+        <Value>AGM_A_Err_Voltage</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType65</ItemSymbol>
@@ -22902,7 +22958,7 @@
         <ItemSymbol>SignalPublisher65</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList65</ItemSymbol>
@@ -22935,7 +22991,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>0</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -22948,7 +23004,7 @@
         <ItemSymbol>SignalName66</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_Electrical</Value>
+        <Value>AGM_A_Err_LINResp</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType66</ItemSymbol>
@@ -22970,7 +23026,7 @@
         <ItemSymbol>SignalPublisher66</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList66</ItemSymbol>
@@ -23016,7 +23072,7 @@
         <ItemSymbol>SignalName67</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_OverTemp</Value>
+        <Value>ECM_TargetPosReqIgOn_B</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType67</ItemSymbol>
@@ -23031,14 +23087,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>8</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalPublisher67</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList67</ItemSymbol>
@@ -23051,7 +23107,7 @@
         <ItemSymbol>SubscriberName67_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_B</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList67</ItemSymbol>
@@ -23084,7 +23140,7 @@
         <ItemSymbol>SignalName68</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_Voltage</Value>
+        <Value>ECM_CalibReq_B</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType68</ItemSymbol>
@@ -23106,7 +23162,7 @@
         <ItemSymbol>SignalPublisher68</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList68</ItemSymbol>
@@ -23119,7 +23175,7 @@
         <ItemSymbol>SubscriberName68_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_B</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList68</ItemSymbol>
@@ -23152,7 +23208,7 @@
         <ItemSymbol>SignalName69</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_LINResp</Value>
+        <Value>ECM_IgStatusReq_B</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalType69</ItemSymbol>
@@ -23174,7 +23230,7 @@
         <ItemSymbol>SignalPublisher69</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>LDFMasterNode</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalSubscriberList69</ItemSymbol>
@@ -23187,7 +23243,7 @@
         <ItemSymbol>SubscriberName69_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LDFMasterNode</Value>
+        <Value>AGM_B</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SignalInitValueList69</ItemSymbol>
@@ -23211,6 +23267,686 @@
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
+        <ItemSymbol>Signal70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_TargetPosReqIgOff_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName70_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList70</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp70_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue70_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_ActualPosition</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName71_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList71</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp71_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue71_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>127</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_MechBreak</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName72_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList72</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp72_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue72_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_MechBlock</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName73_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList73</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp73_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue73_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_CalibActive</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName74_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList74</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp74_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue74_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_CalibRequired</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName75_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList75</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp75_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue75_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_Electrical</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName76_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList76</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp76_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue76_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_OverTemp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName77_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList77</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp77_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue77_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_Voltage</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName78_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList78</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp78_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue78_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Signal79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalName79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_LINResp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalType79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Scalar</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSize79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalPublisher79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalSubscriberList79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SubscriberName79_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SignalInitValueList79</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValueGrp79_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitValue79_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
         <ItemSymbol>UFrameDef</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
@@ -23219,7 +23955,7 @@
       <ItemState>
         <ItemSymbol>UFrameList</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>14</ListItemCount>
+        <ListItemCount>16</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -24947,14 +25683,14 @@
         <ItemSymbol>UFrameName10</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_AGM_A_DEMAND</Value>
+        <Value>VCU_EXV2</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameID10</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>28</Value>
+        <Value>30</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -24962,7 +25698,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>28</Value>
+        <Value>30</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -24970,7 +25706,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>156</Value>
+        <Value>94</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -24984,13 +25720,13 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>4</Value>
+        <Value>8</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignal10</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>4</ListItemCount>
+        <ListItemCount>3</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -25004,12 +25740,12 @@
         <ItemSymbol>UFrameSignalName10_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOn_A</Value>
+        <Value>TMM_EXV2_PositionRequest</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize10_0</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25030,7 +25766,7 @@
         <ItemSymbol>UFrameSignalName10_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_CalibReq_A</Value>
+        <Value>TMM_EXV2_EnableRequest</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize10_1</ItemSymbol>
@@ -25043,7 +25779,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25056,12 +25792,12 @@
         <ItemSymbol>UFrameSignalName10_2</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_IgStatusReq_A</Value>
+        <Value>TMM_EXV2_initRequest</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize10_2</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>3</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25069,33 +25805,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>10</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalItem10_3</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Expanded>true</Expanded>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalName10_3</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOff_A</Value>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalSize10_3</ItemSymbol>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalOffset10_3</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>16</Value>
+        <Value>24</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25108,14 +25818,14 @@
         <ItemSymbol>UFrameName11</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_ECM_STATUS</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameID11</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>27</Value>
+        <Value>31</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25123,7 +25833,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>27</Value>
+        <Value>31</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -25131,27 +25841,27 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>91</Value>
+        <Value>31</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFramePublisher11</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSize11</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>4</Value>
+        <Value>8</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignal11</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>9</ListItemCount>
+        <ListItemCount>7</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -25165,12 +25875,12 @@
         <ItemSymbol>UFrameSignalName11_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_ActualPosition</Value>
+        <Value>EXV2_ResponseError</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_0</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25191,12 +25901,12 @@
         <ItemSymbol>UFrameSignalName11_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_MechBreak</Value>
+        <Value>EXV2_CurrentInitState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_1</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25204,7 +25914,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>8</Value>
+        <Value>1</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25217,7 +25927,7 @@
         <ItemSymbol>UFrameSignalName11_2</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_CalibActive</Value>
+        <Value>EXV2_RunState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_2</ItemSymbol>
@@ -25230,7 +25940,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>10</Value>
+        <Value>3</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25243,12 +25953,12 @@
         <ItemSymbol>UFrameSignalName11_3</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_CalibRequired</Value>
+        <Value>EXV2_FaultState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_3</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>4</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25256,7 +25966,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>11</Value>
+        <Value>4</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25269,12 +25979,12 @@
         <ItemSymbol>UFrameSignalName11_4</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_Voltage</Value>
+        <Value>EXV2_VoltageState</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_4</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25282,7 +25992,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>12</Value>
+        <Value>8</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25295,12 +26005,12 @@
         <ItemSymbol>UFrameSignalName11_5</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_MechBlock</Value>
+        <Value>EXV2_TemperatureWarn</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_5</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>2</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25308,7 +26018,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>13</Value>
+        <Value>10</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25321,68 +26031,16 @@
         <ItemSymbol>UFrameSignalName11_6</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_Electrical</Value>
+        <Value>EXV2_CurrentPosition</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize11_6</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalOffset11_6</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>14</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalItem11_7</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Expanded>true</Expanded>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalName11_7</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_OverTemp</Value>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalSize11_7</ItemSymbol>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalOffset11_7</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>15</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalItem11_8</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Expanded>true</Expanded>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalName11_8</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_LINResp</Value>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalSize11_8</ItemSymbol>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>UFrameSignalOffset11_8</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -25399,14 +26057,14 @@
         <ItemSymbol>UFrameName12</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_AGM_B_DEMAND</Value>
+        <Value>ECM_AGM_A_DEMAND</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameID12</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>20</Value>
+        <Value>28</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25414,7 +26072,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>20</Value>
+        <Value>28</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -25422,7 +26080,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>20</Value>
+        <Value>156</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -25456,7 +26114,7 @@
         <ItemSymbol>UFrameSignalName12_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOn_B</Value>
+        <Value>ECM_TargetPosReqIgOn_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize12_0</ItemSymbol>
@@ -25482,7 +26140,7 @@
         <ItemSymbol>UFrameSignalName12_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_CalibReq_B</Value>
+        <Value>ECM_CalibReq_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize12_1</ItemSymbol>
@@ -25508,7 +26166,7 @@
         <ItemSymbol>UFrameSignalName12_2</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_IgStatusReq_B</Value>
+        <Value>ECM_IgStatusReq_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize12_2</ItemSymbol>
@@ -25534,7 +26192,7 @@
         <ItemSymbol>UFrameSignalName12_3</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_TargetPosReqIgOff_B</Value>
+        <Value>ECM_TargetPosReqIgOff_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize12_3</ItemSymbol>
@@ -25560,14 +26218,14 @@
         <ItemSymbol>UFrameName13</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_ECM_STATUS</Value>
+        <Value>AGM_A_ECM_STATUS</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameID13</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>19</Value>
+        <Value>27</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -25575,7 +26233,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>19</Value>
+        <Value>27</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -25583,14 +26241,14 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>211</Value>
+        <Value>91</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFramePublisher13</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSize13</ItemSymbol>
@@ -25617,7 +26275,7 @@
         <ItemSymbol>UFrameSignalName13_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_ActualPosition</Value>
+        <Value>AGM_A_ActualPosition</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_0</ItemSymbol>
@@ -25643,7 +26301,7 @@
         <ItemSymbol>UFrameSignalName13_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_MechBreak</Value>
+        <Value>AGM_A_Err_MechBreak</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_1</ItemSymbol>
@@ -25669,7 +26327,7 @@
         <ItemSymbol>UFrameSignalName13_2</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_CalibActive</Value>
+        <Value>AGM_A_CalibActive</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_2</ItemSymbol>
@@ -25695,7 +26353,7 @@
         <ItemSymbol>UFrameSignalName13_3</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_CalibRequired</Value>
+        <Value>AGM_A_CalibRequired</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_3</ItemSymbol>
@@ -25721,7 +26379,7 @@
         <ItemSymbol>UFrameSignalName13_4</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_Voltage</Value>
+        <Value>AGM_A_Err_Voltage</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_4</ItemSymbol>
@@ -25747,7 +26405,7 @@
         <ItemSymbol>UFrameSignalName13_5</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_MechBlock</Value>
+        <Value>AGM_A_Err_MechBlock</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_5</ItemSymbol>
@@ -25773,7 +26431,7 @@
         <ItemSymbol>UFrameSignalName13_6</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_Electrical</Value>
+        <Value>AGM_A_Err_Electrical</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_6</ItemSymbol>
@@ -25799,7 +26457,7 @@
         <ItemSymbol>UFrameSignalName13_7</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_OverTemp</Value>
+        <Value>AGM_A_Err_OverTemp</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_7</ItemSymbol>
@@ -25825,7 +26483,7 @@
         <ItemSymbol>UFrameSignalName13_8</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_LINResp</Value>
+        <Value>AGM_A_Err_LINResp</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalSize13_8</ItemSymbol>
@@ -25835,6 +26493,458 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>UFrameSignalOffset13_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>16</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UnconditionalFrame14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameName14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_AGM_B_DEMAND</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameID14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>20</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameIDHEX14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>20</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PIDHEX14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>20</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFramePublisher14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>LDFMasterNode</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSize14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>4</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignal14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>4</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem14_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName14_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_TargetPosReqIgOn_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize14_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset14_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem14_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName14_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_CalibReq_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize14_1</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset14_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem14_2</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName14_2</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_IgStatusReq_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize14_2</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset14_2</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>10</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem14_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName14_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_TargetPosReqIgOff_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize14_3</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset14_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>16</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UnconditionalFrame15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameName15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_ECM_STATUS</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameID15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>19</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameIDHEX15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>19</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PIDHEX15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>211</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFramePublisher15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSize15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>4</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignal15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>9</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_ActualPosition</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_MechBreak</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_1</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_2</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_2</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_CalibActive</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_2</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_2</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>10</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_CalibRequired</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_3</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>11</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_4</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_4</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_Voltage</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_4</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_4</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>12</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_5</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_5</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_MechBlock</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_5</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_5</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>13</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_Electrical</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_6</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>14</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_OverTemp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_7</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>15</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem15_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName15_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_LINResp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize15_8</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset15_8</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -25876,7 +26986,7 @@
       <ItemState>
         <ItemSymbol>NodeAttributeList</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>7</ListItemCount>
+        <ListItemCount>8</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -26722,7 +27832,7 @@
         <ItemSymbol>NodeAttributeName4</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>CCV4</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeProtocol4</ItemSymbol>
@@ -26735,7 +27845,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>4</Value>
+        <Value>11</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -26743,7 +27853,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>4</Value>
+        <Value>11</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -26757,7 +27867,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>292</Value>
+        <Value>293</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -26765,7 +27875,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>2330</Value>
+        <Value>2334</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -26812,7 +27922,7 @@
         <ItemSymbol>NodeAttributeResError4</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>CCV4_Rsp_Comm_Err</Value>
+        <Value>EXV2_ResponseError</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeP2Min4</ItemSymbol>
@@ -26878,7 +27988,7 @@
         <ItemSymbol>NodeAttributeFrameName4_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>CCV4_Cmd</Value>
+        <Value>VCU_EXV2</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Lin20En4_0</ItemSymbol>
@@ -26904,7 +28014,7 @@
         <ItemSymbol>NodeAttributeFrameName4_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>CCV4_Rsq</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Lin20En4_1</ItemSymbol>
@@ -26930,7 +28040,7 @@
         <ItemSymbol>NodeAttributeName5</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A</Value>
+        <Value>CCV4</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeProtocol5</ItemSymbol>
@@ -26943,7 +28053,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>9</Value>
+        <Value>4</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -26951,7 +28061,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>9</Value>
+        <Value>4</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -26965,7 +28075,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>258</Value>
+        <Value>292</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -26973,7 +28083,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>33281</Value>
+        <Value>2330</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -26981,7 +28091,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>65</Value>
+        <Value>0</Value>
         <Base>HEX</Base>
       </ItemState>
       <ItemState>
@@ -27020,7 +28130,7 @@
         <ItemSymbol>NodeAttributeResError5</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_Err_LINResp</Value>
+        <Value>CCV4_Rsp_Comm_Err</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeP2Min5</ItemSymbol>
@@ -27034,7 +28144,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>50</Value>
+        <Value>0</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>J2602En5</ItemSymbol>
@@ -27086,7 +28196,7 @@
         <ItemSymbol>NodeAttributeFrameName5_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_AGM_A_DEMAND</Value>
+        <Value>CCV4_Cmd</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Lin20En5_0</ItemSymbol>
@@ -27112,7 +28222,7 @@
         <ItemSymbol>NodeAttributeFrameName5_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_ECM_STATUS</Value>
+        <Value>CCV4_Rsq</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Lin20En5_1</ItemSymbol>
@@ -27138,7 +28248,7 @@
         <ItemSymbol>NodeAttributeName6</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B</Value>
+        <Value>AGM_A</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeProtocol6</ItemSymbol>
@@ -27151,7 +28261,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>10</Value>
+        <Value>9</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -27159,7 +28269,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>10</Value>
+        <Value>9</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -27228,7 +28338,7 @@
         <ItemSymbol>NodeAttributeResError6</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_Err_LINResp</Value>
+        <Value>AGM_A_Err_LINResp</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeP2Min6</ItemSymbol>
@@ -27294,7 +28404,7 @@
         <ItemSymbol>NodeAttributeFrameName6_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_AGM_B_DEMAND</Value>
+        <Value>ECM_AGM_A_DEMAND</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Lin20En6_0</ItemSymbol>
@@ -27320,7 +28430,7 @@
         <ItemSymbol>NodeAttributeFrameName6_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_ECM_STATUS</Value>
+        <Value>AGM_A_ECM_STATUS</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Lin20En6_1</ItemSymbol>
@@ -27330,6 +28440,214 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>NodeAttributeMsgID6_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeGrp7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeName7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeProtocol7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>2.1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeCfgNAD7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>10</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeInitNAD7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>10</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeProIDGrp7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeSupID7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>258</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeFuncID7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>33281</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeVariant7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>65</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Serial07</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Serial17</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Serial27</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Serial37</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeResError7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_Err_LINResp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeP2Min7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>50</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeSTMin7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>50</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>J2602En7</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeResTolerant7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Lin21En7</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>true</Value>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeN_AsTimeout7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1000</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeN_CrTimeout7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1000</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeFrame7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>2</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeFrameGrp7_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeFrameName7_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_AGM_B_DEMAND</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Lin20En7_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeMsgID7_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>HEX</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeFrameGrp7_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeFrameName7_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_ECM_STATUS</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Lin20En7_1</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>NodeAttributeMsgID7_1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -27364,7 +28682,7 @@
       <ItemState>
         <ItemSymbol>SchTabDefItemFrame0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>14</ListItemCount>
+        <ListItemCount>16</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -27766,7 +29084,7 @@
         <ItemSymbol>SchTabFrmName0_10_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_AGM_A_DEMAND</Value>
+        <Value>VCU_EXV2</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SchTabItmFrmDelay0_10_0</ItemSymbol>
@@ -27803,7 +29121,7 @@
         <ItemSymbol>SchTabFrmName0_11_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_A_ECM_STATUS</Value>
+        <Value>EXV2_VCU</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SchTabItmFrmDelay0_11_0</ItemSymbol>
@@ -27840,7 +29158,7 @@
         <ItemSymbol>SchTabFrmName0_12_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ECM_AGM_B_DEMAND</Value>
+        <Value>ECM_AGM_A_DEMAND</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SchTabItmFrmDelay0_12_0</ItemSymbol>
@@ -27877,10 +29195,84 @@
         <ItemSymbol>SchTabFrmName0_13_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>AGM_B_ECM_STATUS</Value>
+        <Value>AGM_A_ECM_STATUS</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SchTabItmFrmDelay0_13_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>20</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabItmDetailGrp0_14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabItmType0_14</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Frame</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>DetailGrp0_14</ItemSymbol>
+        <ListItemCount>1</ListItemCount>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabFrmDetailGrp0_14_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabFrmName0_14_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_AGM_B_DEMAND</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabItmFrmDelay0_14_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>20</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabItmDetailGrp0_15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabItmType0_15</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Frame</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>DetailGrp0_15</ItemSymbol>
+        <ListItemCount>1</ListItemCount>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabFrmDetailGrp0_15_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabFrmName0_15_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_B_ECM_STATUS</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SchTabItmFrmDelay0_15_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -28375,6 +29767,84 @@
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <Value>LI0</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem10_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName10_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>ECM_TargetPosReqIgOff_A</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize10_3</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>8</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset10_3</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>16</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem11_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName11_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_A_Err_OverTemp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize11_7</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset11_7</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>15</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalItem11_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalName11_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>AGM_A_Err_LINResp</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalSize11_8</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UFrameSignalOffset11_8</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>16</Value>
+        <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>SchTabDefItemGrp1</ItemSymbol>

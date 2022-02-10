@@ -470,12 +470,20 @@ BOOL CAN2Drive_SendFram(uint32 id, uint8* u8SendData)
 	CAN2_TX_MB_Config.data_length = 8;
 
 //	/* send it back via CAN */
-	FLEXCAN_DRV_SendBlocking(INST_CAN2_EVCAN,TX_MB, &CAN2_TX_MB_Config,\
+	if (FLEXCAN_DRV_SendBlocking(INST_CAN2_EVCAN,TX_MB, &CAN2_TX_MB_Config,\
 			id,\
 			u8SendData, \
-			2);
+			2) == STATUS_SUCCESS)
 
-	return TRUE;
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+
+
 }
 
 //BOOL CANDrive_SendFram1(uint32 id, uint8* u8SendData)

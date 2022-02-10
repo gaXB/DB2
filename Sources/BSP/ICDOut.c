@@ -43,14 +43,16 @@ void TrOut_5VEN(uint8 en)
 	{
 		O_5VEN = GPIO_SET;
 		O_12V_EN = 1;
-		O_TMU = 1;
-
+		SRealySet(SREALY_NUM_TMU, 1);
+		O_FAN_RELAY = GPIO_SET;
 	}
 	else
 	{
 		O_5VEN = GPIO_CLEAR;
 		O_12V_EN =0;
 		O_TMU = 0;
+		SRealySet(SREALY_NUM_TMU, 0);
+		O_FAN_RELAY = 0;
 	}
 }
 
@@ -109,9 +111,9 @@ void OutTask(void)
 	(void)FanControl_SetVolt(sOutData.FANVolt); 
 	O_INCARFAN_2 = sEVOutData.IncarFAN_H;
 	O_INCARFAN_1 = sEVOutData.IncarFAN_L;
-	O_SOV1 = sEVOutData.SOV1;
-	O_SOV2 = sEVOutData.SOV2;
-	O_RHEAT = sOutData.RHeatOut;
+	SRealySet(SREALY_NUM_SOV1, sEVOutData.SOV1);
+	SRealySet(SREALY_NUM_SOV2, sEVOutData.SOV2);
+	SRealySet(SREALY_NUM_RHEAT, sOutData.RHeatOut);
 
 	EXVSetPostion(EXV_NUM_EXV  ,sEVOutData.EXV_Postion);
 	EXVSetPostion(EXV_NUM_BEXV  ,sEVOutData.BEXV_Postion);
@@ -120,6 +122,7 @@ void OutTask(void)
 	EXVSetPostion(EXV_NUM_FOURWAY  ,sEVOutData.FourWay_Postion);
 	EXVSetPostion(EXV_NUM_AGS_A  ,sEVOutData.AGS_Postion);
 	EXVSetPostion(EXV_NUM_AGS_B  ,sEVOutData.AGS_Postion);
+	EXVSetPostion(EXV_NUM_BEXV2  ,sEVOutData.BEXV2_Postion);
 
 	WPumpSetDuty(0, sEVOutData.EWPT1);
 	WPumpSetDuty(1, sEVOutData.EWPT2);

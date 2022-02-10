@@ -400,7 +400,7 @@ void sSW_Reset(void)
 void  DealForWakeUp(void)
 {
 //   Clear_WatchDog();
-//   sSW_Reset();
+   sSW_Reset();
 }
 
 void WDOG_Feed(void)
